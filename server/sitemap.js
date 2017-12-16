@@ -2,7 +2,7 @@ const fs = require('fs')
 const path = require('path')
 const fm = require('front-matter')
 const xmlescape = require('xml-escape')
-const marked = require('marked')
+const md = require('markdown-it')()
 
 const getPosts = () => {
   let blogPosts = [{
@@ -24,7 +24,7 @@ const getPosts = () => {
       audio_file_path: frontmatter.attributes.audio_file_path,
       audio_file_size: frontmatter.attributes.audio_file_size,
       actor_ids: frontmatter.attributes.actor_ids,
-      body: xmlescape(marked(frontmatter.body))
+      body: xmlescape(md.render(frontmatter.body))
     })
   })
 

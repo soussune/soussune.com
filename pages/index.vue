@@ -4,6 +4,12 @@
       <h2 class="home-slogan">
         soussune
       </h2>
+
+      <div v-for="post in posts" :key="post.title">
+        <nuxt-link :to="post.permalink">
+          {{ post.title }}
+        </nuxt-link>
+      </div>
       <div class="home-links">
         <nuxt-link to="/episode/0" class="button--green">See Your First Post</nuxt-link>
         <a href="https://github.com/nuxt-community/content-module" target="_blank" class="button--grey">Learn More on Github</a>
@@ -12,6 +18,15 @@
   </section>
 </template>
 
+<script>
+export default {
+  asyncData: async ({
+    app
+  }) => ({
+    posts: await app.$content('/').query({ exclude: 'body' }).getAll()
+  })
+}
+</script>
 <style>
 .home-container
 {

@@ -9,10 +9,10 @@ const getPosts = () => {
     path: '/episode'
   }]
 
-  fs.readdirSync(path.join(__dirname, '../content/')).forEach(blogPost => {
+  fs.readdirSync(path.join(__dirname, '../content/episode/')).forEach(blogPost => {
     const filename = `${blogPost.substr(0, blogPost.length - 8)}`
     const urlPath = `/episode/${filename.substr(11, blogPost.length)}`
-    const post = fs.readFileSync(path.resolve(`content/${blogPost}`), 'utf8')
+    const post = fs.readFileSync(path.resolve(`content/episode/${blogPost}`), 'utf8')
     const frontmatter = fm(post)
 
     blogPosts.push({

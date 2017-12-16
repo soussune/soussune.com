@@ -23,7 +23,7 @@ export default {
   asyncData: async ({
     app
   }) => ({
-    posts: await app.$content('/').query({ exclude: 'body' }).getAll()
+    posts: await app.$content('/episode').query({ exclude: 'body' }).getAll()
   })
 }
 </script>

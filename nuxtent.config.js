@@ -10,6 +10,17 @@ module.exports = {
         ],
         isPost: false
       }
+    ],
+    [
+      'actors',
+      {
+        permalink: '/actors/:slug',
+        page: '/_actor',
+        generate: [ // for static build
+          'get', 'getAll'
+        ],
+        isPost: false
+      }
     ]
   ]
 }

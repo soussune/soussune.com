@@ -9,22 +9,39 @@
         <nuxt-link :to="post.permalink">
           {{ post.title }}
         </nuxt-link>
-      </div>
-      <div class="home-links">
-        <nuxt-link to="/episode/0" class="button--green">See Your First Post</nuxt-link>
-        <a href="https://github.com/nuxt-community/content-module" target="_blank" class="button--grey">Learn More on Github</a>
+        <div>
+          {{ post.published | date }}
+        </div>
+        <div>
+          <template v-if="post.description">
+            {{ post.description }}
+          </template>
+          <template v-else>
+            <span>{{ post.actor_ids, 'と' | join }}</span><span v-if="1 < post.actor_ids.length">の{{ post.actor_ids.length }}人で</span><span>{{ post.topics, '、' | join }}</span><span v-if="1 < post.topics.length">など</span><span>について話ました。</span>
+          </template>
+        </div>
       </div>
     </div>
   </section>
 </template>
 
 <script>
+import moment from 'moment'
+
 export default {
   asyncData: async ({
     app
   }) => ({
     posts: await app.$content('/episode').query({ exclude: 'body' }).getAll()
-  })
+  }),
+  filters: {
+    date (val) {
+      return moment(val).format('YYYY年MM月DD日')
+    },
+    join (array, val) {
+      return array.join(val)
+    }
+  }
 }
 </script>
 <style>

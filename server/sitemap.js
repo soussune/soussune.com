@@ -15,7 +15,6 @@ const getPosts = () => {
     const post = fs.readFileSync(path.resolve(`content/${blogPost}`), 'utf8')
     const frontmatter = fm(post)
 
-    console.log(urlPath)
     blogPosts.push({
       path: urlPath,
       title: frontmatter.attributes.title,

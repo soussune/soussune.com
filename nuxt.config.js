@@ -11,7 +11,6 @@ module.exports = {
     link: [ { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' } ]
   },
   build: {
-    postcss: [ require('postcss-nested')() ],
     extend (config, ctx) {
       if (ctx.isClient) {
         config.module.rules.push({

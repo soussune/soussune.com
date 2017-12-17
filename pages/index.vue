@@ -35,7 +35,7 @@
 <script src="./index.ts" lang="ts">
 </script>
 
-<style lang="postcss" scoped>
+<style lang="scss" scoped>
 .actor-list {
   margin-top: 8px;
   margin-left: 10px;

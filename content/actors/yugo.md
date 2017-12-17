@@ -1,7 +1,7 @@
 ---
 actor_id: yugo
 title: yugo
-image_url: /images/actors/yugo.jpg
+image_url: https://pbs.twimg.com/profile_images/800967161221001216/HP6180cG_400x400.jpg
 twitter_username: ymmmo1
 description: Tech boy / dentability CTO / React Native / なんにでもwordpress（悪手） / ロックンロール
 ---

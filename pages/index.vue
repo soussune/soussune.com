@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import moment from 'moment'
+import { DateTime } from 'luxon'
 
 export default {
   asyncData: async ({
@@ -36,7 +36,7 @@ export default {
   }),
   filters: {
     date (val) {
-      return moment(val).format('YYYY年MM月DD日')
+      return DateTime.fromSQL(val).toFormat('yyyy年MM月dd日')
     },
     join (array, val) {
       return array.join(val)

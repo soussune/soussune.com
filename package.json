@@ -8,8 +8,8 @@
     "@nuxtjs/axios": "latest",
     "backpack-core": "^0.4.3",
     "front-matter": "^2.3.0",
+    "luxon": "^0.2.9",
     "markdown-it": "^8.4.0",
-    "moment": "^2.19.4",
     "nuxt": "^1.0.0-rc11",
     "nuxtent": "latest",
     "xml-escape": "^1.1.0"

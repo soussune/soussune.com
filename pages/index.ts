@@ -1,5 +1,11 @@
 import { DateTime } from 'luxon'
 
+type Post = {
+  actor_ids: string[]
+  topics: string[]
+  description: string | null
+}
+
 export default {
   asyncData: async ({ app }) => ({
     posts: await app.$content('/episode').query({ exclude: 'body' }).getAll()
@@ -8,10 +14,7 @@ export default {
     date (val: string) {
       return DateTime.fromSQL(val).toFormat('yyyy年MM月dd日')
     },
-    join (array: string[], val: string) {
-      return array.join(val)
-    },
-    desc (post: any): string {
+    desc (post: Post): string {
       if (post.description !== null) return post.description
 
       const combinedActors = post.actor_ids.join('と')

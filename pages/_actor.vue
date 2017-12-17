@@ -1,8 +1,14 @@
 <template>
-<section class="content-container">
-  <h1 class="post-title"> {{ post.title }} </h1>
-  <nuxtent-body :body="post.body" />
-</section>
+  <section class="content-container">
+    <img
+      :src="post.image_url"
+      :title="post.title"
+      class="icon"
+    >
+    <h1 class="post-title"> {{ post.title }} </h1>
+    <p>{{post.description}}</p>
+    <nuxtent-body :body="post.body" />
+  </section>
 </template>
 
 <script>
@@ -14,6 +20,10 @@ export default {
 </script>
 
 <style>
+.icon {
+  width: 200px;
+  height: 200px;
+}
 .content-container
 {
   width: 38rem;

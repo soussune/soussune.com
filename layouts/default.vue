@@ -4,8 +4,21 @@
       <h1 class="site-title"> soussune </h1>
     </a>
     <nuxt/>
+
+    <App-Footer/>
+
   </div>
 </template>
+
+<script>
+import Footer from '~/components/Footer.vue'
+
+export default {
+  components: {
+    'App-Footer': Footer
+  }
+}
+</script>
 
 <style>
 html

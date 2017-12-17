@@ -2,9 +2,8 @@
   <section class="home-container">
     <div>
       <h2 class="home-slogan">
-        soussune
+        episode
       </h2>
-
       <div v-for="post in posts" :key="post.title">
         <nuxt-link :to="post.permalink">
           {{ post.title }}

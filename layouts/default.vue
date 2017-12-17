@@ -1,8 +1,8 @@
 <template>
-  <div>
-    <a class="site-nav" href="/">
-      <h1 class="site-title"> soussune </h1>
-    </a>
+  <div class="application">
+
+    <App-Header/>
+
     <nuxt/>
 
     <App-Footer/>
@@ -11,10 +11,12 @@
 </template>
 
 <script>
+import Header from '~/components/Header.vue'
 import Footer from '~/components/Footer.vue'
 
 export default {
   components: {
+    'App-Header': Header,
     'App-Footer': Footer
   }
 }

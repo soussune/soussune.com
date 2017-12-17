@@ -1,6 +1,12 @@
 const sitemap = require('./server/sitemap').sitemap
 
 module.exports = {
+  modules: [
+    '@nuxtjs/pwa',
+    '~/modules/rss',
+    'nuxtent'
+  ],
+
   head: {
     title: 'soussune',
     meta: [
@@ -35,6 +41,5 @@ module.exports = {
     routes: sitemap.posts
   },
   routes: {},
-  modules: [ '@modules/rss', [ 'nuxtent' ] ],
   loading: { color: '#3B8070' }
 }

@@ -12,3 +12,6 @@ dist
 
 # Generate rss feed
 static/feed.xml
+
+# Pwa
+sw.*

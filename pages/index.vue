@@ -12,12 +12,7 @@
           {{ post.published | date }}
         </div>
         <div>
-          <template v-if="post.description">
-            {{ post.description }}
-          </template>
-          <template v-else>
-            <span>{{ post.actor_ids, 'と' | join }}</span><span v-if="1 < post.actor_ids.length">の{{ post.actor_ids.length }}人で</span><span>{{ post.topics, '、' | join }}</span><span v-if="1 < post.topics.length">など</span><span>について話ました。</span>
-          </template>
+          {{ post | desc }}
         </div>
       </div>
     </div>

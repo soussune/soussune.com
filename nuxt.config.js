@@ -8,11 +8,10 @@ module.exports = {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: 'soussune' }
     ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
+    link: [ { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' } ]
   },
   build: {
+    postcss: [ require('postcss-nested')() ],
     extend (config, ctx) {
       if (ctx.isClient) {
         config.module.rules.push({
@@ -37,9 +36,6 @@ module.exports = {
     routes: sitemap.posts
   },
   routes: {},
-  modules: [
-    '@modules/rss',
-    ['nuxtent']
-  ],
+  modules: [ '@modules/rss', [ 'nuxtent' ] ],
   loading: { color: '#3B8070' }
 }

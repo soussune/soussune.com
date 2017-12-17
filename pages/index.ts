@@ -1,5 +1,11 @@
 import { DateTime } from 'luxon'
 
+type Actor = {
+  actor_id: string
+  title: string
+  image_url: string
+}
+
 type Post = {
   actor_ids: string[]
   topics: string[]
@@ -8,7 +14,14 @@ type Post = {
 
 export default {
   asyncData: async ({ app }) => ({
-    posts: await app.$content('/episode').query({ exclude: 'body' }).getAll()
+    posts: await app.$content('/episode').query({ exclude: [ 'meta', 'body', 'anchors', 'date' ] }).getAll(),
+    actors: (await app
+      .$content('/actors')
+      .query({ exclude: [ 'meta', 'body', 'anchors', 'date' ] })
+      .getAll()).reduce((map, actor) => {
+      map[actor.actor_id] = actor
+      return map
+    }, {})
   }),
   filters: {
     date (val: string) {

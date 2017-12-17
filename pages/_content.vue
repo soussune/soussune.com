@@ -9,7 +9,10 @@
 export default {
   asyncData: async ({ app, route, payload }) => ({
     post: await app.$content('/episode').get(route.path) || payload
-  })
+  }),
+  head: {
+    script: [ { src: 'https://platform.twitter.com/widgets.js' } ]
+  }
 }
 </script>
 

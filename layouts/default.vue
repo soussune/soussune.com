@@ -7,6 +7,9 @@
 
     <App-Footer/>
 
+    <span v-if="twitterWidget">
+      <script type="text/javascript" async src="https://platform.twitter.com/widgets.js"></script>
+    </span>
   </div>
 </template>
 
@@ -18,6 +21,15 @@ export default {
   components: {
     'App-Header': Header,
     'App-Footer': Footer
+  },
+  data () {
+    return {
+      twitterWidget: false
+    }
+  },
+  async mounted () {
+    // https://github.com/nuxt/nuxt.js/issues/2000
+    this.twitterWidget = true
   }
 }
 </script>

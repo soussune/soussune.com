@@ -1,11 +1,7 @@
 const sitemap = require('./server/sitemap').sitemap
 
 module.exports = {
-  modules: [
-    '@nuxtjs/pwa',
-    '~/modules/rss',
-    'nuxtent'
-  ],
+  modules: [ '@nuxtjs/pwa', '~/modules/rss', 'nuxtent' ],
 
   head: {
     title: 'soussune',
@@ -17,6 +13,7 @@ module.exports = {
     link: [ { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' } ]
   },
   build: {
+    vendor: [ 'luxon' ],
     extend (config, ctx) {
       if (ctx.isClient) {
         config.module.rules.push({

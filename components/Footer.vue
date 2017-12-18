@@ -5,7 +5,7 @@
       <p>soussune は、ポッドキャストを通じて他人と意見を揉んでいきたいエンジニアの集いです。</p>
       <ul class="footer__links">
         <li>
-          <nuxt-link to="/actors/">人物一覧</nuxt-link>
+          <nuxt-link to="/actors">人物一覧</nuxt-link>
         </li>
         <li>
           <a href="https://medium.com/soussune">開発ブログ</a>

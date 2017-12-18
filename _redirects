@@ -1,0 +1,5 @@
+/episode/*/ /episode/*
+/episode/*/index.html /episode/*
+/actors/*/ /actors/*
+/actors/*/index.html /actors/*
+/actors/ /actors

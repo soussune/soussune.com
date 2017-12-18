@@ -9,7 +9,14 @@
 export default {
   asyncData: async ({ app, route, payload }) => ({
     post: await app.$content('/episode').get(route.path) || payload
-  })
+  }),
+  mounted () {
+    if (window.twttr) {
+      window.twttr.widgets.load(
+        document.querySelector('.content-container')
+      )
+    }
+  }
 }
 </script>
 
@@ -28,3 +35,11 @@ export default {
   color: #35495e;
 }
 </style>
+
+  if (window.twttr) {
+    window.twttr.widgets.load(
+      document.querySelector('.content-container')
+    )
+  } else {
+    console.log('No twitter yet')
+  }

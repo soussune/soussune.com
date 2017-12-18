@@ -1,22 +1,36 @@
 <template>
   <section class="content-container">
     <img
-      :src="post.image_url"
-      :title="post.title"
+      :src="actor.image_url"
+      :title="actor.title"
       class="icon"
     >
-    <h1 class="post-title"> {{ post.title }} </h1>
-    <p>{{post.description}}</p>
-    <nuxtent-body :body="post.body" />
+    <h1 class="actor-title"> {{ actor.title }} </h1>
+    <p>{{actor.description}}</p>
+    <nuxtent-body :body="actor.body" />
+
+    <h2>episodes</h2>
+    <ul v-if="0 < episodes.length">
+      <li
+        v-for="ep in episodes"
+        :key="ep.permalink"
+        class="actor-list-item"
+      >
+        <nuxt-link
+          :to="ep.permalink"
+        >
+          {{ ep.title }}
+        </nuxt-link>
+      </li>
+    </ul>
+    <p v-else>
+      not appeared yet.
+    </p>
+
   </section>
 </template>
 
-<script>
-export default {
-  asyncData: async ({ app, route, payload }) => ({
-    post: await app.$content('/actors').get(route.path) || payload
-  })
-}
+<script lang="ts" src="./_actor.ts">
 </script>
 
 <style>
@@ -30,7 +44,7 @@ export default {
   margin: 0 auto
 }
 
-.post-title
+.actor-title
 {
   font-size: 2.5rem;
   margin-bottom: 1rem;

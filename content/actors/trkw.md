@@ -1,7 +1,7 @@
 ---
 actorId: trkw
 title: trkw
-imageUrl: https://pbs.twimg.com/profile_images/918797515486412800/3O2URAW5_400x400.jpg
+imageUrl: https://pbs.twimg.com/profile_images/918797515486412800/3O2URAW5_200x200.jpg
 twitterUsername: trkw_
 description: 🎙️Podcaster at @soussunefm
 ---

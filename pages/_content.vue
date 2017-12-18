@@ -1,8 +1,8 @@
 <template>
-<section class="content-container">
-  <h1 class="post-title"> {{ post.title }} </h1>
-  <nuxtent-body :body="post.body" />
-</section>
+  <section class="content-container" ref="content">
+    <h1 class="post-title"> {{ post.title }} </h1>
+    <nuxtent-body :body="post.body" />
+  </section>
 </template>
 
 <script>
@@ -11,11 +11,8 @@ export default {
     post: await app.$content('/episode').get(route.path) || payload
   }),
   mounted () {
-    if (window.twttr) {
-      window.twttr.widgets.load(
-        document.querySelector('.content-container')
-      )
-    }
+    // Load twitter widget on SPA mode
+    if (window.twttr) window.twttr.widgets.load(this.$refs.content)
   }
 }
 </script>

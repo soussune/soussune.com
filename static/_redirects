@@ -1,5 +1,3 @@
-/episode/*/ /episode/*
-/episode/*/index.html /episode/*
-/actors/*/ /actors/*
-/actors/*/index.html /actors/*
+/episode/*/ /episode/:splat
+/actors/*/ /actors/:splat
 /actors/ /actors

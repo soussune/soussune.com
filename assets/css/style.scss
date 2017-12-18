@@ -1,8 +1,10 @@
-html, body, #__nuxt {
+html,
+body,
+#__nuxt {
   height: 100%;
   min-height: 100%;
 }
-#__nuxt{
+#__nuxt {
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -17,5 +19,5 @@ html, body, #__nuxt {
 
 a {
   color: inherit; /* blue colors for links too */
-  text-decoration: inherit; /* no underline */
+  text-decoration: underline;
 }

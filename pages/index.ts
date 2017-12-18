@@ -15,13 +15,10 @@ type Post = {
 export default {
   asyncData: async ({ app }) => ({
     posts: await app.$content('/episode').query({ exclude: [ 'meta', 'body', 'anchors', 'date' ] }).getAll(),
-    actors: (await app
+    actorsMap: (await app
       .$content('/actors')
       .query({ exclude: [ 'meta', 'body', 'anchors', 'date' ] })
-      .getAll()).reduce((map, actor) => {
-      map[actor.actorId] = actor
-      return map
-    }, {})
+      .getAll()).reduce((map, actor) => ({ ...map, [actor.actorId]: actor }), {})
   }),
   filters: {
     date (val: string) {

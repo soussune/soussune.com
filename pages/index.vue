@@ -18,12 +18,12 @@
           <nuxt-link
             v-for="actorId in post.actorIds"
             :key="actorId"
-            :to="actors[actorId].permalink"
+            :to="actorsMap[actorId].permalink"
             class="actor-list-item"
           >
             <img
-              :src="actors[actorId].imageUrl"
-              :title="actors[actorId].title"
+              :src="actorsMap[actorId].imageUrl"
+              :title="actorsMap[actorId].title"
             >
           </nuxt-link>
         </div>

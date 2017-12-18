@@ -52,10 +52,12 @@ h4 {
   font-size: 22px;
 }
 blockquote {
-  border-left: 10px solid #ede18d;
-  background-color: rgba(237, 225, 141, 0.2);
   padding: 0.5em 1em;
   margin: 0.5em 0;
+  &:not(.twitter-tweet) {
+    border-left: 10px solid #ede18d;
+    background-color: rgba(237, 225, 141, 0.2);
+  }
 }
 $listItemMargin: 1.2em;
 ul {

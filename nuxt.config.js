@@ -30,7 +30,7 @@ module.exports = {
     title: 'soussune',
     subtitle: 'エンジニアわいわいポッドキャスト「そうっすね」',
     url: 'https://soussune.com',
-    audio_url: 'https://cdn.soussune.com/audio',
+    audioUrl: 'https://cdn.soussune.com/audio',
     description: 'テクノロジーと世の中についてエンジニア達が雑談するポッドキャストです。',
     keywords: 'soussune,tech,technology,keyboard,web,development,developer',
     author: 'そうっすね制作委員会',

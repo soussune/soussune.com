@@ -13,7 +13,7 @@ export default {
         return post
       })
       .reduce((map: any, post: any) => {
-        post.actor_ids.forEach((actorId) => {
+        post.actorIds.forEach((actorId) => {
           map[actorId] = [ ...(map[actorId] || []), post ]
         })
         return map
@@ -24,7 +24,7 @@ export default {
       .query({ exclude: [ 'meta', 'body', 'anchors', 'date' ] })
       .getAll())
       .map((actor) => {
-        actor.appears = appearMap[actor.actor_id] || []
+        actor.appears = appearMap[actor.actorId] || []
         return actor
       })
       .sort((a, b) => {

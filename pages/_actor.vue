@@ -1,7 +1,7 @@
 <template>
   <section class="content-container">
     <img
-      :src="actor.image_url"
+      :src="actor.imageUrl"
       :title="actor.title"
       class="icon"
     >

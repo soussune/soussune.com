@@ -38,8 +38,8 @@ const getXml = (meta, pages) => {
           <link>${meta.url + page.path}</link>
           <pubDate>${page.date}</pubDate>
           <description>${page.body}</description>
-          <guid isPermaLink="true">${meta.url + page.audio_file_path}</guid>
-          <enclosure url="${meta.audio_url + page.audio_file_path}" length="${page.audio_file_size}" type="audio/mp3"/>
+          <guid isPermaLink="true">${meta.url + page.audioFilePath}</guid>
+          <enclosure url="${meta.audioUrl + page.audioFilePath}" length="${page.audioFileSize}" type="audio/mp3"/>
           <itunes:author>${meta.author}</itunes:author>
           <itunes:subtitle></itunes:subtitle>
           <itunes:duration>${page.duration}</itunes:duration>

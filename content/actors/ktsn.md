@@ -1,7 +1,7 @@
 ---
-actor_id: ktsn
+actorId: ktsn
 title: katashin
-image_url: https://pbs.twimg.com/profile_images/644720932750143488/-pbtNIHg_400x400.png
-twitter_username: ktsn
+imageUrl: https://pbs.twimg.com/profile_images/644720932750143488/-pbtNIHg_400x400.png
+twitterUsername: ktsn
 description: 猫になりたい。
 ---

@@ -21,9 +21,9 @@ const getPosts = () => {
       date: frontmatter.attributes.date,
       topics: frontmatter.attributes.topics,
       duration: frontmatter.attributes.duration,
-      audio_file_path: frontmatter.attributes.audio_file_path,
-      audio_file_size: frontmatter.attributes.audio_file_size,
-      actor_ids: frontmatter.attributes.actor_ids,
+      audioFilePath: frontmatter.attributes.audioFilePath,
+      audioFileSize: frontmatter.attributes.audioFileSize,
+      actorIds: frontmatter.attributes.actorIds,
       body: xmlescape(md.render(frontmatter.body))
     })
   })

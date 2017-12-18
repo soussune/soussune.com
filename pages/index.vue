@@ -16,14 +16,14 @@
         </div>
         <div class="actor-list">
           <nuxt-link
-            v-for="actor_id in post.actor_ids"
-            :key="actor_id"
-            :to="actors[actor_id].permalink"
+            v-for="actorId in post.actorIds"
+            :key="actorId"
+            :to="actors[actorId].permalink"
             class="actor-list-item"
           >
             <img
-              :src="actors[actor_id].image_url"
-              :title="actors[actor_id].title"
+              :src="actors[actorId].imageUrl"
+              :title="actors[actorId].title"
             >
           </nuxt-link>
         </div>

@@ -17,7 +17,7 @@
             :to="actor.permalink"
           >
             <img
-              :src="actor.image_url"
+              :src="actor.imageUrl"
               :title="actor.title"
             >
             <p>{{ actor.title }} ({{ actor.appears.length }})</p>

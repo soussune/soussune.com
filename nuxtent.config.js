@@ -3,10 +3,12 @@ module.exports = {
     [
       'episode',
       {
+        page: '_episode',
         permalink: '/episode/:slug',
-        page: '/_content',
-        generate: [ // for static build
-          'get', 'getAll'
+        generate: [
+          // for static build
+          'get',
+          'getAll'
         ],
         isPost: false
       }
@@ -14,10 +16,12 @@ module.exports = {
     [
       'actors',
       {
+        page: '_actor',
         permalink: '/actors/:slug',
-        page: '/_actor',
-        generate: [ // for static build
-          'get', 'getAll'
+        generate: [
+          // for static build
+          'get',
+          'getAll'
         ],
         isPost: false
       }

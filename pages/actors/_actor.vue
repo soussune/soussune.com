@@ -26,7 +26,6 @@
     <p v-else>
       not appeared yet.
     </p>
-
   </section>
 </template>
 

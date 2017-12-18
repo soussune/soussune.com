@@ -2,33 +2,16 @@
   <section class="home-container">
     <div>
       <h2 class="home-slogan">
-        actors
+        <nuxt-link to="/actors">
+          actors
+        </nuxt-link>
       </h2>
-
-      <ul
-        class="actor-list"
-      >
-        <li
-          v-for="actor in actors"
-          :key="actor.title"
-          class="actor-list-item"
-        >
-          <nuxt-link
-            :to="actor.permalink"
-          >
-            <img
-              :src="actor.imageUrl"
-              :title="actor.title"
-            >
-            <p>{{ actor.title }} ({{ actor.appears.length }})</p>
-          </nuxt-link>
-        </li>
-      </ul>
+      <nuxt-child/>
     </div>
   </section>
 </template>
 
-<script lang="ts" src="./actors.ts">
+<script>
 </script>
 <style lang="scss" scoped>
 .actor-list {

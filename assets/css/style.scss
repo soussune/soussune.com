@@ -1,0 +1,21 @@
+html, body, #__nuxt {
+  height: 100%;
+  min-height: 100%;
+}
+#__nuxt{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: inherit; /* blue colors for links too */
+  text-decoration: inherit; /* no underline */
+}

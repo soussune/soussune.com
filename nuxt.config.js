@@ -2,7 +2,11 @@ const sitemap = require('./server/sitemap').sitemap
 
 module.exports = {
   modules: [ '@nuxtjs/pwa', '~/modules/rss', 'nuxtent' ],
-
+  css: [
+    '~/assets/css/reset.scss',
+    '~/assets/css/style.scss',
+    '~/assets/css/layout.scss'
+  ],
   head: {
     title: 'soussune',
     meta: [

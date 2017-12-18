@@ -3,7 +3,7 @@ module.exports = {
     [
       'episode',
       {
-        permalink: '/episode/:slug',
+        permalink: '/episode/:slug/',
         page: '/_content',
         generate: [ // for static build
           'get', 'getAll'
@@ -14,7 +14,7 @@ module.exports = {
     [
       'actors',
       {
-        permalink: '/actors/:slug',
+        permalink: '/actors/:slug/',
         page: '/_actor',
         generate: [ // for static build
           'get', 'getAll'

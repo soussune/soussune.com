@@ -1,6 +1,6 @@
 <template>
   <header role="banner" class="header">
-    <h1 class="header__logo">
+    <div class="header__logo">
       <nuxt-link exact to="/">
         <svg class="soussune__logo" x="0px" y="0px" viewBox="0 0 400 48.2" style="enable-background:new 0 0 400 48.2;">
           <style type="text/css">
@@ -66,6 +66,6 @@
           </g>
         </svg>
       </nuxt-link>
-    </h1>
+    </div>
   </header>
 </template>

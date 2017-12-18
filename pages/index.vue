@@ -5,9 +5,11 @@
         episode
       </h2>
       <div v-for="post in posts" :key="post.title">
-        <nuxt-link :to="post.permalink">
-          {{ post.title }}
-        </nuxt-link>
+        <h3>
+          <nuxt-link :to="post.permalink">
+            {{ post.title }}
+          </nuxt-link>
+        </h3>
         <div>
           {{ post.published | date }}
         </div>

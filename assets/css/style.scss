@@ -20,4 +20,54 @@ body,
 a {
   color: inherit; /* blue colors for links too */
   text-decoration: underline;
+
+  &:hover {
+    color: #f3adad;
+  }
+}
+
+body {
+  line-height: 1.5;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0.6em;
+  margin-bottom: 0.3em;
+}
+h1 {
+  font-size: 32px;
+  background: rgba(255, 0, 0, 0.1);
+}
+h2 {
+  font-size: 32px;
+}
+h3 {
+  font-size: 28px;
+}
+h4 {
+  font-size: 22px;
+}
+blockquote {
+  border-left: 10px solid #ede18d;
+  background-color: rgba(237, 225, 141, 0.2);
+  padding: 0.5em 1em;
+  margin: 0.5em 0;
+}
+$listItemMargin: 1.2em;
+ul {
+  padding-left: $listItemMargin;
+  & li {
+    position: relative;
+    &:before {
+      content: "▶";
+      display: block;
+      position: absolute;
+      left: -$listItemMargin;
+      color: #aed9bb;
+    }
+  }
 }

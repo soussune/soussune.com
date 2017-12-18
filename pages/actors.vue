@@ -5,25 +5,53 @@
         actors
       </h2>
 
-      <div v-for="actor in actors" :key="actor.title">
-        <nuxt-link :to="actor.permalink">
-          {{ actor.title }}
-        </nuxt-link>
-      </div>
+      <ul
+        class="actor-list"
+      >
+        <li
+          v-for="actor in actors"
+          :key="actor.title"
+          class="actor-list-item"
+        >
+          <nuxt-link
+            :to="actor.permalink"
+          >
+            <img
+              :src="actor.image_url"
+              :title="actor.title"
+            >
+            <p>{{ actor.title }} ({{ actor.appears }})</p>
+          </nuxt-link>
+        </li>
+      </ul>
     </div>
   </section>
 </template>
 
-<script>
-export default {
-  asyncData: async ({
-    app
-  }) => ({
-    actors: await app.$content('/actors').query({ exclude: 'body' }).getAll()
-  })
-}
+<script lang="ts" src="./actors.ts">
 </script>
-<style>
+<style lang="scss" scoped>
+.actor-list {
+
+  &-item {
+    display: inline-block;
+    margin-bottom: 1rem;
+    text-align: center;
+    min-width: 100px;
+    font-size: 14px;
+
+    & a {
+      text-decoration: none;
+      color: #000;
+    }
+
+    & img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+    }
+  }
+}
 .home-container
 {
   display: flex;

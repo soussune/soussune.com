@@ -20,7 +20,7 @@
               :src="actor.image_url"
               :title="actor.title"
             >
-            <p>{{ actor.title }} ({{ actor.appears }})</p>
+            <p>{{ actor.title }} ({{ actor.appears.length }})</p>
           </nuxt-link>
         </li>
       </ul>

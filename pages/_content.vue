@@ -35,11 +35,3 @@ export default {
   color: #35495e;
 }
 </style>
-
-  if (window.twttr) {
-    window.twttr.widgets.load(
-      document.querySelector('.content-container')
-    )
-  } else {
-    console.log('No twitter yet')
-  }

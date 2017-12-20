@@ -4,28 +4,28 @@
       <h2 class="home-slogan">
         episode
       </h2>
-      <div v-for="post in posts" :key="post.title">
+      <div v-for="episode in episodes" :key="episode.title">
         <h3>
-          <nuxt-link :to="post.permalink">
-            {{ post.title }}
+          <nuxt-link :to="episode.permalink">
+            {{ episode.title }}
           </nuxt-link>
         </h3>
         <div>
-          {{ post.published | date }}
+          {{ episode.published | date }}
         </div>
         <div>
-          {{ post | desc }}
+          {{ episode | desc }}
         </div>
         <div class="actor-list">
           <nuxt-link
-            v-for="actorId in post.actorIds"
-            :key="actorId"
-            :to="actorsMap[actorId].permalink"
+            v-for="actor in episode.actors"
+            :key="actor.actorId"
+            :to="actor.permalink"
             class="actor-list-item"
           >
             <img
-              :src="actorsMap[actorId].imageUrl"
-              :title="actorsMap[actorId].title"
+              :src="actor.imageUrl"
+              :title="actor.title"
             >
           </nuxt-link>
         </div>

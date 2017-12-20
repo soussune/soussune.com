@@ -1,37 +1,31 @@
 import { DateTime } from 'luxon'
-
-type Actor = {
-  actorId: string
-  title: string
-  imageUrl: string
-}
-
-type Post = {
-  actorIds: string[]
-  topics: string[]
-  description: string | null
-}
+import { mapState } from 'vuex'
 
 export default {
-  asyncData: async ({ app }) => ({
-    posts: await app.$content('/episode').query({ exclude: [ 'meta', 'body', 'anchors', 'date' ] }).getAll(),
-    actorsMap: (await app
-      .$content('/actors')
-      .query({ exclude: [ 'meta', 'body', 'anchors', 'date' ] })
-      .getAll()).reduce((map, actor) => ({ ...map, [actor.actorId]: actor }), {})
-  }),
-  filters: {
-    date (val: string) {
-      return DateTime.fromSQL(val).toFormat('yyyy年MM月dd日')
+  computed: {
+    ...mapState([ 'actors' ]),
+    episodes () {
+      return this.$store.state.episodes.map((episode) => ({
+        ...episode,
+        actors: episode.actorIds.map((actorId) => this.actorsMap[actorId])
+      }))
     },
-    desc (post: Post): string {
-      if (post.description !== null) return post.description
+    actorsMap () {
+      return this.actors.reduce((map, actor) => ({ ...map, [actor.actorId]: actor }), {})
+    }
+  },
+  filters: {
+    date (date: string) {
+      return DateTime.fromSQL(date).toFormat('yyyy年MM月dd日')
+    },
+    desc (episode): string {
+      if (episode.description !== null) return episode.description
 
-      const combinedActors = post.actorIds.join('と')
-      const postActors = 1 < post.actorIds.length ? `の${post.actorIds.length}人で` : 'が'
+      const combinedActors = episode.actorIds.join('と')
+      const postActors = 1 < episode.actorIds.length ? `の${episode.actorIds.length}人で` : 'が'
 
-      const combinedTopics = post.topics.join('、')
-      const postTopics = 1 < post.topics.length ? 'など' : ''
+      const combinedTopics = episode.topics.join('、')
+      const postTopics = 1 < episode.topics.length ? 'など' : ''
 
       return `${combinedActors}${postActors}、${combinedTopics}${postTopics}について話しました。`
     }

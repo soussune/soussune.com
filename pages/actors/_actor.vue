@@ -10,9 +10,9 @@
     <nuxtent-body :body="actor.body" />
 
     <h2>episodes</h2>
-    <ul v-if="0 < episodes.length">
+    <ul v-if="0 < actor.episodes.length">
       <li
-        v-for="ep in episodes"
+        v-for="ep in actor.episodes"
         :key="ep.permalink"
         class="actor-list-item"
       >

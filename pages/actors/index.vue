@@ -1,7 +1,7 @@
 <template>
   <ul class="actor-list">
     <li
-      v-for="actor in actors"
+      v-for="actor in sortedActors"
       :key="actor.title"
       class="actor-list-item"
     >
@@ -10,7 +10,7 @@
           :src="actor.imageUrl"
           :title="actor.title"
         >
-        <p>{{ actor.title }} ({{ actor.appears.length }})</p>
+        <p>{{ actor.title }} ({{ actor.episodes.length }})</p>
       </nuxt-link>
     </li>
   </ul>

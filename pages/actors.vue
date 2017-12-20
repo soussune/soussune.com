@@ -14,27 +14,6 @@
 <script>
 </script>
 <style lang="scss" scoped>
-.actor-list {
-
-  &-item {
-    display: inline-block;
-    margin-bottom: 1rem;
-    text-align: center;
-    min-width: 100px;
-    font-size: 14px;
-
-    & a {
-      text-decoration: none;
-      color: #000;
-    }
-
-    & img {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-    }
-  }
-}
 .home-container
 {
   display: flex;

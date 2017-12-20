@@ -60,7 +60,7 @@ blockquote {
   }
 }
 $listItemMargin: 1.2em;
-ul {
+.marked ul {
   padding-left: $listItemMargin;
   & li {
     position: relative;

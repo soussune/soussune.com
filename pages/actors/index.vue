@@ -19,18 +19,6 @@
 <script lang="ts" src="./index.ts">
 </script>
 <style lang="scss" scoped>
-ul {
-  padding-left: 0;
-  & li {
-    position: relative;
-    &:before {
-      content: "";
-      display: none;
-      position: relative;
-    }
-  }
-}
-
 .actor-list {
 
   &-item {

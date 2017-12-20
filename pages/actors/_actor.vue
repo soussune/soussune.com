@@ -1,45 +1,53 @@
 <template>
   <section class="content-container">
-    <img
-      :src="actor.imageUrl"
-      :title="actor.title"
-      class="icon"
-    >
-    <h1 class="actor-title"> {{ actor.title }} </h1>
-    <p>{{actor.description}}</p>
-    <nuxtent-body :body="actor.body" />
-
-    <h2>episodes</h2>
-    <ul v-if="0 < actor.episodes.length">
-      <li
-        v-for="ep in actor.episodes"
-        :key="ep.permalink"
-        class="actor-list-item"
+    <section class="title">
+      <img
+        :src="actor.imageUrl"
+        :title="actor.title"
+        class="icon"
       >
-        <nuxt-link
-          :to="ep.permalink"
+      <h1 class="actor-title"> {{ actor.title }} </h1>
+    </section>
+
+    <section class="body">
+      <p>{{actor.description}}</p>
+      <nuxtent-body :body="actor.body" />
+    </section>
+
+    <section class="episodes">
+      <h2>episodes</h2>
+      <ul v-if="0 < actor.episodes.length">
+        <li
+          v-for="ep in actor.episodes"
+          :key="ep.permalink"
+          class="actor-list-item"
         >
-          {{ ep.title }}
-        </nuxt-link>
-      </li>
-    </ul>
-    <p v-else>
-      not appeared yet.
-    </p>
+          <nuxt-link :to="ep.permalink">
+            {{ ep.title }}
+          </nuxt-link>
+        </li>
+      </ul>
+      <p v-else>
+        not appeared yet.
+      </p>
+    </section>
   </section>
 </template>
 
 <script lang="ts" src="./_actor.ts">
 </script>
 
-<style>
+<style lang="scss" scoped>
+.body, .episodes {
+  text-align: left;
+}
 .icon {
   width: 200px;
   height: 200px;
 }
 .content-container
 {
-  width: 38rem;
+  max-width: 38rem;
   margin: 0 auto
 }
 

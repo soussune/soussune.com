@@ -32,11 +32,15 @@ const getXml = (meta, pages) => {
         <itunes:category text="Software How-To"/>
       </itunes:category>
       <itunes:explicit>no</itunes:explicit>
-      ${pages.slice(1).reverse().map(page =>
-        `<item>
+      ${pages
+        .slice(1)
+        .reverse()
+        .map(
+          (page) =>
+            `<item>
           <title>${page.title}</title>
           <link>${meta.url + page.path}</link>
-          <pubDate>${page.date}</pubDate>
+          <pubDate>${page.published}</pubDate>
           <description>${page.body}</description>
           <guid isPermaLink="true">${meta.url + page.audioFilePath}</guid>
           <enclosure url="${meta.audioUrl + page.audioFilePath}" length="${page.audioFileSize}" type="audio/mp3"/>
@@ -45,7 +49,9 @@ const getXml = (meta, pages) => {
           <itunes:duration>${page.duration}</itunes:duration>
           <itunes:explicit>no</itunes:explicit>
           <media:thumbnail url="${meta.url}/images/itunes-artwork.jpg"/>
-        </item>`).join(' ')}
+        </item>`
+        )
+        .join(' ')}
     </channel>
   </rss>`
 }

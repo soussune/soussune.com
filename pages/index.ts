@@ -1,5 +1,6 @@
 import { DateTime } from 'luxon'
 import { mapState } from 'vuex'
+import * as EpisodeHelper from '~/helpers/EpisodeHelper.js'
 
 export default {
   computed: {
@@ -19,15 +20,7 @@ export default {
       return DateTime.fromSQL(date).toFormat('yyyy年MM月dd日')
     },
     desc (episode): string {
-      if (episode.description !== null) return episode.description
-
-      const combinedActors = episode.actorIds.join('と')
-      const postActors = 1 < episode.actorIds.length ? `の${episode.actorIds.length}人で` : 'が'
-
-      const combinedTopics = episode.topics.join('、')
-      const postTopics = 1 < episode.topics.length ? 'など' : ''
-
-      return `${combinedActors}${postActors}、${combinedTopics}${postTopics}について話しました。`
+      return EpisodeHelper.desc(episode)
     }
   }
 }

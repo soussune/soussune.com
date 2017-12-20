@@ -5,16 +5,7 @@
   </section>
 </template>
 
-<script>
-export default {
-  asyncData: async ({ app, route, payload }) => ({
-    post: await app.$content('/episode').get(route.path) || payload
-  }),
-  mounted () {
-    // Load twitter widget on SPA mode
-    if (window.twttr) window.twttr.widgets.load(this.$refs.content)
-  }
-}
+<script lang="ts" src="./_episode.ts">
 </script>
 
 <style>

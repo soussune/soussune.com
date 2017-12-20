@@ -1,4 +1,5 @@
 import { mapGetters } from 'vuex'
+import * as EpisodeHelper from '~/helpers/EpisodeHelper.js'
 
 type Post = {
   actorIds: string[]
@@ -22,16 +23,8 @@ export default {
     }
   },
   filters: {
-    desc (post: Post): string {
-      if (post.description !== null) return post.description
-
-      const combinedActors = post.actorIds.join('と')
-      const postActors = 1 < post.actorIds.length ? `の${post.actorIds.length}人で` : 'が'
-
-      const combinedTopics = post.topics.join('、')
-      const postTopics = 1 < post.topics.length ? 'など' : ''
-
-      return `${combinedActors}${postActors}、${combinedTopics}${postTopics}について話しました。`
+    desc (episode): string {
+      return EpisodeHelper.desc(episode)
     }
   }
 }

@@ -1,3 +1,5 @@
+import { mapGetters } from 'vuex'
+
 type Post = {
   actorIds: string[]
   topics: string[]
@@ -5,21 +7,19 @@ type Post = {
 }
 
 export default {
-  asyncData: async ({ app, route, payload }) => {
-    console.log(route.path)
-    const post = (await app.$content('/episode').get(route.path)) || payload
-    const actors = Promise.all(
-      post.actorIds.map(async (actorId) => {
-        console.log('/actors/' + actorId)
-        return await app.$content('/actors').get(`/actors/${actorId}`)
-      })
-    )
-
-    return { post, actors }
-  },
   mounted () {
     // Load twitter widget on SPA mode
     if (window['twttr']) window['twttr'].widgets.load(this.$refs.content)
+  },
+  computed: {
+    ...mapGetters([ 'episodeByPath', 'actorById' ]),
+    episode () {
+      const episode = this.episodeByPath(this.$route.path)
+      return {
+        ...episode,
+        actors: episode.actorIds.map((actorId) => this.actorById(actorId))
+      }
+    }
   },
   filters: {
     desc (post: Post): string {

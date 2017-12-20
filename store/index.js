@@ -7,8 +7,14 @@ const createStore = () => {
       actors: []
     },
     getters: {
+      actorById: (state) => (actorId) => {
+        return state.actors.find((actor) => actor.actorId === actorId)
+      },
       actorByPath: (state) => (path) => {
         return state.actors.find((actor) => actor.path === path)
+      },
+      episodeByPath: (state) => (path) => {
+        return state.episodes.find((episode) => episode.path === path)
       }
     },
     mutations: {

@@ -63,16 +63,27 @@ blockquote {
   }
 }
 $listItemMargin: 1.2em;
-.marked ul {
-  padding-left: $listItemMargin;
-  & li {
-    position: relative;
-    &:before {
-      content: "▶";
-      display: block;
-      position: absolute;
-      left: -$listItemMargin;
-      color: #aed9bb;
+.marked {
+  & iframe {
+    max-width: 100%;
+  }
+  & img,
+  & .speakerdeck-wrapper {
+    max-width: 500px;
+    width: 100%;
+  }
+
+  & ul {
+    padding-left: $listItemMargin;
+    & li {
+      position: relative;
+      &:before {
+        content: "▶";
+        display: block;
+        position: absolute;
+        left: -$listItemMargin;
+        color: #aed9bb;
+      }
     }
   }
 }

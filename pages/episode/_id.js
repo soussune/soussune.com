@@ -1,12 +1,11 @@
+import { DateTime } from 'luxon'
 import * as EpisodeHelper from '~/helpers/EpisodeHelper.js'
-
-type Post = {
-  actorIds: string[]
-  topics: string[]
-  description: string | null
-}
+import AudioPlayer from '~/components/AudioPlayer.vue'
 
 export default {
+  components: {
+    AudioPlayer
+  },
   mounted () {
     // Load twitter widget on SPA mode
     if (window['twttr']) window['twttr'].widgets.load(this.$refs.content)
@@ -20,8 +19,16 @@ export default {
       }
     }
   },
+  computed: {
+    audioURL () {
+      return 'https://cdn.soussune.com/audio' + this.episode.audioFilePath
+    }
+  },
   filters: {
-    desc (episode): string {
+    date (episode) {
+      return DateTime.fromMillis(episode.published).toFormat('yyyy年MM月dd日')
+    },
+    desc (episode) {
       return EpisodeHelper.desc(episode)
     }
   },

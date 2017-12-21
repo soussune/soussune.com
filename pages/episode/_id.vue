@@ -3,7 +3,15 @@
     class="page-container"
     ref="content"
   >
-    <h1 class="post-title"> {{ episode.title }} </h1>
+    <header>
+      <h1 class="post-title"> {{ episode.title }} </h1>
+      <p>{{episode | date }}</p>
+    </header>
+
+    <AudioPlayer
+      :audioURL="audioURL"
+    >
+    </AudioPlayer>
 
     <h2>内容紹介</h2>
     {{ episode | desc }}
@@ -29,7 +37,7 @@
   </section>
 </template>
 
-<script lang="ts" src="./_id.ts">
+<script lang="ts" src="./_id.js">
 </script>
 
 <style lang="scss" scoped>

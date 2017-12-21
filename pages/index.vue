@@ -1,5 +1,5 @@
 <template>
-  <section class="home-container">
+  <section class="page-container">
     <div>
       <h2 class="home-slogan">
         <nuxt-link to="episode">
@@ -56,13 +56,6 @@
       height: 40px;
     }
   }
-}
-.home-container
-{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
 }
 
 .home-slogan

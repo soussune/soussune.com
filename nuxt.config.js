@@ -20,7 +20,8 @@ module.exports = {
   css: [
     '~/assets/css/reset.scss',
     '~/assets/css/style.scss',
-    '~/assets/css/layout.scss'
+    '~/assets/css/layout.scss',
+    '~/assets/css/pageTrans.scss'
   ],
   head: {
     title: 'soussune',

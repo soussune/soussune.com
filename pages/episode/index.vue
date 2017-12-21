@@ -1,5 +1,5 @@
 <template>
-  <section class="home-container">
+  <section class="page-container">
     <div>
       <h2 class="home-slogan">
         all episodes

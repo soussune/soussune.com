@@ -1,19 +1,21 @@
 <template>
-  <ul class="actor-list">
-    <li
-      v-for="actor in sortedActors"
-      :key="actor.title"
-      class="actor-list-item"
-    >
-      <nuxt-link :to="actor.permalink">
-        <img
-          :src="actor.imageUrl"
-          :title="actor.title"
-        >
-        <p>{{ actor.title }} ({{ actor.episodes.length }})</p>
-      </nuxt-link>
-    </li>
-  </ul>
+  <div class="page-container">
+    <ul class="actor-list">
+      <li
+        v-for="actor in sortedActors"
+        :key="actor.title"
+        class="actor-list-item"
+      >
+        <nuxt-link :to="actor.permalink">
+          <img
+            :src="actor.imageUrl"
+            :title="actor.title"
+          >
+          <p>{{ actor.title }} ({{ actor.episodes.length }})</p>
+        </nuxt-link>
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script lang="ts" src="./index.ts">

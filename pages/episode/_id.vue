@@ -1,5 +1,5 @@
 <template>
-  <section class="content-container" ref="content">
+  <section class="page-container" ref="content">
     <h1 class="post-title"> {{ episode.title }} </h1>
 
     <h2>内容紹介</h2>
@@ -49,11 +49,6 @@
       border-radius: 50%;
     }
   }
-}
-.content-container
-{
-  max-width: 38rem;
-  margin: 0 auto
 }
 
 .post-title

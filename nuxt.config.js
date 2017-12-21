@@ -93,7 +93,6 @@ module.exports = {
       { 'itunes:explicit': 'no' }
     ]
   },
-  rssItems: episodes.episode, // array
-  routes: {},
+  rssItems: episodes.episode,
   loading: { color: '#3B8070' }
 }

@@ -1,3 +1,5 @@
+const externalLinks = require('markdown-it-link-attributes')
+
 module.exports = {
   content: [
     [
@@ -26,5 +28,19 @@ module.exports = {
         isPost: false
       }
     ]
-  ]
+  ],
+  parsers: {
+    md: {
+      use: [
+        [
+          externalLinks, {
+            attrs: {
+              target: '_blank',
+              rel: 'noopener'
+            }
+          }
+        ]
+      ]
+    }
+  }
 }

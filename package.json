@@ -11,6 +11,7 @@
     "front-matter": "^2.3.0",
     "luxon": "^0.2.9",
     "markdown-it": "^8.4.0",
+    "markdown-it-link-attributes": "^2.0.0",
     "nuxt": "^1.0.0-rc11",
     "nuxtent": "latest",
     "rss": "^1.2.2",

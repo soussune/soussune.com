@@ -3,6 +3,7 @@ const path = require('path')
 const fm = require('front-matter')
 const xmlescape = require('xml-escape')
 const md = require('markdown-it')()
+const EpisodeHelper = require('../helpers/EpisodeHelper')
 
 const getPosts = () => {
   let blogPosts = [
@@ -18,6 +19,7 @@ const getPosts = () => {
     const frontmatter = fm(post)
 
     blogPosts.push({
+      description: EpisodeHelper.desc(frontmatter.attributes),
       path: urlPath,
       title: frontmatter.attributes.title,
       published: frontmatter.attributes.published,

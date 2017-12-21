@@ -10,4 +10,4 @@ const desc = (episode) => {
   return `${combinedActors}${postActors}、${combinedTopics}${postTopics}について話しました。`
 }
 
-export { desc }
+module.exports = { desc }

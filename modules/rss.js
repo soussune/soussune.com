@@ -41,11 +41,11 @@ const getXml = (meta, pages) => {
           <title>${page.title}</title>
           <link>${meta.url + page.path}</link>
           <pubDate>${page.published}</pubDate>
-          <description>${page.body}</description>
+          <description>${page.description} ${page.body}</description>
           <guid isPermaLink="true">${meta.url + page.audioFilePath}</guid>
           <enclosure url="${meta.audioUrl + page.audioFilePath}" length="${page.audioFileSize}" type="audio/mp3"/>
           <itunes:author>${meta.author}</itunes:author>
-          <itunes:subtitle></itunes:subtitle>
+          <itunes:subtitle>${page.description}</itunes:subtitle>
           <itunes:duration>${page.duration}</itunes:duration>
           <itunes:explicit>no</itunes:explicit>
           <media:thumbnail url="${meta.url}/images/itunes-artwork.jpg"/>

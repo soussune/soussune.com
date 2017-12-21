@@ -11,7 +11,7 @@
           </nuxt-link>
         </h3>
         <div>
-          {{ episode.published | date }}
+          {{ episode | date }}
         </div>
         <div>
           {{ episode | desc }}

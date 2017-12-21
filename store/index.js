@@ -1,4 +1,5 @@
 import Vuex from 'vuex'
+import { DateTime } from 'luxon'
 
 const createStore = () => {
   return new Vuex.Store({
@@ -27,7 +28,10 @@ const createStore = () => {
     },
     actions: {
       async nuxtServerInit ({ commit }, { req, app }) {
-        const episodes = await app.$content('/episode').query({ exclude: [ 'meta', 'anchors', 'date' ] }).getAll()
+        const episodes = (await app
+          .$content('/episode')
+          .query({ exclude: [ 'meta', 'anchors', 'date' ] })
+          .getAll()).map((e) => ({ ...e, published: DateTime.fromSQL(e.published).valueOf() }))
 
         const appearMap = episodes.reduce((map, epsode) => {
           epsode.actorIds.forEach((actorId) => {

@@ -6,14 +6,17 @@
           all episodes
         </nuxt-link>
       </h2>
-      <div v-for="episode in episodes.slice(0,10)" :key="episode.title">
+      <div
+        v-for="episode in episodes.slice(0,10)"
+        :key="episode.permalink"
+      >
         <h3>
           <nuxt-link :to="episode.permalink">
             {{ episode.title }}
           </nuxt-link>
         </h3>
         <div>
-          {{ episode.published | date }}
+          {{ episode | date }}
         </div>
         <div>
           {{ episode | desc }}

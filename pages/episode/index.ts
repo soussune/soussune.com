@@ -16,8 +16,8 @@ export default {
     }
   },
   filters: {
-    date (date: string) {
-      return DateTime.fromSQL(date).toFormat('yyyy年MM月dd日')
+    date (episode) {
+      return DateTime.fromMillis(episode.published).toFormat('yyyy年MM月dd日')
     },
     desc (episode): string {
       return EpisodeHelper.desc(episode)

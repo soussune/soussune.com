@@ -24,13 +24,47 @@ module.exports = {
     '~/assets/css/pageTrans.scss'
   ],
   head: {
-    title: 'soussune',
+    title: 'エンジニアわいわいポッドキャスト「そうっすね」',
+    titleTemplate: 'soussune - %s',
+    htmlAttrs: {
+      lang: 'ja',
+      prefix: 'og: http://ogp.me/ns#'
+    },
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'soussune' }
+      { name: 'viewport', content: 'width=device-width, initial-scale=1, shrink-to-fit=no' },
+      { name: 'description', content: 'テクノロジーと世の中についてエンジニア達が雑談するポッドキャストです。', hid: 'description' },
+      { name: 'application-name', content: 'soussune' },
+      { name: 'format-detection', content: 'telephone-no' },
+
+      // Google
+      { name: 'theme-color', content: '#FFFFFF' },
+
+      // twitter
+      { name: 'twitter:card', content: 'summary' },
+      { name: 'twitter:site', content: '@soussunefm' },
+      { name: 'twitter:title', content: 'soussune - エンジニアわいわいポッドキャスト「そうっすね」', hid: 'twTitle' },
+      { name: 'twitter:url', content: 'https://.soussune.com', hid: 'twUrl' },
+      { name: 'twitter:image', content: '', hid: 'twImage' },
+      { name: 'twitter:description', content: 'テクノロジーと世の中についてエンジニア達が雑談するポッドキャストです。', hid: 'twDesc' },
+
+      // Facebook
+      // { property: 'fb:app_id', content: '' },
+      { property: 'og:title', content: 'soussune - エンジニアわいわいポッドキャスト「そうっすね」', hid: 'ogTitle' },
+      { property: 'og:site_name', content: 'soususne' },
+      { property: 'og:type', content: 'article' },
+      { property: 'og:url', content: 'https://soussune.com', hid: 'ogUrl' },
+      { property: 'og:locale:alternate', content: 'ja' },
+      { property: 'og:image', content: '', hid: 'ogImage' },
+      { property: 'og:description', content: 'テクノロジーと世の中についてエンジニア達が雑談するポッドキャストです。', hid: 'ogDesc' },
+
+      // Apple iTunes
+      { name: 'apple-itunes-app', content: 'app-id=1247135079' }
     ],
-    link: [ { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' } ]
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'alternate', type: 'application/rss+xml', href: '/feed.xml' }
+    ]
   },
   build: {
     vendor: [ 'luxon' ],

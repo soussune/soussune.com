@@ -13,6 +13,7 @@
     "markdown-it": "^8.4.0",
     "nuxt": "^1.0.0-rc11",
     "nuxtent": "latest",
+    "rss": "^1.2.2",
     "xml-escape": "^1.1.0"
   },
   "scripts": {

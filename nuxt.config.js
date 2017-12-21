@@ -1,6 +1,21 @@
 const sitemap = require('./server/sitemap').sitemap
 
 module.exports = {
+  router: {
+    // https://ja.nuxtjs.org/api/configuration-router#scrollBehavior
+    scrollBehavior: (to, from, savedPosition) => {
+      if (savedPosition) {
+        return savedPosition
+      } else {
+        // Scroll to top as default
+        let position = { x: 0, y: 0 }
+        if (to.hash) {
+          position = { selector: to.hash }
+        }
+        return position
+      }
+    }
+  },
   modules: [ '@nuxtjs/pwa', '~/modules/rss', 'nuxtent' ],
   css: [
     '~/assets/css/reset.scss',

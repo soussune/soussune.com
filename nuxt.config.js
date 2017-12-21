@@ -62,35 +62,35 @@ module.exports = {
       'itunesu': 'http://www.itunesu.com/feed'
     },
     custom_elements: [
-      {'itunes:subtitle': 'エンジニアわいわいポッドキャスト「そうっすね」'},
-      {'itunes:author': 'そうっすね制作委員会'},
-      {'itunes:summary': 'テクノロジーと世の中についてエンジニア達が雑談するポッドキャストです。'},
-      {'itunes:keywords': 'soussune, tech, technology, keyboard, web, development, developer'},
-      {'itunes:owner': [
-        {'itunes:name': 'そうっすね制作委員会'},
-        {'itunes:email': 'soussune.user@gmail.com'}
+      { 'itunes:subtitle': 'エンジニアわいわいポッドキャスト「そうっすね」' },
+      { 'itunes:author': 'そうっすね制作委員会' },
+      { 'itunes:summary': 'テクノロジーと世の中についてエンジニア達が雑談するポッドキャストです。' },
+      { 'itunes:keywords': 'soussune, tech, technology, keyboard, web, development, developer' },
+      { 'itunes:owner': [
+        { 'itunes:name': 'そうっすね制作委員会' },
+        { 'itunes:email': 'soussune.user@gmail.com' }
       ]},
-      {'itunes:image': {
+      { 'itunes:image': {
         _attr: {
           href: 'https://soussune.com/images/itunes-artwork.jpg'
         }
       }},
-      {'itunes:category': [
+      { 'itunes:category': [
         {_attr: {
           text: 'Technology'
         }},
-        {'itunes:category': {
+        { 'itunes:category': {
           _attr: {
             text: 'Tech News'
           }
         }},
-        {'itunes:category': {
+        { 'itunes:category': {
           _attr: {
             text: 'Software How-To'
           }
         }}
       ]},
-      {'itunes:explicit': 'no'}
+      { 'itunes:explicit': 'no' }
     ]
   },
   rssItems: episodes.episode, // array

@@ -2,7 +2,7 @@ const fs = require('fs')
 const path = require('path')
 const fm = require('front-matter')
 const xmlescape = require('xml-escape')
-const md = require('markdown-it')()
+const md = require('markdown-it')({ html: true })
 const EpisodeHelper = require('../helpers/EpisodeHelper')
 
 const getPosts = () => {

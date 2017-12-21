@@ -26,7 +26,7 @@
   </section>
 </template>
 
-<script lang="ts" src="./_episode.ts">
+<script lang="ts" src="./_id.ts">
 </script>
 
 <style lang="scss" scoped>

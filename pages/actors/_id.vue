@@ -34,7 +34,7 @@
   </section>
 </template>
 
-<script lang="ts" src="./_actor.ts">
+<script lang="ts" src="./_id.ts">
 </script>
 
 <style lang="scss" scoped>

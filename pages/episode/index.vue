@@ -2,11 +2,9 @@
   <section class="home-container">
     <div>
       <h2 class="home-slogan">
-        <nuxt-link to="episode">
-          all episodes
-        </nuxt-link>
+        all episodes
       </h2>
-      <div v-for="episode in episodes.slice(0,10)" :key="episode.title">
+      <div v-for="episode in episodes" :key="episode.title">
         <h3>
           <nuxt-link :to="episode.permalink">
             {{ episode.title }}

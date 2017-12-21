@@ -1,3 +1,4 @@
 /episode/*/ /episode/:splat
+/episode/ /episode
 /actors/*/ /actors/:splat
 /actors/ /actors

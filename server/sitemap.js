@@ -1,41 +1,46 @@
 const fs = require('fs')
 const path = require('path')
 const fm = require('front-matter')
-const xmlescape = require('xml-escape')
 const md = require('markdown-it')({ html: true })
 const EpisodeHelper = require('../helpers/EpisodeHelper')
 
-const getPosts = () => {
-  let blogPosts = [
-    {
-      path: '/episode'
-    }
-  ]
+const getEpisode = () => {
+  let episodes = []
 
   fs.readdirSync(path.join(__dirname, '../content/episode/')).forEach((blogPost) => {
+    const episodePath = 'https://soussune.com/episode'
+    const cdnPath = 'https://cdn.soussune.com/audio'
+    const type = 'audio/mp3'
+    const author = 'そうっすね制作委員会'
     const filename = `${blogPost.substr(0, blogPost.length - 8)}`
-    const urlPath = `/episode/${filename.substr(11, blogPost.length)}`
+    const urlPath = `/${filename.substr(11, blogPost.length)}`
     const post = fs.readFileSync(path.resolve(`content/episode/${blogPost}`), 'utf8')
     const frontmatter = fm(post)
+    const subtitle = EpisodeHelper.desc(frontmatter.attributes)
 
-    blogPosts.push({
-      description: EpisodeHelper.desc(frontmatter.attributes),
-      path: urlPath,
+    episodes.push({
       title: frontmatter.attributes.title,
-      published: frontmatter.attributes.published,
-      topics: frontmatter.attributes.topics,
-      duration: frontmatter.attributes.duration,
-      audioFilePath: frontmatter.attributes.audioFilePath,
-      audioFileSize: frontmatter.attributes.audioFileSize,
-      actorIds: frontmatter.attributes.actorIds,
-      body: xmlescape(md.render(frontmatter.body))
+      description: md.render(subtitle + frontmatter.body),
+      url: episodePath + urlPath,
+      date: frontmatter.attributes.published,
+      enclosure: {
+        url: cdnPath + frontmatter.attributes.audioFilePath,
+        length: frontmatter.attributes.audioFileSize,
+        type: type
+      },
+      custom_elements: [
+        { 'itunes:author': author },
+        { 'itunes:subtitle': subtitle },
+        { 'itunes:duration': frontmatter.attributes.duration },
+        { 'itunes:explicit': 'no' }
+      ]
     })
   })
 
-  return blogPosts
+  return episodes
 }
 
-module.exports.sitemap = {
-  all: Array.prototype.concat(getPosts().map((p) => p.path)),
-  posts: getPosts()
+module.exports.episodes = {
+  all: Array.prototype.concat(getEpisode().map((p) => p.path)),
+  episode: getEpisode()
 }

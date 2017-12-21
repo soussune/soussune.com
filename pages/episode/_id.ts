@@ -26,5 +26,10 @@ export default {
     desc (episode): string {
       return EpisodeHelper.desc(episode)
     }
+  },
+  head () {
+    return {
+			title: this.episode.title
+		}
   }
 }

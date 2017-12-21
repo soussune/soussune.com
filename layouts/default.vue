@@ -1,11 +1,13 @@
 <template>
-  <div class="application">
+  <div class="app">
 
-    <App-Header/>
+    <App-Header class="app_header"/>
 
-    <nuxt/>
+    <section class="app_body">
+      <nuxt/>
+    </section>
 
-    <App-Footer/>
+    <App-Footer class="app_footer"/>
 
     <span v-if="twitterWidget">
       <script type="text/javascript" async src="https://platform.twitter.com/widgets.js"></script>

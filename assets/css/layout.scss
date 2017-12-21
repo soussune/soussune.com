@@ -1,1 +1,19 @@
 /* CSS Grid Layout */
+.app {
+  display: grid;
+  grid-template-areas: "header header header" "left body right" "left footer right";
+  grid-template-columns: 1fr auto 1fr;
+  // grid-template-rows: 150px 1fr 30px;
+  min-height: 100vh;
+  &_header {
+    grid-area: header;
+  }
+  &_body {
+    grid-area: body;
+    max-width: 960px;
+    padding: 16px;
+  }
+  &_footer {
+    grid-area: footer;
+  }
+}

@@ -16,6 +16,8 @@ export default {
     ...mapGetters([ 'episodeByPath', 'actorById' ]),
     episode () {
       const episode = this.episodeByPath(this.$route.path)
+      if (!episode) return undefined
+
       return {
         ...episode,
         actors: episode.actorIds.map((actorId) => this.actorById(actorId))
@@ -29,7 +31,7 @@ export default {
   },
   head () {
     return {
-			title: this.episode.title
-		}
+      title: this.episode.title
+    }
   }
 }

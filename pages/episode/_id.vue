@@ -1,5 +1,9 @@
 <template>
-  <section class="page-container" ref="content">
+  <section
+    class="page-container"
+    ref="content"
+    v-if="episode"
+  >
     <h1 class="post-title"> {{ episode.title }} </h1>
 
     <h2>内容紹介</h2>

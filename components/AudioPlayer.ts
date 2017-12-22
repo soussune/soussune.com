@@ -1,9 +1,12 @@
 export default {
   props: {
-    audioURL: { type: String, required: true }
+    audioURL: { type: String, required: true },
+    volume: { type: Number, default: 1 },
+    playbackRate: { type: Number, default: 1 },
+    currentTime: { type: Number, default: 0 }
   },
   filters: {
-    time (val) {
+    time (val: number) {
       return [ Math.floor(val / 3600), Math.floor((val % 3600) / 60), Math.round(val % 60) ]
         .map((v) => v.toString().padStart(2, '0'))
         .join(':')
@@ -11,43 +14,56 @@ export default {
   },
   data () {
     return {
-      currentTime2: 0,
       au: undefined,
-      loadedmetadata: false,
       duration: 0,
-      paused: true
+      currentTime_: 0,
+      volume_: 1,
+      playbackRate_: 1,
+      buffered: 0
     }
   },
   computed: {
-    currentTime: {
-      get () {
-        return this.currentTime2
-      },
-      set (val) {
-        console.log(val)
-        this.au.currentTime = val
-      }
+    loaded (): boolean {
+      return 0 < this.duration
+    }
+  },
+  watch: {
+    // bind prop values
+    currentTime (val: number) {
+      console.log('c', val)
+      this.currentTime_ = this.au.currentTime = val
+    },
+    volume (val: number) {
+      this.volume_ = this.au.volume = val
+    },
+    playbackRate (val: number) {
+      this.playbackRate_ = this.au.playbackRate = val
     }
   },
   mounted () {
     const au = (this.au = new Audio(this.audioURL))
     au.preload = 'metadata'
-    au.addEventListener('loadedmetadata', (e) => {
-      this.duration = au.duration
+
+    // bind audio values
+    au.addEventListener('loadedmetadata', () => (this.duration = au.duration))
+    au.addEventListener('timeupdate', () => {
+      this.currentTime_ = au.currentTime
+      this.updateProgress()
     })
-    au.addEventListener('timeupdate', (e) => {
-      this.currentTime2 = au.currentTime
-    })
-    au.addEventListener('pause', (e) => {
-      this.paused = au.paused
-    })
-    au.addEventListener('play', (e) => {
-      this.paused = au.paused
-    })
+    au.addEventListener('volumechange', () => (this.volume_ = au.muted ? 0 : au.volume))
+    au.addEventListener('progress', this.updateProgress)
   },
   methods: {
+    updateProgress () {
+      const b = this.au.buffered
+      if (b.length === 0) return
+      this.buffered = b.end(b.length - 1)
+    },
     togglePlay () {
-      this.paused ? this.au.play() : this.au.pause()
+      this.au.paused ? this.au.play() : this.au.pause()
+    },
+    toggleMute () {
+      this.au.muted = !this.au.muted
     }
   }
 }

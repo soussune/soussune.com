@@ -73,7 +73,14 @@
           <section class="top-bar-search">
             <div class="top-bar-search__input-wrapper">
               <div class="search-input-wrapper">
-                <input type="search" name="" placeholder="検索" class="">
+                <div class="search-input">
+                  <span class="search-input__add-on search-input__add-on--before">
+                    <svg class="search-icon search-icon--size-20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                      <path d="M8 12c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm9.707 4.293l-4.82-4.82C13.585 10.493 14 9.296 14 8c0-3.313-2.687-6-6-6S2 4.687 2 8s2.687 6 6 6c1.296 0 2.492-.415 3.473-1.113l4.82 4.82c.195.195.45.293.707.293s.512-.098.707-.293c.39-.39.39-1.023 0-1.414z"></path>
+                    </svg>
+                  </span>
+                  <input type="search" name="" placeholder="検索" class="search-input">
+                </div>
               </div>
             </div>
           </section>
@@ -125,11 +132,10 @@
     display: flex;
     align-items: center;
     height: 100%;
-    width: 24rem;
-    min-width: 15.8rem;
+    width: 14.8rem;
+    min-width: 14.8rem;
     padding-right: 0.8rem;
     padding-left: 1.6rem;
-    background-color: #1c2260;
 
     a {
       display: flex;
@@ -165,5 +171,71 @@
   flex: 1;
   padding-left: 2.8rem;
   padding-right: 2.8rem;
+
+  &__input-wrapper {
+    position: relative;
+  }
+}
+
+.search-input-wrapper {
+  position: relative;
+}
+
+.search-input {
+  color: #FFFFFF;
+  background: #43467f;
+  border-radius: 3px;
+  box-shadow: none;
+  height: 2.2rem;
+  line-height: 2.2rem;
+  margin: 0;
+  border: none;
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  min-width: 75px;
+  vertical-align: baseline;
+  padding: 5px 10px;
+  box-sizing: border-box;
+  font-size: 0.92rem;
+  align-self: center;
+  flex: 1;
+  outline: none;
+
+  ::-webkit-input-placeholder {
+    color: #FFFFFF;
+  }
+
+  &__add-on {
+    color: #FFFFFF;
+    opacity: 1;
+
+    &--before {
+      padding-right: 4px;
+      height: 1.8rem;
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &--search {
+    -webkit-appearance: none;
+    background-color: transparent;
+    transition: transform 200ms ease, opacity 200ms ease, -webkit-transform 200ms ease;
+  }
+}
+
+.search-icon {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  top: -1px;
+  display: inline-block;
+  vertical-align: middle;
+  fill: currentColor;
+  align-self: center;
+  flex: none;
+  white-space: nowrap;
 }
 </style>

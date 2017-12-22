@@ -2,7 +2,6 @@
   <section
     class="page-container"
     ref="content"
-    v-if="episode"
   >
     <h1 class="post-title"> {{ episode.title }} </h1>
 

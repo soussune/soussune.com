@@ -1,5 +1,5 @@
 <template>
-  <section class="page-container" v-if="actor">
+  <section class="page-container">
     <section class="title">
       <img
         :src="actor.imageUrl"

@@ -8,10 +8,8 @@
       <p>{{episode | date }}</p>
     </header>
 
-    <AudioPlayer
-      :audioURL="audioURL"
-    >
-    </AudioPlayer>
+    <AudioController>
+    </AudioController>
 
     <h2>内容紹介</h2>
     {{ episode | desc }}

@@ -1,69 +1,72 @@
+import { mapState } from 'vuex'
+
 export default {
-  props: {
-    audioURL: { type: String, required: true },
-    volume: { type: Number, default: 1 },
-    playbackRate: { type: Number, default: 1 },
-    currentTime: { type: Number, default: 0 }
-  },
-  filters: {
-    time (val: number) {
-      return [ Math.floor(val / 3600), Math.floor((val % 3600) / 60), Math.round(val % 60) ]
-        .map((v) => v.toString().padStart(2, '0'))
-        .join(':')
-    }
-  },
   data () {
     return {
-      au: undefined,
-      duration: 0,
-      currentTime_: 0,
-      volume_: 1,
-      playbackRate_: 1,
-      buffered: 0
+      audio: undefined
     }
   },
   computed: {
-    loaded (): boolean {
-      return 0 < this.duration
-    }
-  },
-  watch: {
-    // bind prop values
-    currentTime (val: number) {
-      console.log('c', val)
-      this.currentTime_ = this.au.currentTime = val
-    },
-    volume (val: number) {
-      this.volume_ = this.au.volume = val
-    },
-    playbackRate (val: number) {
-      this.playbackRate_ = this.au.playbackRate = val
+    src () {
+      console.log(this.$store.state.audio.src, this.audio && this.audio.src)
+      return this.$store.state.audio.src
     }
   },
   mounted () {
-    const au = (this.au = this.$refs.au)
-    au.preload = 'metadata'
+    const au = (this.audio = this.$refs.audio)
 
-    // bind audio values
-    au.addEventListener('loadedmetadata', () => (this.duration = au.duration))
-    au.addEventListener('timeupdate', () => {
-      this.currentTime_ = au.currentTime
-      this.updateProgress()
-    })
-    au.addEventListener('volumechange', () => (this.volume_ = au.muted ? 0 : au.volume))
-    au.addEventListener('progress', this.updateProgress)
+    // bind audio value
+    au.addEventListener('loadedmetadata', this.onLoadedmetadata)
+    au.addEventListener('volumechange', this.volumechange)
+    au.addEventListener('progress', this.onProgress)
+    au.addEventListener('timeupdate', this.onTimeupdate)
+
+    // bind store value
+    this.bind('paused', this.onChangePaused)
+    this.bind('seekTo', this.onChangeSeek)
+
+    const props = [ 'volume', 'playbackRate', 'muted' ]
+    props.forEach((p) => this.bind(p))
+  },
+  beforeDestroy () {
+    const au = this.audio
+    this.commit('paused', true)
+    au.removeEventListener('loadedmetadata', this.onLoadedmetadata)
+    au.removeEventListener('volumechange', this.volumechange)
+    au.removeEventListener('progress', this.onProgress)
+    au.removeEventListener('timeupdate', this.onTimeupdate)
+    // delete this.audio
   },
   methods: {
+    onLoadedmetadata () {
+      this.commit('duration', this.audio.duration)
+    },
+    onVolumechange () {
+      this.commit('volume', this.audio.volume)
+    },
+    onProgress () {
+      this.updateProgress()
+    },
+    onTimeupdate () {
+      this.commit('currentTime', this.audio.currentTime)
+      this.updateProgress()
+    },
+    bind (prop, cb) {
+      this.$store.watch(this.$store.getters[`audio/${prop}`], (val) => (cb ? cb(val) : (this.audio[prop] = val)))
+    },
+    commit (prop, payload) {
+      this.$store.commit(`audio/${prop}`, payload)
+    },
     updateProgress () {
-      const b = this.au.buffered
+      const b = this.audio.buffered
       if (b.length === 0) return
-      this.buffered = b.end(b.length - 1)
+      this.$store.commit('audio/buffered', b.end(b.length - 1))
     },
-    togglePlay () {
-      this.au.paused ? this.au.play() : this.au.pause()
+    onChangeSeek (val) {
+      this.audio.currentTime = val
     },
-    toggleMute () {
-      this.au.muted = !this.au.muted
+    onChangePaused (val) {
+      val ? this.audio.pause() : this.audio.play()
     }
   }
 }

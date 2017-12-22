@@ -9,6 +9,10 @@
 
     <App-Footer class="app_footer"/>
 
+    <AudioPlayer>
+    </AudioPlayer>
+
+
     <span v-if="twitterWidget">
       <script type="text/javascript" async src="https://platform.twitter.com/widgets.js"></script>
     </span>
@@ -18,11 +22,13 @@
 <script>
 import Header from '~/components/Header.vue'
 import Footer from '~/components/Footer.vue'
+import AudioPlayer from '~/components/AudioPlayer.vue'
 
 export default {
   components: {
     'App-Header': Header,
-    'App-Footer': Footer
+    'App-Footer': Footer,
+    AudioPlayer
   },
   data () {
     return {

@@ -25,7 +25,7 @@ module.exports = {
   ],
   head: {
     title: 'エンジニアわいわいポッドキャスト「そうっすね」',
-    titleTemplate: 'soussune - %s',
+    titleTemplate: '[dev] soussune - %s',
     htmlAttrs: {
       lang: 'ja',
       prefix: 'og: http://ogp.me/ns#'
@@ -80,7 +80,7 @@ module.exports = {
     }
   },
   rss: {
-    title: 'soussune - エンジニアわいわいポッドキャスト「そうっすね」',
+    title: '[dev] soussune - エンジニアわいわいポッドキャスト「そうっすね」',
     description: 'テクノロジーと世の中についてエンジニア達が雑談するポッドキャストです。',
     feed_url: 'https://soussune.com/feed.xml',
     site_url: 'https://soussune.com/',

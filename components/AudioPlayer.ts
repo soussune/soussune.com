@@ -41,7 +41,7 @@ export default {
     }
   },
   mounted () {
-    const au = (this.au = new Audio(this.audioURL))
+    const au = (this.au = this.$refs.au)
     au.preload = 'metadata'
 
     // bind audio values

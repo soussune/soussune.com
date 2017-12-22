@@ -1,5 +1,6 @@
 <template>
   <div>
+    <audio :src="audioURL" ref="au"></audio>
     <div v-if="au">
       <button
         class="play"

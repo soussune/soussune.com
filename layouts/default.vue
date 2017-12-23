@@ -12,6 +12,9 @@
     <AudioPlayer>
     </AudioPlayer>
 
+    <AudioControlBar>
+    </AudioControlBar>
+
 
     <span v-if="twitterWidget">
       <script type="text/javascript" async src="https://platform.twitter.com/widgets.js"></script>
@@ -23,12 +26,14 @@
 import Header from '~/components/Header.vue'
 import Footer from '~/components/Footer.vue'
 import AudioPlayer from '~/components/AudioPlayer.vue'
+import AudioControlBar from '~/components/AudioControlBar.vue'
 
 export default {
   components: {
     'App-Header': Header,
     'App-Footer': Footer,
-    AudioPlayer
+    AudioPlayer,
+    AudioControlBar
   },
   data () {
     return {

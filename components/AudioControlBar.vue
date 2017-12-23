@@ -122,11 +122,9 @@
   background: #8c8c8c;
   position: relative;
 
-  $sliderHeight: 40px;
+  $sliderHeight: 50px;
   height: $sliderHeight;
   overflow: hidden;
-  user-select: none;
-
 
   & > * {
     position: absolute;

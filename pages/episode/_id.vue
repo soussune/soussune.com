@@ -92,6 +92,7 @@
       background: #34c322;
       color: #fff;
       font-size:18px;
+      border: none;
       border-radius: 40px;
       width: 120px;
       height: 40px;

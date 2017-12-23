@@ -123,6 +123,7 @@
   $sliderHeight: 40px;
   height: $sliderHeight;
   overflow: hidden;
+  user-select: none;
 
 
   & > * {
@@ -135,6 +136,7 @@
     background: #ffd261;
     background: #43467f;
     transition: all .1s cubic-bezier(.55, 0, .1, 1);
+    user-select: none;
   }
 
   & .title {

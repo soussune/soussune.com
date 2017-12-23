@@ -128,8 +128,29 @@
     }
   }
 }
+</style>
 
+<style lang="scss">
 .marked {
   margin-top: 60px;
+
+  h3 {
+    font-size: 1.5rem;
+    position: relative;
+    margin-top: 1.5em;
+    padding-bottom: 10px;
+    font-weight: 400;
+    color: #333;
+
+    &:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 7px;
+      background: repeating-linear-gradient(-45deg, #aed9bb,#aed9bb 2px,#fff 2px,#fff 4px);
+    }
+  }
 }
 </style>

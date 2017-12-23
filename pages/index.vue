@@ -1,11 +1,14 @@
 <template>
   <section class="page-container">
-    <div>
-      <h2 class="home-slogan">
-        <nuxt-link to="episode">
-          all episodes
-        </nuxt-link>
-      </h2>
+    <header class="header">
+      <h1 class="title">
+        soussune
+      </h1>
+      <p>
+        エンジニアわいわいポッドキャスト「そうっすね」
+      </p>
+    </header>
+    <section class="episodes">
       <div
         v-for="episode in episodes.slice(0,10)"
         :key="episode.permalink"
@@ -35,7 +38,7 @@
           </nuxt-link>
         </div>
       </div>
-    </div>
+    </section>
   </section>
 </template>
 
@@ -43,6 +46,18 @@
 </script>
 
 <style lang="scss" scoped>
+.header {
+  text-align: center;
+  .title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+    color: #35495e;
+  }
+}
+.episodes {
+  margin-top: 60px;
+}
 .actor-list {
   margin-top: 8px;
   margin-left: 10px;

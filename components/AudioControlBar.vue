@@ -144,10 +144,10 @@ button {
     left: 0px;
     width: $sliderHeight;
     border: none;
+    background: #eee18d;
   }
 
   & .progress {
-    background: #ffd261;
     background: #43467f;
     transition: all .1s cubic-bezier(.55, 0, .1, 1);
     user-select: none;

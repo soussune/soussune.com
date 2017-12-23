@@ -8,7 +8,10 @@ export const state = () => ({
   playbackRate: 1,
   src: '',
   muted: false,
-  paused: true
+  paused: true,
+  title: '',
+  permalink: '',
+  playing: false
 })
 
 export const getters = {
@@ -19,7 +22,8 @@ export const getters = {
   volume: (state) => () => state.volume,
   playbackRate: (state) => () => state.playbackRate,
   muted: (state) => () => state.muted,
-  paused: (state) => () => state.paused
+  paused: (state) => () => state.paused,
+  playing: (state) => () => state.playing
 }
 
 export const mutations = {
@@ -44,7 +48,7 @@ export const mutations = {
   },
   src (state, payload) {
     state.src = payload
-    state.paused = true
+    state.playing = true
   },
   muted (state, payload) {
     state.muted = payload
@@ -52,5 +56,14 @@ export const mutations = {
   },
   paused (state, payload) {
     state.paused = payload
+  },
+  title (state, payload) {
+    state.title = payload
+  },
+  permalink (state, payload) {
+    state.permalink = payload
+  },
+  playing (state, payload) {
+    state.playing = payload
   }
 }

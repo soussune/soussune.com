@@ -8,10 +8,40 @@ export default {
     AudioPlayer,
     AudioController
   },
+  methods: {
+    commit (prop, payload) {
+      this.$store.commit(`audio/${prop}`, payload)
+    },
+    togglePlay () {
+      if (this.selected) {
+        this.commit('paused', !this.paused)
+        return
+      }
+
+      this.commit('src', this.src)
+      this.commit('title', this.episode.title)
+    }
+  },
+  computed: {
+    src () {
+      return 'https://cdn.soussune.com/audio' + this.episode.audioFilePath
+    },
+    played () {
+      return this.selected && !this.paused
+    },
+    playing () {
+      return this.selected && this.$store.state.audio.playing
+    },
+    selected () {
+      return this.$store.state.audio.src === this.src
+    },
+    paused () {
+      return this.$store.state.audio.paused
+    }
+  },
   mounted () {
     // Load twitter widget on SPA mode
     if (window['twttr']) window['twttr'].widgets.load(this.$refs.content)
-    this.$store.commit('audio/src', 'https://cdn.soussune.com/audio' + this.episode.audioFilePath)
   },
   asyncData ({ store, route }) {
     const episode = store.getters.episodeByPath(route.path)

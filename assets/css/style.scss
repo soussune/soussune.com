@@ -28,6 +28,8 @@ a {
 
 body {
   line-height: 1.5;
+  background: #f4f4f6;
+  background: rgba(28, 34, 96, 0.03);
 }
 h1,
 h2,
@@ -40,7 +42,6 @@ h6 {
 }
 h1 {
   font-size: 32px;
-  background: rgba(255, 0, 0, 0.1);
 }
 h2 {
   font-size: 32px;

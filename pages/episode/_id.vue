@@ -30,7 +30,7 @@
     <section class="summary">
 
     <div class="play">
-      <button @click="togglePlay">
+      <button @click="togglePlay" :class="{played: played}">
         <span v-if="played">
           <icon :name="canplay ? 'pause' : 'spinner'" :pulse="!canplay"></icon> pause
         </span>
@@ -106,6 +106,7 @@
     position: relative;
 
     button {
+      transition: .2s;
       position: absolute;
       top: 0;
       right: 0;
@@ -116,10 +117,14 @@
       color: #fff;
       font-size:18px;
       border: none;
-      border-radius: 40px;
+      border-radius: 50px;
       width: 120px;
-      height: 40px;
+      height: 50px;
       outline: none;
+
+      &.played {
+        background: #c32269
+      }
     }
   }
 

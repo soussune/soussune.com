@@ -11,7 +11,8 @@ export const state = () => ({
   paused: true,
   title: '',
   permalink: '',
-  playing: false
+  playing: false,
+  canplay: false
 })
 
 export const getters = {
@@ -25,6 +26,7 @@ export const getters = {
   paused: (state) => () => state.paused,
   playing: (state) => () => state.playing,
   src: (state) => () => state.src,
+  canplay: (state) => () => state.canplay
 }
 
 export const mutations = {
@@ -65,5 +67,8 @@ export const mutations = {
   },
   playing (state, payload) {
     state.playing = payload
+  },
+  canplay (state, payload) {
+    state.canplay = payload
   }
 }

@@ -29,8 +29,8 @@ export default {
     played () {
       return this.selected && !this.paused
     },
-    playing () {
-      return this.selected && this.$store.state.audio.playing
+    canplay () {
+      return this.$store.state.audio.canplay
     },
     selected () {
       return this.$store.state.audio.src === this.src

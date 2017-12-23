@@ -13,7 +13,7 @@
     <div class="play">
       <button @click="togglePlay">
         <span v-if="played">
-          <icon :name="playing ? 'spinner' : 'pause'" :pulse="playing"></icon> pause
+          <icon :name="canplay ? 'pause' : 'spinner'" :pulse="!canplay"></icon> pause
         </span>
         <span v-else><icon name="play"></icon> play</span>
       </button>

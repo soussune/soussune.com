@@ -17,7 +17,8 @@ export default {
     au.addEventListener('timeupdate', this.onTimeupdate)
     au.addEventListener('pause', this.onPlayPauseChange)
     au.addEventListener('play', this.onPlayPauseChange)
-    au.addEventListener('playing', this.onPlaying)
+    au.addEventListener('canplay', this.onCanplay)
+    au.addEventListener('seeked', this.onCanplay)
 
     // bind store value
     this.bind('paused', this.onChangePaused)
@@ -37,6 +38,8 @@ export default {
     au.removeEventListener('timeupdate', this.onTimeupdate)
     au.removeEventListener('pause', this.onPlayPauseChange)
     au.removeEventListener('play', this.onPlayPauseChange)
+    au.removeEventListener('canplay', this.onCanplay)
+    au.removeEventListener('seeked', this.onCanplay)
   },
   methods: {
     bind (prop, cb) {
@@ -54,8 +57,8 @@ export default {
     onPlayPauseChange () {
       this.commit('paused', this.audio.paused)
     },
-    onPlaying (e) {
-      this.commit('playing', false)
+    onCanplay () {
+      this.commit('canplay', true)
     },
     onProgress () {
       this.updateProgress()
@@ -70,7 +73,7 @@ export default {
       this.$store.commit('audio/buffered', b.end(b.length - 1))
     },
     onChangeSeek (val) {
-      this.commit('playing', true)
+      this.commit('canplay', false)
       this.audio.currentTime = val
     },
     onChangePaused (val) {

@@ -64,6 +64,8 @@
         min="0"
         :max="duration"
         v-model.number="currentTime"
+        @touchmove="touchmove"
+        @touchstart="touchmove"
       >
     </div>
 

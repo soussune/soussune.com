@@ -18,6 +18,11 @@ export default {
     },
     skip (val) {
       this.commit('seekTo', this.currentTime + val)
+    },
+    touchmove (e) {
+      const cw = e.target.clientWidth
+      const rate = Math.max(0, Math.min(cw, e.touches[0].pageX - e.target.offsetLeft)) / cw
+      this.commit('seekTo', rate * this.duration)
     }
   },
   computed: {

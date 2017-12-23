@@ -12,8 +12,9 @@
       <div
         v-for="episode in topEpisodes"
         :key="episode.permalink"
+        class="episode"
       >
-        <h3>
+        <h3 class="episode-title">
           <nuxt-link :to="episode.permalink">
             {{ episode.title }}
           </nuxt-link>
@@ -62,6 +63,21 @@
 }
 .episodes {
   margin-top: 60px;
+}
+.episode {
+  background: #fff;
+  border-radius: .6rem;
+  box-shadow: 0 0.2rem 1.6rem rgba(0,0,0,.2);
+  padding: 10px 20px;
+  margin-top: 20px;
+
+  &-title {
+    margin-top: 0.2em;
+    & a {
+      text-decoration: none;
+    }
+  }
+
 }
 .actor-list {
   margin-top: 8px;

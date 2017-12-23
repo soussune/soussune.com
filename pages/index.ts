@@ -1,18 +1,23 @@
 import { DateTime } from 'luxon'
-import { mapState } from 'vuex'
 import * as EpisodeHelper from '~/helpers/EpisodeHelper.js'
 
+const showCount = 10
 export default {
-  computed: {
-    ...mapState([ 'actors' ]),
-    episodes () {
-      return this.$store.state.episodes.map((episode) => ({
+  asyncData ({ store, route }) {
+    const actorsMap = store.state.actors.reduce((map, actor) => ({ ...map, [actor.actorId]: actor }), {})
+    return {
+      episodes: store.state.episodes.map((episode) => ({
         ...episode,
-        actors: episode.actorIds.map((actorId) => this.actorsMap[actorId])
+        actors: episode.actorIds.map((actorId) => actorsMap[actorId])
       }))
+    }
+  },
+  computed: {
+    topEpisodes () {
+      return this.episodes.slice(0, showCount)
     },
-    actorsMap () {
-      return this.actors.reduce((map, actor) => ({ ...map, [actor.actorId]: actor }), {})
+    moreEpisode () {
+      return this.episodes[showCount]
     }
   },
   filters: {

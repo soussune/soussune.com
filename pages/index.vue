@@ -10,7 +10,7 @@
     </header>
     <section class="episodes">
       <div
-        v-for="episode in episodes.slice(0,10)"
+        v-for="episode in topEpisodes"
         :key="episode.permalink"
       >
         <h3>
@@ -37,6 +37,11 @@
             >
           </nuxt-link>
         </div>
+      </div>
+      <div v-if="moreEpisode">
+        <a :href="'/episode#' + moreEpisode.permalink" class="more">
+          <icon name="chevron-down"></icon> read more
+        </a>
       </div>
     </section>
   </section>
@@ -87,5 +92,21 @@
 .home-links
 {
   padding-top: 15px;
+}
+.more {
+  margin-top:40px;
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+  background: #34c322;
+  color: #fff;
+  font-size:18px;
+  border: none;
+  border-radius: 40px;
+  width: 200px;
+  line-height: 40px;
+  height: 40px;
+  outline: none;
+
 }
 </style>

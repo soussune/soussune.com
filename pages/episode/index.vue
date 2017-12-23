@@ -5,7 +5,7 @@
         all episodes
       </h2>
       <div v-for="episode in episodes" :key="episode.title">
-        <h3>
+        <h3 :id="episode.permalink">
           <nuxt-link :to="episode.permalink">
             {{ episode.title }}
           </nuxt-link>

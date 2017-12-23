@@ -1,5 +1,5 @@
 <template>
-  <audio :src="src" ref="audio">
+  <audio ref="audio">
   </audio>
 </template>
 

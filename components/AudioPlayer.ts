@@ -6,11 +6,6 @@ export default {
       audio: undefined
     }
   },
-  computed: {
-    src () {
-      return this.$store.state.audio.src
-    }
-  },
   mounted () {
     const au = (this.audio = this.$refs.audio)
     au.autoplay = true
@@ -27,6 +22,7 @@ export default {
     // bind store value
     this.bind('paused', this.onChangePaused)
     this.bind('seekTo', this.onChangeSeek)
+    this.bind('src', this.onChangeSrc)
 
     const props = [ 'volume', 'playbackRate', 'muted' ]
     props.forEach((p) => this.bind(p))
@@ -79,6 +75,11 @@ export default {
     },
     onChangePaused (val) {
       val ? this.audio.pause() : this.audio.play()
+    },
+    onChangeSrc (val) {
+      this.commit('canplay', false)
+      this.audio.src = val
+      this.audio.play()
     }
   }
 }

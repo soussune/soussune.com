@@ -1,73 +1,69 @@
 <template>
-  <div class="container">
-    <div class="play">
-      <button
-        @click="skip(skipBack)"
-        class="skip"
-        :disabled="!loaded"
-      >
-        «
-      </button>
-      <button
-        class="pause"
-        @click="paused = !paused"
-        :disabled="!loaded"
-      >
-        {{ paused ? '▶' : '■' }}
-      </button>
-      <button
-        @click="skip(skipFwd)"
-        class="skip"
-        :disabled="!loaded"
-      >
-        »
-      </button>
-    </div>
-    <div>
-      <span>{{currentTime | time}} / {{duration | time}}</span>
-      <span>
+  <div class="container" :class="{ hide: hide }">
+    <div v-if="false">
+      <div class="play">
         <button
-          @click="muted = !muted"
-          class="mute"
+          @click="skip(skipBack)"
+          class="skip"
         >
-        🔊
+          «
         </button>
+        <button
+          class="pause"
+          @click="paused = !paused"
+        >
+          {{ paused ? '▶' : '■' }}
+        </button>
+        <button
+          @click="skip(skipFwd)"
+          class="skip"
+        >
+          »
+        </button>
+      </div>
+      <div>
+        <span>{{currentTime | time}} / {{duration | time}}</span>
+        <span>
+          <button
+            @click="muted = !muted"
+            class="mute"
+          >
+          🔊
+          </button>
+          <input
+            class="volume"
+            type="range"
+            step="any"
+            min="0"
+            max="1"
+            v-model.number="volume"
+            :disabled="muted"
+          >
+          {{ volume.toFixed(1) }}
+        </span>
         <input
-          class="volume"
+          class="playbackRate"
           type="range"
           step="any"
-          min="0"
-          max="1"
-          v-model.number="volume"
-          :disabled="muted"
+          min="1"
+          max="3"
+          v-model.number="playbackRate"
         >
-        {{ volume.toFixed(1) }}
-      </span>
-      <input
-        class="playbackRate"
-        type="range"
-        step="any"
-        min="1"
-        max="3"
-        v-model.number="playbackRate"
-      >
-      x {{ playbackRate.toFixed(1) }}
-
-
+        x {{ playbackRate.toFixed(1) }}
+      </div>
     </div>
     <div class="currentTime">
       <div
-        class="buffered"
-        :style="{ width: `${buffered / duration * 100}%`}"
+        class="progress"
+        :style="{ width: `${currentTime / duration * 100}%`}"
       ></div>
-      <div class="title">{{ title }}</div>
+      <div class="title">{{ title }} [{{currentTime | time}} / {{duration | time}}]</div>
       <input
         type="range"
         step="any"
         min="0"
         :max="duration"
         v-model.number="currentTime"
-        :disabled="!loaded"
       >
     </div>
 
@@ -80,15 +76,16 @@
 
 <style lang="scss" scoped>
 .container {
+  transition: .5s cubic-bezier(.55, 0, .1, 1);
+
   position: fixed;
   bottom: 0px;
   left: 0;
   right: 0;
-}
-.title {
-  text-align: center;
-  width: 100%;
-  color:#fff;
+
+  &.hide {
+    bottom: -50px;
+  }
 }
 .play {
   text-align: center;
@@ -120,20 +117,34 @@
 }
 
 .currentTime{
-  background: #555;
+  background: #8c8c8c;
   position: relative;
 
-  $sliderHeight: 32px;
+  $sliderHeight: 40px;
   height: $sliderHeight;
+  overflow: hidden;
+
 
   & > * {
     position: absolute;
-    height: 100%;
+    top: 0;
+    bottom: 0;
   }
 
-  & .buffered {
+  & .progress {
     background: #ffd261;
-    transition: all .5s cubic-bezier(.55, 0, .1, 1);
+    background: #43467f;
+    transition: all .1s cubic-bezier(.55, 0, .1, 1);
+  }
+
+  & .title {
+    left: 0;
+    right: 0;
+    margin: auto;
+
+    text-align: center;
+    color:#fff;
+    user-select: none;
   }
 
   & input {

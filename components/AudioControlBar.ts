@@ -21,8 +21,8 @@ export default {
     }
   },
   computed: {
-    loaded (): boolean {
-      return 0 < this.duration
+    hide () {
+      return this.$store.state.audio.src === ''
     },
     duration () {
       return this.$store.state.audio.duration

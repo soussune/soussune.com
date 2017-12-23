@@ -32,9 +32,9 @@
     <div class="play">
       <button @click="togglePlay" :class="{played: played}">
         <span v-if="played">
-          <icon :name="canplay ? 'pause' : 'spinner'" :pulse="!canplay"></icon> pause
+          <icon scale="2" :name="canplay ? 'pause' : 'spinner'" :spin="!canplay"></icon>
         </span>
-        <span v-else><icon name="play"></icon> play</span>
+        <span v-else><icon name="play" scale="2"></icon></span>
       </button>
     </div>
 
@@ -106,7 +106,7 @@
     position: relative;
 
     button {
-      transition: .2s;
+      transition: .2s ease-out;
       position: absolute;
       top: 0;
       right: 0;
@@ -117,13 +117,13 @@
       color: #fff;
       font-size:18px;
       border: none;
-      border-radius: 50px;
-      width: 120px;
-      height: 50px;
+      border-radius: 20px;
+      width: 100px;
+      height: 70px;
       outline: none;
 
       &.played {
-        background: #c32269
+        background: #c35922
       }
     }
   }

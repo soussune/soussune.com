@@ -80,7 +80,7 @@ module.exports = {
     }
   },
   rss: {
-    title: '[dev] soussune - エンジニアわいわいポッドキャスト「そうっすね」',
+    title: 'soussune - エンジニアわいわいポッドキャスト「そうっすね」',
     description: 'テクノロジーと世の中についてエンジニア達が雑談するポッドキャストです。',
     feed_url: 'https://soussune.com/feed.xml',
     site_url: 'https://soussune.com/',

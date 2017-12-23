@@ -7,15 +7,15 @@ const EpisodeHelper = require('../helpers/EpisodeHelper')
 const getEpisode = () => {
   let episodes = []
 
-  fs.readdirSync(path.join(__dirname, '../content/episode/')).forEach((blogPost) => {
+  fs.readdirSync(path.join(__dirname, '../content/episode/')).forEach((data) => {
     const episodePath = 'https://soussune.com/episode'
     const cdnPath = 'https://cdn.soussune.com/audio'
     const type = 'audio/mp3'
     const author = 'そうっすね制作委員会'
-    const filename = `${blogPost.substr(0, blogPost.length - 8)}`
-    const urlPath = `/${filename.substr(11, blogPost.length)}`
-    const post = fs.readFileSync(path.resolve(`content/episode/${blogPost}`), 'utf8')
-    const frontmatter = fm(post)
+    const filename = `${data.substr(0, data.length - 8)}`
+    const urlPath = `/${filename.substr(11, data.length)}`
+    const content = fs.readFileSync(path.resolve(`content/episode/${data}`), 'utf8')
+    const frontmatter = fm(content)
     const subtitle = EpisodeHelper.desc(frontmatter.attributes)
 
     episodes.push({
@@ -41,6 +41,5 @@ const getEpisode = () => {
 }
 
 module.exports.episodes = {
-  all: Array.prototype.concat(getEpisode().map((p) => p.path)),
   episode: getEpisode()
 }

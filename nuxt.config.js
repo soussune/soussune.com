@@ -1,3 +1,4 @@
+const nodeExternals = require('webpack-node-externals')
 const episodes = require('./server/sitemap').episodes
 
 module.exports = {
@@ -67,7 +68,7 @@ module.exports = {
     ]
   },
   build: {
-    vendor: [ 'luxon' ],
+    vendor: [ 'luxon', 'vue-awesome' ],
     extend (config, ctx) {
       if (ctx.isClient) {
         config.module.rules.push({
@@ -76,6 +77,13 @@ module.exports = {
           loader: 'eslint-loader',
           exclude: /(node_modules)/
         })
+      }
+      if (ctx.isServer) {
+        config.externals = [
+          nodeExternals({
+            whitelist: [ /^vue-awesome/ ]
+          })
+        ]
       }
     }
   },
@@ -92,41 +100,51 @@ module.exports = {
     pubDate: 'Thu, 01 Jun 2017 04:00:00 GMT',
     ttl: '60',
     custom_namespaces: {
-      'itunes': 'http://www.itunes.com/dtds/podcast-1.0.dtd',
-      'itunesu': 'http://www.itunesu.com/feed'
+      itunes: 'http://www.itunes.com/dtds/podcast-1.0.dtd',
+      itunesu: 'http://www.itunesu.com/feed'
     },
     custom_elements: [
       { 'itunes:subtitle': 'エンジニアわいわいポッドキャスト「そうっすね」' },
       { 'itunes:author': 'そうっすね制作委員会' },
       { 'itunes:summary': 'テクノロジーと世の中についてエンジニア達が雑談するポッドキャストです。' },
       { 'itunes:keywords': 'soussune, tech, technology, keyboard, web, development, developer' },
-      { 'itunes:owner': [
-        { 'itunes:name': 'そうっすね制作委員会' },
-        { 'itunes:email': 'soussune.user@gmail.com' }
-      ]},
-      { 'itunes:image': {
-        _attr: {
-          href: 'https://soussune.com/images/itunes-artwork.jpg'
+      {
+        'itunes:owner': [ { 'itunes:name': 'そうっすね制作委員会' }, { 'itunes:email': 'soussune.user@gmail.com' } ]
+      },
+      {
+        'itunes:image': {
+          _attr: {
+            href: 'https://soussune.com/images/itunes-artwork.jpg'
+          }
         }
-      }},
-      { 'itunes:category': [
-        {_attr: {
-          text: 'Technology'
-        }},
-        { 'itunes:category': {
-          _attr: {
-            text: 'Tech News'
+      },
+      {
+        'itunes:category': [
+          {
+            _attr: {
+              text: 'Technology'
+            }
+          },
+          {
+            'itunes:category': {
+              _attr: {
+                text: 'Tech News'
+              }
+            }
+          },
+          {
+            'itunes:category': {
+              _attr: {
+                text: 'Software How-To'
+              }
+            }
           }
-        }},
-        { 'itunes:category': {
-          _attr: {
-            text: 'Software How-To'
-          }
-        }}
-      ]},
+        ]
+      },
       { 'itunes:explicit': 'no' }
     ]
   },
   rssItems: episodes.episode,
-  loading: { color: '#3B8070' }
+  loading: { color: '#3B8070' },
+  plugins: [ '~plugins/vue-awesome.js' ]
 }

@@ -52,6 +52,11 @@ h3 {
 h4 {
   font-size: 22px;
 }
+button {
+  &:hover {
+    cursor: pointer;
+  }
+}
 blockquote {
   color: rgb(28, 32, 34);
   padding: 20px 20px 11.6px;

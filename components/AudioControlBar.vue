@@ -169,6 +169,9 @@ button {
     border: none;
     background: none;
 
+    &:hover {
+      cursor: pointer;
+    }
     &:focus {
       outline: none;
     }

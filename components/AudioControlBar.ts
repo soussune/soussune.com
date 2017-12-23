@@ -24,9 +24,18 @@ export default {
       const cw = e.target.clientWidth
       const rate = Math.max(0, Math.min(cw, e.touches[0].pageX - e.target.offsetLeft)) / cw
       this.commit('seekTo', rate * this.duration)
+    },
+    togglePlay () {
+      this.commit('paused', !this.paused)
     }
   },
   computed: {
+    canplay () {
+      return this.$store.state.audio.canplay
+    },
+    paused () {
+      return this.$store.state.audio.paused
+    },
     hide () {
       return this.$store.state.audio.src === ''
     },
@@ -61,14 +70,6 @@ export default {
       },
       set (val: number) {
         this.commit('playbackRate', val)
-      }
-    },
-    paused: {
-      get () {
-        return this.$store.state.audio.paused
-      },
-      set (val: number) {
-        this.commit('paused', val)
       }
     },
     muted: {

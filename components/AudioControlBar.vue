@@ -67,6 +67,10 @@
         @touchmove="touchmove"
         @touchstart="touchmove"
       >
+      <button @click="togglePlay" class="toggleplay">
+        <span v-if="paused"><icon name="play"></icon></span>
+        <span v-else><icon :name="canplay ? 'pause' : 'spinner'" :pulse="!canplay"></icon></span>
+      </button>
     </div>
 
     <!-- <a :href="audioURL" download>download</a> -->
@@ -130,6 +134,13 @@
     position: absolute;
     top: 0;
     bottom: 0;
+    left: $sliderHeight;
+  }
+
+  & .toggleplay {
+    left: 0px;
+    width: $sliderHeight;
+    border: none;
   }
 
   & .progress {

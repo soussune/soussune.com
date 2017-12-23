@@ -3,6 +3,25 @@
     class="page-container"
     ref="content"
   >
+    <nav class="ep-links">
+      <div>
+        <nuxt-link
+          v-if="episode.older"
+          :to="episode.older.permalink"
+        >
+          <icon name="chevron-circle-left" scale="2"></icon>
+        </nuxt-link>
+      </div>
+      <div>
+        <nuxt-link
+          v-if="episode.newer"
+          :to="episode.newer.permalink"
+        >
+          <icon name="chevron-circle-right" scale="2"></icon>
+        </nuxt-link>
+      </div>
+    </nav>
+
     <header class="header">
       <h1 class="title"> {{ episode.title }} </h1>
       <p class="date">{{episode | date }}</p>
@@ -52,6 +71,10 @@
 </script>
 
 <style lang="scss" scoped>
+.ep-links {
+  display: flex;
+  justify-content: space-between;
+}
 .header {
   text-align: center;
 

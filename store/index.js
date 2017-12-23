@@ -12,7 +12,8 @@ export const getters = {
     return state.actors.find((actor) => actor.path === path)
   },
   episodeByPath: (state) => (path) => {
-    return state.episodes.find((episode) => episode.path === path)
+    const i = state.episodes.map((ep) => ep.path).indexOf(path)
+    return { ...state.episodes[i], newer: state.episodes[i - 1], older: state.episodes[i + 1] }
   }
 }
 export const mutations = {

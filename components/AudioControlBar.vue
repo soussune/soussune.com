@@ -81,6 +81,9 @@
 </script>
 
 <style lang="scss" scoped>
+button {
+  outline: none;
+}
 .container {
   transition: .5s cubic-bezier(.55, 0, .1, 1);
 
@@ -168,6 +171,12 @@
 
     &:focus {
       outline: none;
+    }
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      width: 0;
+      height: 0;
     }
   }
 }

@@ -1,13 +1,7 @@
 import { DateTime } from 'luxon'
 import * as EpisodeHelper from '~/helpers/EpisodeHelper.js'
-import AudioPlayer from '~/components/AudioPlayer.vue'
-import AudioController from '~/components/AudioController.vue'
 
 export default {
-  components: {
-    AudioPlayer,
-    AudioController
-  },
   filters: {
     date (episode) {
       return DateTime.fromMillis(episode.published).toFormat('yyyy年MM月dd日')

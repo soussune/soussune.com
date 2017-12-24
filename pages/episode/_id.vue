@@ -64,7 +64,7 @@
   </main>
 </template>
 
-<script lang="ts" src="./_id.js">
+<script lang="ts" src="./_id.ts">
 </script>
 
 <style lang="scss" scoped>

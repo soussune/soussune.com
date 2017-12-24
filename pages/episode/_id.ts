@@ -20,19 +20,19 @@ export default {
     }
   },
   computed: {
-    src () {
+    src (): string {
       return 'https://cdn.soussune.com/audio' + this.episode.audioFilePath
     },
-    playing () {
+    playing (): boolean {
       return this.selected && !this.paused
     },
-    canplay () {
+    canplay (): boolean {
       return this.$store.state.audio.canplay
     },
-    selected () {
+    selected (): boolean {
       return this.$store.state.audio.src === this.src
     },
-    paused () {
+    paused (): boolean {
       return this.$store.state.audio.paused
     }
   },
@@ -48,10 +48,10 @@ export default {
     this.loadTwitterWidget()
   },
   methods: {
-    commit (prop, payload) {
+    commit (prop: string, payload: any): void {
       this.$store.commit(`audio/${prop}`, payload)
     },
-    togglePlay () {
+    togglePlay (): void {
       if (this.selected) {
         this.commit('paused', !this.paused)
         return
@@ -60,7 +60,7 @@ export default {
       this.commit('src', this.src)
       this.commit('title', this.episode.title)
     },
-    loadTwitterWidget () {
+    loadTwitterWidget (): void {
       // Reload twitter widget for this episode when already loaded on root
       if (window['twttr']) window['twttr'].widgets.load(this.$refs.content)
     }

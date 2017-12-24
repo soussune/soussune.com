@@ -84,6 +84,7 @@
                     name=""
                     placeholder="検索"
                     class="search-input"
+                    :value="$store.state.searchText"
                     v-ime-input="searchText"
                   >
                 </div>

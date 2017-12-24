@@ -6,7 +6,7 @@ export default {
   computed: {
     ...mapState([ 'actors' ]),
     episodes () {
-      return this.$store.state.episodes.map((episode) => ({
+      return this.$store.getters.filteredEpisodes.map((episode) => ({
         ...episode,
         actors: episode.actorIds.map((actorId) => this.actorsMap[actorId])
       }))
@@ -25,7 +25,7 @@ export default {
   },
   head () {
     return {
-			title: 'All episodes'
-		}
+      title: 'All episodes'
+    }
   }
 }

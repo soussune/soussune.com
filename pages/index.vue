@@ -95,11 +95,11 @@
   }
     & img {
       border-radius: 50%;
-      border: 2px solid #fff;
+      border: 3px solid #fff;
       box-sizing: content-box;
       background-origin: content-box;
-      width: 40px;
-      height: 40px;
+      width: 60px;
+      height: 60px;
     }
 }
 

@@ -9,15 +9,15 @@
       </p>
     </header>
     <section class="episodes">
-      <div
+
+      <nuxt-link
+        :to="episode.permalink"
         v-for="episode in topEpisodes"
         :key="episode.permalink"
         class="episode"
       >
         <h3 class="episode-title">
-          <nuxt-link :to="episode.permalink">
             {{ episode.title }}
-          </nuxt-link>
         </h3>
         <div>
           {{ episode | date }}
@@ -26,23 +26,21 @@
           {{ episode | desc }}
         </div>
         <div class="actor-list">
-          <nuxt-link
+          <img
+            class="actor-list-item"
             v-for="actor in episode.actors"
             :key="actor.actorId"
             :to="actor.permalink"
-            class="actor-list-item"
+            :src="actor.imageUrl"
+            :title="actor.title"
           >
-            <img
-              :src="actor.imageUrl"
-              :title="actor.title"
-            >
-          </nuxt-link>
         </div>
-      </div>
+      </nuxt-link>
+
       <div v-if="moreEpisode">
-        <a :href="'/episode#' + moreEpisode.permalink" class="more">
+        <nuxt-link :to="{ path: '/episode', hash: moreEpisode.permalink}" class="more">
           <icon name="chevron-down"></icon> read more
-        </a>
+        </nuxt-link>
       </div>
     </section>
   </section>
@@ -65,11 +63,19 @@
   margin-top: 60px;
 }
 .episode {
+  display: block;
+  text-decoration: none;
   background: #fff;
   border-radius: .6rem;
-  box-shadow: 0 0.2rem 1.6rem rgba(0,0,0,.2);
+  box-shadow: 0 0.1rem 0.8rem rgba(0,0,0,.1);
   padding: 10px 20px;
   margin-top: 20px;
+  transition: 0.2s ease-out;
+
+  &:hover {
+    color: inherit;
+    box-shadow: 0.1rem 0.2rem 1.6rem rgba(0,0,0,.2);
+  }
 
   &-title {
     margin-top: 0.2em;
@@ -86,6 +92,7 @@
   &-item {
     margin-left: -12px;
 
+  }
     & img {
       border-radius: 50%;
       border: 2px solid #fff;
@@ -94,7 +101,6 @@
       width: 40px;
       height: 40px;
     }
-  }
 }
 
 .home-slogan

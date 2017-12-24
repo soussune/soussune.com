@@ -29,7 +29,7 @@ module.exports = {
   ],
   head: {
     title: 'エンジニアわいわいポッドキャスト「そうっすね」',
-    titleTemplate: '[dev] soussune - %s',
+    titleTemplate: 'soussune - %s',
     htmlAttrs: {
       lang: 'ja',
       prefix: 'og: http://ogp.me/ns#'

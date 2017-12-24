@@ -1,6 +1,7 @@
 import { DateTime } from 'luxon'
 
 export const state = () => ({
+  queries: [],
   searchText: '',
   episodes: [],
   actors: []
@@ -17,12 +18,10 @@ export const getters = {
     return { ...state.episodes[i], newer: state.episodes[i - 1], older: state.episodes[i + 1] }
   },
   filteredEpisodes: (state) => {
-    if (state.searchText === '') return state.episodes
-
-    const queries = state.searchText.split(/\s+/)
+    if (state.queries.length === 0) return state.episodes
 
     const ret = state.episodes.filter((ep) =>
-      queries.some((q) => {
+      state.queries.some((q) => {
         const r = new RegExp(q, 'i')
         return ep.actorIds.some((a) => a.match(r)) || ep.title.match(r) || ep.topics.some((t) => t.match(r))
       })
@@ -32,6 +31,7 @@ export const getters = {
 }
 export const mutations = {
   searchText (state, payload) {
+    state.queries = payload.split(/\s+/).filter((s) => s !== '')
     state.searchText = payload
   },
   episodes (state, payload) {

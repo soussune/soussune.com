@@ -23,6 +23,13 @@ export default {
       return EpisodeHelper.desc(episode)
     }
   },
+  methods: {
+    removeQuery (i) {
+      const queries = this.$store.state.queries.slice()
+      queries.splice(i, 1)
+      this.$store.commit('searchText', queries.join(' '))
+    }
+  },
   destroyed () {
     this.$store.commit('searchText', '')
   },

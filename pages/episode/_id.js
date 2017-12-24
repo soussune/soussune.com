@@ -20,6 +20,10 @@ export default {
 
       this.commit('src', this.src)
       this.commit('title', this.episode.title)
+    },
+    loadTwitterWidget () {
+      // Reload twitter widget for this episode when already loaded on root
+      if (window['twttr']) window['twttr'].widgets.load(this.$refs.content)
     }
   },
   computed: {
@@ -40,8 +44,10 @@ export default {
     }
   },
   mounted () {
-    // Load twitter widget on SPA mode
-    if (window['twttr']) window['twttr'].widgets.load(this.$refs.content)
+    this.loadTwitterWidget()
+  },
+  updated () {
+    this.loadTwitterWidget()
   },
   asyncData ({ store, route }) {
     const episode = store.getters.episodeByPath(route.path)

@@ -152,7 +152,7 @@ module.exports = {
     init: {
       appId: '0c93cec2-86ac-419b-a0f1-a1b41ee6172e',
       allowLocalhostAsSecureOrigin: true,
-      autoRegister: true,
+      autoRegister: false,
       welcomeNotification: {
         disable: true
       },

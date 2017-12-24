@@ -4,7 +4,7 @@
     <AppHeader class="app_header"/>
 
     <section class="app_body">
-      <nuxt :key="$route.fullPath" />
+      <nuxt :key="$route.path" />
     </section>
 
     <AppFooter class="app_footer"/>

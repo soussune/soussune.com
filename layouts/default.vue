@@ -1,13 +1,13 @@
 <template>
   <div class="app">
 
-    <App-Header class="app_header"/>
+    <AppHeader class="app_header"/>
 
     <section class="app_body">
       <nuxt :key="$route.fullPath" />
     </section>
 
-    <App-Footer class="app_footer"/>
+    <AppFooter class="app_footer"/>
 
     <AudioPlayer>
     </AudioPlayer>
@@ -23,15 +23,15 @@
 </template>
 
 <script>
-import Header from '~/components/Header.vue'
-import Footer from '~/components/Footer.vue'
+import AppHeader from '~/components/AppHeader.vue'
+import AppFooter from '~/components/AppFooter.vue'
 import AudioPlayer from '~/components/AudioPlayer.vue'
 import AudioControlBar from '~/components/AudioControlBar.vue'
 
 export default {
   components: {
-    'App-Header': Header,
-    'App-Footer': Footer,
+    AppHeader,
+    AppFooter,
     AudioPlayer,
     AudioControlBar
   },

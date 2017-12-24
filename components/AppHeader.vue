@@ -111,7 +111,7 @@
   </header>
 </template>
 
-<script lang="ts" src="./Header.ts">
+<script lang="ts" src="./AppHeader.ts">
 </script>
 
 <style lang="scss" scoped>

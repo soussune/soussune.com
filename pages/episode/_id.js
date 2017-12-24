@@ -8,22 +8,21 @@ export default {
     AudioPlayer,
     AudioController
   },
-  methods: {
-    commit (prop, payload) {
-      this.$store.commit(`audio/${prop}`, payload)
+  filters: {
+    date (episode) {
+      return DateTime.fromMillis(episode.published).toFormat('yyyy年MM月dd日')
     },
-    togglePlay () {
-      if (this.selected) {
-        this.commit('paused', !this.paused)
-        return
+    desc (episode) {
+      return EpisodeHelper.desc(episode)
+    }
+  },
+  asyncData ({ store, route }) {
+    const episode = store.getters.episodeByPath(route.path)
+    return {
+      episode: {
+        ...episode,
+        actors: episode.actorIds.map((actorId) => store.getters.actorById(actorId))
       }
-
-      this.commit('src', this.src)
-      this.commit('title', this.episode.title)
-    },
-    loadTwitterWidget () {
-      // Reload twitter widget for this episode when already loaded on root
-      if (window['twttr']) window['twttr'].widgets.load(this.$refs.content)
     }
   },
   computed: {
@@ -43,32 +42,33 @@ export default {
       return this.$store.state.audio.paused
     }
   },
+  head () {
+    return {
+      title: this.episode.title
+    }
+  },
   mounted () {
     this.loadTwitterWidget()
   },
   updated () {
     this.loadTwitterWidget()
   },
-  asyncData ({ store, route }) {
-    const episode = store.getters.episodeByPath(route.path)
-    return {
-      episode: {
-        ...episode,
-        actors: episode.actorIds.map((actorId) => store.getters.actorById(actorId))
-      }
-    }
-  },
-  filters: {
-    date (episode) {
-      return DateTime.fromMillis(episode.published).toFormat('yyyy年MM月dd日')
+  methods: {
+    commit (prop, payload) {
+      this.$store.commit(`audio/${prop}`, payload)
     },
-    desc (episode) {
-      return EpisodeHelper.desc(episode)
-    }
-  },
-  head () {
-    return {
-      title: this.episode.title
+    togglePlay () {
+      if (this.selected) {
+        this.commit('paused', !this.paused)
+        return
+      }
+
+      this.commit('src', this.src)
+      this.commit('title', this.episode.title)
+    },
+    loadTwitterWidget () {
+      // Reload twitter widget for this episode when already loaded on root
+      if (window['twttr']) window['twttr'].widgets.load(this.$refs.content)
     }
   }
 }

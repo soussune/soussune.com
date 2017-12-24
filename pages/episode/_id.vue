@@ -11,8 +11,8 @@
       </header>
 
       <div class="play">
-        <button @click="togglePlay" :class="{played: played}">
-          <icon scale="3" :name="played ? (canplay ? 'pause' : 'spinner') : 'play'" :spin="played && !canplay"></icon>
+        <button @click="togglePlay" :class="{playing: playing, loading: !canplay }">
+          <icon scale="3" :name="playing ? (canplay ? 'pause' : 'spinner') : 'play'" :spin="playing && !canplay"></icon>
         </button>
       </div>
 
@@ -120,7 +120,7 @@
     position: relative;
 
     button {
-      transition: .2s ease-out;
+      transition: 0.4s ease-out;
       position: absolute;
       top: 0;
       right: 0;
@@ -136,9 +136,17 @@
       height: 100px;
       outline: none;
 
-      &.played {
-        border-radius: 20%;
-        background: #c35922
+      &.playing {
+        border-radius: 10%;
+        background: #fff;
+        color: #666;
+        border: #aaa 1px solid;
+
+        &.loading {
+          border-radius: 20%;
+          transform: scale(0.9);
+        }
+
       }
     }
   }

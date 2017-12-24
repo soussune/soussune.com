@@ -26,7 +26,7 @@ export default {
     src () {
       return 'https://cdn.soussune.com/audio' + this.episode.audioFilePath
     },
-    played () {
+    playing () {
       return this.selected && !this.paused
     },
     canplay () {

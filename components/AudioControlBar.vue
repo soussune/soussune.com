@@ -67,9 +67,8 @@
         @touchmove="touchmove"
         @touchstart="touchmove"
       >
-      <button @click="togglePlay" class="toggleplay">
-        <span v-if="paused"><icon name="play"></icon></span>
-        <span v-else><icon :name="canplay ? 'pause' : 'spinner'" :pulse="!canplay"></icon></span>
+      <button @click="togglePlay" class="toggleplay" :class="{ canplay: canplay, paused: paused }">
+        <icon :name="paused ? 'play' : (canplay ? 'pause' : 'spinner')" :spin="!canplay" scale="1.5"></icon></span>
       </button>
     </div>
 
@@ -91,6 +90,8 @@ button {
   bottom: 0px;
   left: 0;
   right: 0;
+
+  box-shadow: 1rem 1.2rem 3.6rem rgba(0,0,0,.2);
 
   &.hide {
     bottom: -50px;
@@ -144,11 +145,22 @@ button {
     left: 0px;
     width: $sliderHeight;
     border: none;
-    background: #eee18d;
+    background: #c3b922;
+    color: #fff;
+    border-top: 1px solid #999;
+
+    &.canplay {
+      background: #fff;
+      color: #666;
+    }
+    &.paused {
+      background: #34c322;
+      color: #fff;
+    }
   }
 
   & .progress {
-    background: #43467f;
+    background: #3c3c3c;
     transition: all .1s cubic-bezier(.55, 0, .1, 1);
     user-select: none;
   }

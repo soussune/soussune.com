@@ -19,16 +19,16 @@
       >
         <article>
           <header>
+            <small>
+              {{ episode | date }}
+            </small>
             <h3 class="episode-title">
                 {{ episode.title }}
             </h3>
-            <p>
-              {{ episode | date }}
-            </p>
           </header>
-          <div>
+          <p>
             {{ episode | desc }}
-          </div>
+          </p>
           <div class="actor-list">
             <img
               class="actor-list-item"
@@ -71,16 +71,16 @@
 .episode {
   display: block;
   text-decoration: none;
-  background: #fff;
-  border-radius: .6rem;
-  box-shadow: 0 0.1rem 0.8rem rgba(0,0,0,.1);
+  background: #ffffff;
+  border-radius: .3rem;
+  box-shadow: 0 0 0 1px rgba(63, 63, 68, .05), 0 1px 3px 0 rgba(63, 63, 68, .15);
   padding: 10px 20px;
   margin-top: 20px;
   transition: 0.2s ease-out;
 
   &:hover {
     color: inherit;
-    box-shadow: 0.1rem 0.2rem 1.6rem rgba(0,0,0,.2);
+    background-color: #fafbfc;
   }
 
   &-title {
@@ -89,7 +89,6 @@
       text-decoration: none;
     }
   }
-
 }
 .actor-list {
   margin-top: 8px;

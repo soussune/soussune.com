@@ -135,12 +135,27 @@
       width: 100px;
       height: 100px;
       outline: none;
+      box-shadow: 0 0 20px rgba(0,0,0,.2);
+      & > * {
+        margin-left: 10px;
+      }
 
       &.playing {
         border-radius: 10%;
         background: #fff;
         color: #666;
         border: #aaa 1px solid;
+        animation: blink 3s infinite;
+        & > * {
+          margin-left: 0px;
+        }
+
+        @keyframes blink {
+          50% {
+            box-shadow: 0 0 30px rgba(0,0,0,.4);
+            opacity: 0.5;
+          }
+        }
 
         &.loading {
           border-radius: 20%;

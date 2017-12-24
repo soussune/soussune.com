@@ -107,6 +107,14 @@
             Blog
           </a>
         </div>
+        <div class="top-bar__item top-bar__item--separated">
+          <a
+            class="top-bar__item top-bar__item--separated"
+            v-on:click="subscribe"
+          >
+            Subscribe
+          </a>
+        </div>
       </div>
     </div>
   </header>

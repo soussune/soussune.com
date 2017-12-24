@@ -9,6 +9,11 @@ export default {
       this.$store.commit('searchText', val)
     }
   },
+  methods: {
+    subscribe: function(){
+      this.$OneSignal.push(["registerForPushNotifications"]);
+    }
+  },
   directives: {
     imeInput: {
       bind (el, binding, vnode) {

@@ -1,6 +1,7 @@
 import { DateTime } from 'luxon'
 
 export const state = () => ({
+  searchText: '',
   episodes: [],
   actors: []
 })
@@ -17,6 +18,9 @@ export const getters = {
   }
 }
 export const mutations = {
+  searchText (state, payload) {
+    state.searchText = payload
+  },
   episodes (state, payload) {
     state.episodes = payload
   },

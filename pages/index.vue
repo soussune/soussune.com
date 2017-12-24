@@ -1,5 +1,6 @@
 <template>
   <section class="page-container">
+
     <header class="header">
       <h1 class="title">
         soussune
@@ -8,41 +9,46 @@
         エンジニアわいわいポッドキャスト「そうっすね」
       </p>
     </header>
-    <section class="episodes">
 
+    <main class="episodes">
       <nuxt-link
         :to="episode.permalink"
         v-for="episode in topEpisodes"
         :key="episode.permalink"
         class="episode"
       >
-        <h3 class="episode-title">
-            {{ episode.title }}
-        </h3>
-        <div>
-          {{ episode | date }}
-        </div>
-        <div>
-          {{ episode | desc }}
-        </div>
-        <div class="actor-list">
-          <img
-            class="actor-list-item"
-            v-for="actor in episode.actors"
-            :key="actor.actorId"
-            :to="actor.permalink"
-            :src="actor.imageUrl"
-            :title="actor.title"
-          >
-        </div>
+        <article>
+          <header>
+            <h3 class="episode-title">
+                {{ episode.title }}
+            </h3>
+            <p>
+              {{ episode | date }}
+            </p>
+          </header>
+          <div>
+            {{ episode | desc }}
+          </div>
+          <div class="actor-list">
+            <img
+              class="actor-list-item"
+              v-for="actor in episode.actors"
+              :key="actor.actorId"
+              :to="actor.permalink"
+              :src="actor.imageUrl"
+              :title="actor.title"
+            >
+          </div>
+        </article>
       </nuxt-link>
 
-      <div v-if="moreEpisode">
+      <nav v-if="moreEpisode">
         <nuxt-link :to="{ path: '/episode', hash: moreEpisode.permalink}" class="more">
           <icon name="chevron-down"></icon> read more
         </nuxt-link>
-      </div>
-    </section>
+      </nav>
+
+    </main>
   </section>
 </template>
 

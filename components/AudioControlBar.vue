@@ -53,11 +53,14 @@
       </div>
     </div>
     <div class="currentTime">
+
       <div
         class="progress"
         :style="{ width: `${currentTime / duration * 100}%`}"
       ></div>
+
       <div class="title">{{ title }} [{{currentTime | time}} / {{duration | time}}]</div>
+
       <input
         type="range"
         step="any"
@@ -67,12 +70,13 @@
         @touchmove="touchmove"
         @touchstart="touchmove"
       >
+
       <button @click="togglePlay" class="toggleplay" :class="{ canplay: canplay, paused: paused }">
         <icon :name="paused ? 'play' : (canplay ? 'pause' : 'spinner')" :spin="!canplay" scale="1.5"></icon></span>
       </button>
+
     </div>
 
-    <!-- <a :href="audioURL" download>download</a> -->
   </div>
 </template>
 
@@ -80,6 +84,8 @@
 </script>
 
 <style lang="scss" scoped>
+$track-height: 48px;
+
 button {
   outline: none;
 }
@@ -132,7 +138,7 @@ button {
 
   $sliderHeight: 50px;
   height: $sliderHeight;
-  overflow: hidden;
+  // overflow: hidden;
 
   & > * {
     position: absolute;
@@ -162,7 +168,7 @@ button {
   & .progress {
     background: #3c3c3c;
     transition: all .1s cubic-bezier(.55, 0, .1, 1);
-    user-select: none;
+    pointer-events: none;
   }
 
   & .title {
@@ -172,14 +178,31 @@ button {
 
     text-align: center;
     color:#fff;
-    user-select: none;
+    pointer-events: none;
   }
 
+  $track-color: transparent;
+  $thumb-color: #607d8b;
+
+  $thumb-radius: 2px;
+  $thumb-height: $sliderHeight;
+  $thumb-width: 24px;
+  $thumb-shadow-size: 4px;
+  $thumb-shadow-blur: 4px;
+  $thumb-shadow-color: rgba(0, 0, 0, .2);
+  $thumb-border-width: 2px;
+  $thumb-border-color: #eceff1;
+
+  $track-height: $sliderHeight;
+  $track-shadow-size: 0;
+  $track-shadow-blur: 0;
+  $track-border-width: 0;
+  $track-radius: 0;
+
+  @import '~assets/css/_inputrange.scss';
+
   & input {
-    -webkit-appearance: none;
-    width: 100%;
-    border: none;
-    background: none;
+    height: 0;
 
     &:hover {
       cursor: pointer;
@@ -187,11 +210,8 @@ button {
     &:focus {
       outline: none;
     }
-    &::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      width: 0;
-      height: 0;
+    &::-moz-focus-inner {
+      border: 0;
     }
   }
 }

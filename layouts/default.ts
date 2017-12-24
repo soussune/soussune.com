@@ -24,7 +24,9 @@ export default {
   },
   methods: {
     onChangeQuery (val) {
-      this.$router.push({ name: 'episode', query: val === '' ? {} : { q: val } })
+      const isEmpty = val === ''
+      const name = isEmpty ? {} : { name: 'episode' }
+      this.$router.push({ ...name, query: isEmpty ? {} : { q: val } })
     }
   }
 }

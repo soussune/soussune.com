@@ -23,6 +23,9 @@ export default {
       return EpisodeHelper.desc(episode)
     }
   },
+  destroyed () {
+    this.$store.commit('searchText', '')
+  },
   head () {
     return {
       title: 'All episodes'

@@ -212,8 +212,18 @@
   flex: 1;
   outline: none;
 
-  ::-webkit-input-placeholder {
-    color: #FFFFFF;
+  $placeholder-color: rgba(255, 255, 255, 0.4);
+  ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: $placeholder-color;
+  }
+  ::-moz-placeholder { /* Firefox 19+ */
+    color: $placeholder-color;
+  }
+  :-ms-input-placeholder { /* IE 10+ */
+    color: $placeholder-color;
+  }
+  :-moz-placeholder { /* Firefox 18- */
+    color: $placeholder-color;
   }
 
   &__add-on {

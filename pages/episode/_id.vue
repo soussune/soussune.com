@@ -3,12 +3,29 @@
     class="page-container"
     ref="content"
   >
-    <section class="summary">
+    <header class="header">
+      <h1 class="title"> {{ episode.title }} </h1>
+      <p class="date">{{episode | date }}</p>
+    </header>
 
-      <header class="header">
-        <h1 class="title"> {{ episode.title }} </h1>
-        <p class="date">{{episode | date }}</p>
-      </header>
+    <nav class="ep-links">
+      <nuxt-link
+        v-if="episode.older"
+        :to="episode.older.permalink"
+        class="older"
+      >
+        <icon name="arrow-left" scale="3"></icon>
+      </nuxt-link>
+      <nuxt-link
+        v-if="episode.newer"
+        :to="episode.newer.permalink"
+        class="newer"
+      >
+        <icon name="arrow-right" scale="3"></icon>
+      </nuxt-link>
+    </nav>
+
+    <section class="summary">
 
       <div class="play">
         <button @click="togglePlay" :class="{playing: playing, loading: !canplay }">
@@ -40,23 +57,6 @@
         </ul>
       </div>
 
-      <nav class="ep-links">
-        <nuxt-link
-          v-if="episode.older"
-          :to="episode.older.permalink"
-          class="older"
-        >
-          <icon name="arrow-left" scale="3"></icon>
-        </nuxt-link>
-        <nuxt-link
-          v-if="episode.newer"
-          :to="episode.newer.permalink"
-          class="newer"
-        >
-          <icon name="arrow-right" scale="3"></icon>
-        </nuxt-link>
-      </nav>
-
     </section>
 
     <nuxtent-body :body="episode.body" class="marked" />
@@ -68,6 +68,23 @@
 </script>
 
 <style lang="scss" scoped>
+@import '~assets/css/mixin/_mediaquery.scss';
+
+.page-container {
+  background: #fff;
+  border-radius: .6rem;
+  box-shadow: 0 1.2rem 3.6rem rgba(0,0,0,.2);
+  padding: 80px 60px;
+  margin: 40px 20px;
+  position: relative;
+
+  @include mq() {
+    padding: 20px 20px 40px;
+    margin: 20px 10px;
+  }
+
+}
+
 .header {
   text-align: center;
 
@@ -76,37 +93,47 @@
     margin-bottom: 1rem;
     font-weight: 500;
     color: #35495e;
+
+    @include mq() {
+      font-size: 2.0rem;
+    }
   }
 }
 
-.summary {
-  display: grid;
-  grid-template-areas: "header header" "play desc" "play actors";
-  grid-template-columns: 200px auto;
-  margin-top: 40px;
+.ep-links {
+  & a {
+    position: absolute;
+    top: 160px;
+    color: rgba(0,0,0,.2);
 
-  background: #fff;
-  border-radius: .6rem;
-  box-shadow: 0 1.2rem 3.6rem rgba(0,0,0,.2);
-  padding: 10px 20px;
-  position: relative;
+    &.newer {
+      text-align: right;
+    }
 
-  .ep-links {
-    $offset: -20px;
-    & a {
-      position: absolute;
-      top: 160px;
-      color: rgba(0,0,0,.4);
-
+    $offset: -30px;
+    &.older {
+      left: $offset;
+    }
+    &.newer {
+      right: $offset;
+    }
+    @include mq() {
+      $offset: -15px;
       &.older {
         left: $offset;
       }
       &.newer {
         right: $offset;
-        text-align: right;
       }
     }
   }
+}
+
+.summary {
+  display: grid;
+  grid-template-areas: "play desc" "play actors";
+  grid-template-columns: 160px auto;
+  margin-top: 40px;
 
   & h2 {
     font-size: 24px;
@@ -123,7 +150,6 @@
       transition: 0.4s ease-out;
       position: absolute;
       top: 0;
-      right: 0;
       bottom: 0;
       left: 0;
       margin: auto;
@@ -172,6 +198,19 @@
   .actors {
     grid-area: actors;
   }
+
+  @include mq() {
+    grid-template-columns: auto;
+    grid-template-areas: "play" "desc" "actors";
+
+    & .play {
+      text-align: center;
+      button {
+        position: relative;
+      }
+    }
+  }
+
 }
 
 .actor-list {
@@ -193,6 +232,25 @@
       border-radius: 50%;
     }
   }
+
+  @include mq() {
+
+    &-item {
+      min-width: 80px;
+      font-size: 14px;
+
+      & a {
+        text-decoration: none;
+      }
+
+      & img {
+        width: 60px;
+        height: 60px;
+      }
+
+    }
+  }
+
 }
 </style>
 

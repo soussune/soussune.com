@@ -46,7 +46,11 @@ export const actions = {
     const episodes = (await app
       .$content('/episode')
       .query({ exclude: [ 'meta', 'anchors', 'date' ] })
-      .getAll()).map((e) => ({ ...e, published: DateTime.fromSQL(e.published).valueOf() }))
+      .getAll()).map((e) => ({
+        ...e,
+        published: DateTime.fromSQL(e.published).valueOf(),
+        id: e.path.replace(/^.*\//, '')
+      }))
 
     const appearMap = episodes.reduce((map, epsode) => {
       epsode.actorIds.forEach((actorId) => {

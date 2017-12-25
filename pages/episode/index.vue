@@ -17,7 +17,7 @@
       </div>
       <div v-if="episodes.length > 0">
         <div v-for="episode in episodes" :key="episode.title">
-          <h3 :id="episode.permalink">
+          <h3 :id="'ep' + episode.id">
             <nuxt-link :to="episode.permalink">
               {{ episode.title }}
             </nuxt-link>

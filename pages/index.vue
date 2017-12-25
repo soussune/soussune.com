@@ -43,7 +43,7 @@
       </nuxt-link>
 
       <nav v-if="moreEpisode">
-        <nuxt-link :to="{ path: '/episode', hash: moreEpisode.permalink}" class="more">
+        <nuxt-link :to="{ path: '/episode', hash: 'ep' + moreEpisode.id }" class="more">
           <icon name="chevron-down"></icon> read more
         </nuxt-link>
       </nav>

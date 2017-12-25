@@ -11,7 +11,7 @@
 
     <section class="body">
       <p>{{actor.description}}</p>
-      <nuxtent-body :body="actor.body" />
+      <nuxtent-body :body="actor.body" class="marked" />
     </section>
 
     <section class="episodes">

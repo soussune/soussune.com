@@ -1,5 +1,5 @@
 <template>
-  <section class="home-container">
+  <section class="page-container">
     <div>
       <h2 class="home-slogan">
         <nuxt-link to="/actors">
@@ -14,7 +14,7 @@
 <script>
 </script>
 <style lang="scss" scoped>
-.home-container
+.page-container
 {
   display: flex;
   justify-content: center;

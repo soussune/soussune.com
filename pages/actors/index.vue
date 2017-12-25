@@ -1,5 +1,5 @@
 <template>
-  <div class="page-container">
+  <div>
     <ul class="actor-list">
       <li
         v-for="actor in sortedActors"

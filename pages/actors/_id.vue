@@ -1,5 +1,5 @@
 <template>
-  <section class="page-container">
+  <section>
     <section class="title">
       <img
         :src="actor.imageUrl"

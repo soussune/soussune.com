@@ -15,7 +15,7 @@
     width: 100%;
     padding: 3.8rem 16px 0;
     @include mq() {
-      padding: 3.8rem 8px 0;
+      padding: 3.8rem 0 0;
     }
   }
   &_footer {

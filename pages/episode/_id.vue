@@ -8,23 +8,6 @@
       <p class="date">{{episode | date }}</p>
     </header>
 
-    <nav class="ep-links">
-      <nuxt-link
-        v-if="episode.older"
-        :to="episode.older.permalink"
-        class="older"
-      >
-        <icon name="arrow-left" scale="3"></icon>
-      </nuxt-link>
-      <nuxt-link
-        v-if="episode.newer"
-        :to="episode.newer.permalink"
-        class="newer"
-      >
-        <icon name="arrow-right" scale="3"></icon>
-      </nuxt-link>
-    </nav>
-
     <section class="summary">
 
       <div class="play">
@@ -59,6 +42,23 @@
 
     </section>
 
+    <nav class="ep-links">
+      <nuxt-link
+        v-if="episode.older"
+        :to="episode.older.permalink"
+        class="older"
+      >
+        <icon name="arrow-left" scale="3"></icon>
+      </nuxt-link>
+      <nuxt-link
+        v-if="episode.newer"
+        :to="episode.newer.permalink"
+        class="newer"
+      >
+        <icon name="arrow-right" scale="3"></icon>
+      </nuxt-link>
+    </nav>
+
     <nuxtent-body :body="episode.body" class="marked" />
 
   </main>
@@ -79,8 +79,8 @@
   position: relative;
 
   @include mq() {
-    padding: 20px 20px 40px;
-    margin: 20px 10px;
+    padding: 20px 10px 40px;
+    margin: 20px 0px;
   }
 
 }
@@ -118,7 +118,7 @@
       right: $offset;
     }
     @include mq() {
-      $offset: -15px;
+      $offset: 0px;
       &.older {
         left: $offset;
       }

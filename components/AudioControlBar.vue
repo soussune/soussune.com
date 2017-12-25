@@ -201,7 +201,8 @@ button {
   @import '~assets/css/_inputrange.scss';
 
   & input {
-    height: 0;
+    height: $sliderHeight;
+    background: transparent;
 
     &:hover {
       cursor: pointer;

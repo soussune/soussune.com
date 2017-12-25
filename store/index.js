@@ -4,7 +4,8 @@ export const state = () => ({
   queries: [],
   searchText: '',
   episodes: [],
-  actors: []
+  actors: [],
+  actorsMap: {}
 })
 export const getters = {
   actorById: (state) => (actorId) => {
@@ -41,6 +42,9 @@ export const mutations = {
   },
   actors (state, payload) {
     state.actors = payload
+  },
+  actorsMap (state, payload) {
+    state.actorsMap = payload
   }
 }
 export const actions = {
@@ -62,12 +66,11 @@ export const actions = {
       return map
     }, {})
 
-    const actors = (await app
-      .$content('/actors')
-      .query({ exclude: [ 'meta', 'anchors', 'date' ] })
-      .getAll()).map((actor) => ({ ...actor, episodes: appearMap[actor.actorId] || [] }))
+    const actors = await app.$content('/actors').query({ exclude: [ 'meta', 'anchors', 'date' ] }).getAll()
+    const actorsMap = actors.reduce((map, actor) => ({ ...map, [actor.actorId]: actor }), {})
 
     commit('episodes', episodes)
-    commit('actors', actors)
+    commit('actors', actors.map((actor) => ({ ...actor, episodes: appearMap[actor.actorId] || [] })))
+    commit('actorsMap', actorsMap)
   }
 }

@@ -4,7 +4,7 @@ import * as EpisodeHelper from '~/helpers/EpisodeHelper.js'
 const showCount = 10
 export default {
   asyncData ({ store, route }) {
-    const actorsMap = store.state.actors.reduce((map, actor) => ({ ...map, [actor.actorId]: actor }), {})
+    const actorsMap = store.state.actorsMap
     return {
       episodes: store.state.episodes.map((episode) => ({
         ...episode,

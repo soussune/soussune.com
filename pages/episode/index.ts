@@ -4,15 +4,12 @@ import * as EpisodeHelper from '~/helpers/EpisodeHelper.js'
 
 export default {
   computed: {
-    ...mapState([ 'actors' ]),
+    ...mapState([ 'actorsMap' ]),
     episodes () {
       return this.$store.getters.filteredEpisodes.map((episode) => ({
         ...episode,
         actors: episode.actorIds.map((actorId) => this.actorsMap[actorId])
       }))
-    },
-    actorsMap () {
-      return this.actors.reduce((map, actor) => ({ ...map, [actor.actorId]: actor }), {})
     }
   },
   filters: {

@@ -42,9 +42,9 @@
         </article>
       </nuxt-link>
 
-      <nav v-if="moreEpisode">
-        <nuxt-link :to="{ path: '/episode', hash: 'ep' + moreEpisode.id }" class="more">
-          <icon name="chevron-down"></icon> read more
+      <nav class="readmore" v-if="moreEpisode">
+        <nuxt-link :to="{ path: '/episode', hash: 'ep' + moreEpisode.id }" class="button">
+          Read more
         </nuxt-link>
       </nav>
 
@@ -135,5 +135,51 @@
   height: 40px;
   outline: none;
 
+}
+
+.readmore {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.button {
+  background: linear-gradient(180deg,#fff,#f9fafb);  fill: #637381;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.6rem;
+  min-width: 2.6rem;
+  margin: 0;
+  padding: .7rem 1.6rem;
+  border: 1px solid #c4cdd5;
+  box-shadow: 0 1px 0 0 rgba(22,29,37,.05);
+  border-radius: 3px;
+  line-height: 1;
+  color: #212b36;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+  text-decoration: none;
+  transition-property: background,border,box-shadow;
+  transition-duration: .2s;
+  transition-timing-function: cubic-bezier(.64,0,.35,1);
+
+  &:active {
+    background: linear-gradient(180deg,#f4f6f8,#f4f6f8);
+    border-color: #c4cdd5;
+    box-shadow: 0 0 0 0 transparent, inset 0 1px 1px 0 rgba(99,115,129,.1), inset 0 1px 4px 0 rgba(99,115,129,.2);
+  }
+  &:focus {
+    outline: 0;
+    // box-shadow: 0 0 0 0 transparent, inset 0 1px 1px 0 rgba(99,115,129,.1), inset 0 1px 4px 0 rgba(99,115,129,.2);
+
+  }
+  &:hover {
+    background: linear-gradient(180deg,#f9fafb,#f4f6f8);
+    border-color: #c4cdd5;
+
+  }
 }
 </style>

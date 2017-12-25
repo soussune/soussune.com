@@ -19,7 +19,7 @@
     </div>
 
     <main>
-      <div v-if="episodes.length > 0">
+      <div class="card" v-if="episodes.length > 0">
         <nuxt-link
           :to="episode.permalink"
           v-for="episode in episodes"
@@ -73,14 +73,40 @@
 <style lang="scss" scoped>
 @import '~assets/css/mixin/_mediaquery.scss';
 
+.card {
+  border-radius: 3px;
+  padding: 1rem;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 1px rgba(63,63,68,0.05), 0 1px 3px 0 rgba(63,63,68,0.15);
+}
+
 .episode {
+  display: block;
   text-decoration: none;
+  border-bottom: 1px solid #ebeef0;
+
+  &:first-child {
+    border-top: none;
+  }
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:hover {
+    width: 100%;
+    height: 100%;
+    background-color: #fafbfc;
+    border-bottom: 1px solid #ebeef0;
+    color: #212b35;
+  }
 
   article {
     display: grid;
     grid-template-areas: "header actor" "topic date";
     grid-template-columns: 1fr 200px;
-    border-bottom: 1px solid;
+    box-sizing: content-box;
+    padding: 0.5rem;
     @include mq() {
       grid-template-columns: 1fr 100px;
     }
@@ -117,6 +143,7 @@
     &-item {
       align-items: center;
       padding: 0 0.5rem;
+      margin-right: 0.5rem;
       background-color: #dfe3e8;
       border-radius: 1rem;
       color: #454f5b;

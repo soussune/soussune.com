@@ -151,13 +151,11 @@ button {
     left: 0px;
     width: $sliderHeight;
     border: none;
-    background: #c3b922;
-    color: #fff;
+    background: #fff;
+    color: #666;
     border-top: 1px solid #999;
 
     &.canplay {
-      background: #fff;
-      color: #666;
     }
     &.paused {
       background: #34c322;

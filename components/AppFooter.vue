@@ -1,6 +1,6 @@
 <template>
   <footer role="contentinfo" class="footer">
-    <section>
+    <!-- <section>
       <h2>soussune とは</h2>
       <p>soussune は、ポッドキャストを通じて他人と意見を揉んでいきたいエンジニアの集いです。</p>
       <ul class="footer__links">
@@ -38,6 +38,16 @@
       </ul>
     </section>
     <hr>
-    <p class="footer__copyright">&copy; soussune 2017</p>
+    <p class="footer__copyright">&copy; soussune 2017</p> -->
   </footer>
 </template>
+
+<style lang="scss" scoped>
+.footer {
+  padding: 80px 0 120px;
+}
+.footer__copyright {
+  text-align: center;
+}
+
+</style>

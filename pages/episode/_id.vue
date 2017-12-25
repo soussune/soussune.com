@@ -157,7 +157,7 @@
       color: #fff;
       font-size:18px;
       border: none;
-      border-radius: 50%;
+      border-radius: 20%;
       width: 100px;
       height: 100px;
       outline: none;
@@ -167,7 +167,7 @@
       }
 
       &.playing {
-        border-radius: 10%;
+        border-radius: 5%;
         background: #fff;
         color: #666;
         border: #aaa 1px solid;
@@ -184,7 +184,7 @@
         }
 
         &.loading {
-          border-radius: 20%;
+          border-radius: 15%;
           transform: scale(0.9);
         }
 

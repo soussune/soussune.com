@@ -1,12 +1,7 @@
 export default {
-  data () {
-    return {
-      searchText: ''
-    }
-  },
-  watch: {
-    searchText (val) {
-      this.$store.commit('searchText', val)
+  methods: {
+    updateInput (e) {
+      this.$store.commit('searchText', e.target.value)
     }
   },
   directives: {

@@ -6,7 +6,6 @@
   "private": true,
   "dependencies": {
     "@nuxtjs/axios": "latest",
-    "@nuxtjs/onesignal": "^2.0.0",
     "@nuxtjs/pwa": "^2.0.4",
     "backpack-core": "^0.4.3",
     "front-matter": "^2.3.0",

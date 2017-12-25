@@ -17,10 +17,7 @@ module.exports = {
       }
     }
   },
-  modules: [ '@nuxtjs/onesignal', '@nuxtjs/pwa', '~/modules/rss', 'nuxtent' ],
-  workbox: {
-    dev: true
-  },
+  modules: [ '@nuxtjs/pwa', '~/modules/rss', 'nuxtent' ],
   css: [
     '~/assets/css/reset.scss',
     '~/assets/css/style.scss',
@@ -148,19 +145,6 @@ module.exports = {
     ]
   },
   rssItems: episodes.episode,
-  oneSignal: {
-    init: {
-      appId: '0c93cec2-86ac-419b-a0f1-a1b41ee6172e',
-      allowLocalhostAsSecureOrigin: true,
-      autoRegister: false,
-      welcomeNotification: {
-        disable: true
-      },
-      notifiyButton: {
-        enable: true
-      }
-    }
-  },
   loading: { color: '#3B8070' },
   plugins: [ '~plugins/vue-awesome.js' ]
 }

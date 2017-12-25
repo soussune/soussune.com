@@ -131,9 +131,10 @@
 
 .summary {
   display: grid;
-  grid-template-areas: "play desc" "play actors";
-  grid-template-columns: 160px auto;
   margin-top: 40px;
+
+  grid-template-columns: auto;
+  grid-template-areas: "play" "desc" "actors";
 
   & h2 {
     font-size: 24px;
@@ -145,10 +146,10 @@
   .play {
     grid-area: play;
     position: relative;
+    justify-self: center;
 
     button {
       transition: 0.4s ease-out;
-      position: absolute;
       top: 0;
       bottom: 0;
       left: 0;
@@ -197,18 +198,6 @@
   }
   .actors {
     grid-area: actors;
-  }
-
-  @include mq() {
-    grid-template-columns: auto;
-    grid-template-areas: "play" "desc" "actors";
-
-    & .play {
-      text-align: center;
-      button {
-        position: relative;
-      }
-    }
   }
 
 }

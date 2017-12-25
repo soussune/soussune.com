@@ -90,7 +90,7 @@ button {
   outline: none;
 }
 .container {
-  transition: .5s cubic-bezier(.55, 0, .1, 1);
+  transition: 0.5s bottom cubic-bezier(.55, 0, .1, 1);
 
   position: fixed;
   bottom: 0px;
@@ -101,6 +101,7 @@ button {
 
   &.hide {
     bottom: -50px;
+    opacity: 0;
   }
 }
 .play {

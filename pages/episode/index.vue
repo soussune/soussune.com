@@ -71,14 +71,20 @@
 </script>
 
 <style lang="scss" scoped>
+@import '~assets/css/mixin/_mediaquery.scss';
+
 .episode {
   text-decoration: none;
 
   article {
     display: grid;
     grid-template-areas: "header actor" "topic date";
-    grid-template-columns: 1fr 160px;
+    grid-template-columns: 1fr 200px;
     border-bottom: 1px solid;
+    @include mq() {
+      grid-template-columns: 1fr 100px;
+    }
+
   }
   &-header {
     grid-area: header;

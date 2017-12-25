@@ -1,8 +1,26 @@
+.page-container {
+  transition: all .2s cubic-bezier(.55, 0, .1, 1);
+}
 .page-enter-active,
 .page-leave-active {
-  transition: opacity .2s cubic-bezier(.55, 0, .1, 1);
 }
 .page-enter,
 .page-leave-active {
   opacity: 0;
+}
+
+.slide-left-enter,
+.slide-right-leave-active,
+.slide-left-leave-active,
+.slide-right-enter {
+  transition: all .4s ease-out;
+  opacity: 0.1;
+}
+.slide-left-enter,
+.slide-right-leave-active {
+  transform: translate(200px, 0);
+}
+.slide-left-leave-active,
+.slide-right-enter {
+  transform: translate(-200px, 0);
 }

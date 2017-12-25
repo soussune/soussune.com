@@ -8,7 +8,6 @@ export default {
   },
   mounted () {
     const au = (this.audio = this.$refs.audio)
-    au.autoplay = true
 
     // bind audio value
     au.addEventListener('loadedmetadata', this.onLoadedmetadata)

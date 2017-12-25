@@ -51,6 +51,8 @@ export const mutations = {
   },
   src (state, payload) {
     state.src = payload
+    state.currentTime = 0
+    state.buffered = 0
   },
   muted (state, payload) {
     state.muted = payload

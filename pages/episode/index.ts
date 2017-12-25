@@ -35,7 +35,7 @@ export default {
   },
   head () {
     return {
-      title: 'All episodes'
+      title: 'Episode list'
     }
   }
 }

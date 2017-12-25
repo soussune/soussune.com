@@ -68,30 +68,30 @@
           </svg>
         </nuxt-link>
       </div>
-      <div class="top-bar__list">
-        <div class="top-bar__item top-bar__item--fill">
-          <section class="top-bar-search">
-            <div class="top-bar-search__input-wrapper">
-              <div class="search-input-wrapper">
-                <div class="search-input">
-                  <span class="search-input__add-on search-input__add-on--before">
-                    <svg class="search-icon search-icon--size-20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                      <path d="M8 12c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm9.707 4.293l-4.82-4.82C13.585 10.493 14 9.296 14 8c0-3.313-2.687-6-6-6S2 4.687 2 8s2.687 6 6 6c1.296 0 2.492-.415 3.473-1.113l4.82 4.82c.195.195.45.293.707.293s.512-.098.707-.293c.39-.39.39-1.023 0-1.414z"></path>
-                    </svg>
-                  </span>
-                  <input
-                    type="search"
-                    name=""
-                    placeholder="検索"
-                    class="search-input"
-                    :value="$store.state.searchText"
-                    v-ime-input="searchText"
-                  >
-                </div>
+      <div class="top-bar__search">
+        <section class="top-bar-search">
+          <div class="top-bar-search__input-wrapper">
+            <div class="search-input-wrapper">
+              <div class="search-input">
+                <span class="search-input__add-on search-input__add-on--before">
+                  <svg class="search-icon search-icon--size-20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                    <path d="M8 12c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm9.707 4.293l-4.82-4.82C13.585 10.493 14 9.296 14 8c0-3.313-2.687-6-6-6S2 4.687 2 8s2.687 6 6 6c1.296 0 2.492-.415 3.473-1.113l4.82 4.82c.195.195.45.293.707.293s.512-.098.707-.293c.39-.39.39-1.023 0-1.414z"></path>
+                  </svg>
+                </span>
+                <input
+                  type="search"
+                  name=""
+                  placeholder="検索"
+                  class="search-input"
+                  :value="$store.state.searchText"
+                  v-ime-input="searchText"
+                >
               </div>
             </div>
-          </section>
-        </div>
+          </div>
+        </section>
+      </div>
+      <div class="top-bar__list">
         <div class="top-bar__item top-bar__item--separated">
           <nuxt-link to="/episode">
             Episode
@@ -123,25 +123,20 @@
   right: 0;
   left: 0;
   box-sizing: border-box;
-  display: flex;
-  align-items: center;
   height: 3.8rem;
 }
 
 .top-bar {
-  display: flex;
-  align-items: center;
+  display: grid;
+  background: #1c2260;
   height: 3.8rem;
   width: 100vw;
-  background: #1c2260;
-  align-items: stretch;
-  width: 100%;
+  grid-template-columns: 14.8rem 1fr;
+  grid-template-areas: 'logo search list';
 
   &__branding {
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
-    height: 100%;
+    grid-area: logo;
+    align-self: center;
     width: 14.8rem;
     min-width: 14.8rem;
     padding-right: 0.8rem;
@@ -149,46 +144,33 @@
 
     a {
       display: flex;
-      align-items: center;
     }
   }
 
+  &__search {
+    grid-area: search;
+    align-self: center;
+    padding-right: 0.8rem;
+    padding-left: 0.8rem;
+  }
+
   &__list {
+    grid-area: list;
+    align-self: center;
+    justify-self: end;
     display: flex;
-    flex: 1;
   }
 
   &__item {
     color: #ffffff;
-    display: flex;
     box-sizing: border-box;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    min-width: 5.6rem;
+    text-align: center;
+    min-width: 6rem;
 
-    &--fill {
-      flex: 1;
-    }
-    &--separated {
-      border-left: 1px solid rgba(0, 0, 0, 0.42);
+    a {
+      text-decoration: none;
     }
   }
-}
-
-.top-bar-search {
-  box-sizing: border-box;
-  flex: 1;
-  padding-left: 2.8rem;
-  padding-right: 2.8rem;
-
-  &__input-wrapper {
-    position: relative;
-  }
-}
-
-.search-input-wrapper {
-  position: relative;
 }
 
 .search-input {
@@ -255,7 +237,6 @@
   vertical-align: middle;
   fill: currentColor;
   align-self: center;
-  flex: none;
   white-space: nowrap;
 }
 </style>

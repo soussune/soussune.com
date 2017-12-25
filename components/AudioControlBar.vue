@@ -72,7 +72,7 @@
       >
 
       <button @click="togglePlay" class="toggleplay" :class="{ canplay: canplay, paused: paused }">
-        <icon :name="paused ? 'play' : (canplay ? 'pause' : 'spinner')" :spin="!canplay" scale="1.5"></icon>
+        <icon :name="paused ? 'play' : (canplay ? 'pause' : 'spinner')" :spin="!canplay && !paused" scale="1.5"></icon>
       </button>
 
     </div>

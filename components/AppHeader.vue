@@ -10,7 +10,7 @@
         <section class="top-bar-search">
           <div class="top-bar-search__input-wrapper">
             <div class="search-input-wrapper">
-              <div
+              <label
                 class="search-input"
                 :class="($store.state.searchFocus) ? 'search-input--focus':''"
               >
@@ -34,7 +34,7 @@
                   @focus="focus"
                   @blur="blur"
                 >
-              </div>
+              </label>
             </div>
           </div>
         </section>

@@ -3,6 +3,7 @@ import { DateTime } from 'luxon'
 export const state = () => ({
   queries: [],
   searchText: '',
+  searchFocus: false,
   episodes: [],
   actors: [],
   actorsMap: {}
@@ -36,6 +37,9 @@ export const mutations = {
   searchText (state, payload) {
     state.queries = payload.split(/\s+/).filter((s) => s !== '')
     state.searchText = payload
+  },
+  searchFocus (state, payload) {
+    state.searchFocus = payload
   },
   episodes (state, payload) {
     state.episodes = payload

@@ -1,7 +1,7 @@
 const nodeExternals = require('webpack-node-externals')
 const episodes = require('./server/sitemap').episodes
 
-module.exports = {
+const conf = {
   router: {
     // https://ja.nuxtjs.org/api/configuration-router#scrollBehavior
     scrollBehavior: (to, from, savedPosition) => {
@@ -17,14 +17,7 @@ module.exports = {
       }
     }
   },
-  modules: [
-    '@nuxtjs/pwa',
-    ['@nuxtjs/sentry', {
-      dsn: process.env.SENTRY_DSN
-    }],
-    '~/modules/rss',
-    'nuxtent'
-  ],
+  modules: [ '@nuxtjs/pwa', '~/modules/rss', 'nuxtent' ],
   css: [
     '~/assets/css/reset.scss',
     '~/assets/css/style.scss',
@@ -177,3 +170,14 @@ module.exports = {
   loading: { color: '#3B8070' },
   plugins: [ '~plugins/vue-awesome.js' ]
 }
+
+if (process.env.NODE_ENV === 'production') {
+  conf.modules.push([
+    '@nuxtjs/sentry',
+    {
+      dsn: process.env.SENTRY_DSN
+    }
+  ])
+}
+
+module.exports = conf

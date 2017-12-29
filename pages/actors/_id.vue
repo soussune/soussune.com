@@ -1,11 +1,10 @@
 <template>
   <section>
     <section class="title">
-      <img
-        :src="actor.imageUrl"
-        :title="actor.title"
+      <ActorIcon
+        :actor="actor"
         class="icon"
-      >
+      />
       <h1 class="actor-title"> {{ actor.title }} </h1>
     </section>
 

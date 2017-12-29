@@ -1,8 +1,12 @@
 import { DateTime } from 'luxon'
 import { mapState } from 'vuex'
 import * as EpisodeHelper from '~/helpers/EpisodeHelper.js'
+import ActorIcon from '~/components/ActorIcon.vue'
 
 export default {
+  components: {
+    ActorIcon
+  },
   computed: {
     ...mapState([ 'actorsMap' ]),
     episodes () {

@@ -1,7 +1,11 @@
 import { DateTime } from 'luxon'
 import * as EpisodeHelper from '~/helpers/EpisodeHelper.js'
+import ActorIcon from '~/components/ActorIcon.vue'
 
 export default {
+  components: {
+    ActorIcon
+  },
   filters: {
     date (episode) {
       return DateTime.fromMillis(episode.published).toFormat('yyyy年MM月dd日')

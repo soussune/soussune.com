@@ -37,13 +37,12 @@
             </div>
 
             <div class="episode-actor">
-              <img
+              <ActorIcon
                 class="episode-actor-item"
                 v-for="actor in episode.actors"
                 :key="actor.actorId"
-                :src="actor.imageUrl"
-                :title="actor.title"
-              >
+                :actor="actor"
+              />
             </div>
 
             <div class="episode-topic">

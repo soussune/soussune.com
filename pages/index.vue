@@ -30,14 +30,12 @@
             {{ episode | desc }}
           </p>
           <div class="actor-list">
-            <img
+            <ActorIcon
               class="actor-list-item"
               v-for="actor in episode.actors"
               :key="actor.actorId"
-              :to="actor.permalink"
-              :src="actor.imageUrl"
-              :title="actor.title"
-            >
+              :actor="actor"
+            />
           </div>
         </article>
       </nuxt-link>

@@ -19,6 +19,9 @@ module.exports = {
   },
   modules: [
     '@nuxtjs/pwa',
+    ['@nuxtjs/sentry', {
+      dsn: process.env.SENTRY_DSN
+    }],
     '~/modules/rss',
     'nuxtent'
   ],

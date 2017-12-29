@@ -11,6 +11,11 @@ export default {
       })
     }
   },
+  methods: {
+    imgError (actor) {
+      throw new Error(`Image not found at ${actor.imageUrl}. (actor: ${actor.actorId})`)
+    }
+  },
   head () {
     return {
 			title: 'All actors'

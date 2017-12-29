@@ -10,6 +10,7 @@
           <img
             :src="actor.imageUrl"
             :title="actor.title"
+            @error="imgError(actor)"
           >
           <p>{{ actor.title }} ({{ actor.episodes.length }})</p>
         </nuxt-link>

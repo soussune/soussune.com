@@ -1,15 +1,15 @@
-import Logo from '~/components/Logo.vue'
+import AppLogo from '~/components/AppLogo.vue'
 
 export default {
   components: {
-    Logo
+    AppLogo
   },
   methods: {
     updateInput (e) {
       this.$store.commit('searchText', e.target.value)
     },
     blur (e) {
-      this.$store.commit('searchFocus', !!(e.target.value))
+      this.$store.commit('searchFocus', !!e.target.value)
     },
     focus () {
       this.$store.commit('searchFocus', true)

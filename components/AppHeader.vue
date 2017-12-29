@@ -3,7 +3,7 @@
     <div class="top-bar">
       <div class="top-bar__branding">
         <nuxt-link exact to="/">
-          <logo />
+          <AppLogo />
         </nuxt-link>
       </div>
       <div class="top-bar__search">

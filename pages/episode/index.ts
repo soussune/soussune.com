@@ -1,4 +1,5 @@
 import { DateTime } from 'luxon'
+import { mapGetters } from 'vuex'
 import * as EpisodeHelper from '~/helpers/EpisodeHelper.js'
 import ActorIcon from '~/components/ActorIcon.vue'
 
@@ -7,6 +8,7 @@ export default {
     ActorIcon
   },
   computed: {
+    ...mapGetters([ 'queries' ]),
     episodes () {
       return this.$store.getters.filteredEpisodes.map((episode) => ({
         ...episode,
@@ -24,7 +26,7 @@ export default {
   },
   methods: {
     removeQuery (i) {
-      const queries = this.$store.state.queries.slice()
+      const queries = this.$store.getters.queries.slice()
       queries.splice(i, 1)
       this.$store.commit('searchText', queries.join(' '))
     }

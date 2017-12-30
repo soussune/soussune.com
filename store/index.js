@@ -5,12 +5,14 @@ const defaultProfileImageURL = 'https://abs.twimg.com/sticky/default_profile_ima
 const regularPath = (val) => val.replace(/\/$/, '')
 
 export const state = () => ({
-  queries: [],
   searchText: '',
   episodes: [],
   actors: []
 })
 export const getters = {
+  queries: (state) => {
+    return state.searchText.split(/\s+/).filter((s) => s !== '')
+  },
   actorToEpisodeMap: (state) => {
     return state.episodes.reduce((map, episode) => {
       episode.actorIds.forEach((actorId) => {
@@ -56,9 +58,9 @@ export const getters = {
     }))
   },
   filteredEpisodes: (state, getters) => {
-    if (state.queries.length === 0) return state.episodes
+    if (getters.queries.length === 0) return state.episodes
     return getters.episodesForFilter.filter((ep) =>
-      state.queries.every((q) => {
+      getters.queries.every((q) => {
         const r = new RegExp(q, 'i')
         return (
           ep.actorIds.some((a) => a.match(r)) ||
@@ -78,7 +80,6 @@ export const mutations = {
     })
   },
   searchText (state, payload) {
-    state.queries = payload.split(/\s+/).filter((s) => s !== '')
     state.searchText = payload
   },
   episodes (state, payload) {

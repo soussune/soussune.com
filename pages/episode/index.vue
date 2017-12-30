@@ -7,7 +7,7 @@
     </header>
 
     <div v-if="queries.length > 0">
-      <icon name="search" scale="1.5"></icon> 検索中:（{{`${episodes.length}件`}}）
+      <icon name="search" scale="1.5"></icon> 検索中:（{{`${episodes.length} / ${$store.state.episodes.length}  件`}}）
       <button
         v-for="(query, i) in queries"
         :key="query"

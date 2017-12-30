@@ -20,7 +20,6 @@ export default {
     this.twitterWidget = true
 
     this.$store.commit('searchText', this.$route.query.q || '')
-    this.$store.commit('searchFocus', !!this.$route.query.q)
     this.$store.watch((state) => state.searchText, this.onChangeQuery)
   },
   methods: {

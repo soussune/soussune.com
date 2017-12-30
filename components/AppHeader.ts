@@ -8,11 +8,21 @@ export default {
     updateInput (e) {
       this.$store.commit('searchText', e.target.value)
     },
-    blur (e) {
-      this.$store.commit('searchFocus', !!e.target.value)
+    onBlur () {
+      this.onEdit = false
     },
-    focus () {
-      this.$store.commit('searchFocus', true)
+    onFocus () {
+      this.onEdit = true
+    }
+  },
+  data () {
+    return {
+      onEdit: false
+    }
+  },
+  computed: {
+    focused () {
+      return this.onEdit || this.$store.state.searchText !== ''
     }
   },
   directives: {

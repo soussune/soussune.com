@@ -27,12 +27,10 @@ export default {
       const queries = this.$store.state.queries.slice()
       queries.splice(i, 1)
       this.$store.commit('searchText', queries.join(' '))
-      this.$store.commit('searchFocus', !!queries.length)
     }
   },
   destroyed () {
     this.$store.commit('searchText', '')
-    this.$store.commit('searchFocus', false)
   },
   head () {
     return {

@@ -32,12 +32,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(
-      [ 'canplay', 'paused', 'duration', 'buffered', 'title' ].reduce(
-        (map, prop) => ({ ...map, [prop]: (state) => state.audio[prop] }),
-        {}
-      )
-    ),
+    ...mapState('audio', [ 'canplay', 'paused', 'duration', 'buffered', 'title' ]),
     hide () {
       return this.$store.state.audio.src === ''
     },

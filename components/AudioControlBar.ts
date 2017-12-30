@@ -1,3 +1,5 @@
+import { mapState } from 'vuex'
+
 export default {
   filters: {
     time (val: number) {
@@ -30,23 +32,14 @@ export default {
     }
   },
   computed: {
-    canplay () {
-      return this.$store.state.audio.canplay
-    },
-    paused () {
-      return this.$store.state.audio.paused
-    },
+    ...mapState(
+      [ 'canplay', 'paused', 'duration', 'buffered', 'title' ].reduce(
+        (map, prop) => ({ ...map, [prop]: (state) => state.audio[prop] }),
+        {}
+      )
+    ),
     hide () {
       return this.$store.state.audio.src === ''
-    },
-    duration () {
-      return this.$store.state.audio.duration
-    },
-    buffered () {
-      return this.$store.state.audio.buffered
-    },
-    title () {
-      return this.$store.state.audio.title
     },
     currentTime: {
       get () {

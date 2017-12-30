@@ -12,15 +12,26 @@ export const state = () => ({
   actors: []
 })
 export const getters = {
+  actorToEpisodeMap: (state) => {
+    return state.episodes.reduce((map, episode) => {
+      episode.actorIds.forEach((actorId) => {
+        map[actorId] = [ ...(map[actorId] || []), episode ]
+      })
+      return map
+    }, {})
+  },
+  actorsWithEpisodes: (state, getters) => {
+    return state.actors.map((actor) => ({
+      ...actor,
+      episodes: getters.actorToEpisodeMap[actor.actorId] || []
+    }))
+  },
   actorsMap: (state) => {
     return state.actors.reduce((map, actor) => ({ ...map, [actor.actorId]: actor }), {})
   },
-  actorById: (state, getters) => (actorId) => {
-    return getters.actorsMap[actorId]
-  },
-  actorByPath: (state) => (path) => {
+  actorByPath: (state, getters) => (path) => {
     const rpath = regularPath(path)
-    return state.actors.find((actor) => actor.path === rpath)
+    return getters.actorsWithEpisodes.find((actor) => actor.path === rpath)
   },
   episodesWithActors: (state, getters) => {
     return state.episodes.map((episode) => ({
@@ -39,9 +50,15 @@ export const getters = {
       older: state.episodes[i + 1]
     }
   },
-  filteredEpisodes: (state) => {
+  episodesForFilter: (state) => {
+    return state.episodes.map((episode) => ({
+      ...episode,
+      bodyText: episode.body.replace(/<[^>]*?>/g, ' ')
+    }))
+  },
+  filteredEpisodes: (state, getters) => {
     if (state.queries.length === 0) return state.episodes
-    return state.episodes.filter((ep) =>
+    return getters.episodesForFilter.filter((ep) =>
       state.queries.every((q) => {
         const r = new RegExp(q, 'i')
         return (
@@ -80,24 +97,13 @@ export const actions = {
     const episodes = (await app
       .$content('/episode')
       .query({ exclude: [ 'meta', 'anchors', 'date' ] })
-      .getAll()).map((e) => ({
-        ...e,
-        published: DateTime.fromSQL(e.published).valueOf(),
-        id: e.path.replace(/^.*\//, ''),
-        bodyText: e.body.replace(/<[^>]*?>/g, ' ')
+      .getAll()).map((episode) => ({
+        ...episode,
+        published: DateTime.fromSQL(episode.published).valueOf(),
+        id: episode.path.replace(/^.*\//, '')
       }))
 
-    const appearMap = episodes.reduce((map, epsode) => {
-      epsode.actorIds.forEach((actorId) => {
-        map[actorId] = [ ...(map[actorId] || []), epsode ]
-      })
-      return map
-    }, {})
-
-    const actors = (await app
-      .$content('/actors')
-      .query({ exclude: [ 'meta', 'anchors', 'date' ] })
-      .getAll()).map((actor) => ({ ...actor, episodes: appearMap[actor.actorId] || [] }))
+    const actors = await app.$content('/actors').query({ exclude: [ 'meta', 'anchors', 'date' ] }).getAll()
 
     commit('episodes', episodes)
     commit('actors', actors)

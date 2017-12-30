@@ -1,4 +1,7 @@
+import Vue from 'vue'
 import { DateTime } from 'luxon'
+
+const defaultProfileImageURL = 'https://abs.twimg.com/sticky/default_profile_images/default_profile_200x200.png'
 
 export const state = () => ({
   queries: [],
@@ -37,15 +40,12 @@ export const getters = {
 }
 export const mutations = {
   setDefaultActorIcon (state, payload) {
-    state.actors = state.actors.map(
-      (actor) =>
-        actor.actorId === payload
-          ? {
-            ...actor,
-            imageUrl: 'https://abs.twimg.com/sticky/default_profile_images/default_profile_200x200.png'
-          }
-          : actor
-    )
+    const i = state.actors.findIndex((actor) => actor.actorId === payload)
+    if (i < 0) return
+    Vue.set(state.actors, i, {
+      ...state.actors[i],
+      imageUrl: defaultProfileImageURL
+    })
   },
   searchText (state, payload) {
     state.queries = payload.split(/\s+/).filter((s) => s !== '')

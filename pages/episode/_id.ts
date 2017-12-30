@@ -1,7 +1,11 @@
 import { DateTime } from 'luxon'
 import * as EpisodeHelper from '~/helpers/EpisodeHelper.js'
+import ActorIcon from '~/components/ActorIcon.vue'
 
 export default {
+  components: {
+    ActorIcon
+  },
   filters: {
     date (episode) {
       return DateTime.fromMillis(episode.published).toFormat('yyyy年MM月dd日')
@@ -11,12 +15,8 @@ export default {
     }
   },
   asyncData ({ store, route }) {
-    const episode = store.getters.episodeByPath(route.path)
     return {
-      episode: {
-        ...episode,
-        actors: episode.actorIds.map((actorId) => store.getters.actorById(actorId))
-      }
+      episode: store.getters.episodeByPath(route.path)
     }
   },
   computed: {
@@ -43,11 +43,15 @@ export default {
   },
   mounted () {
     this.loadTwitterWidget()
+    this.$store.watch((state) => state.actors, this.updateEpisode)
   },
   updated () {
     this.loadTwitterWidget()
   },
   methods: {
+    updateEpisode () {
+      this.episode = this.$store.getters.episodeByPath(this.$route.path)
+    },
     commit (prop: string, payload: any): void {
       this.$store.commit(`audio/${prop}`, payload)
     },

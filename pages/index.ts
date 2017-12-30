@@ -1,15 +1,23 @@
 import { DateTime } from 'luxon'
 import * as EpisodeHelper from '~/helpers/EpisodeHelper.js'
+import ActorIcon from '~/components/ActorIcon.vue'
 
 const showCount = 10
 export default {
-  asyncData ({ store, route }) {
-    const actorsMap = store.state.actorsMap
+  components: {
+    ActorIcon
+  },
+  asyncData ({ store }) {
     return {
-      episodes: store.state.episodes.map((episode) => ({
-        ...episode,
-        actors: episode.actorIds.map((actorId) => actorsMap[actorId])
-      }))
+      episodes: store.getters.episodesWithActors
+    }
+  },
+  mounted () {
+    this.$store.watch((state) => state.actors, this.updateEpisodes)
+  },
+  methods: {
+    updateEpisodes () {
+      this.episodes = this.$store.getters.episodesWithActors
     }
   },
   computed: {

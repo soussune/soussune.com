@@ -30,10 +30,9 @@
             class="actor-list-item"
           >
             <nuxt-link :to="actor.permalink">
-              <img
-                :src="actor.imageUrl"
-                :title="actor.title"
-              >
+              <ActorIcon
+                :actor="actor"
+              />
               <p>{{ actor.title }}</p>
             </nuxt-link>
           </li>

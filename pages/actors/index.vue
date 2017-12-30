@@ -7,11 +7,9 @@
         class="actor-list-item"
       >
         <nuxt-link :to="actor.permalink">
-          <img
-            :src="actor.imageUrl"
-            :title="actor.title"
-            @error="imgError(actor)"
-          >
+          <ActorIcon
+            :actor="actor"
+          />
           <p>{{ actor.title }} ({{ actor.episodes.length }})</p>
         </nuxt-link>
       </li>

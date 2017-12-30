@@ -89,7 +89,7 @@ export const mutations = {
   }
 }
 export const actions = {
-  async nuxtServerInit ({ commit }, { req, app }) {
+  async nuxtServerInit ({ commit }, { req, app, query }) {
     const episodes = (await app
       .$content('/episode')
       .query({ exclude: [ 'meta', 'anchors', 'date' ] })
@@ -103,5 +103,6 @@ export const actions = {
 
     commit('episodes', episodes)
     commit('actors', actors)
+    commit('searchText', query.q || '')
   }
 }

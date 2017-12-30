@@ -18,8 +18,6 @@ export default {
   async mounted () {
     // https://github.com/nuxt/nuxt.js/issues/2000
     this.twitterWidget = true
-
-    this.$store.commit('searchText', this.$route.query.q || '')
     this.$store.watch((state) => state.searchText, this.onChangeQuery)
   },
   methods: {

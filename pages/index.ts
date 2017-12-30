@@ -7,12 +7,17 @@ export default {
   components: {
     ActorIcon
   },
-  asyncData ({ store, route }) {
+  asyncData ({ store }) {
     return {
-      episodes: store.state.episodes.map((episode) => ({
-        ...episode,
-        actors: episode.actorIds.map((actorId) => store.getters.actorsMap[actorId])
-      }))
+      episodes: store.getters.episodesWithActors
+    }
+  },
+  mounted () {
+    this.$store.watch((state) => state.actors, this.updateEpisodes)
+  },
+  methods: {
+    updateEpisodes () {
+      this.episodes = this.$store.getters.episodesWithActors
     }
   },
   computed: {

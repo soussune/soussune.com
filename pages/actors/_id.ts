@@ -9,6 +9,14 @@ export default {
       actor: store.getters.actorByPath(route.path)
     }
   },
+  mounted () {
+    this.$store.watch((state) => state.actors, this.updateActor)
+  },
+  methods: {
+    updateActor () {
+      this.actor = this.$store.getters.actorByPath(this.$route.path)
+    }
+  },
   head () {
     return {
       title: this.actor.title

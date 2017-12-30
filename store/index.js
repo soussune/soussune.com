@@ -2,6 +2,7 @@ import Vue from 'vue'
 import { DateTime } from 'luxon'
 
 const defaultProfileImageURL = 'https://abs.twimg.com/sticky/default_profile_images/default_profile_200x200.png'
+const regularPath = (val) => val.replace(/\/$/, '')
 
 export const state = () => ({
   queries: [],
@@ -18,11 +19,25 @@ export const getters = {
     return getters.actorsMap[actorId]
   },
   actorByPath: (state) => (path) => {
-    return state.actors.find((actor) => actor.path === path)
+    const rpath = regularPath(path)
+    return state.actors.find((actor) => actor.path === rpath)
   },
-  episodeByPath: (state) => (path) => {
-    const i = state.episodes.map((ep) => ep.path).indexOf(path)
-    return { ...state.episodes[i], newer: state.episodes[i - 1], older: state.episodes[i + 1] }
+  episodesWithActors: (state, getters) => {
+    return state.episodes.map((episode) => ({
+      ...episode,
+      actors: episode.actorIds.map((actorId) => getters.actorsMap[actorId])
+    }))
+  },
+  episodeByPath: (state, getters) => (path) => {
+    const rpath = regularPath(path)
+    const episodes = getters.episodesWithActors
+    const i = episodes.map((episode) => episode.path).indexOf(rpath)
+    const episode = episodes[i]
+    return {
+      ...episode,
+      newer: state.episodes[i - 1],
+      older: state.episodes[i + 1]
+    }
   },
   filteredEpisodes: (state) => {
     if (state.queries.length === 0) return state.episodes

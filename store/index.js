@@ -25,17 +25,16 @@ export const getters = {
     return { ...state.episodes[i], newer: state.episodes[i - 1], older: state.episodes[i + 1] }
   },
   filteredEpisodes: (state) => {
-    return state.queries.length === 0
-      ? state.episodes
-      : state.episodes.filter((ep) =>
-          state.queries.every((q) => {
-            const r = new RegExp(q, 'i')
-            return (
-              ep.actorIds.some((a) => a.match(r)) ||
-              ep.topics.some((t) => t.match(r) || ep.title.match(r) || ep.bodyText.match(r))
-            )
-          })
+    if (state.queries.length === 0) return state.episodes
+    return state.episodes.filter((ep) =>
+      state.queries.every((q) => {
+        const r = new RegExp(q, 'i')
+        return (
+          ep.actorIds.some((a) => a.match(r)) ||
+          ep.topics.some((t) => t.match(r) || ep.title.match(r) || ep.bodyText.match(r))
         )
+      })
+    )
   }
 }
 export const mutations = {

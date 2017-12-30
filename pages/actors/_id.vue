@@ -1,12 +1,13 @@
 <template>
   <section>
-    <section class="title">
+
+    <header class="title">
       <ActorIcon
         :actor="actor"
         class="icon"
       />
       <h1 class="actor-title"> {{ actor.title }} </h1>
-    </section>
+    </header>
 
     <section class="body">
       <p>{{actor.description}}</p>
@@ -30,6 +31,7 @@
         not appeared yet.
       </p>
     </section>
+
   </section>
 </template>
 

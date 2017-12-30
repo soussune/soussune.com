@@ -20,7 +20,6 @@ const conf = {
   },
   modules: [
     '@nuxtjs/pwa',
-    '@nuxtjs/sentry',
     '~/modules/rss',
     'nuxtent'
   ],

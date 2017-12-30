@@ -2,7 +2,7 @@
   <img
     :src="actor.imageUrl"
     :title="actor.title"
-    @error="imgError(actor)"
+    @error="imgError"
   >
 </template>
 

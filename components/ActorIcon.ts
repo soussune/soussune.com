@@ -3,8 +3,9 @@ export default {
     actor: { type: Object, required: true }
   },
   methods: {
-    imgError (actor) {
-      throw new Error(`Image not found at ${actor.imageUrl}. (actor: ${actor.actorId})`)
+    imgError () {
+      this.$store.commit('setDefaultActorIcon', this.actor.actorId)
+      throw new Error(`Image not found at ${this.actor.imageUrl}. (actor: ${this.actor.actorId})`)
     }
   }
 }

@@ -8,11 +8,10 @@ export default {
     ActorIcon
   },
   asyncData ({ store, route }) {
-    const actorsMap = store.state.actorsMap
     return {
       episodes: store.state.episodes.map((episode) => ({
         ...episode,
-        actors: episode.actorIds.map((actorId) => actorsMap[actorId])
+        actors: episode.actorIds.map((actorId) => store.getters.actorsMap[actorId])
       }))
     }
   },

@@ -171,13 +171,4 @@ const conf = {
   plugins: [ '~plugins/vue-awesome.js' ]
 }
 
-if (process.env.NODE_ENV === 'production') {
-  conf.modules.push([
-    '@nuxtjs/sentry',
-    {
-      dsn: process.env.SENTRY_DSN
-    }
-  ])
-}
-
 module.exports = conf

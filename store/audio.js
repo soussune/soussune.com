@@ -30,47 +30,47 @@ export const getters = {
 }
 
 export const mutations = {
-  buffered (state, payload) {
+  buffered(state, payload) {
     state.buffered = payload
   },
-  duration (state, payload) {
+  duration(state, payload) {
     state.duration = payload
   },
-  currentTime (state, payload) {
+  currentTime(state, payload) {
     state.currentTime = payload
   },
-  seekTo (state, payload) {
+  seekTo(state, payload) {
     state.seekTo = payload
   },
-  volume (state, payload) {
+  volume(state, payload) {
     state.volume = state.muted ? 0 : payload
     state.volume_ = payload
   },
-  playbackRate (state, payload) {
+  playbackRate(state, payload) {
     state.playbackRate = payload
   },
-  src (state, payload) {
+  src(state, payload) {
     state.src = payload
     state.currentTime = 0
     state.buffered = 0
   },
-  muted (state, payload) {
+  muted(state, payload) {
     state.muted = payload
     state.volume = state.muted ? 0 : state.volume_
   },
-  paused (state, payload) {
+  paused(state, payload) {
     state.paused = payload
   },
-  title (state, payload) {
+  title(state, payload) {
     state.title = payload
   },
-  permalink (state, payload) {
+  permalink(state, payload) {
     state.permalink = payload
   },
-  playing (state, payload) {
+  playing(state, payload) {
     state.playing = payload
   },
-  canplay (state, payload) {
+  canplay(state, payload) {
     state.canplay = payload
   }
 }

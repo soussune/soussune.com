@@ -25,6 +25,11 @@ export default {
       return this.onEdit || this.$store.state.searchText !== ''
     }
   },
+  methods: {
+    subscribe: function(){
+      this.$OneSignal.push(["registerForPushNotifications"]);
+    }
+  },
   directives: {
     imeInput: {
       bind (el, binding, vnode) {

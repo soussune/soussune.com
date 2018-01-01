@@ -18,11 +18,7 @@ const conf = {
       }
     }
   },
-  modules: [
-    '@nuxtjs/pwa',
-    '~/modules/rss',
-    'nuxtent'
-  ],
+  modules: ['@nuxtjs/pwa', '~/modules/rss', '~/modules/typescript', 'nuxtent'],
   css: [
     '~/assets/css/reset.scss',
     '~/assets/css/style.scss',

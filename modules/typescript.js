@@ -1,6 +1,6 @@
 module.exports = function(options, next) {
   // Extend build
-  this.extendBuild(config => {
+  this.extendBuild((config) => {
     // Add TypeScript loader
     config.module.rules.push({
       test: /\.ts$/,

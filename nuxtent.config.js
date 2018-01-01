@@ -33,7 +33,8 @@ module.exports = {
     md: {
       use: [
         [
-          externalLinks, {
+          externalLinks,
+          {
             attrs: {
               target: '_blank',
               rel: 'noopener'

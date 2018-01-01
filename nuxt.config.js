@@ -35,7 +35,11 @@ const conf = {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1, shrink-to-fit=no' },
-      { name: 'description', content: 'テクノロジーと世の中についてエンジニア達が雑談するポッドキャストです。', hid: 'description' },
+      {
+        name: 'description',
+        content: 'テクノロジーと世の中についてエンジニア達が雑談するポッドキャストです。',
+        hid: 'description'
+      },
       { name: 'application-name', content: 'soussune' },
       { name: 'format-detection', content: 'telephone-no' },
 
@@ -45,20 +49,36 @@ const conf = {
       // twitter
       { name: 'twitter:card', content: 'summary' },
       { name: 'twitter:site', content: '@soussunefm' },
-      { name: 'twitter:title', content: 'soussune - エンジニアわいわいポッドキャスト「そうっすね」', hid: 'twTitle' },
+      {
+        name: 'twitter:title',
+        content: 'soussune - エンジニアわいわいポッドキャスト「そうっすね」',
+        hid: 'twTitle'
+      },
       { name: 'twitter:url', content: 'https://.soussune.com', hid: 'twUrl' },
       { name: 'twitter:image', content: '', hid: 'twImage' },
-      { name: 'twitter:description', content: 'テクノロジーと世の中についてエンジニア達が雑談するポッドキャストです。', hid: 'twDesc' },
+      {
+        name: 'twitter:description',
+        content: 'テクノロジーと世の中についてエンジニア達が雑談するポッドキャストです。',
+        hid: 'twDesc'
+      },
 
       // Facebook
       // { property: 'fb:app_id', content: '' },
-      { property: 'og:title', content: 'soussune - エンジニアわいわいポッドキャスト「そうっすね」', hid: 'ogTitle' },
+      {
+        property: 'og:title',
+        content: 'soussune - エンジニアわいわいポッドキャスト「そうっすね」',
+        hid: 'ogTitle'
+      },
       { property: 'og:site_name', content: 'soususne' },
       { property: 'og:type', content: 'article' },
       { property: 'og:url', content: 'https://soussune.com', hid: 'ogUrl' },
       { property: 'og:locale:alternate', content: 'ja' },
       { property: 'og:image', content: '', hid: 'ogImage' },
-      { property: 'og:description', content: 'テクノロジーと世の中についてエンジニア達が雑談するポッドキャストです。', hid: 'ogDesc' },
+      {
+        property: 'og:description',
+        content: 'テクノロジーと世の中についてエンジニア達が雑談するポッドキャストです。',
+        hid: 'ogDesc'
+      },
 
       // Apple iTunes
       { name: 'apple-itunes-app', content: 'app-id=1247135079' },
@@ -66,7 +86,6 @@ const conf = {
       // Microsoft
       { name: 'msapplication-TileColor', content: '#1c2260' },
       { name: 'msapplication-TileImage', content: '/mstile-144x144.png' }
-
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
@@ -91,8 +110,8 @@ const conf = {
     ]
   },
   build: {
-    vendor: [ 'luxon', 'vue-awesome' ],
-    extend (config, ctx) {
+    vendor: ['luxon', 'vue-awesome'],
+    extend(config, ctx) {
       if (ctx.isClient) {
         config.module.rules.push({
           enforce: 'pre',
@@ -104,7 +123,7 @@ const conf = {
       if (ctx.isServer) {
         config.externals = [
           nodeExternals({
-            whitelist: [ /^vue-awesome/ ]
+            whitelist: [/^vue-awesome/]
           })
         ]
       }
@@ -129,10 +148,15 @@ const conf = {
     custom_elements: [
       { 'itunes:subtitle': 'エンジニアわいわいポッドキャスト「そうっすね」' },
       { 'itunes:author': 'そうっすね制作委員会' },
-      { 'itunes:summary': 'テクノロジーと世の中についてエンジニア達が雑談するポッドキャストです。' },
+      {
+        'itunes:summary': 'テクノロジーと世の中についてエンジニア達が雑談するポッドキャストです。'
+      },
       { 'itunes:keywords': 'soussune, tech, technology, keyboard, web, development, developer' },
       {
-        'itunes:owner': [ { 'itunes:name': 'そうっすね制作委員会' }, { 'itunes:email': 'soussune.user@gmail.com' } ]
+        'itunes:owner': [
+          { 'itunes:name': 'そうっすね制作委員会' },
+          { 'itunes:email': 'soussune.user@gmail.com' }
+        ]
       },
       {
         'itunes:image': {
@@ -169,7 +193,7 @@ const conf = {
   },
   rssItems: episodes.episode,
   loading: { color: '#3B8070' },
-  plugins: [ '~plugins/vue-awesome.js' ]
+  plugins: ['~plugins/vue-awesome.js']
 }
 
 if (!conf.dev) {

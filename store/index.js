@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import { DateTime } from 'luxon'
 
-const defaultProfileImageURL = 'https://abs.twimg.com/sticky/default_profile_images/default_profile_200x200.png'
+const defaultProfileImageURL =
+  'https://abs.twimg.com/sticky/default_profile_images/default_profile_200x200.png'
 const regularPath = (val) => val.replace(/\/$/, '')
 
 export const state = () => ({
@@ -16,7 +17,7 @@ export const getters = {
   actorToEpisodeMap: (state) => {
     return state.episodes.reduce((map, episode) => {
       episode.actorIds.forEach((actorId) => {
-        map[actorId] = [ ...(map[actorId] || []), episode ]
+        map[actorId] = [...(map[actorId] || []), episode]
       })
       return map
     }, {})
@@ -71,7 +72,7 @@ export const getters = {
   }
 }
 export const mutations = {
-  setDefaultActorIcon (state, payload) {
+  setDefaultActorIcon(state, payload) {
     const i = state.actors.findIndex((actor) => actor.actorId === payload)
     if (i < 0) return
     Vue.set(state.actors, i, {
@@ -79,28 +80,33 @@ export const mutations = {
       imageUrl: defaultProfileImageURL
     })
   },
-  searchText (state, payload) {
+  searchText(state, payload) {
     state.searchText = payload
   },
-  episodes (state, payload) {
+  episodes(state, payload) {
     state.episodes = payload
   },
-  actors (state, payload) {
+  actors(state, payload) {
     state.actors = payload
   }
 }
 export const actions = {
-  async nuxtServerInit ({ commit }, { req, app, query }) {
-    const episodes = (await app
+  async nuxtServerInit({ commit }, { req, app, query }) {
+    let episodes = await app
       .$content('/episode')
-      .query({ exclude: [ 'meta', 'anchors', 'date' ] })
-      .getAll()).map((episode) => ({
-        ...episode,
-        published: DateTime.fromSQL(episode.published).valueOf(),
-        id: episode.path.replace(/^.*\//, '')
-      }))
+      .query({ exclude: ['meta', 'anchors', 'date'] })
+      .getAll()
 
-    const actors = await app.$content('/actors').query({ exclude: [ 'meta', 'anchors', 'date' ] }).getAll()
+    episodes = episodes.map((episode) => ({
+      ...episode,
+      published: DateTime.fromSQL(episode.published).valueOf(),
+      id: episode.path.replace(/^.*\//, '')
+    }))
+
+    const actors = await app
+      .$content('/actors')
+      .query({ exclude: ['meta', 'anchors', 'date'] })
+      .getAll()
 
     commit('episodes', episodes)
     commit('actors', actors)

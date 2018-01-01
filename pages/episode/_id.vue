@@ -101,15 +101,16 @@
 
 .ep-links {
   & a {
-    position: absolute;
-    top: 160px;
+    position: fixed;
+    z-index: 10;
+    top: 45%;
     color: rgba(0,0,0,.2);
 
     &.newer {
       text-align: right;
     }
 
-    $offset: -30px;
+    $offset: 10px;
     &.older {
       left: $offset;
     }
@@ -117,6 +118,8 @@
       right: $offset;
     }
     @include mq() {
+      position: absolute;
+      top: 200px;
       $offset: 0px;
       &.older {
         left: $offset;

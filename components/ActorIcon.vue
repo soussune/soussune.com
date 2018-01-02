@@ -1,12 +1,14 @@
 <template>
   <img
-    :src="actor.imageUrl"
-    :title="actor.title"
+    :src="value.imageUrl"
+    :title="value.title"
     @error="imgError"
   >
 </template>
 
 <script lang="ts">
+import Raven from 'raven-js'
+
 class ActorImageError extends Error {
   constructor(message?: string) {
     super(message)
@@ -15,15 +17,21 @@ class ActorImageError extends Error {
 }
 export default {
   props: {
-    actor: { type: Object, required: true }
+    value: { type: Object, required: true }
   },
   methods: {
     imgError() {
-      this.$store.commit('setDefaultActorIcon', this.actor.actorId)
-
-      throw new ActorImageError(
-        `Image not found at ${this.actor.imageUrl}. (actor: ${this.actor.actorId})`
+      Raven.captureException(
+        new ActorImageError(
+          `Image not found at ${this.value.imageUrl}. (actor: ${this.value.actorId})`
+        ),
+        { level: 'warning' }
       )
+
+      this.$emit('input', {
+        ...this.value,
+        imageUrl: 'https://abs.twimg.com/sticky/default_profile_images/default_profile_200x200.png'
+      })
     }
   }
 }

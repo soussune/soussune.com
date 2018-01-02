@@ -2,13 +2,13 @@
   <div>
     <ul class="actor-list">
       <li
-        v-for="actor in sortedActors"
+        v-for="(actor, i) in sortedActors"
         :key="actor.title"
         class="actor-list-item"
       >
         <nuxt-link :to="actor.permalink">
           <ActorIcon
-            :actor="actor"
+            v-model="sortedActors[i]"
           />
           <p>{{ actor.title }} ({{ actor.episodes.length }})</p>
         </nuxt-link>

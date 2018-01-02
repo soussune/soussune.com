@@ -3,7 +3,7 @@
 
     <header class="title">
       <ActorIcon
-        :actor="actor"
+        v-model="actor"
         class="icon"
       />
       <h1 class="actor-title"> {{ actor.title }} </h1>

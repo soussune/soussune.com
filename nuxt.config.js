@@ -12,7 +12,7 @@ const conf = {
         // Scroll to top as default
         let position = { x: 0, y: 0 }
         if (to.hash) {
-          position = { selector: to.hash }
+          position = { selector: to.hash, offset: { x: 0, y: 70 } }
         }
         return position
       }

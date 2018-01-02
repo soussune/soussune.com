@@ -40,10 +40,14 @@ export default {
       twitterWidget: false
     }
   },
-  async mounted() {
+  mounted() {
+    this.$store.watch(state => state.searchText, this.onChangeQuery)
+    this.$store.commit('searchText', this.$route.query.q || '')
+
     // https://github.com/nuxt/nuxt.js/issues/2000
     this.twitterWidget = true
-    this.$store.watch(state => state.searchText, this.onChangeQuery)
+
+    // Load all content data on client init
     this.$store.app.$content('/episode').getAll()
     this.$store.app.$content('/actors').getAll()
   },

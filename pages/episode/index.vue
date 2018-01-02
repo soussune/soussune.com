@@ -88,7 +88,7 @@ export default {
       if (this.queries.length === 0) return this.episodes
       return this.episodesForFilter.filter(ep =>
         this.queries.every(q => {
-          const r = new RegExp(q, 'i')
+          const r = new RegExp(q.replace(/[\\^$.*+?()[\]{}|]/g, '\\$&'), 'i')
           return (
             ep.actorIds.some(a => a.match(r)) ||
             ep.topics.some(t => t.match(r) || ep.title.match(r) || ep.bodyText.match(r))

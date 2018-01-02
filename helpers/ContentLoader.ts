@@ -21,7 +21,7 @@ const excludeBody = (obj) => {
   return rest
 }
 
-class Content {
+class ContentLoader {
   app = null
   episodes: any[] = []
   actors: any[] = []
@@ -98,4 +98,4 @@ class Content {
     }
   }
 }
-export default Content
+export default ContentLoader

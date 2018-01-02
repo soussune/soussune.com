@@ -100,7 +100,7 @@ export default {
   },
   computed: {
     loaded(): boolean {
-      return 0 < this.duration
+      return this.duration > 0
     },
     duration() {
       return this.$store.state.audio.duration

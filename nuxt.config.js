@@ -193,7 +193,7 @@ const conf = {
   },
   rssItems: episodes.episode,
   loading: { color: '#3B8070' },
-  plugins: ['~plugins/vue-awesome.js']
+  plugins: ['~plugins/vue-awesome.js', '~plugins/content-loader.js']
 }
 
 if (!conf.dev) {

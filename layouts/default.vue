@@ -44,6 +44,8 @@ export default {
     // https://github.com/nuxt/nuxt.js/issues/2000
     this.twitterWidget = true
     this.$store.watch(state => state.searchText, this.onChangeQuery)
+    this.$store.app.$content('/episode').getAll()
+    this.$store.app.$content('/actors').getAll()
   },
   methods: {
     onChangeQuery(val) {

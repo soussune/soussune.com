@@ -25,13 +25,13 @@
         <h2>出演者</h2>
         <ul class="actor-list">
           <li
-            v-for="actor in episode.actors"
+            v-for="(actor,i) in episode.actors"
             :key="actor.title"
             class="actor-list-item"
           >
             <nuxt-link :to="actor.permalink">
               <ActorIcon
-                :actor="actor"
+                v-model="episode.actors[i]"
               />
               <p>{{ actor.title }}</p>
             </nuxt-link>
@@ -80,9 +80,9 @@ export default {
       return EpisodeHelper.desc(episode)
     }
   },
-  asyncData({ store, route }) {
+  async asyncData({ app, params }) {
     return {
-      episode: store.getters.episodeByPath(route.path)
+      episode: await app.$contentLoader.getEpisode(params.id)
     }
   },
   computed: {
@@ -109,7 +109,6 @@ export default {
   },
   mounted() {
     this.loadTwitterWidget()
-    this.$store.watch(state => state.actors, this.updateEpisode)
   },
   updated() {
     this.loadTwitterWidget()

@@ -3,7 +3,7 @@
 
     <header class="title">
       <ActorIcon
-        :actor="actor"
+        v-model="actor"
         class="icon"
       />
       <h1 class="actor-title"> {{ actor.title }} </h1>
@@ -42,17 +42,9 @@ export default {
   components: {
     ActorIcon
   },
-  asyncData({ store, route }) {
+  async asyncData({ app, params }) {
     return {
-      actor: store.getters.actorByPath(route.path)
-    }
-  },
-  mounted() {
-    this.$store.watch(state => state.actors, this.updateActor)
-  },
-  methods: {
-    updateActor() {
-      this.actor = this.$store.getters.actorByPath(this.$route.path)
+      actor: await app.$contentLoader.getActor(params.id)
     }
   },
   head() {

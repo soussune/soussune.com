@@ -7,7 +7,7 @@
     </header>
 
     <div v-if="queries.length > 0">
-      <icon name="search" scale="1.5"></icon> 検索中:（{{`${episodes.length} / ${$store.state.episodes.length}  件`}}）
+      <icon name="search" scale="1.5"></icon> 検索中:（{{`${filteredEpisodes.length} / ${episodes.length}  件`}}）
       <button
         v-for="(query, i) in queries"
         :key="query"
@@ -19,11 +19,11 @@
     </div>
 
     <main>
-      <div class="card" v-if="episodes.length > 0">
+      <div class="card" v-if="filteredEpisodes.length > 0">
         <nuxt-link
-          :to="episode.permalink"
-          v-for="episode in episodes"
+          v-for="episode in filteredEpisodes"
           :key="episode.permalink"
+          :to="episode.permalink"
           :id="'ep' + episode.id"
           class="episode"
         >
@@ -39,9 +39,9 @@
             <div class="episode-actor">
               <ActorIcon
                 class="episode-actor-item"
-                v-for="actor in episode.actors"
+                v-for="(actor, i) in episode.actors"
                 :key="actor.actorId"
-                :actor="actor"
+                v-model="episode.actors[i]"
               />
             </div>
 
@@ -78,11 +78,28 @@ export default {
   },
   computed: {
     ...mapGetters(['queries']),
-    episodes() {
-      return this.$store.getters.filteredEpisodes.map(episode => ({
+    episodesForFilter() {
+      return this.episodes.map(episode => ({
         ...episode,
-        actors: episode.actorIds.map(actorId => this.$store.getters.actorsMap[actorId])
+        bodyText: episode.body && episode.body.replace(/<[^>]*?>/g, ' ')
       }))
+    },
+    filteredEpisodes() {
+      if (this.queries.length === 0) return this.episodes
+      return this.episodesForFilter.filter(ep =>
+        this.queries.every(q => {
+          const r = new RegExp(q, 'i')
+          return (
+            ep.actorIds.some(a => a.match(r)) ||
+            ep.topics.some(t => t.match(r) || ep.title.match(r) || ep.bodyText.match(r))
+          )
+        })
+      )
+    }
+  },
+  async asyncData({ app }) {
+    return {
+      episodes: await app.$contentLoader.getEpisodes()
     }
   },
   filters: {

@@ -80,9 +80,9 @@ export default {
       return EpisodeHelper.desc(episode)
     }
   },
-  asyncData({ store, route }) {
+  async asyncData({ app, params }) {
     return {
-      episode: store.getters.episodeByPath(route.path)
+      episode: await app.$contentLoader.getEpisode(params.id)
     }
   },
   computed: {
@@ -109,7 +109,6 @@ export default {
   },
   mounted() {
     this.loadTwitterWidget()
-    this.$store.watch(state => state.actors, this.updateEpisode)
   },
   updated() {
     this.loadTwitterWidget()

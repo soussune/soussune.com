@@ -60,17 +60,9 @@ export default {
   components: {
     ActorIcon
   },
-  asyncData({ store }) {
+  async asyncData({ app }) {
     return {
-      episodes: store.getters.episodesWithActors
-    }
-  },
-  mounted() {
-    this.$store.watch(state => state.actors, this.updateEpisodes)
-  },
-  methods: {
-    updateEpisodes() {
-      this.episodes = this.$store.getters.episodesWithActors
+      episodes: await app.$contentLoader.getHome()
     }
   },
   computed: {

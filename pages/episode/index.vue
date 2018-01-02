@@ -90,8 +90,11 @@ export default {
         this.queries.every(q => {
           const r = new RegExp(q.replace(/[\\^$.*+?()[\]{}|]/g, '\\$&'), 'i')
           return (
-            ep.actorIds.some(a => a.match(r)) ||
-            ep.topics.some(t => t.match(r) || ep.title.match(r) || ep.bodyText.match(r))
+            ep.actorIds.some(actorId => actorId.match(r)) ||
+            ep.actors.some(actor => actor.title.match(r)) ||
+            ep.topics.some(topic => topic.match(r)) ||
+            ep.title.match(r) ||
+            ep.bodyText.match(r)
           )
         })
       )

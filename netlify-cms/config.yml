@@ -4,7 +4,7 @@ backend:
   # url: http://localhost:3000
 
 media_folder: "static/uploads"
-
+publish_mode: editorial_workflow
 collections: # A list of collections the CMS should be able to edit
   - name: "episode" # Used in routes, ie.: /admin/collections/:slug/edit
     label: "Episode" # Used in the UI, ie.: "New Post"

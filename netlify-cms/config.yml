@@ -1,0 +1,25 @@
+backend:
+  name: github
+  repo: soussune/soussune.com
+  branch: master
+
+media_folder: "static/uploads"
+publish_mode: editorial_workflow
+collections: # A list of collections the CMS should be able to edit
+  - name: "episode" # Used in routes, ie.: /admin/collections/:slug/edit
+    label: "Episode" # Used in the UI, ie.: "New Post"
+    folder: "content/episode"
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    create: true # Allow users to create new documents in this collection
+    fields: # The fields each document in this collection have
+      - {label: "Title", name: "title", widget: "string", tagname: "h1"}
+      - {label: "Actor Ids", name: "actorIds", widget: "list", default: ["trkw", "miyaoka"]}
+      - {label: "Topics", name: "topics", widget: "list"}
+      - {label: "Audio file path", name: "audioFilePath", widget: "string", tagname: ""}
+      - {label: "Audio file size", name: "audioFileSize", widget: "string", tagname: ""}
+      - {label: "Duration", name: "duration", widget: "string", tagname: ""}
+      - {label: "Publish Date", name: "published", widget: "datetime", format: "YYYY-MM-DD 00:00:00 +0900"}
+      - {label: "Descriton", name: "description", widget: "string", required: false}
+      - {label: "Body", name: "body", widget: "markdown"}
+    meta:
+      - {label: "SEO Description", name: "description", widget: "text"}

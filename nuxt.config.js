@@ -2,7 +2,6 @@ const nodeExternals = require('webpack-node-externals')
 const episodes = require('./server/sitemap').episodes
 
 const conf = {
-  dev: process.env.NODE_ENV !== 'production',
   router: {
     // https://ja.nuxtjs.org/api/configuration-router#scrollBehavior
     scrollBehavior: (to, from, savedPosition) => {
@@ -18,7 +17,7 @@ const conf = {
       }
     }
   },
-  modules: ['@nuxtjs/pwa', '~/modules/rss', '~/modules/typescript', 'nuxtent'],
+  modules: ['@nuxtjs/pwa', '@nuxtjs/sentry', '~/modules/rss', '~/modules/typescript', 'nuxtent'],
   css: [
     '~/assets/css/reset.scss',
     '~/assets/css/style.scss',
@@ -193,11 +192,12 @@ const conf = {
   },
   rssItems: episodes.episode,
   loading: { color: '#3B8070' },
+  sentry: {
+    config: {
+      shouldSendCallback: () => process.env.NODE_ENV === 'production'
+    }
+  },
   plugins: ['~plugins/vue-awesome.js', '~plugins/content-loader.js']
-}
-
-if (!conf.dev) {
-  conf.modules.push('@nuxtjs/sentry')
 }
 
 module.exports = conf

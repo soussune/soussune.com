@@ -1,7 +1,15 @@
 <template>
-  <div class="container" :class="{ isHidden: isHidden }">
+  <div
+    class="container"
+    :class="{ isHidden, canplay, paused }"
+  >
 
-    <div class="options" v-if="false">
+    <div
+      class="options"
+      :class="{isOptions}"
+    >
+
+      <div class="title">{{ title }}</div>
       <div class="play">
         <button
           @click="skip(skipBack)"
@@ -24,12 +32,16 @@
       </div>
       <div>
         <span>{{currentTime | time}} / {{duration | time}}</span>
+      </div>
+      <div>
         <span>
           <button
             @click="muted = !muted"
             class="mute"
           >
-          🔊
+            <icon
+              name="volume-up"
+            ></icon>
           </button>
           <input
             class="volume"
@@ -42,6 +54,11 @@
           >
           {{ volume.toFixed(1) }}
         </span>
+
+        <icon
+          name="tachometer"
+          scale="1.5"
+        ></icon>
         <input
           class="playbackRate"
           type="range"
@@ -50,7 +67,7 @@
           max="3"
           v-model.number="playbackRate"
         >
-        x {{ playbackRate.toFixed(1) }}
+        {{ playbackRate.toFixed(1) }}x
       </div>
     </div>
 
@@ -59,7 +76,6 @@
       <button
         @click="togglePlay"
         class="play"
-        :class="{ canplay: canplay, paused: paused }"
       >
         <icon
           :name="paused ? 'play' : (canplay ? 'pause' : 'spinner')"
@@ -69,7 +85,6 @@
       </button>
 
       <div class="seekbar">
-        <div class="title" v-if="false">{{ title }} [{{currentTime | time}} / {{duration | time}}]</div>
 
         <div
           class="progress"
@@ -90,6 +105,7 @@
       </div>
 
       <button
+        @click="isOptions = !isOptions"
         class="option"
       >
         <icon
@@ -116,6 +132,7 @@ export default {
   },
   data() {
     return {
+      isOptions: false,
       skipBack: -15,
       skipFwd: 15
     }
@@ -206,6 +223,22 @@ button {
 }
 
 .options {
+  background: #333;
+  color: #fff;
+  background: #dde;
+  color: #000;
+  padding: 20px;
+  border-top: 1px solid #000;
+  width: 100%;
+
+  position: absolute;
+  z-index: -1;
+  transition: all 0.3s cubic-bezier(0.55, 0, 0.1, 1);
+
+  &.isOptions {
+    transform: translateY(-100%);
+  }
+
   .play {
     text-align: center;
 
@@ -237,34 +270,34 @@ button {
 }
 
 .base {
+  $sliderHeight: 50px;
+
   display: grid;
-  grid-template-areas: 'play seek option';
+  grid-template-areas: 'play seekbar option';
   grid-template-columns: 50px auto 50px;
 
-  $sliderHeight: 50px;
-  height: $sliderHeight;
+  border-top: 1px solid #999;
 
-  .play {
-    grid-area: play;
+  .play,
+  .option {
     border: none;
     background: #fff;
     color: #666;
-    border-top: 1px solid #999;
+  }
+  .play {
+    grid-area: play;
 
-    &.canplay {
-    }
-    &.paused {
+    .paused & {
       background: #34c322;
       color: #fff;
     }
   }
 
   .option {
-    grid-area: option;
   }
 
   .seekbar {
-    grid-area: seek;
+    grid-area: seekbar;
     background: #8c8c8c;
 
     display: grid;
@@ -273,9 +306,13 @@ button {
     .progress {
       grid-area: seek-child;
       height: 100%;
-      background: #3c3c3c;
+      background: #34c322;
       transition: all 0.3s cubic-bezier(0.55, 0, 0.1, 1);
       pointer-events: none;
+
+      .paused & {
+        background: #3c3c3c;
+      }
     }
 
     $track-color: transparent;

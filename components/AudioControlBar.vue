@@ -56,25 +56,46 @@
 
     <div class="base">
 
-      <div
-        class="progress"
-        :style="{ width: `${currentTime / duration * 100}%`}"
-      ></div>
-
-      <div class="title">{{ title }} [{{currentTime | time}} / {{duration | time}}]</div>
-
-      <input
-        type="range"
-        step="any"
-        min="0"
-        :max="duration"
-        v-model.number="currentTime"
-        @touchmove="touchmove"
-        @touchstart="touchmove"
+      <button
+        @click="togglePlay"
+        class="play"
+        :class="{ canplay: canplay, paused: paused }"
       >
+        <icon
+          :name="paused ? 'play' : (canplay ? 'pause' : 'spinner')"
+          :spin="!canplay && !paused"
+          scale="1.5"
+        ></icon>
+      </button>
 
-      <button @click="togglePlay" class="toggleplay" :class="{ canplay: canplay, paused: paused }">
-        <icon :name="paused ? 'play' : (canplay ? 'pause' : 'spinner')" :spin="!canplay && !paused" scale="1.5"></icon>
+      <div class="seekbar">
+        <div class="title" v-if="false">{{ title }} [{{currentTime | time}} / {{duration | time}}]</div>
+
+        <div
+          class="progress"
+          :style="{ width: `${progress * 100}%`}"
+        ></div>
+
+        <input
+          type="range"
+          step="any"
+          min="0"
+          :max="duration"
+          v-model.number="currentTime"
+          @touchmove="touchmove"
+          @touchstart="touchmove"
+          class="slider"
+        >
+
+      </div>
+
+      <button
+        class="option"
+      >
+        <icon
+          name="cog"
+          scale="1.5"
+        ></icon>
       </button>
 
     </div>
@@ -120,6 +141,10 @@ export default {
     ...mapState('audio', ['canplay', 'paused', 'duration', 'buffered', 'title']),
     isHidden() {
       return this.$store.state.audio.src === ''
+    },
+    progress() {
+      const p = this.currentTime / this.duration
+      return isNaN(p) ? 0 : p
     },
     currentTime: {
       get() {
@@ -212,23 +237,15 @@ button {
 }
 
 .base {
-  background: #8c8c8c;
-  position: relative;
+  display: grid;
+  grid-template-areas: 'play seek option';
+  grid-template-columns: 50px auto 50px;
 
   $sliderHeight: 50px;
   height: $sliderHeight;
-  // overflow: hidden;
 
-  & > * {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: $sliderHeight;
-  }
-
-  & .toggleplay {
-    left: 0px;
-    width: $sliderHeight;
+  .play {
+    grid-area: play;
     border: none;
     background: #fff;
     color: #666;
@@ -242,54 +259,59 @@ button {
     }
   }
 
-  & .progress {
-    background: #3c3c3c;
-    transition: all 0.1s cubic-bezier(0.55, 0, 0.1, 1);
-    pointer-events: none;
+  .option {
+    grid-area: option;
   }
 
-  & .title {
-    left: 0;
-    right: 0;
-    margin: auto;
+  .seekbar {
+    grid-area: seek;
+    background: #8c8c8c;
 
-    text-align: center;
-    color: #fff;
-    pointer-events: none;
-  }
+    display: grid;
+    grid-template-areas: 'seek-child';
 
-  $track-color: transparent;
-  $thumb-color: #607d8b;
-
-  $thumb-radius: 2px;
-  $thumb-height: $sliderHeight;
-  $thumb-width: 24px;
-  $thumb-shadow-size: 4px;
-  $thumb-shadow-blur: 4px;
-  $thumb-shadow-color: rgba(0, 0, 0, 0.2);
-  $thumb-border-width: 2px;
-  $thumb-border-color: #eceff1;
-
-  $track-height: $sliderHeight;
-  $track-shadow-size: 0;
-  $track-shadow-blur: 0;
-  $track-border-width: 0;
-  $track-radius: 0;
-
-  @import '~assets/css/_inputrange.scss';
-
-  & input {
-    height: $sliderHeight;
-    background: transparent;
-
-    &:hover {
-      cursor: pointer;
+    .progress {
+      grid-area: seek-child;
+      height: 100%;
+      background: #3c3c3c;
+      transition: all 0.3s cubic-bezier(0.55, 0, 0.1, 1);
+      pointer-events: none;
     }
-    &:focus {
-      outline: none;
-    }
-    &::-moz-focus-inner {
-      border: 0;
+
+    $track-color: transparent;
+    $thumb-color: #607d8b;
+
+    $thumb-radius: 2px;
+    $thumb-height: $sliderHeight;
+    $thumb-width: 24px;
+    $thumb-shadow-size: 4px;
+    $thumb-shadow-blur: 4px;
+    $thumb-shadow-color: rgba(0, 0, 0, 0.2);
+    $thumb-border-width: 2px;
+    $thumb-border-color: #eceff1;
+
+    $track-height: $sliderHeight;
+    $track-shadow-size: 0;
+    $track-shadow-blur: 0;
+    $track-border-width: 0;
+    $track-radius: 0;
+
+    @import '~assets/css/_inputrange.scss';
+
+    .slider {
+      grid-area: seek-child;
+      height: 100%;
+      background: transparent;
+
+      &:hover {
+        cursor: pointer;
+      }
+      &:focus {
+        outline: none;
+      }
+      &::-moz-focus-inner {
+        border: 0;
+      }
     }
   }
 }

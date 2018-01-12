@@ -9,29 +9,34 @@
       :class="{isOptions}"
     >
 
-      <div class="title">{{ title }}</div>
       <div class="play">
         <button
           @click="skip(skipBack)"
           class="skip"
         >
-          «
+          <icon
+            name="rotate-left"
+            scale="1.5"
+          ></icon>
         </button>
         <button
           class="pause"
-          @click="paused = !paused"
+          @click="togglePlay"
         >
-          {{ paused ? '▶' : '■' }}
+          <icon
+            :name="paused ? 'play' : 'pause'"
+            scale="2.0"
+          ></icon>
         </button>
         <button
           @click="skip(skipFwd)"
           class="skip"
         >
-          »
+          <icon
+            name="rotate-right"
+            scale="1.5"
+          ></icon>
         </button>
-      </div>
-      <div>
-        <span>{{currentTime | time}} / {{duration | time}}</span>
       </div>
       <div>
         <span>
@@ -69,50 +74,26 @@
         >
         {{ playbackRate.toFixed(1) }}x
       </div>
+
+      <AudioSeekBar />
     </div>
 
-    <div class="base">
+    <div
+      @click="isOptions = !isOptions"
+      class="base"
+    >
 
-      <button
-        @click="togglePlay"
-        class="play"
-      >
-        <icon
-          :name="paused ? 'play' : (canplay ? 'pause' : 'spinner')"
-          :spin="!canplay && !paused"
-          scale="1.5"
-        ></icon>
-      </button>
-
-      <div class="seekbar">
-
-        <div
-          class="progress"
-          :style="{ width: `${progress * 100}%`}"
-        ></div>
-
-        <input
-          type="range"
-          step="any"
-          min="0"
-          :max="duration"
-          v-model.number="currentTime"
-          @touchmove="touchmove"
-          @touchstart="touchmove"
-          class="slider"
-        >
-
+      <div class="info">
+        <div class="title">{{ title }}</div>
+        <div class="time">
+          <icon
+            v-if="!paused"
+            name="rotate-right"
+            scale="1"
+            spin
+          ></icon>
+          [{{currentTime | time}} / {{duration | time}}]</div>
       </div>
-
-      <button
-        @click="isOptions = !isOptions"
-        class="option"
-      >
-        <icon
-          name="cog"
-          scale="1.5"
-        ></icon>
-      </button>
 
     </div>
 
@@ -121,8 +102,12 @@
 
 <script lang="ts">
 import { mapState } from 'vuex'
+import AudioSeekBar from '~/components/AudioSeekBar.vue'
 
 export default {
+  components: {
+    AudioSeekBar
+  },
   filters: {
     time(val: number) {
       return [Math.floor(val / 3600), Math.floor((val % 3600) / 60), Math.round(val % 60)]
@@ -223,11 +208,9 @@ button {
 }
 
 .options {
-  background: #333;
-  color: #fff;
-  background: #dde;
   color: #000;
-  padding: 20px;
+  background: #fff;
+  // padding: 20px;
   border-top: 1px solid #000;
   width: 100%;
 
@@ -270,85 +253,22 @@ button {
 }
 
 .base {
-  $sliderHeight: 50px;
+  background: #2f2921;
 
-  display: grid;
-  grid-template-areas: 'play seekbar option';
-  grid-template-columns: 50px auto 50px;
+  padding: 8px;
 
   border-top: 1px solid #999;
+  color: #fff;
 
-  .play,
-  .option {
-    border: none;
-    background: #fff;
-    color: #666;
-  }
-  .play {
-    grid-area: play;
+  .info {
+    grid-area: info;
+    pointer-events: none;
 
-    .paused & {
-      background: #34c322;
-      color: #fff;
+    .title {
+      font-size: 16px;
     }
-  }
-
-  .option {
-  }
-
-  .seekbar {
-    grid-area: seekbar;
-    background: #8c8c8c;
-
-    display: grid;
-    grid-template-areas: 'seek-child';
-
-    .progress {
-      grid-area: seek-child;
-      height: 100%;
-      background: #34c322;
-      transition: all 0.3s cubic-bezier(0.55, 0, 0.1, 1);
-      pointer-events: none;
-
-      .paused & {
-        background: #3c3c3c;
-      }
-    }
-
-    $track-color: transparent;
-    $thumb-color: #607d8b;
-
-    $thumb-radius: 2px;
-    $thumb-height: $sliderHeight;
-    $thumb-width: 24px;
-    $thumb-shadow-size: 4px;
-    $thumb-shadow-blur: 4px;
-    $thumb-shadow-color: rgba(0, 0, 0, 0.2);
-    $thumb-border-width: 2px;
-    $thumb-border-color: #eceff1;
-
-    $track-height: $sliderHeight;
-    $track-shadow-size: 0;
-    $track-shadow-blur: 0;
-    $track-border-width: 0;
-    $track-radius: 0;
-
-    @import '~assets/css/_inputrange.scss';
-
-    .slider {
-      grid-area: seek-child;
-      height: 100%;
-      background: transparent;
-
-      &:hover {
-        cursor: pointer;
-      }
-      &:focus {
-        outline: none;
-      }
-      &::-moz-focus-inner {
-        border: 0;
-      }
+    .time {
+      font-size: 12px;
     }
   }
 }

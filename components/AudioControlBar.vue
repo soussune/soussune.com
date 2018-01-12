@@ -52,6 +52,7 @@
         x {{ playbackRate.toFixed(1) }}
       </div>
     </div>
+
     <div class="currentTime">
 
       <div
@@ -162,14 +163,14 @@ button {
   outline: none;
 }
 .container {
-  transition: 0.5s bottom cubic-bezier(.55, 0, .1, 1);
+  transition: 0.5s bottom cubic-bezier(0.55, 0, 0.1, 1);
 
   position: fixed;
   bottom: 0px;
   left: 0;
   right: 0;
 
-  box-shadow: 1rem 1.2rem 3.6rem rgba(0,0,0,.2);
+  box-shadow: 1rem 1.2rem 3.6rem rgba(0, 0, 0, 0.2);
 
   &.isHidden {
     bottom: -50px;
@@ -205,7 +206,7 @@ button {
   outline: 0;
 }
 
-.currentTime{
+.currentTime {
   background: #8c8c8c;
   position: relative;
 
@@ -236,9 +237,12 @@ button {
     }
   }
 
+  & .options {
+  }
+
   & .progress {
     background: #3c3c3c;
-    transition: all .1s cubic-bezier(.55, 0, .1, 1);
+    transition: all 0.1s cubic-bezier(0.55, 0, 0.1, 1);
     pointer-events: none;
   }
 
@@ -248,7 +252,7 @@ button {
     margin: auto;
 
     text-align: center;
-    color:#fff;
+    color: #fff;
     pointer-events: none;
   }
 
@@ -260,7 +264,7 @@ button {
   $thumb-width: 24px;
   $thumb-shadow-size: 4px;
   $thumb-shadow-blur: 4px;
-  $thumb-shadow-color: rgba(0, 0, 0, .2);
+  $thumb-shadow-color: rgba(0, 0, 0, 0.2);
   $thumb-border-width: 2px;
   $thumb-border-color: #eceff1;
 
@@ -287,7 +291,4 @@ button {
     }
   }
 }
-
-
-
 </style>

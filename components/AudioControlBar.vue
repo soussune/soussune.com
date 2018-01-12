@@ -1,5 +1,5 @@
 <template>
-  <div class="container" :class="{ hide: hide }">
+  <div class="container" :class="{ isHidden: isHidden }">
     <div v-if="false">
       <div class="play">
         <button
@@ -116,7 +116,7 @@ export default {
   },
   computed: {
     ...mapState('audio', ['canplay', 'paused', 'duration', 'buffered', 'title']),
-    hide() {
+    isHidden() {
       return this.$store.state.audio.src === ''
     },
     currentTime: {
@@ -171,7 +171,7 @@ button {
 
   box-shadow: 1rem 1.2rem 3.6rem rgba(0,0,0,.2);
 
-  &.hide {
+  &.isHidden {
     bottom: -50px;
     opacity: 0;
   }

@@ -1,6 +1,7 @@
 <template>
   <div class="container" :class="{ isHidden: isHidden }">
-    <div v-if="false">
+
+    <div class="options" v-if="false">
       <div class="play">
         <button
           @click="skip(skipBack)"
@@ -53,7 +54,7 @@
       </div>
     </div>
 
-    <div class="currentTime">
+    <div class="base">
 
       <div
         class="progress"
@@ -162,6 +163,7 @@ $track-height: 48px;
 button {
   outline: none;
 }
+
 .container {
   transition: 0.5s bottom cubic-bezier(0.55, 0, 0.1, 1);
 
@@ -177,36 +179,39 @@ button {
     opacity: 0;
   }
 }
-.play {
-  text-align: center;
 
-  & button {
-    // border: none;
+.options {
+  .play {
+    text-align: center;
+
+    & button {
+      // border: none;
+    }
+    .skip {
+      width: 50px;
+      height: 50px;
+      font-size: 30px;
+      border-radius: 50px;
+      outline: 0;
+    }
+    .pause {
+      width: 100px;
+      height: 50px;
+      font-size: 30px;
+      border-radius: 50px;
+      outline: 0;
+    }
   }
-  .skip {
-    width: 50px;
-    height: 50px;
-    font-size: 30px;
-    border-radius: 50px;
-    outline: 0;
-  }
-  .pause {
-    width: 100px;
-    height: 50px;
-    font-size: 30px;
-    border-radius: 50px;
+  .mute {
+    width: 40px;
+    height: 30px;
+    font-size: 20px;
+    border-radius: 10px;
     outline: 0;
   }
 }
-.mute {
-  width: 40px;
-  height: 30px;
-  font-size: 20px;
-  border-radius: 10px;
-  outline: 0;
-}
 
-.currentTime {
+.base {
   background: #8c8c8c;
   position: relative;
 
@@ -235,9 +240,6 @@ button {
       background: #34c322;
       color: #fff;
     }
-  }
-
-  & .options {
   }
 
   & .progress {

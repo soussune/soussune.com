@@ -7,7 +7,8 @@
       :key="i"
       :style="{
         'animation-duration': `${duration}s`,
-        'animation-play-state': paused ? 'paused' : 'running'
+        'animation-play-state': animationPlayState,
+        '-webkit-animation-play-state': animationPlayState
       }"
     ></div>
   </div>
@@ -22,6 +23,11 @@ export default {
   },
   props: {
     paused: { type: Boolean, default: false }
+  },
+  computed: {
+    animationPlayState() {
+      return this.paused ? 'paused' : 'running'
+    }
   }
 }
 </script>

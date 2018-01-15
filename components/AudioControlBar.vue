@@ -95,7 +95,7 @@
     >
       <div class="playing">
         <AudioPlayingIcon
-          v-if="!paused"
+          :paused="paused"
         />
       </div>
       <div class="title">{{ title }}</div>

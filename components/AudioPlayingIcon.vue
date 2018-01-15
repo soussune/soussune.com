@@ -5,7 +5,10 @@
     <div
       v-for="(duration, i) in durations"
       :key="i"
-      :style="{ 'animation-duration': `${duration}s` }"
+      :style="{
+        'animation-duration': `${duration}s`,
+        'animation-play-state': paused ? 'paused' : 'running'
+      }"
     ></div>
   </div>
 </template>
@@ -16,6 +19,9 @@ export default {
     return {
       durations: [0.4, 0.2, 1, 0.3]
     }
+  },
+  props: {
+    paused: { type: Boolean, default: false }
   }
 }
 </script>
@@ -23,6 +29,7 @@ export default {
 <style lang="scss">
 .bars {
   display: grid;
+  height: 1em;
   grid-template-columns: 0.3em 0.3em 0.3em 0.3em;
 }
 

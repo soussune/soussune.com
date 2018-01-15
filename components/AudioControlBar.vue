@@ -17,7 +17,7 @@
           <span class="stack">
             <icon
               name="rotate-left"
-              scale="4"
+              scale="3"
             ></icon>
             <span class="skip-text">{{Math.abs(skipBack)}}</span>
           </span>
@@ -28,7 +28,7 @@
         >
           <icon
             :name="paused ? 'play' : 'pause'"
-            scale="6"
+            scale="4"
           ></icon>
         </button>
         <button
@@ -38,7 +38,7 @@
           <span class="stack">
             <icon
               name="rotate-right"
-              scale="4"
+              scale="3"
             ></icon>
             <span class="skip-text">{{skipFwd}}</span>
           </span>
@@ -275,7 +275,7 @@ button {
     grid-area: play;
 
     display: grid;
-    grid-template-columns: auto 180px auto;
+    grid-template-columns: auto 150px auto;
     justify-content: center;
 
     & button {

@@ -28,7 +28,7 @@
         >
           <icon
             :name="paused ? 'play' : 'pause'"
-            scale="4"
+            scale="6"
           ></icon>
         </button>
         <button
@@ -44,28 +44,31 @@
           </span>
         </button>
       </div>
-      <div>
+
+      <div class="volume">
+        <button
+          @click="muted = !muted"
+          class="mute"
+        >
+          <icon
+            name="volume-up"
+          ></icon>
+        </button>
+        <input
+          class="volume"
+          type="range"
+          step="any"
+          min="0"
+          max="1"
+          v-model.number="volume"
+          :disabled="muted"
+        >
         <span>
-          <button
-            @click="muted = !muted"
-            class="mute"
-          >
-            <icon
-              name="volume-up"
-            ></icon>
-          </button>
-          <input
-            class="volume"
-            type="range"
-            step="any"
-            min="0"
-            max="1"
-            v-model.number="volume"
-            :disabled="muted"
-          >
           {{ volume.toFixed(1) }}
         </span>
+      </div>
 
+      <div class="rate">
         <icon
           name="tachometer"
           scale="1.5"
@@ -78,13 +81,19 @@
           max="3"
           v-model.number="playbackRate"
         >
-        {{ playbackRate.toFixed(1) }}x
+        <span>
+          {{ playbackRate.toFixed(1) }}x
+        </span>
       </div>
 
-      <AudioSeekBar />
-
-      <div class="time">
-        [{{currentTime | time}} / {{duration | time}}]
+      <div class="seek">
+        <div class="current">
+          {{currentTime | time}}
+        </div>
+        <AudioSeekBar />
+        <div class="total">
+          {{duration | time}}
+        </div>
       </div>
 
     </div>
@@ -123,9 +132,12 @@ export default {
   },
   filters: {
     time(val: number) {
-      return [Math.floor(val / 3600), Math.floor((val % 3600) / 60), Math.round(val % 60)]
-        .map(v => v.toString().padStart(2, '0'))
-        .join(':')
+      return [
+        Math.floor(val / 3600),
+        ...[Math.floor((val % 3600) / 60), Math.round(val % 60)].map(v =>
+          v.toString().padStart(2, '0')
+        )
+      ].join(':')
     }
   },
   data() {
@@ -201,8 +213,9 @@ export default {
 $track-height: 48px;
 
 $base-bg-color: #2f2921;
-$option-bg-color: #35aba8;
-$text-color: #fff;
+$base-text-color: #fff;
+$option-bg-color: #eee;
+$option-text-color: #000;
 
 button {
   outline: none;
@@ -236,28 +249,11 @@ button {
   }
 }
 
-.play {
-  // text-align: center;
-  display: grid;
-  grid-gap: 10px;
-  grid-template-columns: 1fr 1fr 1fr;
-  & button {
-    border: none;
-    background: transparent;
-    color: $text-color;
-  }
-
-  .skip-text {
-    pointer-events: none;
-    font-size: 10px;
-  }
-}
-
 .options {
   background: $option-bg-color;
-  color: $text-color;
+  color: $option-text-color;
 
-  padding: 20px 20px 10px;
+  padding: 10px;
   border-top: 1px solid #000;
   width: 100%;
 
@@ -265,8 +261,51 @@ button {
   z-index: -1;
   transition: all 0.3s cubic-bezier(0.55, 0, 0.1, 1);
 
+  display: grid;
+  grid-template-areas: 'volume rate' 'play play' 'seek seek';
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+  justify-content: space-between;
+
   &.isOptions {
     transform: translateY(-100%);
+  }
+
+  .play {
+    grid-area: play;
+
+    display: grid;
+    grid-template-columns: auto 180px auto;
+    justify-content: center;
+
+    & button {
+      border: none;
+      background: transparent;
+      color: $option-text-color;
+    }
+
+    .skip-text {
+      pointer-events: none;
+      font-size: 10px;
+    }
+  }
+  .volume {
+    grid-area: volume;
+  }
+  .rate {
+    grid-area: rate;
+  }
+  .seek {
+    grid-area: seek;
+    display: grid;
+    grid-template-columns: 50px auto 50px;
+    font-size: 12px;
+    align-items: center;
+
+    .current,
+    .total {
+      justify-self: center;
+    }
   }
 
   .mute {
@@ -280,13 +319,16 @@ button {
 
 .base {
   background: $base-bg-color;
-  color: $text-color;
+  color: $base-text-color;
   padding: 16px;
   display: grid;
   grid-template-areas: 'playing title arrow';
   grid-template-columns: 24px auto 24px;
   grid-gap: 4px;
   justify-content: space-between;
+  border: none;
+
+  cursor: pointer;
 
   & > * {
     pointer-events: none;

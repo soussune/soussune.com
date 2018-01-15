@@ -11,7 +11,7 @@
 
       <div class="play">
         <button
-          @click="skip(skipBack)"
+          @click.prevent="skip(skipBack)"
           class="skip"
         >
           <span class="stack">
@@ -24,7 +24,7 @@
         </button>
         <button
           class="pause"
-          @click="togglePlay"
+          @click.prevent="togglePlay"
         >
           <icon
             :name="paused ? 'play' : 'pause'"
@@ -32,7 +32,7 @@
           ></icon>
         </button>
         <button
-          @click="skip(skipFwd)"
+          @click.prevent="skip(skipFwd)"
           class="skip"
         >
           <span class="stack">
@@ -47,7 +47,7 @@
 
       <div class="volume">
         <button
-          @click="muted = !muted"
+          @click.prevent="muted = !muted"
           class="mute"
         >
           <icon
@@ -99,7 +99,7 @@
     </div>
 
     <div
-      @click="isOptions = !isOptions"
+      @click.prevent="isOptions = !isOptions"
       class="base"
     >
       <div class="playing">

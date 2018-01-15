@@ -93,14 +93,16 @@
       @click="isOptions = !isOptions"
       class="base"
     >
-      <AudioPlayingIcon
-        v-if="!paused"
-        class="playing"
-      />
+      <div class="playing">
+        <AudioPlayingIcon
+          v-if="!paused"
+        />
+      </div>
       <div class="title">{{ title }}</div>
       <div class="arrow">
         <icon
           :name="isOptions ? 'caret-down' : 'caret-up'"
+          scale="1.2"
         ></icon>
       </div>
 
@@ -279,18 +281,20 @@ button {
 .base {
   background: $base-bg-color;
   color: $text-color;
-  padding: 8px;
+  padding: 16px;
   display: grid;
   grid-template-areas: 'playing title arrow';
-  grid-template-columns: 20px auto 20px;
-  grid-gap: 10px;
+  grid-template-columns: 24px auto 24px;
+  grid-gap: 4px;
   justify-content: space-between;
 
   & > * {
     pointer-events: none;
+    align-self: center;
   }
   .playing {
     grid-area: playing;
+    justify-self: left;
   }
   .title {
     grid-area: title;
@@ -300,6 +304,7 @@ button {
   }
   .arrow {
     grid-area: arrow;
+    justify-self: right;
   }
 }
 </style>

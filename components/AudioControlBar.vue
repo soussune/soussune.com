@@ -14,10 +14,13 @@
           @click="skip(skipBack)"
           class="skip"
         >
-          <icon
-            name="rotate-left"
-            scale="1.5"
-          ></icon>
+          <span class="stack">
+            <icon
+              name="rotate-left"
+              scale="4"
+            ></icon>
+            <span class="skip-text">{{Math.abs(skipBack)}}</span>
+          </span>
         </button>
         <button
           class="pause"
@@ -25,17 +28,20 @@
         >
           <icon
             :name="paused ? 'play' : 'pause'"
-            scale="2.0"
+            scale="4"
           ></icon>
         </button>
         <button
           @click="skip(skipFwd)"
           class="skip"
         >
-          <icon
-            name="rotate-right"
-            scale="1.5"
-          ></icon>
+          <span class="stack">
+            <icon
+              name="rotate-right"
+              scale="4"
+            ></icon>
+            <span class="skip-text">{{skipFwd}}</span>
+          </span>
         </button>
       </div>
       <div>
@@ -76,23 +82,26 @@
       </div>
 
       <AudioSeekBar />
+
+      <div class="time">
+        [{{currentTime | time}} / {{duration | time}}]
+      </div>
+
     </div>
 
     <div
       @click="isOptions = !isOptions"
       class="base"
     >
-
-      <div class="info">
-        <div class="title">{{ title }}</div>
-        <div class="time">
-          <icon
-            v-if="!paused"
-            name="rotate-right"
-            scale="1"
-            spin
-          ></icon>
-          [{{currentTime | time}} / {{duration | time}}]</div>
+      <AudioPlayingIcon
+        v-if="!paused"
+        class="playing"
+      />
+      <div class="title">{{ title }}</div>
+      <div class="arrow">
+        <icon
+          :name="isOptions ? 'caret-down' : 'caret-up'"
+        ></icon>
       </div>
 
     </div>
@@ -102,10 +111,12 @@
 
 <script lang="ts">
 import { mapState } from 'vuex'
+import AudioPlayingIcon from '~/components/AudioPlayingIcon.vue'
 import AudioSeekBar from '~/components/AudioSeekBar.vue'
 
 export default {
   components: {
+    AudioPlayingIcon,
     AudioSeekBar
   },
   filters: {
@@ -119,7 +130,7 @@ export default {
     return {
       isOptions: false,
       skipBack: -15,
-      skipFwd: 15
+      skipFwd: 30
     }
   },
   methods: {
@@ -187,8 +198,24 @@ export default {
 <style lang="scss" scoped>
 $track-height: 48px;
 
+$base-bg-color: #2f2921;
+$option-bg-color: #35aba8;
+$text-color: #fff;
+
 button {
   outline: none;
+  -webkit-appearance: none;
+}
+
+.stack {
+  display: grid;
+  grid-template-areas: 'stack';
+
+  & > * {
+    grid-area: stack;
+    align-self: center;
+    justify-self: center;
+  }
 }
 
 .container {
@@ -207,10 +234,28 @@ button {
   }
 }
 
+.play {
+  // text-align: center;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 1fr 1fr 1fr;
+  & button {
+    border: none;
+    background: transparent;
+    color: $text-color;
+  }
+
+  .skip-text {
+    pointer-events: none;
+    font-size: 10px;
+  }
+}
+
 .options {
-  color: #000;
-  background: #fff;
-  // padding: 20px;
+  background: $option-bg-color;
+  color: $text-color;
+
+  padding: 20px 20px 10px;
   border-top: 1px solid #000;
   width: 100%;
 
@@ -222,27 +267,6 @@ button {
     transform: translateY(-100%);
   }
 
-  .play {
-    text-align: center;
-
-    & button {
-      // border: none;
-    }
-    .skip {
-      width: 50px;
-      height: 50px;
-      font-size: 30px;
-      border-radius: 50px;
-      outline: 0;
-    }
-    .pause {
-      width: 100px;
-      height: 50px;
-      font-size: 30px;
-      border-radius: 50px;
-      outline: 0;
-    }
-  }
   .mute {
     width: 40px;
     height: 30px;
@@ -253,23 +277,29 @@ button {
 }
 
 .base {
-  background: #2f2921;
-
+  background: $base-bg-color;
+  color: $text-color;
   padding: 8px;
+  display: grid;
+  grid-template-areas: 'playing title arrow';
+  grid-template-columns: 20px auto 20px;
+  grid-gap: 10px;
+  justify-content: space-between;
 
-  border-top: 1px solid #999;
-  color: #fff;
-
-  .info {
-    grid-area: info;
+  & > * {
     pointer-events: none;
-
-    .title {
-      font-size: 16px;
-    }
-    .time {
-      font-size: 12px;
-    }
+  }
+  .playing {
+    grid-area: playing;
+  }
+  .title {
+    grid-area: title;
+    font-size: 16px;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .arrow {
+    grid-area: arrow;
   }
 }
 </style>

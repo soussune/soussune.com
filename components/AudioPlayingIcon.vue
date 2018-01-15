@@ -1,14 +1,17 @@
 // https://codepen.io/russgossett/pen/zGxrYJ
 
 <template>
-  <div class="bars" title="playing">
+  <div
+    class="bars"
+    title="playing"
+    :class="{paused}"
+  >
     <div
       v-for="(duration, i) in durations"
+      ref="bars"
       :key="i"
       :style="{
         'animation-duration': `${duration}s`,
-        'animation-play-state': animationPlayState,
-        '-webkit-animation-play-state': animationPlayState
       }"
     ></div>
   </div>
@@ -24,15 +27,23 @@ export default {
   props: {
     paused: { type: Boolean, default: false }
   },
-  computed: {
-    animationPlayState() {
-      return this.paused ? 'paused' : 'running'
+  watch: {
+    paused(val) {
+      if (!val) return
+
+      // Keep animation state for iOS
+      // https://stackoverflow.com/questions/27362216/webkit-animation-play-state-not-working-on-ios-8-1-probably-lower-too
+      this.$refs.bars.forEach(bar => {
+        const s = window.getComputedStyle(bar)
+        bar.style.opacity = s.opacity
+        bar.style.transform = s.transform
+      })
     }
   }
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .bars {
   display: grid;
   height: 1em;
@@ -45,6 +56,9 @@ export default {
   width: 3px;
   transform-origin: bottom;
   animation: sound 1s cubic-bezier(0.17, 0.37, 0.43, 0.67) infinite alternate;
+}
+.bars.paused > * {
+  animation: none !important;
 }
 
 @keyframes sound {

@@ -234,7 +234,7 @@ button {
 }
 
 .container {
-  transition: 0.5s bottom cubic-bezier(0.55, 0, 0.1, 1);
+  transition: all 0.5s cubic-bezier(0.55, 0, 0.1, 1);
 
   position: fixed;
   bottom: 0px;
@@ -244,7 +244,7 @@ button {
   box-shadow: 1rem 1.2rem 3.6rem rgba(0, 0, 0, 0.2);
 
   &.isHidden {
-    bottom: -50px;
+    transform: translateY(100%);
     opacity: 0;
   }
 }

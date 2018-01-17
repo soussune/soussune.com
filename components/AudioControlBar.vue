@@ -223,6 +223,7 @@ $ios-safari-bottom-area-height: 70px;
 button {
   outline: none;
   -webkit-appearance: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 .stack {

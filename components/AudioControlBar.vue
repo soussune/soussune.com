@@ -1,7 +1,7 @@
 <template>
   <div
     class="container"
-    :class="{ isHidden, canplay, paused }"
+    :class="{ isHidden, canplay, paused, needIosSafariMargin: !hasIosSafariToolbar }"
   >
     <div class="container-bg"></div>
 
@@ -143,12 +143,22 @@ export default {
   },
   data() {
     return {
+      hasIosSafariToolbar: false,
+      innerHeight: 0,
       isOptions: false,
       skipBack: -15,
       skipFwd: 30
     }
   },
+  mounted() {
+    window.addEventListener('resize', this.onResize)
+    this.onResize()
+  },
   methods: {
+    onResize() {
+      this.hasIosSafariToolbar = window.innerHeight < this.innerHeight
+      this.innerHeight = window.innerHeight
+    },
     commit(prop, payload) {
       this.$store.commit(`audio/${prop}`, payload)
     },
@@ -167,6 +177,7 @@ export default {
   },
   computed: {
     ...mapState('audio', ['canplay', 'paused', 'duration', 'buffered', 'title']),
+    containerStyle() {},
     isHidden() {
       return this.$store.state.audio.src === ''
     },
@@ -256,7 +267,7 @@ button {
 // Avoid to conflict with iOS Safari bottom area touch
 _::-webkit-full-page-media,
 _:future,
-:root .container {
+:root .container.needIosSafariMargin {
   padding-bottom: $ios-safari-bottom-area-height;
 }
 

@@ -6,33 +6,27 @@
       :style="{ width: `${progress * 100}%`}"
     ></div>
 
-    <input
-      type="range"
-      step="any"
-      min="0"
+    <TouchSlider
+      :min="0"
       :max="duration"
       v-model.number="currentTime"
-      @touchmove="touchmove"
-      @touchstart="touchmove"
       class="slider"
-    >
+    />
 
   </div>
 </template>
 
 <script lang="ts">
 import { mapState } from 'vuex'
+import TouchSlider from '~/components/TouchSlider.vue'
 
 export default {
+  components: {
+    TouchSlider
+  },
   methods: {
     commit(prop, payload) {
       this.$store.commit(`audio/${prop}`, payload)
-    },
-    touchmove(e) {
-      e.preventDefault()
-      const cw = e.target.clientWidth
-      const rate = Math.max(0, Math.min(cw, e.touches[0].pageX - e.target.offsetLeft)) / cw
-      this.commit('seekTo', rate * this.duration)
     }
   },
   computed: {

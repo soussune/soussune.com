@@ -55,15 +55,14 @@
             name="volume-up"
           ></icon>
         </button>
-        <input
+
+        <TouchSlider
           class="volume"
-          type="range"
-          step="any"
-          min="0"
-          max="1"
+          :min="0"
+          :max="1"
           v-model.number="volume"
           :disabled="muted"
-        >
+        />
         <span>
           {{ volume.toFixed(1) }}
         </span>
@@ -74,14 +73,14 @@
           name="tachometer"
           scale="1.5"
         ></icon>
-        <input
+
+        <TouchSlider
           class="playbackRate"
-          type="range"
-          step="any"
-          min="1"
-          max="3"
+          :min="1"
+          :max="3"
           v-model.number="playbackRate"
-        >
+        />
+
         <span>
           {{ playbackRate.toFixed(1) }}x
         </span>
@@ -123,11 +122,13 @@
 
 <script lang="ts">
 import { mapState } from 'vuex'
+import TouchSlider from '~/components/TouchSlider.vue'
 import AudioPlayingIcon from '~/components/AudioPlayingIcon.vue'
 import AudioSeekBar from '~/components/AudioSeekBar.vue'
 
 export default {
   components: {
+    TouchSlider,
     AudioPlayingIcon,
     AudioSeekBar
   },

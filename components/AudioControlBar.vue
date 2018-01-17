@@ -3,6 +3,7 @@
     class="container"
     :class="{ isHidden, canplay, paused }"
   >
+    <div class="container-bg"></div>
 
     <div
       class="options"
@@ -217,6 +218,8 @@ $base-text-color: #fff;
 $option-bg-color: #eee;
 $option-text-color: #000;
 
+$ios-safari-bottom-area-height: 70px;
+
 button {
   outline: none;
   -webkit-appearance: none;
@@ -249,6 +252,22 @@ button {
   }
 }
 
+// Avoid to conflict with iOS Safari bottom area touch
+_::-webkit-full-page-media,
+_:future,
+:root .container {
+  padding-bottom: $ios-safari-bottom-area-height;
+}
+
+.container-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+
+  background: #fff;
+}
+
 .options {
   background: $option-bg-color;
   color: $option-text-color;
@@ -258,7 +277,7 @@ button {
   width: 100%;
 
   position: absolute;
-  z-index: -1;
+  z-index: -2;
   transition: all 0.3s cubic-bezier(0.55, 0, 0.1, 1);
 
   display: grid;

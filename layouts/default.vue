@@ -130,13 +130,3 @@ html {
   height: 200px;
 }
 </style>
-
-<style lang="scss" scoped>
-// Keep showing iOS menu bar
-// https://qiita.com/gonshi_com/items/9aef250920b900fea929
-.app {
-  height: 100vh;
-  overflow: scroll;
-  -webkit-overflow-scrolling: touch;
-}
-</style>

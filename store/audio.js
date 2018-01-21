@@ -1,4 +1,5 @@
 export const state = () => ({
+  pagePath: '',
   buffered: 0,
   duration: 0,
   currentTime: 0,
@@ -30,6 +31,9 @@ export const getters = {
 }
 
 export const mutations = {
+  pagePath(state, payload) {
+    state.pagePath = payload
+  },
   buffered(state, payload) {
     state.buffered = payload
   },

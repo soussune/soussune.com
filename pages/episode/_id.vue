@@ -128,6 +128,7 @@ export default {
 
       this.commit('src', this.src)
       this.commit('title', this.episode.title)
+      this.commit('pagePath', this.$route.path)
     },
     loadTwitterWidget(): void {
       // Reload twitter widget for this episode when already loaded on root
@@ -142,8 +143,8 @@ export default {
 
 .page-container {
   background: #fff;
-  border-radius: .6rem;
-  box-shadow: 0 1.2rem 3.6rem rgba(0,0,0,.2);
+  border-radius: 0.6rem;
+  box-shadow: 0 1.2rem 3.6rem rgba(0, 0, 0, 0.2);
   padding: 80px 60px;
   margin: 40px 20px;
   position: relative;
@@ -152,7 +153,6 @@ export default {
     padding: 20px 10px 40px;
     margin: 20px 0px;
   }
-
 }
 
 .header {
@@ -165,7 +165,7 @@ export default {
     color: #35495e;
 
     @include mq() {
-      font-size: 2.0rem;
+      font-size: 2rem;
     }
   }
 }
@@ -175,7 +175,7 @@ export default {
     position: fixed;
     z-index: 10;
     top: 45%;
-    color: rgba(0,0,0,.2);
+    color: rgba(0, 0, 0, 0.2);
 
     &.newer {
       text-align: right;
@@ -207,7 +207,7 @@ export default {
   margin-top: 40px;
 
   grid-template-columns: auto;
-  grid-template-areas: "play" "desc" "actors";
+  grid-template-areas: 'play' 'desc' 'actors';
 
   & h2 {
     font-size: 24px;
@@ -229,13 +229,13 @@ export default {
       margin: auto;
       background: #34c322;
       color: #fff;
-      font-size:18px;
+      font-size: 18px;
       border: none;
       border-radius: 20%;
       width: 100px;
       height: 100px;
       outline: none;
-      box-shadow: 0 0 20px rgba(0,0,0,.2);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
       & > * {
         margin-left: 10px;
       }
@@ -252,7 +252,7 @@ export default {
 
         @keyframes blink {
           50% {
-            box-shadow: 0 0 30px rgba(0,0,0,.4);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
             opacity: 0.5;
           }
         }
@@ -261,7 +261,6 @@ export default {
           border-radius: 15%;
           transform: scale(0.9);
         }
-
       }
     }
   }
@@ -272,11 +271,9 @@ export default {
   .actors {
     grid-area: actors;
   }
-
 }
 
 .actor-list {
-
   &-item {
     display: inline-block;
     margin-bottom: 1rem;
@@ -296,7 +293,6 @@ export default {
   }
 
   @include mq() {
-
     &-item {
       min-width: 80px;
       font-size: 14px;
@@ -309,10 +305,8 @@ export default {
         width: 60px;
         height: 60px;
       }
-
     }
   }
-
 }
 </style>
 
@@ -329,13 +323,13 @@ export default {
     color: #333;
 
     &:after {
-      content: "";
+      content: '';
       position: absolute;
       left: 0;
       bottom: 0;
       width: 100%;
       height: 7px;
-      background: repeating-linear-gradient(-45deg, #aed9bb,#aed9bb 2px,#fff 2px,#fff 4px);
+      background: repeating-linear-gradient(-45deg, #aed9bb, #aed9bb 2px, #fff 2px, #fff 4px);
     }
   }
 }

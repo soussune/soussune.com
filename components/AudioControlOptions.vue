@@ -2,9 +2,13 @@
   <div
     class="option-container"
   >
-    <div class="title">
+    <nuxt-link
+      class="title"
+      :to="pagePath"
+      @click.native="$emit('close')"
+    >
       {{ title }}
-    </div>
+    </nuxt-link>
 
     <div class="volumes">
       <div class="volume">
@@ -138,7 +142,7 @@ export default {
     }
   },
   computed: {
-    ...mapState('audio', ['canplay', 'paused', 'duration', 'buffered', 'title']),
+    ...mapState('audio', ['canplay', 'paused', 'duration', 'buffered', 'title', 'pagePath']),
     isHidden() {
       return this.$store.state.audio.src === ''
     },
@@ -219,13 +223,20 @@ button {
   grid-template-columns: 1fr;
 
   .title {
-    background: #333;
-    color: #fff;
     max-width: 100%;
     overflow: hidden;
     white-space: nowrap;
     text-align: center;
     padding: 10px;
+    display: block;
+    text-decoration: none;
+    transition: all 0.2s cubic-bezier(0.55, 0, 0.1, 1);
+    background: #333;
+    color: #fff;
+
+    &:hover {
+      opacity: 0.7;
+    }
   }
 
   .volumes {

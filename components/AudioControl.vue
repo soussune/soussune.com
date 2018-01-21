@@ -13,6 +13,7 @@
         <AudioControlOptions
           v-if="isOptionsShown"
           class="options"
+          @close="isOptionsShown = false"
         />
       </transition>
       <AudioControlButton

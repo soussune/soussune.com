@@ -1,21 +1,26 @@
 <template>
-  <div
-    class="audio-control-container"
-    :class="{ isHidden, isOptionsHidden }"
-  >
+  <transition name="container">
     <div
-      class="bg"
-      v-if="!isOptionsHidden"
-      @click="toggleOption"
-    ></div>
-    <AudioControlOptions
-      class="options"
-    />
-    <AudioControlButton
-      class="button"
-      @click.native="toggleOption"
-    />
-  </div>
+      class="audio-control-container"
+      v-if="isShown"
+    >
+      <div
+        class="bg"
+        v-if="isOptionsShown"
+        @click="toggleOption"
+      />
+      <transition name="options">
+        <AudioControlOptions
+          v-if="isOptionsShown"
+          class="options"
+        />
+      </transition>
+      <AudioControlButton
+        class="button"
+        @click.native="toggleOption"
+      />
+    </div>
+  </transition>
 </template>
 
 <script lang="ts">
@@ -30,18 +35,18 @@ export default {
   },
   data() {
     return {
-      isOptionsHidden: true
+      isOptionsShown: false
     }
   },
   computed: {
     ...mapState('audio', ['src']),
-    isHidden() {
-      return this.src === ''
+    isShown() {
+      return this.src !== ''
     }
   },
   methods: {
     toggleOption() {
-      this.isOptionsHidden = !this.isOptionsHidden
+      this.isOptionsShown = !this.isOptionsShown
     }
   }
 }
@@ -51,17 +56,19 @@ export default {
 $ios-safari-bottom-margin: 80px;
 
 .audio-control-container {
-  transition: all 0.5s cubic-bezier(0.55, 0, 0.1, 1);
-
   position: fixed;
   bottom: 0px;
   left: 0;
   right: 0;
-
-  &.isHidden {
-    transform: translateY(200px);
-    opacity: 0;
-  }
+}
+.container-enter-active,
+.container-leave-active {
+  transition: all 0.5s cubic-bezier(0.55, 0, 0.1, 1);
+}
+.container-enter,
+.container-leave-to {
+  transform: translateY(200px);
+  opacity: 0;
 }
 
 .bg {
@@ -74,11 +81,15 @@ $ios-safari-bottom-margin: 80px;
   transition: all 0.5s cubic-bezier(0.55, 0, 0.1, 1);
   position: absolute;
   bottom: $ios-safari-bottom-margin + 70px;
-
-  .isOptionsHidden & {
-    transform: translateY(100px);
-    opacity: 0;
-  }
+}
+.options-enter-active,
+.options-leave-active {
+  transition: all 0.5s cubic-bezier(0.55, 0, 0.1, 1);
+}
+.options-enter,
+.options-leave-to {
+  transform: translateY(100px);
+  opacity: 0;
 }
 .button {
   position: absolute;

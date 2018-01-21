@@ -56,8 +56,8 @@
           ></icon>
         </button>
 
-        <TouchSlider
           class="volume"
+        <TouchRange
           :min="0"
           :max="1"
           v-model.number="volume"
@@ -74,8 +74,8 @@
           scale="1.5"
         ></icon>
 
-        <TouchSlider
           class="playbackRate"
+        <TouchRange
           :min="1"
           :max="3"
           v-model.number="playbackRate"
@@ -122,13 +122,13 @@
 
 <script lang="ts">
 import { mapState } from 'vuex'
-import TouchSlider from '~/components/TouchSlider.vue'
+import TouchRange from '@miyaoka/vue-touch-range'
 import AudioPlayingIcon from '~/components/AudioPlayingIcon.vue'
 import AudioSeekBar from '~/components/AudioSeekBar.vue'
 
 export default {
   components: {
-    TouchSlider,
+    TouchRange,
     AudioPlayingIcon,
     AudioSeekBar
   },

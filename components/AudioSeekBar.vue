@@ -6,7 +6,7 @@
       :style="{ width: `${progress * 100}%`}"
     ></div>
 
-    <TouchSlider
+    <TouchRange
       :min="0"
       :max="duration"
       v-model.number="currentTime"
@@ -18,11 +18,11 @@
 
 <script lang="ts">
 import { mapState } from 'vuex'
-import TouchSlider from '~/components/TouchSlider.vue'
+import TouchRange from '@miyaoka/vue-touch-range'
 
 export default {
   components: {
-    TouchSlider
+    TouchRange
   },
   methods: {
     commit(prop, payload) {

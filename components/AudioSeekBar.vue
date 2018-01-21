@@ -1,15 +1,17 @@
 <template>
   <div class="seekbar">
 
+    <div class="total"></div>
+
     <div
       class="progress"
-      :style="{ width: `${progress * 100}%`}"
+      :style="{transform: `scaleX(${progress})`}"
     ></div>
 
     <TouchRange
       :min="0"
       :max="duration"
-      v-model.number="currentTime"
+      v-model="currentTime"
       class="slider"
     />
 
@@ -24,6 +26,9 @@ export default {
   components: {
     TouchRange
   },
+  data() {
+    return {}
+  },
   methods: {
     commit(prop, payload) {
       this.$store.commit(`audio/${prop}`, payload)
@@ -31,65 +36,74 @@ export default {
   },
   computed: {
     ...mapState('audio', ['canplay', 'paused', 'duration', 'buffered', 'title']),
-    progress() {
-      const p = this.currentTime / this.duration
-      return isNaN(p) ? 0 : p
-    },
     currentTime: {
       get() {
         return this.$store.state.audio.currentTime
       },
       set(val: number) {
+        const p = val / this.duration
+        this.progress = isNaN(p) ? 0 : p
         this.commit('seekTo', val)
       }
+    },
+    progress() {
+      return this.currentTime / this.duration
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
+@import '~assets/css/_vars.scss';
+
 $sliderHeight: 30px;
+$trackHeight: 4px;
 
 .seekbar {
-  background: #8c8c8c;
-  height: 30px;
-
+  height: $sliderHeight;
   display: grid;
-  grid-template-areas: 'seek-child';
+  grid-template-areas: 'stack';
+  align-items: center;
 
+  .total,
   .progress {
-    grid-area: seek-child;
-    height: 100%;
-    background: #34c322;
-    background: #64ce1b;
-    transition: all 0.3s cubic-bezier(0.55, 0, 0.1, 1);
+    grid-area: stack;
+    height: $trackHeight;
     pointer-events: none;
   }
 
-  $track-color: transparent;
-  $thumb-color: #607d8b;
+  .total {
+    background: $player-seekbar-bg-color;
+  }
 
-  $thumb-radius: 2px;
-  $thumb-height: $sliderHeight;
-  $thumb-width: 24px;
-  $thumb-shadow-size: 4px;
-  $thumb-shadow-blur: 4px;
-  $thumb-shadow-color: rgba(0, 0, 0, 0.2);
-  $thumb-border-width: 2px;
-  $thumb-border-color: #eceff1;
-
-  $track-height: $sliderHeight;
-  $track-shadow-size: 0;
-  $track-shadow-blur: 0;
-  $track-border-width: 0;
-  $track-radius: 0;
-
-  @import '~assets/css/_inputrange.scss';
+  .progress {
+    background: $player-seekbar-progress-color;
+    transform-origin: left;
+  }
 
   .slider {
-    grid-area: seek-child;
-    height: 100%;
+    $track-color: transparent;
+    $thumb-color: $player-seekbar-thumb-color;
+
+    $thumb-height: $sliderHeight;
+    $thumb-width: 8px;
+    $thumb-radius: 0;
+    $thumb-shadow-size: 0;
+    $thumb-shadow-blur: 0;
+    $thumb-border-width: 0;
+
+    $track-height: 0;
+    $track-radius: 0;
+    $track-shadow-size: 0;
+    $track-shadow-blur: 0;
+    $track-border-width: 0;
+
+    @import '~assets/css/_inputrange.scss';
+
+    grid-area: stack;
+    height: $sliderHeight;
     background: transparent;
+    transform: translate3d(0, 0, 0);
 
     &:hover {
       cursor: pointer;

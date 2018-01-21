@@ -10,6 +10,46 @@
       :class="{isOptions}"
     >
 
+      <div class="volume">
+        <button
+          @click.prevent="muted = !muted"
+          class="mute"
+        >
+          <icon
+            name="volume-up"
+          ></icon>
+        </button>
+
+        <VolumeRange
+          class="volume-slider"
+          :min="0"
+          :max="1"
+          v-model="volume"
+          :disabled="muted"
+        />
+        <span>
+          {{ volume.toFixed(1) }}
+        </span>
+      </div>
+
+      <div class="rate">
+        <icon
+          name="tachometer"
+          scale="1.5"
+        ></icon>
+
+        <VolumeRange
+          class="rate-slider"
+          :min="1"
+          :max="3"
+          v-model="playbackRate"
+        />
+
+        <span>
+          {{ playbackRate.toFixed(1) }}x
+        </span>
+      </div>
+
       <div class="play">
         <button
           @click.prevent="skip(skipBack)"
@@ -44,46 +84,6 @@
             <span class="skip-text">{{skipFwd}}</span>
           </span>
         </button>
-      </div>
-
-      <div class="volume">
-        <button
-          @click.prevent="muted = !muted"
-          class="mute"
-        >
-          <icon
-            name="volume-up"
-          ></icon>
-        </button>
-
-          class="volume"
-        <TouchRange
-          :min="0"
-          :max="1"
-          v-model.number="volume"
-          :disabled="muted"
-        />
-        <span>
-          {{ volume.toFixed(1) }}
-        </span>
-      </div>
-
-      <div class="rate">
-        <icon
-          name="tachometer"
-          scale="1.5"
-        ></icon>
-
-          class="playbackRate"
-        <TouchRange
-          :min="1"
-          :max="3"
-          v-model.number="playbackRate"
-        />
-
-        <span>
-          {{ playbackRate.toFixed(1) }}x
-        </span>
       </div>
 
       <div class="seek">
@@ -123,12 +123,14 @@
 <script lang="ts">
 import { mapState } from 'vuex'
 import TouchRange from '@miyaoka/vue-touch-range'
+import VolumeRange from '~/components/VolumeRange.vue'
 import AudioPlayingIcon from '~/components/AudioPlayingIcon.vue'
 import AudioSeekBar from '~/components/AudioSeekBar.vue'
 
 export default {
   components: {
     TouchRange,
+    VolumeRange,
     AudioPlayingIcon,
     AudioSeekBar
   },
@@ -136,7 +138,7 @@ export default {
     time(val: number) {
       return [
         Math.floor(val / 3600),
-        ...[Math.floor((val % 3600) / 60), Math.round(val % 60)].map(v =>
+        ...[Math.floor((val % 3600) / 60), Math.round(val % 60)].map((v) =>
           v.toString().padStart(2, '0')
         )
       ].join(':')

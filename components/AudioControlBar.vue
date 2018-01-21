@@ -1,79 +1,118 @@
 <template>
-  <div class="container" :class="{ hide: hide }">
-    <div v-if="false">
+  <div
+    class="container"
+    :class="{ isHidden, canplay, paused }"
+  >
+
+    <div
+      class="options"
+      :class="{isOptions}"
+    >
+
+      <div class="volume">
+        <button
+          @click.prevent="muted = !muted"
+          class="mute"
+        >
+          <icon
+            name="volume-up"
+          ></icon>
+        </button>
+
+        <VolumeRange
+          class="volume-slider"
+          :min="0"
+          :max="1"
+          v-model="volume"
+          :disabled="muted"
+        />
+        <span>
+          {{ volume.toFixed(1) }}
+        </span>
+      </div>
+
+      <div class="rate">
+        <icon
+          name="tachometer"
+          scale="1.5"
+        ></icon>
+
+        <VolumeRange
+          class="rate-slider"
+          :min="1"
+          :max="3"
+          v-model="playbackRate"
+        />
+
+        <span>
+          {{ playbackRate.toFixed(1) }}x
+        </span>
+      </div>
+
       <div class="play">
         <button
-          @click="skip(skipBack)"
+          @click.prevent="skip(skipBack)"
           class="skip"
         >
-          «
+          <span class="stack">
+            <icon
+              name="rotate-left"
+              scale="3"
+            ></icon>
+            <span class="skip-text">{{Math.abs(skipBack)}}</span>
+          </span>
         </button>
         <button
           class="pause"
-          @click="paused = !paused"
+          @click.prevent="togglePlay"
         >
-          {{ paused ? '▶' : '■' }}
+          <icon
+            :name="paused ? 'play' : 'pause'"
+            scale="4"
+          ></icon>
         </button>
         <button
-          @click="skip(skipFwd)"
+          @click.prevent="skip(skipFwd)"
           class="skip"
         >
-          »
+          <span class="stack">
+            <icon
+              name="rotate-right"
+              scale="3"
+            ></icon>
+            <span class="skip-text">{{skipFwd}}</span>
+          </span>
         </button>
       </div>
-      <div>
-        <span>{{currentTime | time}} / {{duration | time}}</span>
-        <span>
-          <button
-            @click="muted = !muted"
-            class="mute"
-          >
-          🔊
-          </button>
-          <input
-            class="volume"
-            type="range"
-            step="any"
-            min="0"
-            max="1"
-            v-model.number="volume"
-            :disabled="muted"
-          >
-          {{ volume.toFixed(1) }}
-        </span>
-        <input
-          class="playbackRate"
-          type="range"
-          step="any"
-          min="1"
-          max="3"
-          v-model.number="playbackRate"
-        >
-        x {{ playbackRate.toFixed(1) }}
+
+      <div class="seek">
+        <div class="current">
+          {{currentTime | time}}
+        </div>
+        <AudioSeekBar />
+        <div class="total">
+          {{duration | time}}
+        </div>
       </div>
+
     </div>
-    <div class="currentTime">
 
-      <div
-        class="progress"
-        :style="{ width: `${currentTime / duration * 100}%`}"
-      ></div>
-
-      <div class="title">{{ title }} [{{currentTime | time}} / {{duration | time}}]</div>
-
-      <input
-        type="range"
-        step="any"
-        min="0"
-        :max="duration"
-        v-model.number="currentTime"
-        @touchmove="touchmove"
-        @touchstart="touchmove"
-      >
-
-      <button @click="togglePlay" class="toggleplay" :class="{ canplay: canplay, paused: paused }">
-        <icon :name="paused ? 'play' : (canplay ? 'pause' : 'spinner')" :spin="!canplay && !paused" scale="1.5"></icon>
-      </button>
+    <div
+      @click.prevent="isOptions = !isOptions"
+      class="base"
+    >
+      <div class="playing">
+        <AudioPlayingIcon
+          :paused="paused"
+        />
+      </div>
+      <div class="title">{{ title }}</div>
+      <div class="arrow">
+        <icon
+          :name="isOptions ? 'caret-down' : 'caret-up'"
+          scale="1.2"
+        ></icon>
+      </div>
 
     </div>
 
@@ -82,19 +121,33 @@
 
 <script lang="ts">
 import { mapState } from 'vuex'
+import TouchRange from '@miyaoka/vue-touch-range'
+import VolumeRange from '~/components/VolumeRange.vue'
+import AudioPlayingIcon from '~/components/AudioPlayingIcon.vue'
+import AudioSeekBar from '~/components/AudioSeekBar.vue'
 
 export default {
+  components: {
+    TouchRange,
+    VolumeRange,
+    AudioPlayingIcon,
+    AudioSeekBar
+  },
   filters: {
     time(val: number) {
-      return [Math.floor(val / 3600), Math.floor((val % 3600) / 60), Math.round(val % 60)]
-        .map(v => v.toString().padStart(2, '0'))
-        .join(':')
+      return [
+        Math.floor(val / 3600),
+        ...[Math.floor((val % 3600) / 60), Math.round(val % 60)].map((v) =>
+          v.toString().padStart(2, '0')
+        )
+      ].join(':')
     }
   },
   data() {
     return {
+      isOptions: false,
       skipBack: -15,
-      skipFwd: 15
+      skipFwd: 30
     }
   },
   methods: {
@@ -116,8 +169,12 @@ export default {
   },
   computed: {
     ...mapState('audio', ['canplay', 'paused', 'duration', 'buffered', 'title']),
-    hide() {
+    isHidden() {
       return this.$store.state.audio.src === ''
+    },
+    progress() {
+      const p = this.currentTime / this.duration
+      return isNaN(p) ? 0 : p
     },
     currentTime: {
       get() {
@@ -158,136 +215,142 @@ export default {
 <style lang="scss" scoped>
 $track-height: 48px;
 
+$base-bg-color: #2f2921;
+$base-text-color: #fff;
+$option-bg-color: #eee;
+$option-text-color: #000;
+
 button {
   outline: none;
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
+
+.stack {
+  display: grid;
+  grid-template-areas: 'stack';
+
+  & > * {
+    grid-area: stack;
+    align-self: center;
+    justify-self: center;
+  }
+}
+
 .container {
-  transition: 0.5s bottom cubic-bezier(.55, 0, .1, 1);
+  transition: all 0.5s cubic-bezier(0.55, 0, 0.1, 1);
 
   position: fixed;
   bottom: 0px;
   left: 0;
   right: 0;
 
-  box-shadow: 1rem 1.2rem 3.6rem rgba(0,0,0,.2);
+  box-shadow: 1rem 1.2rem 3.6rem rgba(0, 0, 0, 0.2);
 
-  &.hide {
-    bottom: -50px;
+  &.isHidden {
+    transform: translateY(100%);
     opacity: 0;
   }
 }
-.play {
-  text-align: center;
 
-  & button {
-    // border: none;
+.options {
+  background: $option-bg-color;
+  color: $option-text-color;
+
+  padding: 10px;
+  border-top: 1px solid #000;
+  width: 100%;
+
+  position: absolute;
+  z-index: -1;
+  transition: all 0.3s cubic-bezier(0.55, 0, 0.1, 1);
+
+  display: grid;
+  grid-template-areas: 'volume rate' 'play play' 'seek seek';
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+  justify-content: space-between;
+
+  &.isOptions {
+    transform: translateY(-100%);
   }
-  .skip {
-    width: 50px;
-    height: 50px;
-    font-size: 30px;
-    border-radius: 50px;
-    outline: 0;
+
+  .play {
+    grid-area: play;
+
+    display: grid;
+    grid-template-columns: auto 150px auto;
+    justify-content: center;
+
+    & button {
+      border: none;
+      background: transparent;
+      color: $option-text-color;
+    }
+
+    .skip-text {
+      pointer-events: none;
+      font-size: 10px;
+    }
   }
-  .pause {
-    width: 100px;
-    height: 50px;
-    font-size: 30px;
-    border-radius: 50px;
+  .volume {
+    grid-area: volume;
+  }
+  .rate {
+    grid-area: rate;
+  }
+  .seek {
+    grid-area: seek;
+    display: grid;
+    grid-template-columns: 50px auto 50px;
+    font-size: 12px;
+    align-items: center;
+
+    .current,
+    .total {
+      justify-self: center;
+    }
+  }
+
+  .mute {
+    width: 40px;
+    height: 30px;
+    font-size: 20px;
+    border-radius: 10px;
     outline: 0;
   }
 }
-.mute {
-  width: 40px;
-  height: 30px;
-  font-size: 20px;
-  border-radius: 10px;
-  outline: 0;
-}
 
-.currentTime{
-  background: #8c8c8c;
-  position: relative;
+.base {
+  background: $base-bg-color;
+  color: $base-text-color;
+  padding: 16px;
+  display: grid;
+  grid-template-areas: 'playing title arrow';
+  grid-template-columns: 24px auto 24px;
+  grid-gap: 4px;
+  justify-content: space-between;
+  border: none;
 
-  $sliderHeight: 50px;
-  height: $sliderHeight;
-  // overflow: hidden;
+  cursor: pointer;
 
   & > * {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: $sliderHeight;
-  }
-
-  & .toggleplay {
-    left: 0px;
-    width: $sliderHeight;
-    border: none;
-    background: #fff;
-    color: #666;
-    border-top: 1px solid #999;
-
-    &.canplay {
-    }
-    &.paused {
-      background: #34c322;
-      color: #fff;
-    }
-  }
-
-  & .progress {
-    background: #3c3c3c;
-    transition: all .1s cubic-bezier(.55, 0, .1, 1);
     pointer-events: none;
+    align-self: center;
   }
-
-  & .title {
-    left: 0;
-    right: 0;
-    margin: auto;
-
-    text-align: center;
-    color:#fff;
-    pointer-events: none;
+  .playing {
+    grid-area: playing;
+    justify-self: left;
   }
-
-  $track-color: transparent;
-  $thumb-color: #607d8b;
-
-  $thumb-radius: 2px;
-  $thumb-height: $sliderHeight;
-  $thumb-width: 24px;
-  $thumb-shadow-size: 4px;
-  $thumb-shadow-blur: 4px;
-  $thumb-shadow-color: rgba(0, 0, 0, .2);
-  $thumb-border-width: 2px;
-  $thumb-border-color: #eceff1;
-
-  $track-height: $sliderHeight;
-  $track-shadow-size: 0;
-  $track-shadow-blur: 0;
-  $track-border-width: 0;
-  $track-radius: 0;
-
-  @import '~assets/css/_inputrange.scss';
-
-  & input {
-    height: $sliderHeight;
-    background: transparent;
-
-    &:hover {
-      cursor: pointer;
-    }
-    &:focus {
-      outline: none;
-    }
-    &::-moz-focus-inner {
-      border: 0;
-    }
+  .title {
+    grid-area: title;
+    font-size: 16px;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .arrow {
+    grid-area: arrow;
+    justify-self: right;
   }
 }
-
-
-
 </style>

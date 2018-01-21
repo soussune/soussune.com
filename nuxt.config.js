@@ -109,7 +109,7 @@ const conf = {
     ]
   },
   build: {
-    vendor: ['luxon', 'vue-awesome'],
+    vendor: ['luxon', 'vue-awesome', '@miyaoka/vue-touch-range'],
     extend(config, ctx) {
       if (ctx.isClient) {
         config.module.rules.push({

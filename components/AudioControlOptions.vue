@@ -1,14 +1,12 @@
 <template>
   <div
-    class="container"
-    :class="{ isHidden, canplay, paused }"
+    class="option-container"
   >
+    <div class="title">
+      {{ title }}
+    </div>
 
-    <div
-      class="options"
-      :class="{isOptions}"
-    >
-
+    <div class="volumes">
       <div class="volume">
         <button
           @click.prevent="muted = !muted"
@@ -40,7 +38,7 @@
         <VolumeRange
           class="rate-slider"
           :min="1"
-          :max="3"
+          :max="2"
           v-model="playbackRate"
         />
 
@@ -49,71 +47,52 @@
         </span>
       </div>
 
-      <div class="play">
-        <button
-          @click.prevent="skip(skipBack)"
-          class="skip"
-        >
-          <span class="stack">
-            <icon
-              name="rotate-left"
-              scale="3"
-            ></icon>
-            <span class="skip-text">{{Math.abs(skipBack)}}</span>
-          </span>
-        </button>
-        <button
-          class="pause"
-          @click.prevent="togglePlay"
-        >
-          <icon
-            :name="paused ? 'play' : 'pause'"
-            scale="4"
-          ></icon>
-        </button>
-        <button
-          @click.prevent="skip(skipFwd)"
-          class="skip"
-        >
-          <span class="stack">
-            <icon
-              name="rotate-right"
-              scale="3"
-            ></icon>
-            <span class="skip-text">{{skipFwd}}</span>
-          </span>
-        </button>
-      </div>
-
-      <div class="seek">
-        <div class="current">
-          {{currentTime | time}}
-        </div>
-        <AudioSeekBar />
-        <div class="total">
-          {{duration | time}}
-        </div>
-      </div>
-
     </div>
 
-    <div
-      @click.prevent="isOptions = !isOptions"
-      class="base"
-    >
-      <div class="playing">
-        <AudioPlayingIcon
-          :paused="paused"
-        />
-      </div>
-      <div class="title">{{ title }}</div>
-      <div class="arrow">
+    <div class="play">
+      <button
+        @click.prevent="skip(skipBack)"
+        class="skip"
+      >
+        <span class="stack">
+          <icon
+            name="rotate-left"
+            scale="3"
+          ></icon>
+          <span class="skip-text">{{Math.abs(skipBack)}}</span>
+        </span>
+      </button>
+      <button
+        class="pause"
+        @click.prevent="togglePlay"
+      >
         <icon
-          :name="isOptions ? 'caret-down' : 'caret-up'"
-          scale="1.2"
+          :name="paused ? 'play' : 'pause'"
+          scale="4"
         ></icon>
-      </div>
+      </button>
+      <button
+        @click.prevent="skip(skipFwd)"
+        class="skip"
+      >
+        <span class="stack">
+          <icon
+            name="rotate-right"
+            scale="3"
+          ></icon>
+          <span class="skip-text">{{skipFwd}}</span>
+        </span>
+      </button>
+    </div>
 
+    <div class="seek">
+      <div class="current">
+        {{currentTime | time}}
+      </div>
+      <AudioSeekBar />
+      <div class="total">
+        {{duration | time}}
+      </div>
     </div>
 
   </div>
@@ -123,14 +102,12 @@
 import { mapState } from 'vuex'
 import TouchRange from '@miyaoka/vue-touch-range'
 import VolumeRange from '~/components/VolumeRange.vue'
-import AudioPlayingIcon from '~/components/AudioPlayingIcon.vue'
 import AudioSeekBar from '~/components/AudioSeekBar.vue'
 
 export default {
   components: {
     TouchRange,
     VolumeRange,
-    AudioPlayingIcon,
     AudioSeekBar
   },
   filters: {
@@ -145,7 +122,6 @@ export default {
   },
   data() {
     return {
-      isOptions: false,
       skipBack: -15,
       skipFwd: 30
     }
@@ -156,12 +132,6 @@ export default {
     },
     skip(val) {
       this.commit('seekTo', this.currentTime + val)
-    },
-    touchmove(e) {
-      e.preventDefault()
-      const cw = e.target.clientWidth
-      const rate = Math.max(0, Math.min(cw, e.touches[0].pageX - e.target.offsetLeft)) / cw
-      this.commit('seekTo', rate * this.duration)
     },
     togglePlay() {
       this.commit('paused', !this.paused)
@@ -215,9 +185,7 @@ export default {
 <style lang="scss" scoped>
 $track-height: 48px;
 
-$base-bg-color: #2f2921;
-$base-text-color: #fff;
-$option-bg-color: #eee;
+$option-bg-color: #eeeeee;
 $option-text-color: #000;
 
 button {
@@ -237,47 +205,35 @@ button {
   }
 }
 
-.container {
-  transition: all 0.5s cubic-bezier(0.55, 0, 0.1, 1);
-
-  position: fixed;
-  bottom: 0px;
-  left: 0;
-  right: 0;
-
+.option-container {
   box-shadow: 1rem 1.2rem 3.6rem rgba(0, 0, 0, 0.2);
 
-  &.isHidden {
-    transform: translateY(100%);
-    opacity: 0;
-  }
-}
-
-.options {
   background: $option-bg-color;
   color: $option-text-color;
 
-  padding: 10px;
-  border-top: 1px solid #000;
+  padding: 0 0 20px 0;
   width: 100%;
 
-  position: absolute;
-  z-index: -1;
-  transition: all 0.3s cubic-bezier(0.55, 0, 0.1, 1);
-
   display: grid;
-  grid-template-areas: 'volume rate' 'play play' 'seek seek';
-  grid-template-columns: 1fr 1fr;
   grid-gap: 10px;
-  justify-content: space-between;
+  grid-template-columns: 1fr;
 
-  &.isOptions {
-    transform: translateY(-100%);
+  .title {
+    background: #333;
+    color: #fff;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+  }
+
+  .volumes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+    margin: 10px;
   }
 
   .play {
-    grid-area: play;
-
     display: grid;
     grid-template-columns: auto 150px auto;
     justify-content: center;
@@ -293,14 +249,7 @@ button {
       font-size: 10px;
     }
   }
-  .volume {
-    grid-area: volume;
-  }
-  .rate {
-    grid-area: rate;
-  }
   .seek {
-    grid-area: seek;
     display: grid;
     grid-template-columns: 50px auto 50px;
     font-size: 12px;
@@ -318,39 +267,6 @@ button {
     font-size: 20px;
     border-radius: 10px;
     outline: 0;
-  }
-}
-
-.base {
-  background: $base-bg-color;
-  color: $base-text-color;
-  padding: 16px;
-  display: grid;
-  grid-template-areas: 'playing title arrow';
-  grid-template-columns: 24px auto 24px;
-  grid-gap: 4px;
-  justify-content: space-between;
-  border: none;
-
-  cursor: pointer;
-
-  & > * {
-    pointer-events: none;
-    align-self: center;
-  }
-  .playing {
-    grid-area: playing;
-    justify-self: left;
-  }
-  .title {
-    grid-area: title;
-    font-size: 16px;
-    overflow: hidden;
-    white-space: nowrap;
-  }
-  .arrow {
-    grid-area: arrow;
-    justify-self: right;
   }
 }
 </style>

@@ -41,8 +41,8 @@ export default {
         return this.$store.state.audio.currentTime
       },
       set(val: number) {
-        const p = val / this.duration
-        this.progress = isNaN(p) ? 0 : p
+        // const p = val / this.duration
+        // this.progress = isNaN(p) ? 0 : p
         this.commit('seekTo', val)
       }
     },

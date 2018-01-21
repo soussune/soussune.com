@@ -221,7 +221,9 @@ button {
   .title {
     background: #333;
     color: #fff;
-    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
     text-align: center;
     padding: 10px;
   }

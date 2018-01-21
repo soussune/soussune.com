@@ -9,11 +9,9 @@
 
     <AppFooter class="app_footer"/>
 
-    <AudioPlayer>
-    </AudioPlayer>
+    <AudioPlayer/>
 
-    <AudioControlBar>
-    </AudioControlBar>
+    <AudioControl/>
 
 
     <span v-if="twitterWidget">
@@ -26,14 +24,14 @@
 import AppHeader from '~/components/AppHeader.vue'
 import AppFooter from '~/components/AppFooter.vue'
 import AudioPlayer from '~/components/AudioPlayer.vue'
-import AudioControlBar from '~/components/AudioControlBar.vue'
+import AudioControl from '~/components/AudioControl.vue'
 
 export default {
   components: {
     AppHeader,
     AppFooter,
     AudioPlayer,
-    AudioControlBar
+    AudioControl
   },
   data() {
     return {
@@ -41,7 +39,7 @@ export default {
     }
   },
   mounted() {
-    this.$store.watch(state => state.searchText, this.onChangeQuery)
+    this.$store.watch((state) => state.searchText, this.onChangeQuery)
     this.$store.commit('searchText', this.$route.query.q || '')
 
     // https://github.com/nuxt/nuxt.js/issues/2000

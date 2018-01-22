@@ -31,6 +31,7 @@ body {
   line-height: 1.5;
   background: #f4f4f6;
   background: rgba(28, 34, 96, 0.03);
+  overflow-wrap: break-word;
 }
 h1,
 h2,
@@ -112,4 +113,10 @@ $listItemMargin: 1.2em;
   input {
     font-size: 16px !important;
   }
+}
+pre {
+  overflow: auto;
+  background: #eee;
+  padding: 1rem;
+  margin: 1rem 0;
 }

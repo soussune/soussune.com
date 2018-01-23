@@ -47,13 +47,12 @@ export default {
 </script>
 <style lang="scss" scoped>
 .actor-list {
-
   &-item {
     display: inline-block;
     margin-bottom: 1rem;
     text-align: center;
     min-width: 100px;
-    font-size: 14px;
+    font-size: 0.8rem;
 
     & a {
       text-decoration: none;

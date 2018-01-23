@@ -74,7 +74,7 @@ $ios-safari-bottom-margin: 80px;
 }
 
 .bg {
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.8);
   width: 100vw;
   height: 100vh;
 }
@@ -82,6 +82,9 @@ $ios-safari-bottom-margin: 80px;
 .options {
   transition: all 0.5s cubic-bezier(0.55, 0, 0.1, 1);
   position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
   bottom: $ios-safari-bottom-margin + 70px;
 }
 .options-enter-active,

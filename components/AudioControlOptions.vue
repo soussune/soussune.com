@@ -72,7 +72,7 @@
       >
         <icon
           :name="paused ? 'play' : 'pause'"
-          scale="4"
+          scale="3"
         ></icon>
       </button>
       <button
@@ -187,16 +187,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '~assets/css/mixin/_mediaquery.scss';
+@import '~assets/css/_vars.scss';
+
 $track-height: 48px;
-
-$option-bg-color: #eeeeee;
-$option-text-color: #000;
-
-button {
-  outline: none;
-  -webkit-appearance: none;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-}
 
 .stack {
   display: grid;
@@ -209,18 +203,28 @@ button {
   }
 }
 
+$clr-ui: $player-seek-progress;
+
 .option-container {
   box-shadow: 1rem 1.2rem 3.6rem rgba(0, 0, 0, 0.2);
 
-  background: $option-bg-color;
-  color: $option-text-color;
+  background: $clr-white;
+  color: $clr-ui;
 
-  padding: 0 0 20px 0;
   width: 100%;
+  max-width: 900px;
 
   display: grid;
-  grid-gap: 10px;
+  grid-gap: 20px;
   grid-template-columns: 1fr;
+
+  padding: 20px;
+  border-radius: 20px;
+
+  @include mq() {
+    padding: 10px 0 20px 0;
+    border-radius: 0;
+  }
 
   .title {
     max-width: 100%;
@@ -231,11 +235,15 @@ button {
     display: block;
     text-decoration: none;
     transition: all 0.2s cubic-bezier(0.55, 0, 0.1, 1);
-    background: #333;
-    color: #fff;
+    color: $clr-ui;
+    font-size: 1.5rem;
+
+    @include mq() {
+      font-size: 1rem;
+    }
 
     &:hover {
-      opacity: 0.7;
+      color: $clr-sub-ll;
     }
   }
 
@@ -244,6 +252,12 @@ button {
     grid-template-columns: 1fr 1fr;
     grid-gap: 20px;
     margin: 10px;
+
+    > * {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      grid-gap: 4px;
+    }
   }
 
   .play {
@@ -254,18 +268,18 @@ button {
     & button {
       border: none;
       background: transparent;
-      color: $option-text-color;
+      color: $clr-ui;
     }
 
     .skip-text {
       pointer-events: none;
-      font-size: 10px;
+      font-size: 0.6rem;
     }
   }
   .seek {
     display: grid;
     grid-template-columns: 50px auto 50px;
-    font-size: 12px;
+    font-size: 0.7rem;
     align-items: center;
 
     .current,

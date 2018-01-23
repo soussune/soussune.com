@@ -140,6 +140,7 @@ export default {
 
 <style lang="scss" scoped>
 @import '~assets/css/mixin/_mediaquery.scss';
+@import '~assets/css/_vars.scss';
 
 .page-container {
   background: #fff;
@@ -161,8 +162,7 @@ export default {
   .title {
     font-size: 2.5rem;
     margin-bottom: 1rem;
-    font-weight: 500;
-    color: #35495e;
+    color: $clr-black-dd;
 
     @include mq() {
       font-size: 2rem;
@@ -211,6 +211,8 @@ export default {
 
   & h2 {
     font-size: 24px;
+    font-family: $font-serif;
+    color: $clr-black-d;
   }
 
   .header {
@@ -227,8 +229,8 @@ export default {
       bottom: 0;
       left: 0;
       margin: auto;
-      background: #34c322;
-      color: #fff;
+      background: $clr-main-ll;
+      color: $clr-white-ll;
       font-size: 18px;
       border: none;
       border-radius: 20%;
@@ -242,9 +244,9 @@ export default {
 
       &.playing {
         border-radius: 5%;
-        background: #fff;
-        color: #666;
-        border: #aaa 1px solid;
+        background: $clr-white-ll;
+        color: $clr-black-l;
+        border: $clr-white-dd 1px solid;
         animation: blink 3s infinite;
         & > * {
           margin-left: 0px;
@@ -279,7 +281,7 @@ export default {
     margin-bottom: 1rem;
     text-align: center;
     min-width: 100px;
-    font-size: 14px;
+    font-size: 0.8rem;
 
     & a {
       text-decoration: none;
@@ -295,7 +297,7 @@ export default {
   @include mq() {
     &-item {
       min-width: 80px;
-      font-size: 14px;
+      font-size: 0.7rem;
 
       & a {
         text-decoration: none;
@@ -311,26 +313,5 @@ export default {
 </style>
 
 <style lang="scss">
-.marked {
-  margin-top: 60px;
 
-  h3 {
-    font-size: 1.5rem;
-    position: relative;
-    margin-top: 1.5em;
-    padding-bottom: 10px;
-    font-weight: 400;
-    color: #333;
-
-    &:after {
-      content: '';
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 100%;
-      height: 7px;
-      background: repeating-linear-gradient(-45deg, #aed9bb, #aed9bb 2px, #fff 2px, #fff 4px);
-    }
-  }
-}
 </style>

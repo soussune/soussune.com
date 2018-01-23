@@ -34,11 +34,14 @@ $clr-white-d: hsl(0, 0%, 90%);
 $clr-white-dd: hsl(0, 0%, 80%);
 
 // player
-$player-seekbar-bg-color: $clr-white-dd;
-$player-seekbar-progress-color: $clr-sub2-l;
-$player-seekbar-thumb-color: $clr-sub2-l;
+$player-seek-progress: $clr-black-d;
+$player-seek-bg: $clr-white-dd;
 
-$player-volume-bg-color: $clr-white-dd;
-$player-volume-progress-color: $clr-sub2-l;
+$player-seekbar-bg-color: $player-seek-bg;
+$player-seekbar-progress-color: $player-seek-progress;
+$player-seekbar-thumb-color: $player-seek-progress;
+
+$player-volume-bg-color: $player-seek-bg;
+$player-volume-progress-color: $player-seek-progress;
 $player-volume-thumb-color: $clr-white-ll;
-$player-volume-thumb-border-color: $clr-sub2-l;
+$player-volume-thumb-border-color: $player-seek-progress;

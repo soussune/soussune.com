@@ -1,21 +1,63 @@
 @import '~assets/css/_vars.scss';
 
+@font-face {
+  font-family: 'Yu Gothic';
+  src: local('Yu Gothic Medium');
+  font-weight: 100;
+}
+@font-face {
+  font-family: 'Yu Gothic';
+  src: local('Yu Gothic Medium');
+  font-weight: 200;
+}
+@font-face {
+  font-family: 'Yu Gothic';
+  src: local('Yu Gothic Medium');
+  font-weight: 300;
+}
+@font-face {
+  font-family: 'Yu Gothic';
+  src: local('Yu Gothic Medium');
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Yu Gothic';
+  src: local('Yu Gothic Bold');
+  font-weight: bold;
+}
+@font-face {
+  font-family: 'Helvetica Neue';
+  src: local('Helvetica Neue Regular');
+  font-weight: 100;
+}
+@font-face {
+  font-family: 'Helvetica Neue';
+  src: local('Helvetica Neue Regular');
+  font-weight: 200;
+}
+
+html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Original Yu Gothic',
+    'Yu Gothic', YuGothic, Verdana, Meiryo, 'M+ 1p', sans-serif;
+}
+@media all and (-ms-high-contrast: none) {
+  html {
+    font-family: Verdana, Meiryo, sans-serif;
+  }
+}
+@media all and (-ms-high-contrast: active) {
+  html {
+    font-family: Verdana, Meiryo, sans-serif;
+  }
+}
+
 html,
 body,
 #__nuxt {
   height: 100%;
   min-height: 100%;
   font-size: 16px;
-  font-family: 'Avenir', 'Helvetica Neue', 'Helvetica', 'Arial', 'Hiragino Sans',
-    'ヒラギノ角ゴシック', YuGothic, 'Yu Gothic', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS PGothic';
-
-  @font-face {
-    font-family: YuGothicM;
-    src: local('Yu Gothic Medium');
-  }
-
-  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', '游ゴシック Medium', YuGothic,
-    YuGothicM, 'Hiragino Kaku Gothic ProN', メイリオ, Meiryo, sans-serif;
+  font-weight: 500;
 }
 #__nuxt {
   display: flex;

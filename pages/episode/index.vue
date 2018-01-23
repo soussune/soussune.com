@@ -79,20 +79,20 @@ export default {
   computed: {
     ...mapGetters(['queries']),
     episodesForFilter() {
-      return this.episodes.map(episode => ({
+      return this.episodes.map((episode) => ({
         ...episode,
         bodyText: episode.body && episode.body.replace(/<[^>]*?>/g, ' ')
       }))
     },
     filteredEpisodes() {
       if (this.queries.length === 0) return this.episodes
-      return this.episodesForFilter.filter(ep =>
-        this.queries.every(q => {
+      return this.episodesForFilter.filter((ep) =>
+        this.queries.every((q) => {
           const r = new RegExp(q.replace(/[\\^$.*+?()[\]{}|]/g, '\\$&'), 'i')
           return (
-            ep.actorIds.some(actorId => actorId.match(r)) ||
-            ep.actors.some(actor => actor.title.match(r)) ||
-            ep.topics.some(topic => topic.match(r)) ||
+            ep.actorIds.some((actorId) => actorId.match(r)) ||
+            ep.actors.some((actor) => actor.title.match(r)) ||
+            ep.topics.some((topic) => topic.match(r)) ||
             ep.title.match(r) ||
             ep.bodyText.match(r)
           )
@@ -133,69 +133,89 @@ export default {
 
 <style lang="scss" scoped>
 @import '~assets/css/mixin/_mediaquery.scss';
+@import '~assets/css/_vars.scss';
 
 .card {
   border-radius: 3px;
-  padding: 1rem;
-  background-color: #ffffff;
-  box-shadow: 0 0 0 1px rgba(63,63,68,0.05), 0 1px 3px 0 rgba(63,63,68,0.15);
+  padding: 0;
+  background-color: $clr-white-ll;
+  box-shadow: 0 0 0 1px rgba(63, 63, 68, 0.05), 0 1px 3px 0 rgba(63, 63, 68, 0.15);
 }
+
+$ep-side-margin: 1.2rem;
 
 .episode {
   display: block;
   text-decoration: none;
-  border-bottom: 1px solid #ebeef0;
+  transition: all 0.4s cubic-bezier(0.55, 0, 0.1, 1);
+  position: relative;
+  padding: 0 $ep-side-margin;
+  margin-top: -1px;
+
+  @include mq() {
+    padding: 0 0.4rem;
+  }
+
+  &:not(:last-child):before {
+    content: '';
+    position: absolute;
+    height: 1px;
+    bottom: 0;
+    left: $ep-side-margin;
+    right: $ep-side-margin;
+    background-color: $clr-sub-ll;
+  }
 
   &:first-child {
-    border-top: none;
+    padding-top: 1rem;
   }
 
   &:last-child {
-    border-bottom: none;
+    padding-bottom: 1rem;
   }
 
   &:hover {
     width: 100%;
     height: 100%;
-    background-color: #fafbfc;
-    border-bottom: 1px solid #ebeef0;
-    color: #212b35;
+    background-color: $clr-sub-ll;
+    color: $clr-black-d;
   }
 
   article {
     display: grid;
-    grid-template-areas: "header actor" "topic date";
+    grid-template-areas: 'header actor' 'topic date';
     grid-template-columns: 1fr 200px;
     box-sizing: content-box;
     padding: 0.5rem;
     @include mq() {
       grid-template-columns: 1fr 100px;
     }
-
   }
   &-header {
     grid-area: header;
     font-size: 1.2rem;
+    color: $clr-black-d;
   }
   &-actor {
     grid-area: actor;
     justify-self: end;
+    align-self: center;
 
     &-item {
       margin-left: -12px;
       border-radius: 50%;
-      border: 2px solid #fff;
+      border: 2px solid $clr-white-ll;
       box-sizing: content-box;
       background-origin: content-box;
       width: 30px;
       height: 30px;
     }
-
   }
   &-date {
     grid-area: date;
     font-size: 0.7rem;
     justify-self: end;
+    align-self: end;
   }
   &-topic {
     grid-area: topic;
@@ -205,41 +225,20 @@ export default {
       align-items: center;
       padding: 0 0.5rem;
       margin-right: 0.5rem;
-      background-color: #dfe3e8;
+      background-color: $clr-white-d;
       border-radius: 1rem;
-      color: #454f5b;
+      color: $clr-black;
     }
   }
-
 }
 
 .query {
   padding: 0 10px;
-  font-size: 16px;
+  font-size: 1rem;
   border-radius: 10px;
   height: 40px;
   line-height: 40px;
   outline: none;
-}
-
-.home-container
-{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.home-slogan
-{
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-.home-links
-{
-  padding-top: 15px;
+  color: $clr-black-l;
 }
 </style>

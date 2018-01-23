@@ -28,7 +28,4 @@
   word-spacing: 5px;
   padding-bottom: 15px;
 }
-.home-links {
-  padding-top: 15px;
-}
 </style>

@@ -22,6 +22,7 @@ const conf = {
     '~/assets/css/reset.scss',
     '~/assets/css/style.scss',
     '~/assets/css/layout.scss',
+    '~/assets/css/marked.scss',
     '~/assets/css/pageTrans.scss'
   ],
   head: {

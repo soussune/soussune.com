@@ -28,11 +28,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$base-bg-color: #2f2921;
+@import '~assets/css/_vars.scss';
+
 $button-size: 60px;
 
 .audio-control-button {
-  background: $base-bg-color;
+  background: $clr-main-d;
   border-radius: 50%;
   width: $button-size;
   height: $button-size;
@@ -43,6 +44,6 @@ $button-size: 60px;
 
   cursor: pointer;
 
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
 }
 </style>

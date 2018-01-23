@@ -109,6 +109,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '~assets/css/_vars.scss';
+
 .header {
   position: fixed;
   z-index: 502;
@@ -160,7 +162,7 @@ export default {
     min-width: 6rem;
 
     a {
-      color: #ffffff;
+      color: $clr-white-ll;
       text-decoration: none;
       font-weight: 600;
     }
@@ -168,8 +170,8 @@ export default {
 }
 
 .search-input {
-  color: #ffffff;
-  background-color: #43467f;
+  color: $clr-white-ll;
+  background-color: $clr-main-ll;
   border-radius: 3px;
   box-shadow: none;
   height: 2.2rem;
@@ -192,23 +194,23 @@ export default {
 
   ::-webkit-input-placeholder {
     /* Chrome/Opera/Safari */
-    color: #ffffff;
+    color: $clr-white-ll;
   }
   ::-moz-placeholder {
     /* Firefox 19+ */
-    color: #ffffff;
+    color: $clr-white-ll;
   }
   :-ms-input-placeholder {
     /* IE 10+ */
-    color: #ffffff;
+    color: $clr-white-ll;
   }
   :-moz-placeholder {
     /* Firefox 18- */
-    color: #ffffff;
+    color: $clr-white-ll;
   }
 
   &__add-on {
-    color: #ffffff;
+    color: $clr-white-ll;
     opacity: 1;
 
     &--before {
@@ -218,7 +220,7 @@ export default {
     }
 
     .focused & {
-      color: #637381;
+      color: $clr-black-l;
     }
   }
 
@@ -229,32 +231,32 @@ export default {
   }
 
   .focused & {
-    background-color: #f9fafb;
-    color: #637381;
+    background-color: $clr-white-l;
+    color: $clr-black-l;
     box-shadow: none;
     transition: background-color 200ms ease, border-color 200ms ease;
 
     ::-webkit-input-placeholder {
       /* Chrome/Opera/Safari */
-      color: #637381;
+      color: $clr-black-l;
     }
     ::-moz-placeholder {
       /* Firefox 19+ */
-      color: #637381;
+      color: $clr-black-l;
     }
     :-ms-input-placeholder {
       /* IE 10+ */
-      color: #637381;
+      color: $clr-black-l;
     }
     :-moz-placeholder {
       /* Firefox 18- */
-      color: #637381;
+      color: $clr-black-l;
     }
   }
 }
 
 .search-input-field {
-  color: #ffffff;
+  color: $clr-white-ll;
   background-color: transparent;
   border-radius: 0;
   box-shadow: none;
@@ -277,7 +279,7 @@ export default {
   -webkit-appearance: none;
 
   .focused & {
-    color: #212b35;
+    color: $clr-black;
   }
 }
 

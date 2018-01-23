@@ -56,24 +56,25 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.body, .episodes {
+@import '~assets/css/_vars.scss';
+
+.body,
+.episodes {
   text-align: left;
 }
 .icon {
   width: 200px;
   height: 200px;
 }
-.content-container
-{
+.content-container {
   max-width: 38rem;
-  margin: 0 auto
+  margin: 0 auto;
 }
 
-.actor-title
-{
+.actor-title {
   font-size: 2.5rem;
   margin-bottom: 1rem;
   font-weight: 500;
-  color: #35495e;
+  color: $clr-black-dd;
 }
 </style>

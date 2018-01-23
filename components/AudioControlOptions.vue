@@ -187,10 +187,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$track-height: 48px;
+@import '~assets/css/_vars.scss';
 
-$option-bg-color: #eeeeee;
-$option-text-color: #000;
+$track-height: 48px;
 
 button {
   outline: none;
@@ -209,11 +208,13 @@ button {
   }
 }
 
+$clr-ui: $clr-sub2-d;
+
 .option-container {
   box-shadow: 1rem 1.2rem 3.6rem rgba(0, 0, 0, 0.2);
 
-  background: $option-bg-color;
-  color: $option-text-color;
+  background: $clr-white-ll;
+  color: $clr-ui;
 
   padding: 0 0 20px 0;
   width: 100%;
@@ -231,8 +232,8 @@ button {
     display: block;
     text-decoration: none;
     transition: all 0.2s cubic-bezier(0.55, 0, 0.1, 1);
-    background: #333;
-    color: #fff;
+    background: $clr-sub2-ll;
+    color: $clr-sub2-dd;
 
     &:hover {
       opacity: 0.7;
@@ -254,7 +255,7 @@ button {
     & button {
       border: none;
       background: transparent;
-      color: $option-text-color;
+      color: $clr-ui;
     }
 
     .skip-text {

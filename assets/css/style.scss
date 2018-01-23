@@ -1,3 +1,5 @@
+@import '~assets/css/_vars.scss';
+
 html,
 body,
 #__nuxt {
@@ -23,15 +25,15 @@ a {
   text-decoration: underline;
 
   &:hover {
-    color: #f3adad;
+    color: $clr-sub-ll;
   }
 }
 
 body {
   line-height: 1.5;
-  background: #f4f4f6;
-  background: rgba(28, 34, 96, 0.03);
   overflow-wrap: break-word;
+  background: $clr-white;
+  color: $clr-black;
 }
 h1,
 h2,
@@ -56,55 +58,17 @@ h4 {
   font-size: 1.2rem;
 }
 button {
+  -webkit-appearance: none;
+
   &:hover {
     cursor: pointer;
   }
 }
-p {
-  color: #212b35;
-  font-size: 1rem;
-}
 small {
-  color: #637381;
+  color: $clr-black-l;
   font-size: 0.8rem;
 }
-blockquote {
-  color: rgb(28, 32, 34);
-  padding: 20px 20px 11.6px;
-  margin: 10px 0;
-  border: 1px solid #e1e8ed;
-  border-radius: 5px;
-  background: #fff;
-  & a {
-    font-size: 14px;
-    color: rgb(105, 120, 130);
-  }
-}
-$listItemMargin: 1.2em;
-.marked {
-  & iframe {
-    max-width: 100%;
-  }
-  & img,
-  & .speakerdeck-wrapper {
-    max-width: 500px;
-    width: 100%;
-  }
 
-  & ul {
-    padding-left: $listItemMargin;
-    & li {
-      position: relative;
-      &:before {
-        content: '▶';
-        display: block;
-        position: absolute;
-        left: -$listItemMargin;
-        color: #aed9bb;
-      }
-    }
-  }
-}
 // Prevent auto-zoom in input on iOS:
 // https://stackoverflow.com/a/16255670
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
@@ -113,10 +77,4 @@ $listItemMargin: 1.2em;
   input {
     font-size: 16px !important;
   }
-}
-pre {
-  overflow: auto;
-  background: #eee;
-  padding: 1rem;
-  margin: 1rem 0;
 }

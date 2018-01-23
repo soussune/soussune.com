@@ -1,8 +1,44 @@
-$player-seekbar-bg-color: #ccc;
-$player-seekbar-progress-color: #f00;
-$player-seekbar-thumb-color: #f00;
+// Main Primary color */
+$clr-main: #1c2260;
+$clr-main-ll: #565c97;
+$clr-main-l: #333a79;
+$clr-main-d: #0b1044;
+$clr-main-dd: #040729;
 
-$player-volume-bg-color: #ccc;
-$player-volume-progress-color: #f00;
-$player-volume-thumb-color: #fff;
-$player-volume-thumb-border-color: #f00;
+// Main Secondary color (1) */
+$clr-sub: #8b7e19;
+$clr-sub-ll: #dbcf6e;
+$clr-sub-l: #b0a33a;
+$clr-sub-d: #625802;
+$clr-sub-dd: #3b3500;
+
+// Main Secondary color (2) */
+$clr-sub2: #8b5719;
+$clr-sub2-ll: #dba96e;
+$clr-sub2-l: #b07a3a;
+$clr-sub2-d: #623702;
+$clr-sub2-dd: #3b2000;
+
+// black
+$clr-black: hsl(0, 0%, 30%);
+$clr-black-l: hsl(0, 0%, 45%);
+$clr-black-ll: hsl(0, 0%, 60%);
+$clr-black-d: hsl(0, 0%, 15%);
+$clr-black-dd: hsl(0, 0%, 0%);
+
+// white
+$clr-white: hsl(0, 0%, 95%);
+$clr-white-l: hsl(0, 0%, 97%);
+$clr-white-ll: hsl(0, 0%, 100%);
+$clr-white-d: hsl(0, 0%, 90%);
+$clr-white-dd: hsl(0, 0%, 80%);
+
+// player
+$player-seekbar-bg-color: $clr-white-dd;
+$player-seekbar-progress-color: $clr-sub2-l;
+$player-seekbar-thumb-color: $clr-sub2-l;
+
+$player-volume-bg-color: $clr-white-dd;
+$player-volume-progress-color: $clr-sub2-l;
+$player-volume-thumb-color: $clr-white-ll;
+$player-volume-thumb-border-color: $clr-sub2-l;

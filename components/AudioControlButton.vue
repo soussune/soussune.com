@@ -1,5 +1,5 @@
 <template>
-  <div class="button">
+  <div class="audio-control-button">
     <AudioPlayingIcon
       class="icon"
       :paused="paused"
@@ -29,10 +29,9 @@ export default {
 
 <style lang="scss" scoped>
 $base-bg-color: #2f2921;
-$base-text-color: #fff;
 $button-size: 60px;
 
-.button {
+.audio-control-button {
   background: $base-bg-color;
   border-radius: 50%;
   width: $button-size;

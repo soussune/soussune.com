@@ -164,7 +164,6 @@ export default {
     a {
       color: $clr-white-ll;
       text-decoration: none;
-      font-weight: 600;
     }
   }
 }

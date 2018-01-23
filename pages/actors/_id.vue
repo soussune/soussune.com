@@ -74,7 +74,6 @@ export default {
 .actor-title {
   font-size: 2.5rem;
   margin-bottom: 1rem;
-  font-weight: 500;
   color: $clr-black-dd;
 }
 </style>

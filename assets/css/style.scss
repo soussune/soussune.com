@@ -37,8 +37,8 @@
 }
 
 html {
-  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Original Yu Gothic',
-    'Yu Gothic', YuGothic, Verdana, Meiryo, 'M+ 1p', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', YuGothic, '游ゴシック Medium',
+    YuGothicM, Verdana, Meiryo, sans-serif;
 }
 @media all and (-ms-high-contrast: none) {
   html {
@@ -57,7 +57,7 @@ body,
   height: 100%;
   min-height: 100%;
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 400;
 }
 #__nuxt {
   display: flex;
@@ -104,7 +104,6 @@ h2 {
 }
 h3 {
   font-size: 1.2rem;
-  font-weight: 600;
 }
 h4 {
   font-size: 1.2rem;

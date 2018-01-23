@@ -92,7 +92,6 @@ export default {
   .title {
     font-size: 2.5rem;
     margin-bottom: 1rem;
-    font-weight: 500;
     color: $clr-black-d;
   }
 }
@@ -132,7 +131,6 @@ $ep-trans: 0.4s cubic-bezier(0.55, 0, 0.1, 1);
     margin-top: 0.2em;
     color: $clr-black-d;
     font-size: 1.65rem;
-    font-weight: 500;
     margin-bottom: 0.2em;
     & a {
       text-decoration: none;

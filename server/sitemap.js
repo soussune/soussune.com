@@ -9,7 +9,7 @@ const getEpisode = () => {
 
   fs.readdirSync(path.join(__dirname, '../content/episode/')).forEach((data) => {
     const episodePath = 'https://soussune.com/episode'
-    const cdnPath = 'https://cdn.soussune.com/audio'
+    const cdnPath = 'http://cdn.soussune.com.s3-ap-northeast-1.amazonaws.com/audio'
     const type = 'audio/mp3'
     const author = 'そうっすね制作委員会'
     const filename = `${data.substr(0, data.length - 8)}`

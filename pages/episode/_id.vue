@@ -87,7 +87,9 @@ export default {
   },
   computed: {
     src(): string {
-      return 'https://cdn.soussune.com/audio' + this.episode.audioFilePath
+      return (
+        'http://cdn.soussune.com.s3-ap-northeast-1.amazonaws.com/audio' + this.episode.audioFilePath
+      )
     },
     playing(): boolean {
       return this.selected && !this.paused

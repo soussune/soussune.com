@@ -14,12 +14,28 @@
 </template>
 
 <style lang="scss" scpoped>
-.st1{fill:#EDE18D;}
-.st2{fill:#F3C08A;}
-.st3{fill:#F3ADAD;}
-.st4{fill:#D9B4E5;}
-.st5{fill:#AEC2F4;}
-.st6{fill:#B6E6F2;}
-.st7{fill:#AED9BB;}
-.st8{fill:#C9DB89;}
+.st1 {
+  fill: #ede18d;
+}
+.st2 {
+  fill: #f3c08a;
+}
+.st3 {
+  fill: #f3adad;
+}
+.st4 {
+  fill: #d9b4e5;
+}
+.st5 {
+  fill: #aec2f4;
+}
+.st6 {
+  fill: #b6e6f2;
+}
+.st7 {
+  fill: #aed9bb;
+}
+.st8 {
+  fill: #c9db89;
+}
 </style>

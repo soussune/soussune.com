@@ -29,7 +29,7 @@ export default {
     this.bind('src', this.onChangeSrc)
 
     const props = ['volume', 'playbackRate', 'muted']
-    props.forEach(p => this.bind(p))
+    props.forEach((p) => this.bind(p))
   },
   beforeDestroy() {
     const au = this.audio
@@ -48,7 +48,7 @@ export default {
     bind(prop, cb) {
       this.$store.watch(
         this.$store.getters[`audio/${prop}`],
-        val => (cb ? cb(val) : (this.audio[prop] = val))
+        (val) => (cb ? cb(val) : (this.audio[prop] = val))
       )
     },
     commit(prop, payload) {

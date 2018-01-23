@@ -2,13 +2,13 @@ import { DateTime } from 'luxon'
 
 const exclude = ['meta', 'anchors', 'date']
 
-const allEpisodes = async(app) => {
+const allEpisodes = async (app) => {
   return await app
     .$content('/episode')
     .query({ exclude })
     .getAll()
 }
-const allActors = async(app) => {
+const allActors = async (app) => {
   return await app
     .$content('/actors')
     .query({ exclude })

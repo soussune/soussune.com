@@ -4,7 +4,7 @@
 
 ## Build Setup
 
-``` bash
+```bash
 # enter directory Nuxt source directory
 $ cd site
 

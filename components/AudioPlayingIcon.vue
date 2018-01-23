@@ -33,7 +33,7 @@ export default {
 
       // Keep animation state for iOS
       // https://stackoverflow.com/questions/27362216/webkit-animation-play-state-not-working-on-ios-8-1-probably-lower-too
-      this.$refs.bars.forEach(bar => {
+      this.$refs.bars.forEach((bar) => {
         const s = window.getComputedStyle(bar)
         bar.style.opacity = s.opacity
         bar.style.transform = s.transform

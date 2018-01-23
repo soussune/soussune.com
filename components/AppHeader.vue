@@ -93,12 +93,12 @@ export default {
         el.addEventListener('compositionstart', () => {
           onComposition = true
         })
-        el.addEventListener('compositionend', e => {
+        el.addEventListener('compositionend', (e) => {
           onComposition = false
           binding.value = e.target.value
           vnode.context.$set(vnode.context, binding.expression, e.target.value)
         })
-        el.addEventListener('input', e => {
+        el.addEventListener('input', (e) => {
           if (onComposition) return
           vnode.context.$set(vnode.context, binding.expression, e.target.value)
         })
@@ -160,7 +160,7 @@ export default {
     min-width: 6rem;
 
     a {
-      color: #FFFFFF;
+      color: #ffffff;
       text-decoration: none;
       font-weight: 600;
     }
@@ -168,7 +168,7 @@ export default {
 }
 
 .search-input {
-  color: #FFFFFF;
+  color: #ffffff;
   background-color: #43467f;
   border-radius: 3px;
   box-shadow: none;
@@ -190,21 +190,25 @@ export default {
   outline: none;
   transition: background-color 200ms ease, border-color 200ms ease;
 
-  ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-    color: #FFFFFF;
+  ::-webkit-input-placeholder {
+    /* Chrome/Opera/Safari */
+    color: #ffffff;
   }
-  ::-moz-placeholder { /* Firefox 19+ */
-    color: #FFFFFF;
+  ::-moz-placeholder {
+    /* Firefox 19+ */
+    color: #ffffff;
   }
-  :-ms-input-placeholder { /* IE 10+ */
-    color: #FFFFFF;
+  :-ms-input-placeholder {
+    /* IE 10+ */
+    color: #ffffff;
   }
-  :-moz-placeholder { /* Firefox 18- */
-    color: #FFFFFF;
+  :-moz-placeholder {
+    /* Firefox 18- */
+    color: #ffffff;
   }
 
   &__add-on {
-    color: #FFFFFF;
+    color: #ffffff;
     opacity: 1;
 
     &--before {
@@ -230,23 +234,27 @@ export default {
     box-shadow: none;
     transition: background-color 200ms ease, border-color 200ms ease;
 
-    ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    ::-webkit-input-placeholder {
+      /* Chrome/Opera/Safari */
       color: #637381;
     }
-    ::-moz-placeholder { /* Firefox 19+ */
+    ::-moz-placeholder {
+      /* Firefox 19+ */
       color: #637381;
     }
-    :-ms-input-placeholder { /* IE 10+ */
+    :-ms-input-placeholder {
+      /* IE 10+ */
       color: #637381;
     }
-    :-moz-placeholder { /* Firefox 18- */
+    :-moz-placeholder {
+      /* Firefox 18- */
       color: #637381;
     }
   }
 }
 
 .search-input-field {
-  color: #FFFFFF;
+  color: #ffffff;
   background-color: transparent;
   border-radius: 0;
   box-shadow: none;

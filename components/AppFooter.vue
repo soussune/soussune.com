@@ -49,5 +49,4 @@
 .footer__copyright {
   text-align: center;
 }
-
 </style>

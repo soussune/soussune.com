@@ -6,8 +6,8 @@ twitterUsername: ymmmo1
 description: Tech boy / dentability CTO / React Native / なんにでもwordpress（悪手） / ロックンロール
 ---
 
-最近まで、vanila.jsでjsを書いていた
+最近まで、vanila.js で js を書いていた
 
-React Nativeをガチってるフロントエンドエンジニア
+React Native をガチってるフロントエンドエンジニア
 
-React NativeのためにOSSなどを作り始めるなど活動中
+React Native のために OSS などを作り始めるなど活動中

@@ -22,7 +22,7 @@ module.exports = function rssModule(moduleOptions) {
   const rssPath = path.resolve(path.join('static', options.path))
   const feed = createRssFeed(options, this.options.rssItems)
 
-  this.nuxt.plugin('build', async(builder) => {
+  this.nuxt.plugin('build', async (builder) => {
     fs.writeFileSync(rssPath, feed.xml({ indent: true }))
   })
 }

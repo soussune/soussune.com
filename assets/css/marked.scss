@@ -4,13 +4,23 @@ $listItemMargin: 1.2em;
 .marked {
   margin-top: 60px;
 
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: $font-serif;
+    color: $clr-black-d;
+  }
+  h2 {
+    color: $clr-black-dd;
+  }
   h3 {
     font-size: 1.5rem;
     position: relative;
-    margin-top: 1.5em;
+    margin-top: 2rem;
     padding-bottom: 10px;
     font-weight: 400;
-    color: $clr-black-d;
 
     &:after {
       content: '';
@@ -28,6 +38,10 @@ $listItemMargin: 1.2em;
         $clr-white-ll 4px
       );
     }
+  }
+  h4 {
+    margin-top: 2rem;
+    font-size: 1.4rem;
   }
   & iframe {
     max-width: 100%;

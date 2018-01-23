@@ -212,6 +212,8 @@ export default {
 
   & h2 {
     font-size: 24px;
+    font-family: $font-serif;
+    font-color: $clr-black-d;
   }
 
   .header {

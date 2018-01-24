@@ -151,11 +151,19 @@ $ep-side-margin: 1.2rem;
   position: relative;
   padding: 0 $ep-side-margin;
   margin-top: -1px;
+  background-image: linear-gradient(left, $clr-sub-ll 50%, transparent 50%);
+  background-position: right;
+  background-size: 200% auto;
 
   @include mq() {
     padding: 0 0.4rem;
   }
-
+  &:hover {
+    background-position: 0;
+    & * {
+      color: $clr-black-dd !important;
+    }
+  }
   &:not(:last-child):before {
     content: '';
     position: absolute;
@@ -172,13 +180,6 @@ $ep-side-margin: 1.2rem;
 
   &:last-child {
     padding-bottom: 1rem;
-  }
-
-  &:hover {
-    width: 100%;
-    height: 100%;
-    background-color: $clr-sub-ll;
-    color: $clr-black-d;
   }
 
   article {

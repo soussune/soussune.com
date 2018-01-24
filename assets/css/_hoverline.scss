@@ -1,0 +1,27 @@
+$line-height: 2px !default;
+$line-width: 100% !default;
+$line-left: 0 !default;
+$line-bottom: -2px !default;
+$line-color: #fff !default;
+$transiton: all 0.2s ease-in-out 0s !default;
+
+& {
+  position: relative;
+
+  &:before {
+    content: '';
+    position: absolute;
+    width: $line-width;
+    height: $line-height;
+    left: $line-left;
+    bottom: $line-bottom;
+    background-color: $line-color;
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: $transiton;
+  }
+  &:hover:before {
+    visibility: visible;
+    transform: scaleX(1);
+  }
+}

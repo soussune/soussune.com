@@ -37,7 +37,7 @@
           </div>
         </section>
       </div>
-      <div class="top-bar__list">
+      <nav class="top-bar__list">
         <div class="top-bar__item">
           <nuxt-link to="/episode">
             エピソード
@@ -53,7 +53,7 @@
             ブログ
           </a>
         </div>
-      </div>
+      </nav>
     </div>
   </header>
 </template>
@@ -164,6 +164,8 @@ export default {
     a {
       color: $clr-white-ll;
       text-decoration: none;
+      $line-color: $clr-white-ll;
+      @import '~assets/css/_hoverline.scss';
     }
   }
 }

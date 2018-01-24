@@ -41,7 +41,7 @@
       </nuxt-link>
 
       <nav class="readmore" v-if="moreEpisode">
-        <nuxt-link :to="{ path: '/episode', hash: 'ep' + moreEpisode.id }" class="button">
+        <nuxt-link :to="{ path: '/episode', hash: 'ep' + moreEpisode.id }" class="readmore-link">
           Read more <icon name="chevron-right"></icon>
         </nuxt-link>
       </nav>
@@ -168,10 +168,14 @@ $ep-bg-hover: $clr-white-ll;
   justify-content: center;
   margin-top: 2rem;
 
-  .button {
+  &-link {
     text-decoration: none;
     color: $clr-black-d;
     font-size: 1.2rem;
+    padding: 0.5rem;
+
+    $line-color: $clr-sub-l;
+    @import '~assets/css/_hoverline.scss';
 
     &:hover {
       color: $clr-sub-l;

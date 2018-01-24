@@ -198,7 +198,11 @@ const conf = {
       shouldSendCallback: () => process.env.NODE_ENV === 'production'
     }
   },
-  plugins: ['~plugins/vue-awesome.js', '~plugins/content-loader.js']
+  plugins: [
+    '~plugins/vue-awesome.js',
+    '~plugins/content-loader.js',
+    { src: '~plugins/ga.js', ssr: false }
+  ]
 }
 
 module.exports = conf

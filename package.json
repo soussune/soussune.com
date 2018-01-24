@@ -26,7 +26,7 @@
     "dev": "nuxt",
     "build": "nuxt build",
     "generate": "NODE_ENV=production nuxt generate",
-    "prettier": "prettier **/*.{js,ts,vue,md}",
+    "prettier": "prettier **/*.{js,ts,vue,md,css,scss}",
     "prettier:write": "npm run prettier -- --write",
     "prettier:check": "npm run prettier -- --list-different",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",

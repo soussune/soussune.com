@@ -62,7 +62,7 @@ const conf = {
         hid: 'twTitle'
       },
       { name: 'twitter:url', content: 'https://.soussune.com', hid: 'twUrl' },
-      { name: 'twitter:image', content: '', hid: 'twImage' },
+      { name: 'twitter:image', content: 'https://soussune.com/opg-artwork.jpg', hid: 'twImage' },
       {
         name: 'twitter:description',
         content: 'テクノロジーと世の中についてエンジニア達が雑談するポッドキャストです。',
@@ -80,7 +80,7 @@ const conf = {
       { property: 'og:type', content: 'article' },
       { property: 'og:url', content: 'https://soussune.com', hid: 'ogUrl' },
       { property: 'og:locale:alternate', content: 'ja' },
-      { property: 'og:image', content: '', hid: 'ogImage' },
+      { property: 'og:image', content: 'https://soussune.com/opg-artwork.jpg', hid: 'ogImage' },
       {
         property: 'og:description',
         content: 'テクノロジーと世の中についてエンジニア達が雑談するポッドキャストです。',

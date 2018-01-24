@@ -79,7 +79,7 @@ const conf = {
       { property: 'og:site_name', content: 'soususne' },
       { property: 'og:type', content: 'article' },
       { property: 'og:url', content: 'https://soussune.com', hid: 'ogUrl' },
-      { property: 'og:locale:alternate', content: 'ja' },
+      { property: 'og:locale', content: 'ja_JP' },
       { property: 'og:image', content: 'https://soussune.com/ogp-artwork.jpg', hid: 'ogImage' },
       {
         property: 'og:description',

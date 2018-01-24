@@ -73,8 +73,9 @@ body,
 }
 
 a {
-  color: inherit; /* blue colors for links too */
+  color: inherit;
   text-decoration: underline;
+  transition: 0.2s ease-out;
 
   &:hover {
     color: $clr-sub-ll;

@@ -17,7 +17,14 @@ const conf = {
       }
     }
   },
-  modules: ['@nuxtjs/pwa', '@nuxtjs/sentry', '~/modules/rss', '~/modules/typescript', 'nuxtent'],
+  modules: [
+    '@nuxtjs/pwa',
+    '@nuxtjs/sentry',
+    '~/modules/rss',
+    '~/modules/typescript',
+    'nuxtent',
+    ['@nuxtjs/google-analytics', { id: 'UA-100444203-1' }]
+  ],
   css: [
     '~/assets/css/reset.scss',
     '~/assets/css/style.scss',

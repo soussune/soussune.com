@@ -1,5 +1,5 @@
 .page-container {
-  transition: all .2s cubic-bezier(.55, 0, .1, 1);
+  transition: all 0.2s cubic-bezier(0.55, 0, 0.1, 1);
 }
 .page-enter-active,
 .page-leave-active {
@@ -13,7 +13,7 @@
 .slide-right-leave-active,
 .slide-left-leave-active,
 .slide-right-enter {
-  transition: all .4s ease-in;
+  transition: all 0.4s ease-in;
   opacity: 0;
 }
 .slide-left-enter,

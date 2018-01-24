@@ -43,16 +43,16 @@
 
     <nav class="ep-links">
       <nuxt-link
-        v-if="episode.older"
-        :to="episode.older.permalink"
-        class="older"
+        v-if="episode.newer"
+        :to="episode.newer.permalink"
+        class="newer"
       >
         <icon name="arrow-left" scale="3"></icon>
       </nuxt-link>
       <nuxt-link
-        v-if="episode.newer"
-        :to="episode.newer.permalink"
-        class="newer"
+        v-if="episode.older"
+        :to="episode.older.permalink"
+        class="older"
       >
         <icon name="arrow-right" scale="3"></icon>
       </nuxt-link>
@@ -185,20 +185,20 @@ export default {
 
     $offset: 10px;
     &.older {
-      left: $offset;
+      right: $offset;
     }
     &.newer {
-      right: $offset;
+      left: $offset;
     }
     @include mq() {
       position: absolute;
       top: 200px;
       $offset: 0px;
       &.older {
-        left: $offset;
+        right: $offset;
       }
       &.newer {
-        right: $offset;
+        left: $offset;
       }
     }
   }

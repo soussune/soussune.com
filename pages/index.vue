@@ -85,6 +85,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '~assets/css/mixin/_mediaquery.scss';
 @import '~assets/css/_vars.scss';
 
 .header {
@@ -99,15 +100,22 @@ export default {
   margin-top: 60px;
 }
 
-$ep-trans: 0.4s cubic-bezier(0.55, 0, 0.1, 1);
+$ep-trans: 0.2s ease-in;
+$ep-bg: $clr-white-ll;
+$ep-bg-hover: $clr-white-ll;
+
 .episode {
   display: block;
   text-decoration: none;
-  background: $clr-white-ll;
+  background: $ep-bg;
   border-radius: 0.3rem;
   box-shadow: 0 0 0 1px rgba(63, 63, 68, 0.05), 0 1px 3px 0 rgba(63, 63, 68, 0.15);
   padding: 10px 20px;
   margin-top: 20px;
+
+  @include mq() {
+    border-radius: 0;
+  }
 
   transition: $ep-trans;
   & * {
@@ -115,22 +123,23 @@ $ep-trans: 0.4s cubic-bezier(0.55, 0, 0.1, 1);
   }
   &:hover {
     color: inherit;
-    background-color: $clr-sub-ll;
+    background-color: $ep-bg-hover;
     box-shadow: none;
-    box-shadow: 0 0 0 1px $clr-sub-l, 0 1px 3px 0 $clr-sub-ll;
+    box-shadow: 0 0 0 1px rgba(63, 63, 68, 0.05), 0 5px 18px 0 rgba(63, 63, 68, 0.15);
+    transform: scale(1.01);
 
     & * {
       color: $clr-black-dd;
     }
     & .actor-list img {
-      border: 3px solid $clr-sub-ll;
+      border: 3px solid $ep-bg-hover;
     }
   }
 
   &-title {
     margin-top: 0.2em;
     color: $clr-black-d;
-    font-size: 1.65rem;
+    font-size: 1.6rem;
     margin-bottom: 0.2em;
     & a {
       text-decoration: none;
@@ -146,7 +155,7 @@ $ep-trans: 0.4s cubic-bezier(0.55, 0, 0.1, 1);
   }
   & img {
     border-radius: 50%;
-    border: 3px solid $clr-white-ll;
+    border: 3px solid $ep-bg;
     box-sizing: content-box;
     background-origin: content-box;
     width: 60px;

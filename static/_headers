@@ -1,0 +1,7 @@
+/_nuxt/content/episode/_all.json
+  Access-Control-Allow-Credentials: true
+  Access-Control-Allow-Origin: https://soussune.netlify.com
+
+/_nuxt/content/actors/_all.json
+  Access-Control-Allow-Credentials: true
+  Access-Control-Allow-Origin: https://soussune.netlify.com

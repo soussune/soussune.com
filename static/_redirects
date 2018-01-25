@@ -2,3 +2,5 @@
 /episode/ /episode
 /actors/*/ /actors/:splat
 /actors/ /actors
+
+https://soussune.netlify.com/* https://soussune.com/:splat 301!

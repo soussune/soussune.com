@@ -141,7 +141,7 @@ const conf = {
     description: 'テクノロジーと世の中についてエンジニア達が雑談するポッドキャストです。',
     feed_url: 'https://soussune.com/feed.xml',
     site_url: 'https://soussune.com/',
-    image_url: 'https://soussune.com/images/itunes-artwork.jpg',
+    image_url: 'https://soussune.com/itunes-artwork.jpg',
     webMaster: 'soussune.user@email.com (soussune)',
     managingEditor: 'soussune.user@email.com (soussune)',
     copyright: '2017 soussune',
@@ -168,7 +168,7 @@ const conf = {
       {
         'itunes:image': {
           _attr: {
-            href: 'https://soussune.com/images/itunes-artwork.jpg'
+            href: 'https://soussune.com/itunes-artwork.jpg'
           }
         }
       },

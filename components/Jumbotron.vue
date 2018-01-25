@@ -89,6 +89,7 @@
 
   @include mq() {
     padding: 16px;
+    height: auto;
   }
 }
 
@@ -114,7 +115,7 @@
 
   @include mq() {
     font-size: 1rem;
-    padding: 16px;
+    padding: 16px 16px 3rem;
   }
 }
 

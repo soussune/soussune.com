@@ -1,14 +1,17 @@
 @import '~assets/css/mixin/_mediaquery.scss';
 
 /* CSS Grid Layout */
+
 .app {
   display: grid;
-  grid-template-areas: 'header header header' 'left body right' 'left footer right';
-  grid-template-columns: 1fr minmax(200px, 960px) 1fr;
-  // grid-template-rows: 150px 1fr 30px;
+  grid-template-areas: 'header header header' 'jumbotron jumbotron jumbotron' 'left body right' 'left footer right';
+  grid-template-columns: 1fr minmax(200px, 960px) 1fr; // grid-template-rows: 150px 1fr 30px;
   min-height: 100vh;
   &_header {
     grid-area: header;
+  }
+  &_jumbotron {
+    grid-area: jumbotron;
   }
   &_body {
     grid-area: body;
@@ -16,6 +19,11 @@
     padding: 3.8rem 16px 0;
     @include mq() {
       padding: 3.8rem 0 0;
+    }
+    &.index {
+      padding: 0rem 16px 0;
+      margin: -14.8rem 0 0;
+      z-index: 0;
     }
   }
   &_footer {

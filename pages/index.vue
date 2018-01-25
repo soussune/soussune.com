@@ -1,15 +1,5 @@
 <template>
   <section class="page-container">
-
-    <header class="header">
-      <h1 class="title">
-        soussune
-      </h1>
-      <p>
-        エンジニアわいわいポッドキャスト「そうっすね」
-      </p>
-    </header>
-
     <main class="episodes">
       <nuxt-link
         :to="episode.permalink"

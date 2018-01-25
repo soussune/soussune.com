@@ -3,7 +3,9 @@
 
     <AppHeader class="app_header"/>
 
-    <section class="app_body">
+    <Jumbotron v-if="isHome" />
+
+    <section class="app_body" :class="[ isHome ? 'index' : '' ]">
       <nuxt :key="$route.path" />
     </section>
 
@@ -12,7 +14,6 @@
     <AudioPlayer/>
 
     <AudioControl/>
-
 
     <span v-if="twitterWidget">
       <script type="text/javascript" async src="https://platform.twitter.com/widgets.js"></script>
@@ -23,6 +24,7 @@
 <script lang="ts">
 import AppHeader from '~/components/AppHeader.vue'
 import AppFooter from '~/components/AppFooter.vue'
+import Jumbotron from '~/components/Jumbotron.vue'
 import AudioPlayer from '~/components/AudioPlayer.vue'
 import AudioControl from '~/components/AudioControl.vue'
 
@@ -30,6 +32,7 @@ export default {
   components: {
     AppHeader,
     AppFooter,
+    Jumbotron,
     AudioPlayer,
     AudioControl
   },
@@ -48,6 +51,11 @@ export default {
     // Load all content data on client init
     this.$store.app.$content('/episode').getAll()
     this.$store.app.$content('/actors').getAll()
+  },
+  computed: {
+    isHome() {
+      return this.$route.path === '/'
+    }
   },
   methods: {
     onChangeQuery(val) {

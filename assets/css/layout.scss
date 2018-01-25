@@ -21,9 +21,13 @@
       padding: 3.8rem 0 0;
     }
     &.index {
-      padding: 0rem 16px 0;
-      margin: -14.8rem 0 0;
+      padding: 16px;
+      margin: -8.8rem 0 0;
       z-index: 0;
+
+      @include mq() {
+        margin: 0rem;
+      }
     }
   }
   &_footer {

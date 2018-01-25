@@ -86,9 +86,6 @@ export default {
     color: $clr-black-d;
   }
 }
-.episodes {
-  margin-top: 60px;
-}
 
 $ep-trans: 0.2s ease-in;
 $ep-bg: $clr-white-ll;
@@ -105,6 +102,10 @@ $ep-bg-hover: $clr-white-ll;
 
   @include mq() {
     border-radius: 0;
+  }
+
+  &:first-child {
+    margin-top: 0;
   }
 
   transition: $ep-trans;

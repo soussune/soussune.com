@@ -1,7 +1,7 @@
 <template>
   <section class="jumbotron app_jumbotron">
     <div class="container">
-      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="700" height="207" viewBox="0 0 700 207">
+      <svg class="logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="700" height="207" viewBox="0 0 700 207">
         <defs>
           <polygon id="logo-a" points="0 .248 699.999 .248 699.999 151.083 0 151.083"/>
           <polygon id="logo-c" points=".481 .145 23.823 .145 23.823 29.302 .481 29.302"/>
@@ -32,26 +32,31 @@
         </g>
       </svg>
       <p class="description"><strong>soussune</strong> は、ポッドキャストを通じて他人と意見を揉んでいきたいエンジニアの集いです。</p>
+      <div class="buttons">
+        <div class="apple-podcasts">
+          <a href="https://itunes.apple.com/jp/podcast/soussune/id1247135079" class="button" target="_blank">
+            <icon name="apple" scale="1.1"/>
+            Apple Podcastsで購読
+          </a>
+        </div>
+        <div class="feed">
+          <a href="/feed.xml" class="button" target="_blank">
+            <icon name="rss" scale="1.1"/>
+            RSSで購読
+          </a>
+        </div>
+      </div>
 
-      <a href="https://itunes.apple.com/jp/podcast/soussune/id1247135079" class="button" target="_blank">
-        <icon name="apple" scale="1.1"/>
-        Apple Podcastsで購読
-      </a>
-
-      <a href="/feed.xml" class="button" target="_blank">
-        <icon name="rss" scale="1.1"/>
-        RSSで購読
-      </a>
     </div>
   </section>
 </template>
 
 <style lang="scss" scoped>
+@import '~assets/css/mixin/_mediaquery.scss';
 @import '~assets/css/_vars.scss';
 
 .jumbotron {
   position: relative;
-  top: -3.8rem;
   width: 100%;
   color: $clr-white-ll;
   background-color: $clr-main;
@@ -72,11 +77,30 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center top;
+
+    @include mq() {
+      background-image: none;
+    }
+  }
+}
+
+.logo {
+  width: 100%;
+
+  @include mq() {
+    padding: 16px;
   }
 }
 
 .container {
-  padding: 12.8rem 0 10rem;
+  max-width: 960px;
+  padding: 10rem 16px;
+  margin: 0 auto;
+
+  @include mq() {
+    width: 100%;
+    padding: 3rem 0;
+  }
 }
 
 .description {
@@ -87,6 +111,37 @@
   strong {
     font-weight: 600;
   }
+
+  @include mq() {
+    font-size: 1rem;
+    padding: 16px;
+  }
+}
+
+.buttons {
+  display: grid;
+  width: max-content;
+  margin: 0 auto;
+  grid-template-areas: 'apple-podcasts feed';
+  grid-template-columns: auto auto;
+  grid-column-gap: 1rem;
+  align-items: center;
+
+  @include mq() {
+    width: 100%;
+    grid-template-areas: 'apple-podcasts' 'feed';
+    grid-template-columns: auto;
+    grid-template-rows: 1fr 1fr;
+    grid-column-gap: inherit;
+    grid-row-gap: 1rem;
+  }
+}
+
+.apple-podcasts {
+  grid-area: apple-podcasts;
+}
+.feed {
+  grid-area: feed;
 }
 
 .button {
@@ -117,6 +172,13 @@
 
     &:first-child {
       margin-left: 0;
+    }
+  }
+
+  @include mq() {
+    & + .button {
+      margin-left: 0;
+      margin-top: 1.5rem;
     }
   }
 }

@@ -12,7 +12,7 @@ const getEpisode = () => {
     const cdnPath = 'http://cdn.soussune.com.s3-ap-northeast-1.amazonaws.com/audio'
     const type = 'audio/mp3'
     const author = 'そうっすね制作委員会'
-    const filename = `${data.substr(0, data.length - 8)}`
+    const filename = `${data.substr(0, data.length - 3)}`
     const urlPath = `/${filename.substr(11, data.length)}`
     const content = fs.readFileSync(path.resolve(`content/episode/${data}`), 'utf8')
     const frontmatter = fm(content)

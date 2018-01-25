@@ -103,7 +103,7 @@
     fill: $clr-white-ll;
 
     @include mq() {
-      fill: $clr-main-l;
+      fill: $clr-logo-bg;
     }
   }
 }

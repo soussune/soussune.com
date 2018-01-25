@@ -103,7 +103,7 @@
     fill: $clr-white-ll;
 
     @include mq() {
-      fill: $clr-logo-bg;
+      fill: $clr-main-l;
     }
   }
 }
@@ -179,11 +179,6 @@
   cursor: pointer;
   user-select: none;
   text-decoration: none;
-
-  @include mq() {
-    background: $clr-main-l;
-    color: $clr-white;
-  }
 
   svg {
     margin-right: 0.4rem;

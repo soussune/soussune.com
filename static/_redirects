@@ -3,4 +3,5 @@
 /actors/*/ /actors/:splat
 /actors/ /actors
 
+https://soussune.netlify.com https://soussune.com 301
 https://soussune.netlify.com/* https://soussune.com/:splat 301!

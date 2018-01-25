@@ -58,6 +58,7 @@
 .jumbotron {
   position: relative;
   width: 100%;
+  height: auto;
   color: $clr-white-ll;
   background-color: $clr-main;
   background-position: center;
@@ -65,6 +66,11 @@
   text-align: center;
   margin-top: 3.8rem;
   overflow: hidden;
+
+  @include mq() {
+    overflow: hidden;
+    height: 100%;
+  }
 
   &:after {
     content: '';

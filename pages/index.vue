@@ -12,9 +12,9 @@
             <small>
               {{ episode | date }}
             </small>
-            <h3 class="episode-title">
+            <h2 class="episode-title">
               {{ episode.title }}
-            </h3>
+            </h2>
           </header>
           <p>
             {{ episode | desc }}

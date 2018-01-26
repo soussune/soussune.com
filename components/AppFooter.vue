@@ -15,7 +15,7 @@
           class="button"
         ><icon name="pencil-square-o" scale="1.1"></icon>お便りを送る</FeedbackForm>
       </div>
-      <div>
+      <div class="timeline">
         <TwitterTimeline
           :widgetId="'956788689086046208'"
           :q="'#soussune'"
@@ -68,7 +68,8 @@ export default {
 @import '~assets/css/_vars.scss';
 
 .footer {
-  padding: 2rem 0 120px;
+  margin-top: 40px;
+  padding: 2rem 1rem 120px;
   background: $clr-main;
   color: $clr-white;
 
@@ -76,22 +77,27 @@ export default {
   justify-items: center;
   grid-gap: 20px;
 }
-.footer__copyright {
-  text-align: center;
-}
 .feedback {
   display: grid;
   grid-template-columns: auto auto;
   grid-gap: 20px;
+  grid-row-gap: 40px;
   align-items: start;
 
   @include mq() {
     grid-template-columns: auto;
+    .timeline {
+      order: 3 !important;
+    }
   }
   .links {
     display: grid;
     grid-template-columns: 1fr;
     grid-gap: 20px;
+    order: 2;
+  }
+  .timeline {
+    order: 1;
   }
 
   .button {

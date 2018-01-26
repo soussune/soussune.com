@@ -12,30 +12,36 @@ const type = 'audio/mp3'
 const author = 'そうっすね制作委員会'
 
 const getEpisode = () => {
-  return fs.readdirSync(path.join(__dirname, epContentDir)).map((basename) => {
-    const epUrlbasename = basename.replace(/^(?:\d+-){3}(.*)\..+$/, '$1')
-    const content = fs.readFileSync(path.join(__dirname, `${epContentDir}/${basename}`), 'utf8')
-    const { attributes: attr, body } = fm(content)
-    const subtitle = EpisodeHelper.desc(attr)
+  return fs
+    .readdirSync(path.join(__dirname, epContentDir))
+    .map((basename) => {
+      const match = basename.match(/^(?:\d+-){3}(.*)\..+$/)
+      if (!match) return null
 
-    return {
-      title: attr.title,
-      description: md.render(subtitle + body),
-      url: `${host}${epUrlDir}/${epUrlbasename}`,
-      date: attr.published,
-      enclosure: {
-        url: cdnPath + attr.audioFilePath,
-        length: attr.audioFileSize,
-        type: type
-      },
-      custom_elements: [
-        { 'itunes:author': author },
-        { 'itunes:subtitle': subtitle },
-        { 'itunes:duration': attr.duration },
-        { 'itunes:explicit': 'no' }
-      ]
-    }
-  })
+      const epUrlbasename = match[1]
+      const content = fs.readFileSync(path.join(__dirname, `${epContentDir}/${basename}`), 'utf8')
+      const { attributes: attr, body } = fm(content)
+      const subtitle = EpisodeHelper.desc(attr)
+
+      return {
+        title: attr.title,
+        description: md.render(subtitle + body),
+        url: `${host}${epUrlDir}/${epUrlbasename}`,
+        date: attr.published,
+        enclosure: {
+          url: cdnPath + attr.audioFilePath,
+          length: attr.audioFileSize,
+          type: type
+        },
+        custom_elements: [
+          { 'itunes:author': author },
+          { 'itunes:subtitle': subtitle },
+          { 'itunes:duration': attr.duration },
+          { 'itunes:explicit': 'no' }
+        ]
+      }
+    })
+    .filter((item) => item)
 }
 
 module.exports.episodes = {

@@ -1,52 +1,121 @@
 <template>
   <footer role="contentinfo" class="footer">
-    <!-- <section>
-      <h2>soussune とは</h2>
-      <p>soussune は、ポッドキャストを通じて他人と意見を揉んでいきたいエンジニアの集いです。</p>
-      <ul class="footer__links">
-        <li>
-          <nuxt-link to="/actors">人物一覧</nuxt-link>
-        </li>
-        <li>
-          <a href="https://medium.com/soussune">開発ブログ</a>
-        </li>
-      </ul>
-    </section>
-    <section>
-      <h2>#soussune</h2>
-      <p>soussune への感想や質問などは、Twitterでハッシュタグ <a href="https://twitter.com/search?q=%23soussune" target="_blank">#soussune</a>  をご利用ください。</p>
-      <div class="footer-twitter">
-        <a href="https://twitter.com/soussunefm" class="twitter-follow-button" data-show-count="false" data-lang="en" data-size="large">Follow @soussunefm</a>
+    <header>
+      <h2>ご意見、ご感想</h2>
+    </header>
+
+    <div class="feedback">
+      <div class="links">
+        <FeedbackTweet
+          :url="href"
+          class="button"
+        ><icon name="twitter" scale="1.1"></icon> リンクをツイート</FeedbackTweet>
+        <FeedbackForm
+          :entryTitle="href"
+          class="button"
+        ><icon name="pencil-square-o" scale="1.1"></icon>お便りを送る</FeedbackForm>
       </div>
-    </section>
-    <section>
-      <h2>購読</h2>
-      <p>新しいエピソードの配信を購読できます。</p>
-      <ul class="footer__links">
-        <li>
-          <a href="https://itunes.apple.com/jp/podcast/soussune/id1247135079" target="_blank">iTunesで購読</a>
-        </li>
-        <li>
-          <a href="https://subscribeonandroid.com/soussune.com/feed.xml" target="_blank">Androidで購読</a>
-        </li>
-        <li>
-          <a href="https://push.dog/subscribe?url=https://soussune.com" target="_blank">Pushdogで購読</a>
-        </li>
-        <li>
-          <a href="/feed.xml" target="_blank">RSSで購読</a>
-        </li>
-      </ul>
-    </section>
-    <hr>
-    <p class="footer__copyright">&copy; soussune 2017</p> -->
+      <div>
+        <TwitterTimeline
+          :widgetId="'956788689086046208'"
+          :q="'#soussune'"
+          :rt="false"
+        />
+      </div>
+    </div>
   </footer>
 </template>
 
+<script>
+import TwitterTimeline from '~/components/TwitterTimeline.vue'
+import FeedbackForm from '~/components/FeedbackForm.vue'
+import FeedbackTweet from '~/components/FeedbackTweet.vue'
+
+export default {
+  components: {
+    FeedbackTweet,
+    FeedbackForm,
+    TwitterTimeline
+  },
+  computed: {
+    tweetUrl() {
+      return location.href
+    }
+  },
+  data() {
+    return {
+      href: ''
+    }
+  },
+  methods: {
+    updateHref() {
+      this.href = location.href
+    }
+  },
+  mounted() {
+    this.updateHref()
+  },
+  watch: {
+    $route: function() {
+      this.updateHref()
+    }
+  }
+}
+</script>
+
 <style lang="scss" scoped>
+@import '~assets/css/mixin/_mediaquery.scss';
+@import '~assets/css/_vars.scss';
+
 .footer {
-  padding: 80px 0 120px;
+  padding: 2rem 0 120px;
+  background: $clr-main;
+  color: $clr-white;
+
+  display: grid;
+  justify-items: center;
+  grid-gap: 20px;
 }
 .footer__copyright {
   text-align: center;
+}
+.feedback {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 20px;
+  align-items: start;
+
+  @include mq() {
+    grid-template-columns: auto;
+  }
+  .links {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 20px;
+  }
+
+  .button {
+    background: $clr-white-ll;
+    font-weight: 400;
+    font-size: 1.1rem;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 3rem;
+    margin: 0;
+    padding: 0.7rem 1.6rem;
+    border-radius: 1.5rem;
+    line-height: 1;
+    color: $clr-black-d;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+    text-decoration: none;
+
+    svg {
+      margin-right: 0.4rem;
+    }
+  }
 }
 </style>

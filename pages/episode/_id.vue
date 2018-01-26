@@ -116,9 +116,6 @@ export default {
     this.loadTwitterWidget()
   },
   methods: {
-    updateEpisode() {
-      this.episode = this.$store.getters.episodeByPath(this.$route.path)
-    },
     commit(prop: string, payload: any): void {
       this.$store.commit(`audio/${prop}`, payload)
     },

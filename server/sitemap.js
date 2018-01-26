@@ -4,40 +4,38 @@ const fm = require('front-matter')
 const md = require('markdown-it')({ html: true })
 const EpisodeHelper = require('../helpers/EpisodeHelper')
 
+const epContentDir = '../content/episode'
+const host = 'https://soussune.com'
+const epUrlDir = '/episode'
+const cdnPath = 'http://cdn.soussune.com.s3-ap-northeast-1.amazonaws.com/audio'
+const type = 'audio/mp3'
+const author = 'そうっすね制作委員会'
+
 const getEpisode = () => {
-  let episodes = []
+  return fs.readdirSync(path.join(__dirname, epContentDir)).map((basename) => {
+    const epUrlbasename = basename.replace(/^(?:\d+-){3}(.*)\..+$/, '$1')
+    const content = fs.readFileSync(path.join(__dirname, `${epContentDir}/${basename}`), 'utf8')
+    const { attributes: attr, body } = fm(content)
+    const subtitle = EpisodeHelper.desc(attr)
 
-  fs.readdirSync(path.join(__dirname, '../content/episode/')).forEach((data) => {
-    const episodePath = 'https://soussune.com/episode'
-    const cdnPath = 'http://cdn.soussune.com.s3-ap-northeast-1.amazonaws.com/audio'
-    const type = 'audio/mp3'
-    const author = 'そうっすね制作委員会'
-    const filename = `${data.substr(0, data.length - 3)}`
-    const urlPath = `/${filename.substr(11, data.length)}`
-    const content = fs.readFileSync(path.resolve(`content/episode/${data}`), 'utf8')
-    const frontmatter = fm(content)
-    const subtitle = EpisodeHelper.desc(frontmatter.attributes)
-
-    episodes.push({
-      title: frontmatter.attributes.title,
-      description: md.render(subtitle + frontmatter.body),
-      url: episodePath + urlPath,
-      date: frontmatter.attributes.published,
+    return {
+      title: attr.title,
+      description: md.render(subtitle + body),
+      url: `${host}${epUrlDir}/${epUrlbasename}`,
+      date: attr.published,
       enclosure: {
-        url: cdnPath + frontmatter.attributes.audioFilePath,
-        length: frontmatter.attributes.audioFileSize,
+        url: cdnPath + attr.audioFilePath,
+        length: attr.audioFileSize,
         type: type
       },
       custom_elements: [
         { 'itunes:author': author },
         { 'itunes:subtitle': subtitle },
-        { 'itunes:duration': frontmatter.attributes.duration },
+        { 'itunes:duration': attr.duration },
         { 'itunes:explicit': 'no' }
       ]
-    })
+    }
   })
-
-  return episodes
 }
 
 module.exports.episodes = {

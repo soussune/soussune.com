@@ -1,60 +1,59 @@
 <template>
-  <header role="banner" class="header">
-    <div class="top-bar">
-      <div class="top-bar__branding">
-        <nuxt-link exact to="/">
-          <AppLogo />
-        </nuxt-link>
-      </div>
-      <div class="top-bar__search">
-        <section class="top-bar-search">
-          <div class="top-bar-search__input-wrapper">
-            <div
-              class="search-input-wrapper"
-              :class="{ focused: focused }"
-            >
-              <label class="search-input">
-                <span
-                  class="search-input__add-on search-input__add-on--before"
-                >
-                  <svg class="search-icon search-icon--size-20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                    <path d="M8 12c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm9.707 4.293l-4.82-4.82C13.585 10.493 14 9.296 14 8c0-3.313-2.687-6-6-6S2 4.687 2 8s2.687 6 6 6c1.296 0 2.492-.415 3.473-1.113l4.82 4.82c.195.195.45.293.707.293s.512-.098.707-.293c.39-.39.39-1.023 0-1.414z"></path>
-                  </svg>
-                </span>
-                <input
-                  type="search"
-                  name="search"
-                  placeholder="検索"
-                  autocomplete="off"
-                  class="search-input-field"
-                  :value="$store.state.searchText"
-                  @input="updateInput"
-                  @focus="onFocus"
-                  @blur="onBlur"
-                >
-              </label>
-            </div>
+  <header role="banner" class="top-bar">
+    <div class="top-bar__branding">
+      <nuxt-link exact to="/">
+        <AppLogo />
+      </nuxt-link>
+    </div>
+    <div class="top-bar__search">
+      <section class="top-bar-search">
+        <div class="top-bar-search__input-wrapper">
+          <div
+            class="search-input-wrapper"
+            :class="{ focused: focused }"
+          >
+            <label class="search-input">
+              <span
+                class="search-input__add-on search-input__add-on--before"
+              >
+                <icon name="search" class="search-icon"></icon>
+              </span>
+              <input
+                type="search"
+                name="search"
+                placeholder="検索"
+                autocomplete="off"
+                class="search-input-field"
+                :value="$store.state.searchText"
+                @input="updateInput"
+                @focus="onFocus"
+                @blur="onBlur"
+              >
+            </label>
           </div>
-        </section>
-      </div>
-      <nav class="top-bar__list">
-        <div class="top-bar__item">
+        </div>
+      </section>
+    </div>
+    <nav class="top-bar__nav" :class="{isMenuOpen}" @click="closeMenu">
+      <ul class="top-bar__nav-list">
+        <li>
           <nuxt-link to="/episode">
             エピソード
           </nuxt-link>
-        </div>
-        <div class="top-bar__item">
+        </li>
+        <li>
           <nuxt-link to="/actors">
             出演者
           </nuxt-link>
-        </div>
-        <div class="top-bar__item">
+        </li>
+        <li>
           <a href="https://medium.com/soussune" target="_blank">
             ブログ
           </a>
-        </div>
-      </nav>
-    </div>
+        </li>
+      </ul>
+    </nav>
+    <div class="top-bar__menu"><button @click="toggleMenu"><icon name="bars" scale="1.5"></icon></button></div>
   </header>
 </template>
 
@@ -66,6 +65,12 @@ export default {
     AppLogo
   },
   methods: {
+    closeMenu() {
+      this.isMenuOpen = false
+    },
+    toggleMenu() {
+      this.isMenuOpen = !this.isMenuOpen
+    },
     updateInput(e) {
       this.$store.commit('searchText', e.target.value)
     },
@@ -78,6 +83,7 @@ export default {
   },
   data() {
     return {
+      isMenuOpen: false,
       onEdit: false
     }
   },
@@ -109,63 +115,112 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '~assets/css/mixin/_mediaquery.scss';
 @import '~assets/css/_vars.scss';
 
-.header {
+$bar-height: 3.8rem;
+
+.top-bar {
   position: fixed;
   z-index: 502;
   top: 0;
   right: 0;
   left: 0;
   box-sizing: border-box;
-  height: 3.8rem;
-}
-
-.top-bar {
   display: grid;
   background: #1c2260;
-  height: 3.8rem;
+  height: $bar-height;
   width: 100vw;
-  grid-template-columns: 14.8rem 1fr;
-  grid-template-areas: 'logo search list';
+  grid-template-columns: minmax(8rem, 15rem) 1fr minmax(10rem, 20rem);
+  grid-template-rows: 1fr;
+  grid-template-areas: 'logo search nav';
+  align-items: center;
+  grid-gap: 1rem;
+  padding: 0 1rem;
+
+  @include mq() {
+    grid-template-areas: 'logo search menu';
+    grid-template-rows: 1fr;
+    grid-template-columns: 1.5rem 1fr 1.5rem;
+  }
 
   &__branding {
     grid-area: logo;
-    align-self: center;
-    width: 14.8rem;
-    min-width: 14.8rem;
-    padding-right: 0.8rem;
-    padding-left: 1.6rem;
-
-    a {
-      display: flex;
+    justify-self: center;
+    margin-top: 0.4rem;
+    @include mq() {
+      width: 23px;
+      overflow: hidden;
     }
   }
 
   &__search {
     grid-area: search;
-    align-self: center;
-    padding-right: 0.8rem;
-    padding-left: 0.8rem;
   }
 
-  &__list {
-    grid-area: list;
-    align-self: center;
-    justify-self: end;
-    display: flex;
+  &__nav {
+    grid-area: nav;
+
+    @include mq() {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      display: none;
+
+      &.isMenuOpen {
+        display: block;
+      }
+      &-list {
+        padding: 1rem;
+        background: $clr-main-d;
+      }
+      &:after {
+        content: '';
+        background: rgba(0, 0, 0, 0.5);
+        height: 100vh;
+        width: 100vw;
+        display: block;
+      }
+    }
+
+    &-list {
+      display: grid;
+      grid-template-columns: auto auto auto;
+      grid-gap: 1rem;
+      justify-items: center;
+
+      @include mq() {
+        grid-template-columns: 1fr;
+        justify-items: auto;
+        a {
+          // background: #999;
+          display: block;
+          text-align: center;
+        }
+      }
+
+      a {
+        color: $clr-white-ll;
+        text-decoration: none;
+        $line-color: $clr-white-ll;
+        @import '~assets/css/_hoverline.scss';
+      }
+    }
   }
 
-  &__item {
-    box-sizing: border-box;
-    text-align: center;
-    min-width: 6rem;
+  &__menu {
+    grid-area: menu;
+    display: none;
+    justify-self: center;
 
-    a {
+    @include mq() {
+      display: block;
+    }
+
+    button {
+      background: transparent;
+      border: none;
       color: $clr-white-ll;
-      text-decoration: none;
-      $line-color: $clr-white-ll;
-      @import '~assets/css/_hoverline.scss';
     }
   }
 }
@@ -232,7 +287,7 @@ export default {
   }
 
   .focused & {
-    background-color: $clr-white-l;
+    background-color: $clr-white;
     color: $clr-black-l;
     box-shadow: none;
     transition: background-color 200ms ease, border-color 200ms ease;
@@ -286,13 +341,6 @@ export default {
 
 .search-icon {
   position: relative;
-  width: 20px;
-  height: 20px;
-  top: -1px;
-  display: inline-block;
-  vertical-align: middle;
-  fill: currentColor;
-  align-self: center;
-  white-space: nowrap;
+  top: -2px;
 }
 </style>

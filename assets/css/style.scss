@@ -83,10 +83,13 @@ a {
 }
 
 body {
-  line-height: 1.5;
+  line-height: 1.75;
   overflow-wrap: break-word;
   background: $clr-white;
   color: $clr-black;
+  text-align: justify;
+  word-wrap: break-word;
+  letter-spacing: 0.05em;
 }
 h1,
 h2,

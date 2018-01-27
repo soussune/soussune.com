@@ -131,7 +131,7 @@ $bar-height: 3.8rem;
   left: 0;
   box-sizing: border-box;
   display: grid;
-  background: #1c2260;
+  background: $clr-main;
   height: $bar-height;
   width: 100%;
   grid-template-columns: minmax(8rem, 15rem) 1fr minmax(10rem, 20rem);

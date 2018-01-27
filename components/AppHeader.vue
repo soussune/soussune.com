@@ -133,7 +133,7 @@ $bar-height: 3.8rem;
   display: grid;
   background: #1c2260;
   height: $bar-height;
-  width: 100vw;
+  width: 100%;
   grid-template-columns: minmax(8rem, 15rem) 1fr minmax(10rem, 20rem);
   grid-template-rows: 1fr;
   grid-template-areas: 'logo search nav';

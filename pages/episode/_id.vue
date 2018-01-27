@@ -148,6 +148,7 @@ export default {
   padding: 80px 60px;
   margin: 40px 20px;
   position: relative;
+  font-size: 1.1rem;
 
   @include mq() {
     padding: 20px 10px 40px;

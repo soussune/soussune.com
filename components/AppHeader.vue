@@ -1,56 +1,56 @@
 <template>
   <header role="banner" class="top-bar">
-      <div class="top-bar__branding">
-        <nuxt-link exact to="/">
-          <AppLogo />
+    <div class="top-bar__branding">
+      <nuxt-link exact to="/">
+        <AppLogo />
+      </nuxt-link>
+    </div>
+    <div class="top-bar__search">
+      <section class="top-bar-search">
+        <div class="top-bar-search__input-wrapper">
+          <div
+            class="search-input-wrapper"
+            :class="{ focused: focused }"
+          >
+            <label class="search-input">
+              <span
+                class="search-input__add-on search-input__add-on--before"
+              >
+                <icon name="search" class="search-icon"></icon>
+              </span>
+              <input
+                type="search"
+                name="search"
+                placeholder="検索"
+                autocomplete="off"
+                class="search-input-field"
+                :value="$store.state.searchText"
+                @input="updateInput"
+                @focus="onFocus"
+                @blur="onBlur"
+              >
+            </label>
+          </div>
+        </div>
+      </section>
+    </div>
+    <nav class="top-bar__list">
+      <div class="top-bar__item">
+        <nuxt-link to="/episode">
+          エピソード
         </nuxt-link>
       </div>
-      <div class="top-bar__search">
-        <section class="top-bar-search">
-          <div class="top-bar-search__input-wrapper">
-            <div
-              class="search-input-wrapper"
-              :class="{ focused: focused }"
-            >
-              <label class="search-input">
-                <span
-                  class="search-input__add-on search-input__add-on--before"
-                >
-                  <icon name="search" class="search-icon"></icon>
-                </span>
-                <input
-                  type="search"
-                  name="search"
-                  placeholder="検索"
-                  autocomplete="off"
-                  class="search-input-field"
-                  :value="$store.state.searchText"
-                  @input="updateInput"
-                  @focus="onFocus"
-                  @blur="onBlur"
-                >
-              </label>
-            </div>
-          </div>
-        </section>
+      <div class="top-bar__item">
+        <nuxt-link to="/actors">
+          出演者
+        </nuxt-link>
       </div>
-      <nav class="top-bar__list">
-        <div class="top-bar__item">
-          <nuxt-link to="/episode">
-            エピソード
-          </nuxt-link>
-        </div>
-        <div class="top-bar__item">
-          <nuxt-link to="/actors">
-            出演者
-          </nuxt-link>
-        </div>
-        <div class="top-bar__item">
-          <a href="https://medium.com/soussune" target="_blank">
-            ブログ
-          </a>
-        </div>
-      </nav>
+      <div class="top-bar__item">
+        <a href="https://medium.com/soussune" target="_blank">
+          ブログ
+        </a>
+      </div>
+    </nav>
   </header>
 </template>
 

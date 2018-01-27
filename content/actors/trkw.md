@@ -3,6 +3,8 @@ actorId: trkw
 title: trkw
 imageUrl: https://www.gravatar.com/avatar/c45faba9d97c754d745886dd74a10ccf?s=200
 twitterUsername: trkw_
+githubUsername: trkw
+role: Admin
 description: 🎙️Podcaster at @soussunefm
 ---
 

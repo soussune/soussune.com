@@ -3,6 +3,8 @@ actorId: miyaoka
 title: miyaoka
 imageUrl: https://pbs.twimg.com/profile_images/875180757177651201/IRaSbWoI_200x200.jpg
 twitterUsername: miyaoka
+githubUsername: miyaoka
+role: Admin
 description: ErgoDoxer / 手ぶら通勤 / PC gamer
 ---
 

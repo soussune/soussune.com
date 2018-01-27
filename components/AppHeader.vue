@@ -141,7 +141,7 @@ $bar-height: 3.8rem;
   @include mq() {
     grid-template-areas: 'logo search menu';
     grid-template-rows: 1fr;
-    grid-template-columns: 1rem 1fr 1rem;
+    grid-template-columns: 1.5rem 1fr 1.5rem;
   }
 
   &__branding {
@@ -149,6 +149,8 @@ $bar-height: 3.8rem;
     justify-self: center;
     margin-top: 0.4rem;
     @include mq() {
+      width: 23px;
+      overflow: hidden;
     }
   }
 

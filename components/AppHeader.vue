@@ -1,5 +1,5 @@
 <template>
-  <header role="banner" class="top-bar">
+  <header role="banner" class="top-bar" :class="{scrolled: scrollY > 0}">
     <nav class="top-bar__branding">
       <nuxt-link exact to="/" @click.native="scrollToTop">
         <AppLogo />
@@ -65,6 +65,9 @@ export default {
     AppLogo
   },
   methods: {
+    onScroll() {
+      this.scrollY = window.scrollY
+    },
     scrollToTop() {
       window.scrollTo(0, 0)
     },
@@ -86,6 +89,7 @@ export default {
   },
   data() {
     return {
+      scrollY: 0,
       isMenuOpen: false,
       onEdit: false
     }
@@ -94,6 +98,9 @@ export default {
     focused() {
       return this.onEdit || this.$store.state.searchText !== ''
     }
+  },
+  mounted() {
+    window.addEventListener('scroll', this.onScroll)
   },
   directives: {
     imeInput: {
@@ -140,6 +147,12 @@ $bar-height: 3.8rem;
   align-items: center;
   grid-gap: 1rem;
   padding: 0 1rem;
+
+  transition: all 0.2s cubic-bezier(0.55, 0, 0.1, 1);
+
+  &.scrolled {
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 10px 30px 0 rgba(0, 0, 0, 0.2);
+  }
 
   @include mq() {
     grid-template-areas: 'logo search menu';

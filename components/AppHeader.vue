@@ -34,23 +34,26 @@
         </div>
       </section>
     </div>
-    <nav class="top-bar__list">
-      <div class="top-bar__item">
-        <nuxt-link to="/episode">
-          エピソード
-        </nuxt-link>
-      </div>
-      <div class="top-bar__item">
-        <nuxt-link to="/actors">
-          出演者
-        </nuxt-link>
-      </div>
-      <div class="top-bar__item">
-        <a href="https://medium.com/soussune" target="_blank">
-          ブログ
-        </a>
-      </div>
+    <nav class="top-bar__nav" :class="{isMenuOpen}" @click="closeMenu">
+      <ul class="top-bar__nav-list">
+        <li>
+          <nuxt-link to="/episode">
+            エピソード
+          </nuxt-link>
+        </li>
+        <li>
+          <nuxt-link to="/actors">
+            出演者
+          </nuxt-link>
+        </li>
+        <li>
+          <a href="https://medium.com/soussune" target="_blank">
+            ブログ
+          </a>
+        </li>
+      </ul>
     </nav>
+    <div class="top-bar__menu"><button @click="toggleMenu"><icon name="bars" scale="1.5"></icon></button></div>
   </header>
 </template>
 
@@ -62,6 +65,12 @@ export default {
     AppLogo
   },
   methods: {
+    closeMenu() {
+      this.isMenuOpen = false
+    },
+    toggleMenu() {
+      this.isMenuOpen = !this.isMenuOpen
+    },
     updateInput(e) {
       this.$store.commit('searchText', e.target.value)
     },
@@ -74,6 +83,7 @@ export default {
   },
   data() {
     return {
+      isMenuOpen: false,
       onEdit: false
     }
   },
@@ -105,7 +115,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '~assets/css/mixin/_mediaquery.scss';
 @import '~assets/css/_vars.scss';
+
+$bar-height: 3.8rem;
 
 .top-bar {
   position: fixed;
@@ -116,40 +129,96 @@ export default {
   box-sizing: border-box;
   display: grid;
   background: #1c2260;
-  height: 3.8rem;
+  height: $bar-height;
   width: 100vw;
   grid-template-columns: minmax(8rem, 15rem) 1fr minmax(10rem, 20rem);
-  grid-template-areas: 'logo search list';
+  grid-template-rows: 1fr;
+  grid-template-areas: 'logo search nav';
   align-items: center;
   grid-gap: 1rem;
   padding: 0 1rem;
+
+  @include mq() {
+    grid-template-areas: 'logo search menu';
+    grid-template-rows: 1fr;
+    grid-template-columns: 1rem 1fr 1rem;
+  }
 
   &__branding {
     grid-area: logo;
     justify-self: center;
     margin-top: 0.4rem;
+    @include mq() {
+    }
   }
 
   &__search {
     grid-area: search;
   }
 
-  &__list {
-    grid-area: list;
-    display: grid;
-    grid-template-columns: auto auto auto;
-    grid-gap: 1rem;
-    justify-items: center;
+  &__nav {
+    grid-area: nav;
+
+    @include mq() {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      display: none;
+
+      &.isMenuOpen {
+        display: block;
+      }
+      &-list {
+        padding: 1rem;
+        background: $clr-main-d;
+      }
+      &:after {
+        content: '';
+        background: rgba(0, 0, 0, 0.5);
+        height: 100vh;
+        width: 100vw;
+        display: block;
+      }
+    }
+
+    &-list {
+      display: grid;
+      grid-template-columns: auto auto auto;
+      grid-gap: 1rem;
+      justify-items: center;
+
+      @include mq() {
+        grid-template-columns: 1fr;
+        justify-items: auto;
+        a {
+          // background: #999;
+          display: block;
+          text-align: center;
+        }
+      }
+
+      a {
+        color: $clr-white-ll;
+        text-decoration: none;
+        $line-color: $clr-white-ll;
+        @import '~assets/css/_hoverline.scss';
+      }
+    }
   }
 
-  &__item {
-    box-sizing: border-box;
+  &__menu {
+    grid-area: menu;
+    display: none;
+    justify-self: center;
 
-    a {
+    @include mq() {
+      display: block;
+    }
+
+    button {
+      background: transparent;
+      border: none;
       color: $clr-white-ll;
-      text-decoration: none;
-      $line-color: $clr-white-ll;
-      @import '~assets/css/_hoverline.scss';
     }
   }
 }
@@ -216,7 +285,7 @@ export default {
   }
 
   .focused & {
-    background-color: $clr-white-l;
+    background-color: $clr-white;
     color: $clr-black-l;
     box-shadow: none;
     transition: background-color 200ms ease, border-color 200ms ease;

@@ -1,6 +1,5 @@
 <template>
-  <header role="banner" class="header">
-    <div class="top-bar">
+  <header role="banner" class="top-bar">
       <div class="top-bar__branding">
         <nuxt-link exact to="/">
           <AppLogo />
@@ -52,7 +51,6 @@
           </a>
         </div>
       </nav>
-    </div>
   </header>
 </template>
 
@@ -109,55 +107,43 @@ export default {
 <style lang="scss" scoped>
 @import '~assets/css/_vars.scss';
 
-.header {
+.top-bar {
   position: fixed;
   z-index: 502;
   top: 0;
   right: 0;
   left: 0;
   box-sizing: border-box;
-  height: 3.8rem;
-}
-
-.top-bar {
   display: grid;
   background: #1c2260;
   height: 3.8rem;
   width: 100vw;
-  grid-template-columns: 14.8rem 1fr;
+  grid-template-columns: minmax(8rem, 15rem) 1fr minmax(10rem, 20rem);
   grid-template-areas: 'logo search list';
+  align-items: center;
+  grid-gap: 1rem;
+  padding: 0 1rem;
 
   &__branding {
     grid-area: logo;
-    align-self: center;
-    width: 14.8rem;
-    min-width: 14.8rem;
-    padding-right: 0.8rem;
-    padding-left: 1.6rem;
-
-    a {
-      display: flex;
-    }
+    justify-self: center;
+    margin-top: 0.4rem;
   }
 
   &__search {
     grid-area: search;
-    align-self: center;
-    padding-right: 0.8rem;
-    padding-left: 0.8rem;
   }
 
   &__list {
     grid-area: list;
-    align-self: center;
-    justify-self: end;
-    display: flex;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-gap: 1rem;
+    justify-items: center;
   }
 
   &__item {
     box-sizing: border-box;
-    text-align: center;
-    min-width: 6rem;
 
     a {
       color: $clr-white-ll;

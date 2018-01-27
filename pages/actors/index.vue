@@ -125,7 +125,7 @@ export default {
   }
 
   &-title {
-    margin: 0.6rem 0 0;
+    margin: 0.4rem 0 0;
     font-size: 18px;
     font-weight: 400;
     color: $clr-black;
@@ -151,7 +151,7 @@ export default {
   }
 
   &-footer {
-    margin-top: 0.4rem;
+    margin-top: 0.2rem;
 
     svg {
       margin-left: 0.8rem;

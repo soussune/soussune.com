@@ -1,11 +1,6 @@
 <template>
   <section class="page-container">
     <div>
-      <h2 class="home-slogan">
-        <nuxt-link to="/actors">
-          actors
-        </nuxt-link>
-      </h2>
       <nuxt-child/>
     </div>
   </section>

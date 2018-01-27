@@ -1,10 +1,10 @@
 <template>
   <header role="banner" class="top-bar">
-    <div class="top-bar__branding">
-      <nuxt-link exact to="/">
+    <nav class="top-bar__branding">
+      <nuxt-link exact to="/" @click.native="scrollToTop">
         <AppLogo />
       </nuxt-link>
-    </div>
+    </nav>
     <div class="top-bar__search">
       <section class="top-bar-search">
         <div class="top-bar-search__input-wrapper">
@@ -37,12 +37,12 @@
     <nav class="top-bar__nav" :class="{isMenuOpen}" @click="closeMenu">
       <ul class="top-bar__nav-list">
         <li>
-          <nuxt-link to="/episode">
+          <nuxt-link to="/episode" @click.native="scrollToTop">
             エピソード
           </nuxt-link>
         </li>
         <li>
-          <nuxt-link to="/actors">
+          <nuxt-link to="/actors" @click.native="scrollToTop">
             出演者
           </nuxt-link>
         </li>
@@ -65,6 +65,9 @@ export default {
     AppLogo
   },
   methods: {
+    scrollToTop() {
+      window.scrollTo(0, 0)
+    },
     closeMenu() {
       this.isMenuOpen = false
     },

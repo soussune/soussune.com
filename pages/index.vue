@@ -151,15 +151,15 @@ $ep-bg-hover: $clr-white-ll;
 
   &-link {
     text-decoration: none;
-    color: $clr-white;
+    color: $clr-black;
     font-size: 1.2rem;
     padding: 0.5rem;
 
-    $line-color: $clr-white;
+    $line-color: $clr-black;
     @import '~assets/css/_hoverline.scss';
 
     &:hover {
-      color: $clr-white-ll;
+      color: $clr-black;
     }
   }
 }

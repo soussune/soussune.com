@@ -1,7 +1,6 @@
 <template>
   <section class="body">
     <div class="before"></div>
-    <div class="after"></div>
     <div class="main">
       <nuxt :key="$route.path" />
     </div>
@@ -19,14 +18,13 @@ export default {}
 .body {
   background: $clr-white;
   display: grid;
-  grid-template-areas: 'before before before' 'left main right' 'after after after';
+  grid-template-areas: 'before before before' 'left main right';
   grid-template-columns: 1fr minmax(200px, 960px) 1fr;
 
   $roundHeight: 40px;
   $roundPadding: 200px;
 
-  .before,
-  .after {
+  .before {
     content: '';
     height: $roundHeight;
     display: block;
@@ -37,17 +35,9 @@ export default {}
     background-size: 100% $roundHeight;
     width: 100%;
     padding-top: $roundPadding;
-
-    @include mq() {
-      // background-image: none;
-    }
   }
   .before {
     grid-area: before;
-  }
-  .after {
-    grid-area: after;
-    transform: rotate(180deg);
   }
   .main {
     grid-area: main;
@@ -56,7 +46,7 @@ export default {}
 
     width: 100%;
     padding: 0 16px;
-    margin: -$roundPadding 0;
+    margin: -$roundPadding 0 4rem;
     z-index: 0;
 
     @include mq() {

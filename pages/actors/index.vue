@@ -64,8 +64,6 @@ export default {
 @import '~assets/css/mixin/_mediaquery.scss';
 
 .actors {
-  margin-top: 40px;
-
   &-list {
     display: block;
     margin: 0 -10px;

@@ -1,6 +1,9 @@
 <template>
   <section class="page-container">
     <div>
+      <h1 class="title">
+        出演者
+      </h1>
       <nuxt-child/>
     </div>
   </section>
@@ -16,10 +19,9 @@
   text-align: center;
 }
 
-.home-slogan {
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
+.title {
+  color: #f2f2f2;
+  text-align: center;
+  margin-top: 3rem;
 }
 </style>

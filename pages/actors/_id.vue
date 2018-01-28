@@ -67,7 +67,7 @@ export default {
   border-radius: 0.6rem;
   box-shadow: 0 1.2rem 3.6rem rgba(0, 0, 0, 0.2);
   padding: 80px 60px;
-  margin: 40px 20px;
+  margin: 0 20px;
   position: relative;
 
   @include mq() {

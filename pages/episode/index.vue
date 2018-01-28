@@ -2,7 +2,7 @@
   <section class="page-container">
     <header>
       <h1 class="title">
-        Episode list
+        エピソード
       </h1>
     </header>
 

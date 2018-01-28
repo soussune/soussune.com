@@ -78,7 +78,9 @@ $listItemMargin: 1.2em;
   }
   pre {
     overflow: auto;
-    background: $clr-white-d;
+    font-size: 0.9rem;
+    color: $clr-black-l;
+    background: $clr-white;
     padding: 1rem;
     margin: 1rem 0;
   }

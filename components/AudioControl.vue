@@ -5,16 +5,23 @@
       v-if="isShown"
     >
       <div
-        class="bg"
         v-if="isOptionsShown"
-        @click="toggleOption"
+        class="bg"
+        @click="closeOption"
       />
       <transition name="options">
-        <AudioControlOptions
-          v-if="isOptionsShown"
-          class="options"
-          @close="isOptionsShown = false"
-        />
+        <div v-if="isOptionsShown">
+          <AudioControlOptions
+            class="options"
+            @close="closeOption"
+          />
+          <button
+            class="clearPlay"
+            @click="clearPlay"
+          >
+            再生を終了する
+          </button>
+        </div>
       </transition>
       <AudioControlButton
         class="button"
@@ -46,6 +53,13 @@ export default {
     }
   },
   methods: {
+    clearPlay() {
+      this.$store.commit('audio/src', '')
+      this.isOptionsShown = false
+    },
+    closeOption() {
+      this.isOptionsShown = false
+    },
     toggleOption() {
       this.isOptionsShown = !this.isOptionsShown
     }
@@ -54,6 +68,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '~assets/css/_vars.scss';
+
 $ios-safari-bottom-margin: 80px;
 
 .audio-control-container {
@@ -77,6 +93,18 @@ $ios-safari-bottom-margin: 80px;
   background: rgba(0, 0, 0, 0.8);
   width: 100vw;
   height: 100vh;
+}
+.clearPlay {
+  position: absolute;
+  bottom: $ios-safari-bottom-margin;
+  left: 50%;
+  transform: translate(-50%);
+  font-size: 1.2rem;
+  background: transparent;
+  border: none;
+
+  color: $clr-white-dd;
+  padding: 0.5rem;
 }
 
 .options {

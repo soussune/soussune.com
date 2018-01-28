@@ -88,7 +88,12 @@ export default {
     onChangeSrc(val) {
       this.commit('canplay', false)
       this.audio.src = val
-      this.audio.play()
+      if (!val) {
+        this.audio.pause()
+        this.audio.currentTime = 0
+      } else {
+        this.audio.play()
+      }
     }
   }
 }

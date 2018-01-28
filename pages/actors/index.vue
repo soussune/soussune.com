@@ -13,7 +13,7 @@
           />
           <div class="actor-aside">
             <h2 class="actor-title">
-              {{ actor.title }}
+              <span>{{ actor.title }}</span>
               <span class="actor-role" v-if="actor.role">
                 {{ actor.role }}
               </span>
@@ -65,30 +65,22 @@ export default {
 
 .actors {
   &-list {
-    display: block;
-    margin: -10px -10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1rem 1.2rem;
 
     @include mq() {
-      width: 100%;
-      margin: 0;
+      grid-template-columns: 1fr;
+      grid-gap: 0.6rem;
     }
 
     &-item {
-      display: inline-block;
       position: relative;
-      width: calc(50% - 1.2rem);
       height: 100px;
-      margin: 0.6rem;
-      min-width: 100px;
       font-size: 0.8rem;
       border-radius: 0.3rem;
       box-shadow: 0 0 0 1px rgba(63, 63, 68, 0.05), 0 1px 3px 0 rgba(63, 63, 68, 0.15);
       transition: all 0.15s ease;
-
-      @include mq() {
-        width: calc(100% - 1.2rem);
-        margin: 0.2rem;
-      }
 
       &:hover {
         box-shadow: 0 0 0 1px rgba(63, 63, 68, 0.05), 0 5px 18px 0 rgba(63, 63, 68, 0.15);
@@ -99,28 +91,24 @@ export default {
 
 .actor {
   text-decoration: none;
-  position: absolute;
-  left: 0;
   width: 100%;
   background: $clr-white-ll;
   border-radius: 0.3rem;
   text-align: left;
 
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  grid-gap: 1rem;
+
   &-icon {
     max-width: 100px;
-    display: inline-block;
     padding: 0;
-    vertical-align: top;
-    margin-right: 1rem;
     border-radius: 0.3rem;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
   }
 
   &-aside {
-    max-width: calc(100% - 100px);
-    display: inline-block;
-    vertical-align: top;
   }
 
   &-title {

@@ -42,15 +42,13 @@ export default {}
   .main {
     grid-area: main;
 
-    min-height: 100vh;
-
     width: 100%;
-    padding: 0 16px;
+    padding: 0 1rem;
     margin: -$roundPadding 0 4rem;
     z-index: 0;
 
     @include mq() {
-      padding: 0;
+      padding: 0 0.5rem;
     }
   }
 }

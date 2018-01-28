@@ -80,7 +80,7 @@ export default {
 }
 .feedback {
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: minmax(100px, 540px) auto;
   grid-gap: 20px;
   grid-row-gap: 40px;
   align-items: start;

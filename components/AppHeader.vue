@@ -47,7 +47,7 @@
           </nuxt-link>
         </li>
         <li>
-          <a href="https://medium.com/soussune" target="_blank">
+          <a href="https://medium.com/soussune" target="_blank" rel="noopener">
             ブログ
           </a>
         </li>

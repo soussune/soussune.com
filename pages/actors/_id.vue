@@ -16,6 +16,7 @@
         :href="`https://twitter.com/${actor.accounts.twitter}`"
         class="button"
         target="_blank"
+        rel="noopener"
       >
         <icon name="twitter" class="twitter" scale="1.6"/>
         Twitter
@@ -25,6 +26,7 @@
         :href="`https://github.com/${actor.accounts.github}`"
         class="button"
         target="_blank"
+        rel="noopener"
       >
         <icon name="github" class="github" scale="1.6"/>
         GitHub

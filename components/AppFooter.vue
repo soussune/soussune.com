@@ -1,7 +1,8 @@
 <template>
   <footer role="contentinfo" class="footer">
-    <header>
-      <h2>ご意見、ご感想</h2>
+    <header class="header">
+      <h2 class="title">ご意見、ご感想</h2>
+      <div class="desc">お気軽にコメントをお寄せください</div>
     </header>
 
     <div class="feedback">
@@ -77,6 +78,16 @@ export default {
 
   background: $clr-white-d;
   color: $clr-black;
+
+  .header {
+    text-align: center;
+    .title {
+      color: $clr-black-dd;
+    }
+    .desc {
+      color: $clr-black;
+    }
+  }
 }
 .feedback {
   display: grid;

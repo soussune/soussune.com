@@ -68,6 +68,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '~assets/css/mixin/_mediaquery.scss';
 @import '~assets/css/_vars.scss';
 
 $ios-safari-bottom-margin: 80px;
@@ -98,13 +99,17 @@ $ios-safari-bottom-margin: 80px;
   position: absolute;
   bottom: $ios-safari-bottom-margin;
   left: 50%;
-  transform: translate(-50%);
-  font-size: 1.2rem;
+  transform: translate(-50%, -10px);
+  font-size: 1.1rem;
   background: transparent;
   border: none;
 
   color: $clr-white-dd;
   padding: 0.5rem;
+
+  @include mq() {
+    font-size: 0.9rem;
+  }
 }
 
 .options {

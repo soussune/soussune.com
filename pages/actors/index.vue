@@ -20,8 +20,8 @@
             </h2>
             <p class="actor-description">出演回数: {{ actor.episodes.length }}</p>
             <div class="actor-footer">
-              <icon name="twitter" class="twitter" scale="1.2" v-if="actor.accounts.twitter"></icon>
-              <icon name="github" class="github" scale="1.2" v-if="actor.accounts.github"></icon>
+              <icon name="twitter" class="twitter" scale="1" v-if="actor.accounts.twitter"></icon>
+              <icon name="github" class="github" scale="1" v-if="actor.accounts.github"></icon>
               <button class="actor-button">もっと詳しく</button>
             </div>
           </div>

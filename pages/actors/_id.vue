@@ -10,7 +10,7 @@
       <h1 class="actor-title"> {{ actor.title }} </h1>
     </header>
 
-    <section class="accounts">
+    <section class="accounts" v-if="hasAccount(actor)">
       <a
         v-if="actor.accounts.twitter"
         :href="`https://twitter.com/${actor.accounts.twitter}`"
@@ -71,6 +71,11 @@ export default {
   async asyncData({ app, params }) {
     return {
       actor: await app.$contentLoader.getActor(params.id)
+    }
+  },
+  methods: {
+    hasAccount(actor) {
+      return actor.accounts && Object.values(actor.accounts).some((val) => val)
     }
   },
   head() {

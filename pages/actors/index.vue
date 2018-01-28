@@ -20,8 +20,8 @@
             </h2>
             <p class="actor-description">出演回数: {{ actor.episodes.length }}</p>
             <div class="actor-footer">
-              <icon name="twitter" class="twitter" scale="1.6" v-if="actor.accounts.twitter"></icon>
-              <icon name="github" class="github" scale="1.6" v-if="actor.accounts.github"></icon>
+              <icon name="twitter" class="twitter" scale="1.2" v-if="actor.accounts.twitter"></icon>
+              <icon name="github" class="github" scale="1.2" v-if="actor.accounts.github"></icon>
               <button class="actor-button">もっと詳しく</button>
             </div>
           </div>
@@ -86,7 +86,8 @@ export default {
       transition: all 0.15s ease;
 
       @include mq() {
-        width: calc(100% - 2.4rem);
+        width: calc(100% - 1.2rem);
+        margin: 0.2rem;
       }
 
       &:hover {
@@ -136,7 +137,7 @@ export default {
     color: $clr-sub;
     font-size: 0.6rem;
     font-weight: 600;
-    padding: 0.2rem 0.3rem;
+    padding: 0.08rem 0.3rem;
     vertical-align: middle;
     margin-left: 4px;
     border-radius: 4px;
@@ -149,10 +150,10 @@ export default {
   }
 
   &-footer {
-    margin-top: 0.2rem;
+    margin-top: 0.4rem;
 
     svg {
-      margin-left: 0.8rem;
+      margin-left: 0.4rem;
 
       &:first-child {
         margin-left: 0;
@@ -181,6 +182,13 @@ export default {
 
     &:hover {
       background: $clr-white-l;
+    }
+
+    @include mq() {
+      font-size: 12px;
+      padding: 8px;
+      right: 6px;
+      bottom: 6px;
     }
   }
 }

@@ -113,27 +113,7 @@ export default {
   }
 
   .button {
-    background: $clr-white-ll;
-    font-weight: 400;
-    font-size: 1.1rem;
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 3rem;
-    margin: 0;
-    padding: 0.7rem 1.6rem;
-    border-radius: 1.5rem;
-    line-height: 1;
-    color: $clr-black-d;
-    text-align: center;
-    cursor: pointer;
-    user-select: none;
-    text-decoration: none;
-
-    svg {
-      margin-right: 0.4rem;
-    }
+    @import '~assets/css/_roundButton.scss';
   }
 }
 </style>

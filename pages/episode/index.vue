@@ -148,7 +148,8 @@ export default {
 }
 
 $ep-side-margin: 1.2rem;
-$ep-active-clr: $clr-white-dd;
+$ep-hover-bg: $clr-white;
+$ep-hover-clr: $clr-black-dd;
 
 .episode {
   display: block;
@@ -157,7 +158,7 @@ $ep-active-clr: $clr-white-dd;
   position: relative;
   padding: 0 $ep-side-margin;
   margin-top: -1px;
-  background-image: linear-gradient(left, $ep-active-clr 50%, transparent 50%);
+  background-image: linear-gradient(left, $ep-hover-bg 50%, transparent 50%);
   background-position: right;
   background-size: 200% auto;
 
@@ -166,8 +167,9 @@ $ep-active-clr: $clr-white-dd;
   }
   &:hover {
     background-position: 0;
-    & * {
-      color: $clr-black-dd !important;
+    &,
+    * {
+      color: $ep-hover-clr !important;
     }
   }
   &:not(:last-child):before {
@@ -177,7 +179,7 @@ $ep-active-clr: $clr-white-dd;
     bottom: 0;
     left: $ep-side-margin;
     right: $ep-side-margin;
-    background-color: $ep-active-clr;
+    background-color: $clr-white-d;
   }
 
   &:first-child {

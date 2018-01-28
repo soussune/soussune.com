@@ -2,8 +2,9 @@
 actorId: yugo
 title: yugo
 imageUrl: https://pbs.twimg.com/profile_images/800967161221001216/HP6180cG_200x200.jpg
-twitterUsername: ymmmo1
-githubUsername: satsuki0221
+accounts:
+  twitter: ymmmo1
+  github: satsuki0221
 description: Tech boy / dentability CTO / React Native / なんにでもwordpress（悪手） / ロックンロール
 ---
 

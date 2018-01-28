@@ -12,8 +12,8 @@
 
     <section class="accounts">
       <a
-        v-if="actor.twitterUsername"
-        :href="`https://twitter.com/${actor.twitterUsername}`"
+        v-if="actor.accounts.twitter"
+        :href="`https://twitter.com/${actor.accounts.twitter}`"
         class="button"
         target="_blank"
       >
@@ -21,8 +21,8 @@
         Twitter
       </a>
       <a
-        v-if="actor.githubUsername"
-        :href="`https://github.com/${actor.githubUsername}`"
+        v-if="actor.accounts.github"
+        :href="`https://github.com/${actor.accounts.github}`"
         class="button"
         target="_blank"
       >

@@ -3,13 +3,11 @@
 
     <AppHeader class="app_header"/>
 
-    <div class="post_header">
-      <Jumbotron class="app_jumbotron" v-if="isHome"/>
+    <Jumbotron class="app_jumbotron" v-if="isHome"/>
 
-      <AppBody class="app_body"/>
+    <AppBody class="app_body"/>
 
-      <AppFooter class="app_footer"/>
-    </div>
+    <AppFooter class="app_footer"/>
 
     <AudioPlayer/>
 
@@ -70,10 +68,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~assets/css/mixin/_mediaquery.scss';
-@import '~assets/css/_vars.scss';
 
-.post_header {
-  margin-top: $header-height;
-}
 </style>

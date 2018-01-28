@@ -12,6 +12,8 @@
 <script>
 </script>
 <style lang="scss" scoped>
+@import '~assets/css/_vars.scss';
+
 .page-container {
   display: flex;
   justify-content: center;

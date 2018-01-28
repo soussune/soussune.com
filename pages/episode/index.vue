@@ -6,16 +6,20 @@
       </h1>
     </header>
 
-    <div v-if="queries.length > 0">
-      <icon name="search" scale="1.5"></icon> 検索中:（{{`${filteredEpisodes.length} / ${episodes.length}  件`}}）
-      <button
-        v-for="(query, i) in queries"
-        :key="query"
-        class="query"
-        @click="removeQuery(i)"
-      >
-        {{query}} <icon name="times" scale="1"></icon>
-      </button>
+    <div v-if="queries.length > 0" class="search">
+      <div>
+        <icon name="search" scale="1.2"></icon> 検索中:（{{`${filteredEpisodes.length} / ${episodes.length}  件`}}）
+      </div>
+      <div class="queryList">
+        <button
+          v-for="(query, i) in queries"
+          :key="query"
+          class="query"
+          @click="removeQuery(i)"
+        >
+          {{query}} <icon name="times" scale="1"></icon>
+        </button>
+      </div>
     </div>
 
     <main>
@@ -58,8 +62,8 @@
           </article>
         </nuxt-link>
       </div>
-      <div v-else>
-        No articles found.
+      <div v-else class="card no-articles">
+        該当するエピソードはありません。
       </div>
     </main>
 
@@ -241,13 +245,40 @@ $ep-hover-clr: $clr-black-dd;
   }
 }
 
-.query {
-  padding: 0 10px;
-  font-size: 1rem;
-  border-radius: 10px;
-  height: 40px;
-  line-height: 40px;
-  outline: none;
-  color: $clr-black-l;
+.search {
+  color: $clr-white;
+  display: grid;
+  grid-gap: 0.5rem;
+  grid-template-columns: 200px 1fr;
+  margin: 1rem 0;
+
+  @include mq() {
+    grid-template-columns: auto;
+  }
+
+  .query {
+    border: 1px solid $clr-sub;
+    background: $clr-sub-ll;
+    color: $clr-black-d;
+    padding: 0 0.5rem;
+    margin: 0 0.2rem 0.2rem 0;
+    font-size: 1rem;
+    border-radius: 0.2rem;
+    height: 2rem;
+    outline: none;
+    svg {
+      position: relative;
+      top: 2px;
+      bottom: 0;
+    }
+  }
+}
+.no-articles {
+  // margin: 4rem 0;
+  padding: 4rem;
+  background: $clr-white-ll;
+  color: $clr-black-ll;
+  font-size: 1.5rem;
+  text-align: center;
 }
 </style>

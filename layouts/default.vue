@@ -3,13 +3,13 @@
 
     <AppHeader class="app_header"/>
 
-    <Jumbotron v-if="isHome" />
+    <div class="post_header">
+      <Jumbotron class="app_jumbotron" v-if="isHome"/>
 
-    <section class="app_body" :class="[ isHome ? 'index' : '' ]">
-      <nuxt :key="$route.path" />
-    </section>
+      <AppBody class="app_body"/>
 
-    <AppFooter class="app_footer"/>
+      <AppFooter class="app_footer"/>
+    </div>
 
     <AudioPlayer/>
 
@@ -23,6 +23,7 @@
 
 <script lang="ts">
 import AppHeader from '~/components/AppHeader.vue'
+import AppBody from '~/components/AppBody.vue'
 import AppFooter from '~/components/AppFooter.vue'
 import Jumbotron from '~/components/Jumbotron.vue'
 import AudioPlayer from '~/components/AudioPlayer.vue'
@@ -31,6 +32,7 @@ import AudioControl from '~/components/AudioControl.vue'
 export default {
   components: {
     AppHeader,
+    AppBody,
     AppFooter,
     Jumbotron,
     AudioPlayer,
@@ -67,6 +69,11 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+@import '~assets/css/mixin/_mediaquery.scss';
+@import '~assets/css/_vars.scss';
 
+.post_header {
+  margin-top: $header-height;
+}
 </style>

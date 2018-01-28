@@ -68,7 +68,6 @@ export default {
 @import '~assets/css/_vars.scss';
 
 .footer {
-  margin-top: 40px;
   padding: 2rem 1rem 120px;
   background: $clr-main;
   color: $clr-white;

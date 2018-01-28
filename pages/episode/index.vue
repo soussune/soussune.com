@@ -143,6 +143,7 @@ export default {
 }
 
 $ep-side-margin: 1.2rem;
+$ep-active-clr: $clr-white-dd;
 
 .episode {
   display: block;
@@ -151,7 +152,7 @@ $ep-side-margin: 1.2rem;
   position: relative;
   padding: 0 $ep-side-margin;
   margin-top: -1px;
-  background-image: linear-gradient(left, $clr-sub-ll 50%, transparent 50%);
+  background-image: linear-gradient(left, $ep-active-clr 50%, transparent 50%);
   background-position: right;
   background-size: 200% auto;
 
@@ -171,7 +172,7 @@ $ep-side-margin: 1.2rem;
     bottom: 0;
     left: $ep-side-margin;
     right: $ep-side-margin;
-    background-color: $clr-sub-ll;
+    background-color: $ep-active-clr;
   }
 
   &:first-child {

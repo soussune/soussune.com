@@ -78,16 +78,12 @@
 
   .white {
     fill: $clr-white-ll;
-
-    @include mq() {
-      fill: $clr-main-l;
-    }
   }
 }
 
 .container {
   max-width: 960px;
-  padding: 10rem 16px 0;
+  padding: 10rem 16px 4rem;
   margin: 0 auto;
 
   @include mq() {
@@ -106,7 +102,6 @@
   }
 
   @include mq() {
-    color: $clr-black;
     font-size: 1rem;
     padding: 16px 16px 3rem;
   }

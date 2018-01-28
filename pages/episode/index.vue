@@ -1,7 +1,7 @@
 <template>
   <section class="page-container">
     <header>
-      <h1 class="home-slogan">
+      <h1 class="title">
         Episode list
       </h1>
     </header>
@@ -135,6 +135,11 @@ export default {
 @import '~assets/css/mixin/_mediaquery.scss';
 @import '~assets/css/_vars.scss';
 
+.title {
+  color: $clr-white;
+  text-align: center;
+  margin-top: 3rem;
+}
 .card {
   border-radius: 3px;
   padding: 0;

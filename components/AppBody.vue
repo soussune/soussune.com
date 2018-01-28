@@ -31,7 +31,7 @@ export default {}
     height: $roundHeight;
     display: block;
     background-image: url(~/assets/svg/round-edge.svg);
-    background-color: $clr-main;
+    background-color: $clr-bg;
     background-position: center bottom;
     background-repeat: no-repeat;
     background-size: 100% $roundHeight;
@@ -55,12 +55,12 @@ export default {}
     min-height: 100vh;
 
     width: 100%;
-    padding: 3.8rem 16px 0;
+    padding: 0 16px;
     margin: -$roundPadding 0;
     z-index: 0;
 
     @include mq() {
-      padding: 3.8rem 0 0;
+      padding: 0;
     }
   }
 }

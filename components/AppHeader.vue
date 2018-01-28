@@ -136,7 +136,7 @@ export default {
   left: 0;
   box-sizing: border-box;
   display: grid;
-  background: $clr-main;
+  background: $clr-bg;
   height: $header-height;
   width: 100%;
   grid-template-columns: minmax(8rem, 15rem) 1fr minmax(10rem, 20rem);

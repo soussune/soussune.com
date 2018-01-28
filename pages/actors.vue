@@ -1,11 +1,11 @@
 <template>
   <section class="page-container">
-    <div>
-      <h1 class="title">
+    <h1 class="title">
+      <nuxt-link to="/actors">
         出演者
-      </h1>
-      <nuxt-child/>
-    </div>
+      </nuxt-link>
+    </h1>
+    <nuxt-child/>
   </section>
 </template>
 
@@ -15,15 +15,20 @@
 @import '~assets/css/_vars.scss';
 
 .page-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   text-align: center;
+  width: 100%;
 }
 
 .title {
   color: $clr-white;
   text-align: center;
   margin-top: 3rem;
+
+  a {
+    $line-color: $clr-white-ll;
+    @import '~assets/css/_hoverline.scss';
+    color: $clr-white-ll;
+    text-decoration: none;
+  }
 }
 </style>

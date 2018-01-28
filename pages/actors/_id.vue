@@ -1,39 +1,60 @@
 <template>
   <main
     class="page-container"
-    ref="content"
   >
-    <section>
-      <header class="title">
-        <ActorIcon
-          v-model="actor"
-          class="icon"
-        />
-        <h1 class="actor-title"> {{ actor.title }} </h1>
-      </header>
+    <header class="title">
+      <ActorIcon
+        v-model="actor"
+        class="icon"
+      />
+      <h1 class="actor-title"> {{ actor.title }} </h1>
+    </header>
 
-      <section class="body">
-        <p>{{actor.description}}</p>
-        <nuxtent-body :body="actor.body" class="marked" />
-      </section>
+    <section class="accounts">
+      <a
+        v-if="actor.twitterUsername"
+        :href="`https://twitter.com/${actor.twitterUsername}`"
+        class="button"
+        target="_blank"
+      >
+        <icon name="twitter" scale="1.1"/>
+        Twitter
+      </a>
+      <a
+        v-if="actor.githubUsername"
+        :href="`https://github.com/${actor.githubUsername}`"
+        class="button"
+        target="_blank"
+      >
+        <icon name="github" scale="1.1"/>
+        GitHub
+      </a>
+    </section>
 
-      <section class="episodes">
-        <h2>episodes</h2>
-        <ul v-if="0 < actor.episodes.length">
-          <li
-            v-for="ep in actor.episodes"
-            :key="ep.permalink"
-            class="actor-list-item"
-          >
-            <nuxt-link :to="ep.permalink">
-              {{ ep.title }}
-            </nuxt-link>
-          </li>
-        </ul>
-        <p v-else>
-          not appeared yet.
-        </p>
-      </section>
+    <section class="desc">
+      <p>{{actor.description}}</p>
+    </section>
+
+    <section class="body">
+      <nuxtent-body :body="actor.body" class="marked" />
+    </section>
+
+    <section class="episodes">
+      <h2>episodes</h2>
+      <ul v-if="0 < actor.episodes.length">
+        <li
+          v-for="ep in actor.episodes"
+          :key="ep.permalink"
+          class="actor-list-item"
+        >
+          <nuxt-link :to="ep.permalink">
+            {{ ep.title }}
+          </nuxt-link>
+        </li>
+      </ul>
+      <p v-else>
+        not appeared yet.
+      </p>
     </section>
   </main>
 </template>
@@ -69,28 +90,40 @@ export default {
   padding: 80px 60px;
   margin: 0 20px;
   position: relative;
+  text-align: left;
+
+  display: grid;
+  grid-gap: 1rem;
 
   @include mq() {
     padding: 20px 10px 40px;
     margin: 20px 0px;
   }
 }
-.body,
-.episodes {
-  text-align: left;
+.title {
+  text-align: center;
 }
 .icon {
   width: 200px;
   height: 200px;
-}
-.content-container {
-  max-width: 38rem;
-  margin: 0 auto;
 }
 
 .actor-title {
   font-size: 2.5rem;
   margin-bottom: 1rem;
   color: $clr-black-dd;
+}
+.accounts {
+  display: grid;
+  grid-gap: 1em;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 200px);
+  width: max-content;
+  margin: 0 auto;
+
+  .button {
+    @import '~assets/css/_roundButton.scss';
+    border: 2px solid $clr-black;
+  }
 }
 </style>

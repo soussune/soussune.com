@@ -1,5 +1,5 @@
 <template>
-  <section class="jumbotron app_jumbotron">
+  <section class="jumbotron">
     <div class="container">
       <svg class="logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="700" height="207" viewBox="0 0 700 207">
         <defs>
@@ -46,7 +46,6 @@
           </a>
         </div>
       </div>
-
     </div>
   </section>
 </template>
@@ -58,36 +57,14 @@
 .jumbotron {
   position: relative;
   width: 100%;
-  height: auto;
   color: $clr-white-ll;
-  background-color: $clr-main;
-  background-position: center;
-  background-size: cover;
   text-align: center;
-  margin-top: 3.8rem;
   overflow: hidden;
 
   @include mq() {
     overflow: hidden;
     background-color: transparent;
     height: 100%;
-  }
-
-  &:after {
-    content: '';
-    display: block;
-    padding-bottom: 3%;
-    background-image: url(~/assets/svg/round-edge.svg);
-    width: 110%;
-    margin-left: -5%;
-    margin-bottom: -0.625rem !important;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center top;
-
-    @include mq() {
-      background-image: none;
-    }
   }
 }
 
@@ -101,16 +78,12 @@
 
   .white {
     fill: $clr-white-ll;
-
-    @include mq() {
-      fill: $clr-main-l;
-    }
   }
 }
 
 .container {
   max-width: 960px;
-  padding: 10rem 16px;
+  padding: 10rem 16px 4rem;
   margin: 0 auto;
 
   @include mq() {
@@ -129,7 +102,6 @@
   }
 
   @include mq() {
-    color: $clr-black;
     font-size: 1rem;
     padding: 16px 16px 3rem;
   }

@@ -33,6 +33,9 @@ $clr-white-ll: hsl(0, 0%, 100%);
 $clr-white-d: hsl(0, 0%, 90%);
 $clr-white-dd: hsl(0, 0%, 80%);
 
+// bg
+$clr-bg: $clr-main;
+
 // Logo color
 $clr-logo-bg: #4a3530;
 
@@ -52,3 +55,5 @@ $player-volume-thumb-border-color: $player-seek-progress;
 // font
 $font-serif: Georgia, '游明朝', YuMincho, 'ヒラギノ明朝 ProN W3', 'Hiragino Mincho ProN',
   'ＭＳ Ｐ明朝', 'ＭＳ 明朝', serif;
+
+$header-height: 3.8rem;

@@ -1,10 +1,3 @@
-<svg width="1440" height="40" viewBox="0 0 1440 40" version="1.1"
-  xmlns="http://www.w3.org/2000/svg"
-  xmlns:xlink="http://www.w3.org/1999/xlink">
-  <title>round</title>
-  <g id="round" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-    <g id="round" fill="#f2f2f2">
-      <path d="M0,30.0130265 C239.658854,10.0043422 479.143229,3.07450003e-15 718.453125,0 C957.763021,0 1198.27865,10.0043422 1440,30.0130265 L1440,40 L0,40 L0,30.0130265 Z" id="Rectangle-12"/>
-    </g>
-  </g>
+<svg xmlns="http://www.w3.org/2000/svg" width="1550" height="40" viewBox="0 0 1550 40" preserveAspectRatio="none">
+  <path fill="#F2F2F2" fill-rule="evenodd" d="M0,40 C116.052404,16.6566431 419.452445,0 775.5,0 C1131.54755,0 1434.9476,16.6566431 1550,40 L0.220765675,40 Z"/>
 </svg>

@@ -128,8 +128,6 @@ export default {
 @import '~assets/css/mixin/_mediaquery.scss';
 @import '~assets/css/_vars.scss';
 
-$bar-height: 3.8rem;
-
 .top-bar {
   position: fixed;
   z-index: 502;
@@ -138,8 +136,8 @@ $bar-height: 3.8rem;
   left: 0;
   box-sizing: border-box;
   display: grid;
-  background: $clr-main;
-  height: $bar-height;
+  background: $clr-bg;
+  height: $header-height;
   width: 100%;
   grid-template-columns: minmax(8rem, 15rem) 1fr minmax(10rem, 20rem);
   grid-template-rows: 1fr;

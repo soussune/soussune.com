@@ -54,7 +54,7 @@ export default {
   },
   head() {
     return {
-      title: 'All actors'
+      title: '出演者'
     }
   }
 }
@@ -64,11 +64,9 @@ export default {
 @import '~assets/css/mixin/_mediaquery.scss';
 
 .actors {
-  margin-top: 40px;
-
   &-list {
     display: block;
-    margin: 0 -10px;
+    margin: -10px -10px;
 
     @include mq() {
       width: 100%;

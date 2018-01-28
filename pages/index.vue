@@ -29,14 +29,13 @@
           </div>
         </article>
       </nuxt-link>
-
-      <nav class="readmore" v-if="moreEpisode">
-        <nuxt-link :to="{ path: '/episode', hash: 'ep' + moreEpisode.id }" class="readmore-link">
-          Read more <icon name="chevron-right"></icon>
-        </nuxt-link>
-      </nav>
-
     </main>
+
+    <nav class="readmore" v-if="moreEpisode">
+      <nuxt-link :to="{ path: '/episode', hash: 'ep' + moreEpisode.id }" class="readmore-link">
+        Read more <icon name="chevron-right"></icon>
+      </nuxt-link>
+    </nav>
   </section>
 </template>
 
@@ -77,15 +76,6 @@ export default {
 <style lang="scss" scoped>
 @import '~assets/css/mixin/_mediaquery.scss';
 @import '~assets/css/_vars.scss';
-
-.header {
-  text-align: center;
-  .title {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    color: $clr-black-d;
-  }
-}
 
 $ep-trans: 0.2s ease-in;
 $ep-bg: $clr-white-ll;
@@ -157,19 +147,19 @@ $ep-bg-hover: $clr-white-ll;
 .readmore {
   display: flex;
   justify-content: center;
-  margin-top: 2rem;
+  margin-top: 1.5rem;
 
   &-link {
     text-decoration: none;
-    color: $clr-black-d;
+    color: $clr-black;
     font-size: 1.2rem;
     padding: 0.5rem;
 
-    $line-color: $clr-sub-l;
+    $line-color: $clr-black;
     @import '~assets/css/_hoverline.scss';
 
     &:hover {
-      color: $clr-sub-l;
+      color: $clr-black;
     }
   }
 }

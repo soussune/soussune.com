@@ -98,6 +98,7 @@ export default {
 
   @include mq() {
     grid-template-columns: auto;
+    margin: 0 2rem;
     .timeline {
       order: 3 !important;
     }

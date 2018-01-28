@@ -101,6 +101,7 @@ export default {
 
   display: grid;
   grid-gap: 2rem;
+  justify-items: center;
 
   @include mq() {
     padding: 20px 10px 40px;
@@ -126,23 +127,18 @@ export default {
   grid-gap: 1em;
   grid-auto-flow: column;
   grid-auto-columns: minmax(0, 200px);
-  width: max-content;
-  margin: 0 auto;
 
   .button {
     @import '~assets/css/_roundButton.scss';
     border: 2px solid $clr-black;
   }
 }
+
 .episodes {
   &-title {
     color: $clr-black-d;
     text-align: center;
     font-size: 1.8rem;
-  }
-  &-list {
-    width: max-content;
-    margin: 0 auto;
   }
 }
 </style>

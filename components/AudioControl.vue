@@ -92,7 +92,7 @@ $ios-safari-bottom-margin: 80px;
 .bg {
   background: rgba(0, 0, 0, 0.8);
   width: 100vw;
-  height: 100vh;
+  height: 150vh;
 }
 .clearPlay {
   position: absolute;

@@ -243,7 +243,7 @@ $clr-ui: $player-seek-progress;
     }
 
     &:hover {
-      color: $clr-sub-ll;
+      color: $clr-black-l;
     }
   }
 

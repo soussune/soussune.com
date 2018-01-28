@@ -54,7 +54,7 @@ export default {
   },
   head() {
     return {
-      title: 'All actors'
+      title: '出演者'
     }
   }
 }

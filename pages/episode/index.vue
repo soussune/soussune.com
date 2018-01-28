@@ -125,7 +125,7 @@ export default {
   },
   head() {
     return {
-      title: 'Episode list'
+      title: 'エピソード'
     }
   }
 }

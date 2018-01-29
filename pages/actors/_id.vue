@@ -10,26 +10,21 @@
       <h1 class="actor-title"> {{ actor.title }} </h1>
     </header>
 
-    <section class="accounts" v-if="hasAccount(actor)">
+    <section class="accounts" v-if="actor.accounts">
       <a
-        v-if="actor.accounts.twitter"
-        :href="`https://twitter.com/${actor.accounts.twitter}`"
+        v-for="(account, service) in actor.accounts"
+        :key="service"
+        :href="service, account | serviceUrl"
         class="button"
         target="_blank"
         rel="noopener"
       >
-        <icon name="twitter" class="twitter" scale="1.6"/>
-        Twitter
-      </a>
-      <a
-        v-if="actor.accounts.github"
-        :href="`https://github.com/${actor.accounts.github}`"
-        class="button"
-        target="_blank"
-        rel="noopener"
-      >
-        <icon name="github" class="github" scale="1.6"/>
-        GitHub
+        <icon
+          :name="service"
+          :class="service"
+          scale="1.6"
+        />
+        {{service | serviceLabel}}
       </a>
     </section>
 
@@ -66,6 +61,21 @@
 <script lang="ts">
 import ActorIcon from '~/components/ActorIcon.vue'
 
+const serviceInfo = {
+  twitter: {
+    label: 'Twitter',
+    url: 'https://twitter.com/'
+  },
+  github: {
+    label: 'GitHub',
+    url: 'https://github.com/'
+  },
+  medium: {
+    label: 'Medium',
+    url: 'https://medium.com/'
+  }
+}
+
 export default {
   components: {
     ActorIcon
@@ -75,9 +85,12 @@ export default {
       actor: await app.$contentLoader.getActor(params.id)
     }
   },
-  methods: {
-    hasAccount(actor) {
-      return actor.accounts && Object.values(actor.accounts).some((val) => val)
+  filters: {
+    serviceUrl(service, account) {
+      return serviceInfo[service] && `${serviceInfo[service].url}${account}`
+    },
+    serviceLabel(service) {
+      return serviceInfo[service] && serviceInfo[service].label
     }
   },
   head() {

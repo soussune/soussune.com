@@ -19,11 +19,16 @@
               </span>
             </h2>
             <p class="actor-description">出演回数: {{ actor.episodes.length }}</p>
-            <div class="actor-footer">
-              <icon name="twitter" class="twitter" scale="1" v-if="actor.accounts.twitter"></icon>
-              <icon name="github" class="github" scale="1" v-if="actor.accounts.github"></icon>
-              <button class="actor-button">もっと詳しく</button>
+            <div class="actor-footer" v-if="actor.accounts">
+              <icon
+                v-for="(account, service) in actor.accounts"
+                :key="service"
+                :name="service"
+                :class="service"
+                scale="1"
+              ></icon>
             </div>
+            <button class="actor-button">もっと詳しく</button>
           </div>
         </nuxt-link>
       </li>
@@ -50,6 +55,11 @@ export default {
   async asyncData({ app }) {
     return {
       actors: await app.$contentLoader.getActors()
+    }
+  },
+  methods: {
+    hasAccount(actor) {
+      return actor.accounts && Object.values(actor.accounts).some((val) => val)
     }
   },
   head() {
@@ -151,6 +161,9 @@ export default {
       color: #1da1f2;
     }
     .github {
+      color: #000000;
+    }
+    .medium {
       color: #000000;
     }
   }

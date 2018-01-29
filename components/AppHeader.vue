@@ -25,9 +25,10 @@
                 autocomplete="off"
                 class="search-input-field"
                 :value="$store.state.searchText"
-                @input="updateInput"
+                @inputIME="updateInput"
                 @focus="onFocus"
                 @blur="onBlur"
+                v-ime-input
               >
             </label>
           </div>
@@ -77,8 +78,8 @@ export default {
     toggleMenu() {
       this.isMenuOpen = !this.isMenuOpen
     },
-    updateInput(e) {
-      this.$store.commit('searchText', e.target.value)
+    updateInput(value) {
+      this.$store.commit('searchText', value)
     },
     onBlur() {
       this.onEdit = false
@@ -105,18 +106,27 @@ export default {
   directives: {
     imeInput: {
       bind(el, binding, vnode) {
+        // https://stackoverflow.com/questions/40655333/vue-js-emit-event-from-directive
+        const emit = (vnode, name, data) => {
+          const handlers =
+            (vnode.data && vnode.data.on) ||
+            (vnode.componentOptions && vnode.componentOptions.listeners)
+          if (handlers && handlers[name]) handlers[name].fns(data)
+        }
+        const update = (value) => {
+          emit(vnode, 'inputIME', value)
+        }
         let onComposition = false
         el.addEventListener('compositionstart', () => {
           onComposition = true
         })
         el.addEventListener('compositionend', (e) => {
           onComposition = false
-          binding.value = e.target.value
-          vnode.context.$set(vnode.context, binding.expression, e.target.value)
+          update(e.target.value)
         })
         el.addEventListener('input', (e) => {
           if (onComposition) return
-          vnode.context.$set(vnode.context, binding.expression, e.target.value)
+          update(e.target.value)
         })
       }
     }

@@ -1,7 +1,7 @@
 <template>
   <header role="banner" class="top-bar" :class="{scrolled: scrollY > 0}">
     <nav class="top-bar__branding">
-      <nuxt-link exact to="/" @click.native="scrollToTop">
+      <nuxt-link exact to="/" @click.native="scrollToTop" aria-label="home">
         <AppLogo />
       </nuxt-link>
     </nav>
@@ -29,6 +29,7 @@
                 @focus="onFocus"
                 @blur="onBlur"
                 v-ime-input
+                aria-label="search"
               >
             </label>
           </div>
@@ -38,23 +39,23 @@
     <nav class="top-bar__nav" :class="{isMenuOpen}" @click="closeMenu">
       <ul class="top-bar__nav-list">
         <li>
-          <nuxt-link to="/episode" @click.native="scrollToTop">
+          <nuxt-link to="/episode" @click.native="scrollToTop" aria-label="episodes">
             エピソード
           </nuxt-link>
         </li>
         <li>
-          <nuxt-link to="/actors" @click.native="scrollToTop">
+          <nuxt-link to="/actors" @click.native="scrollToTop" aria-label="actors">
             出演者
           </nuxt-link>
         </li>
         <li>
-          <a href="https://medium.com/soussune" target="_blank" rel="noopener">
+          <a href="https://medium.com/soussune" target="_blank" rel="noopener" aria-label="blog">
             ブログ
           </a>
         </li>
       </ul>
     </nav>
-    <div class="top-bar__menu"><button @click="toggleMenu"><icon name="bars" scale="1.5"></icon></button></div>
+    <div class="top-bar__menu"><button @click="toggleMenu" aria-label="toggle menu"><icon name="bars" scale="1.5"></icon></button></div>
   </header>
 </template>
 

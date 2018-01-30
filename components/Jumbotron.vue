@@ -34,13 +34,13 @@
       <p class="description"><strong>soussune</strong> は、ポッドキャストを通じて他人と意見を揉んでいきたいエンジニアの集いです。</p>
       <div class="buttons">
         <div class="apple-podcasts">
-          <a href="https://itunes.apple.com/jp/podcast/soussune/id1247135079" class="button" target="_blank" rel="noopener">
+          <a href="https://itunes.apple.com/jp/podcast/soussune/id1247135079" class="button" target="_blank" rel="noopener" aria-label="Apple Podcasts">
             <icon name="apple" scale="1.1"/>
             Apple Podcastsで購読
           </a>
         </div>
         <div class="feed">
-          <a href="/feed.xml" class="button" target="_blank" rel="noopener">
+          <a href="/feed.xml" class="button" target="_blank" rel="noopener" aria-label="RSS feed">
             <icon name="rss" scale="1.1"/>
             RSSで購読
           </a>

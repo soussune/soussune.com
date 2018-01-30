@@ -6,6 +6,7 @@
       class="title"
       :to="pagePath"
       @click.native="$emit('close')"
+      aria-label="current episode"
     >
       {{ title }}
     </nuxt-link>
@@ -15,6 +16,7 @@
         <button
           @click.prevent="muted = !muted"
           class="mute"
+          aria-label="mute"
         >
           <icon
             name="volume-up"
@@ -57,6 +59,7 @@
       <button
         @click.prevent="skip(skipBack)"
         class="skip"
+        aria-label="skip backward"
       >
         <span class="stack">
           <icon
@@ -69,6 +72,7 @@
       <button
         class="pause"
         @click.prevent="togglePlay"
+        aria-label="toggle play"
       >
         <icon
           :name="paused ? 'play' : 'pause'"
@@ -78,6 +82,7 @@
       <button
         @click.prevent="skip(skipFwd)"
         class="skip"
+        aria-label="skip forward"
       >
         <span class="stack">
           <icon

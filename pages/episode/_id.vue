@@ -11,7 +11,11 @@
     <section class="summary">
 
       <div class="play">
-        <button @click="togglePlay" :class="{playing: playing, loading: !canplay }">
+        <button
+          @click="togglePlay"
+          :class="{playing: playing, loading: !canplay }"
+          aria-label="toggle play"
+        >
           <icon scale="3" :name="playing ? (canplay ? 'pause' : 'spinner') : 'play'" :spin="playing && !canplay"></icon>
         </button>
       </div>
@@ -29,7 +33,7 @@
             :key="actor.title"
             class="actor-list-item"
           >
-            <nuxt-link :to="actor.permalink">
+            <nuxt-link :to="actor.permalink" :aria-label="actor.title">
               <ActorIcon
                 v-model="episode.actors[i]"
               />
@@ -46,6 +50,7 @@
         v-if="episode.newer"
         :to="episode.newer.permalink"
         class="newer"
+        aria-label="newer episode"
       >
         <icon name="arrow-left" scale="3"></icon>
       </nuxt-link>
@@ -53,6 +58,7 @@
         v-if="episode.older"
         :to="episode.older.permalink"
         class="older"
+        aria-label="oldre episode"
       >
         <icon name="arrow-right" scale="3"></icon>
       </nuxt-link>

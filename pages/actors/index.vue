@@ -6,7 +6,7 @@
         :key="actor.title"
         class="actors-list-item"
       >
-        <nuxt-link class="actor" :to="actor.permalink">
+        <nuxt-link class="actor" :to="actor.permalink" :aria-label="actor.title">
           <ActorIcon
             v-model="sortedActors[i]"
             class="actor-icon"
@@ -28,7 +28,7 @@
                 scale="1"
               ></icon>
             </div>
-            <button class="actor-button">もっと詳しく</button>
+            <div class="actor-button">もっと詳しく</div>
           </div>
         </nuxt-link>
       </li>
@@ -132,7 +132,7 @@ export default {
 
   &-role {
     background: $clr-sub-ll;
-    color: $clr-sub;
+    color: $clr-sub-d;
     font-size: 0.6rem;
     font-weight: 600;
     padding: 0.08rem 0.3rem;
@@ -144,7 +144,7 @@ export default {
   &-description {
     font-size: 0.9rem;
     font-weight: 400;
-    color: $clr-black-ll;
+    color: $clr-black-l;
   }
 
   &-footer {

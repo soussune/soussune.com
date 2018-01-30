@@ -18,6 +18,7 @@
           <button
             class="clearPlay"
             @click="clearPlay"
+            aria-label="clear play"
           >
             再生を終了する
           </button>

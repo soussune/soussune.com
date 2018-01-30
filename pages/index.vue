@@ -6,6 +6,7 @@
         v-for="episode in topEpisodes"
         :key="episode.permalink"
         class="episode"
+        :aria-label="episode.title"
       >
         <article>
           <header>
@@ -32,7 +33,7 @@
     </main>
 
     <nav class="readmore" v-if="moreEpisode">
-      <nuxt-link :to="{ path: '/episode', hash: 'ep' + moreEpisode.id }" class="readmore-link">
+      <nuxt-link :to="{ path: '/episode', hash: 'ep' + moreEpisode.id }" class="readmore-link" aria-label="read more episodes">
         Read more <icon name="chevron-right"></icon>
       </nuxt-link>
     </nav>

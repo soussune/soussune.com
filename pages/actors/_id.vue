@@ -45,7 +45,7 @@
             :key="ep.permalink"
             class="actor-list-item"
           >
-            <nuxt-link :to="ep.permalink">
+            <nuxt-link :to="ep.permalink" :aria-label="ep.title">
               {{ ep.title }}
             </nuxt-link>
           </li>

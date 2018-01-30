@@ -31,6 +31,7 @@
           :to="episode.permalink"
           :id="'ep' + episode.id"
           class="episode"
+          :aria-label="episode.title"
         >
           <article>
             <h2 class="episode-header">

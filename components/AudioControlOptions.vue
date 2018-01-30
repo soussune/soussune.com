@@ -6,6 +6,7 @@
       class="title"
       :to="pagePath"
       @click.native="$emit('close')"
+      aria-label="current episode"
     >
       {{ title }}
     </nuxt-link>

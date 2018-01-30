@@ -1,7 +1,7 @@
 <template>
   <section class="page-container">
     <h1 class="title">
-      <nuxt-link to="/actors">
+      <nuxt-link to="/actors" aria-label="actors">
         出演者
       </nuxt-link>
     </h1>

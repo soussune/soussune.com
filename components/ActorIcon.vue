@@ -1,6 +1,6 @@
 <template>
   <img
-    :src="value.imageUrl"
+    :src="`/img/actors/${value.actorId}.jpg`"
     :title="value.title"
     @error="imgError"
   >

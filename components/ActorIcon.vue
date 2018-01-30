@@ -1,6 +1,6 @@
 <template>
   <img
-    :src="`/img/actors/${value.actorId}.jpg`"
+    :src="`/img/actors/${value.actorId}.webp`"
     :title="value.title"
     @error="imgError"
   >

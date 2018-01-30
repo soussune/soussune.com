@@ -132,7 +132,7 @@ export default {
 
   &-role {
     background: $clr-sub-ll;
-    color: $clr-sub;
+    color: $clr-sub-d;
     font-size: 0.6rem;
     font-weight: 600;
     padding: 0.08rem 0.3rem;

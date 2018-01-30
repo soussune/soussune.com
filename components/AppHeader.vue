@@ -29,6 +29,7 @@
                 @focus="onFocus"
                 @blur="onBlur"
                 v-ime-input
+                aria-label="search"
               >
             </label>
           </div>

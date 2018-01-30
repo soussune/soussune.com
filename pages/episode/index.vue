@@ -16,6 +16,7 @@
           :key="query"
           class="query"
           @click="removeQuery(i)"
+          :aria-label="`remove ${query}`"
         >
           {{query}} <icon name="times" scale="1"></icon>
         </button>

@@ -28,7 +28,7 @@
                 scale="1"
               ></icon>
             </div>
-            <button class="actor-button">もっと詳しく</button>
+            <div class="actor-button">もっと詳しく</div>
           </div>
         </nuxt-link>
       </li>

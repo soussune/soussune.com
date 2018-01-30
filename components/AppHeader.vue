@@ -54,7 +54,7 @@
         </li>
       </ul>
     </nav>
-    <div class="top-bar__menu"><button @click="toggleMenu"><icon name="bars" scale="1.5"></icon></button></div>
+    <div class="top-bar__menu"><button @click="toggleMenu" aria-label="toggle menu"><icon name="bars" scale="1.5"></icon></button></div>
   </header>
 </template>
 

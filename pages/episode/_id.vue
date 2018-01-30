@@ -11,7 +11,11 @@
     <section class="summary">
 
       <div class="play">
-        <button @click="togglePlay" :class="{playing: playing, loading: !canplay }">
+        <button
+          @click="togglePlay"
+          :class="{playing: playing, loading: !canplay }"
+          aria-label="toggle play"
+        >
           <icon scale="3" :name="playing ? (canplay ? 'pause' : 'spinner') : 'play'" :spin="playing && !canplay"></icon>
         </button>
       </div>

@@ -7,7 +7,7 @@
 
     <AppBody class="app_body"/>
 
-    <AppFooter class="app_footer"/>
+    <!-- <AppFooter class="app_footer"/> -->
 
     <AudioPlayer/>
 

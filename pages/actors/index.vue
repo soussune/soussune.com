@@ -144,7 +144,7 @@ export default {
   &-description {
     font-size: 0.9rem;
     font-weight: 400;
-    color: $clr-black-ll;
+    color: $clr-black-l;
   }
 
   &-footer {

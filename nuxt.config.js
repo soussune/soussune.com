@@ -204,7 +204,7 @@ const conf = {
       shouldSendCallback: () => process.env.NODE_ENV === 'production'
     }
   },
-  plugins: ['~plugins/vue-awesome.js', '~plugins/content-loader.js']
+  plugins: ['~plugins/vue-awesome.js', '~plugins/content-loader.js', '~plugins/vue-lazyload.js']
 }
 
 module.exports = conf

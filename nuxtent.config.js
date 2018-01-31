@@ -31,7 +31,7 @@ module.exports = {
   ],
   parsers: {
     md: {
-      use: [
+      plugins: [
         [
           externalLinks,
           {

@@ -17,11 +17,13 @@
         ><icon name="pencil-square-o" scale="1.1"></icon>お便りを送る</FeedbackForm>
       </div>
       <div class="timeline">
-        <TwitterTimeline
-          :widgetId="'956788689086046208'"
-          :q="'#soussune'"
-          :rt="false"
-        />
+        <lazy-component>
+          <TwitterTimeline
+            :widgetId="'956788689086046208'"
+            :q="'#soussune'"
+            :rt="false"
+          />
+        </lazy-component>
       </div>
     </div>
   </footer>

@@ -150,6 +150,10 @@ export default {
 
   transition: all 0.2s cubic-bezier(0.55, 0, 0.1, 1);
 
+  @include mq() {
+    height: $header-height-sp;
+  }
+
   &.scrolled {
     background: $clr-main-d;
     box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 10px 30px 0 rgba(0, 0, 0, 0.2);

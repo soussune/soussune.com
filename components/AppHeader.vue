@@ -241,6 +241,7 @@ export default {
 
     @include mq() {
       display: block;
+      margin-top: 6px;
     }
 
     button {

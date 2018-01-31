@@ -14,7 +14,7 @@
     <AudioControl/>
 
     <span v-if="twitterWidget">
-      <script type="text/javascript" async src="https://platform.twitter.com/widgets.js"></script>
+      <script id="twitter-wjs" type="text/javascript" async defer src="//platform.twitter.com/widgets.js"></script>
     </span>
   </div>
 </template>

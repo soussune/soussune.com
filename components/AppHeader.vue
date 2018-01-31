@@ -6,35 +6,26 @@
       </nuxt-link>
     </nav>
     <div class="top-bar__search">
-      <section class="top-bar-search">
-        <div class="top-bar-search__input-wrapper">
-          <div
-            class="search-input-wrapper"
-            :class="{ focused: focused }"
-          >
-            <label class="search-input">
-              <span
-                class="search-input__add-on search-input__add-on--before"
-              >
-                <icon name="search" class="search-icon"></icon>
-              </span>
-              <input
-                type="search"
-                name="search"
-                placeholder="検索"
-                autocomplete="off"
-                class="search-input-field"
-                :value="$store.state.searchText"
-                @inputIME="updateInput"
-                @focus="onFocus"
-                @blur="onBlur"
-                v-ime-input
-                aria-label="search"
-              >
-            </label>
-          </div>
-        </div>
-      </section>
+      <label class="search-input" :class="{ focused }">
+        <span
+          class="search-input__add-on search-input__add-on--before"
+        >
+          <icon name="search" class="search-icon"></icon>
+        </span>
+        <input
+          type="search"
+          name="search"
+          placeholder="検索"
+          autocomplete="off"
+          class="search-input-field"
+          :value="$store.state.searchText"
+          @inputIME="updateInput"
+          @focus="onFocus"
+          @blur="onBlur"
+          v-ime-input
+          aria-label="search"
+        >
+      </label>
     </div>
     <nav class="top-bar__nav" :class="{isMenuOpen}" @click="closeMenu">
       <ul class="top-bar__nav-list">
@@ -253,12 +244,14 @@ export default {
 }
 
 .search-input {
+  $height: 2.2rem;
+
   color: $clr-white-ll;
   background-color: $clr-main-ll;
   border-radius: 3px;
   box-shadow: none;
-  height: 2.2rem;
-  line-height: 2.2rem;
+  height: $height;
+  line-height: $height;
   margin: 0;
   border: none;
   position: relative;
@@ -313,7 +306,7 @@ export default {
     transition: transform 200ms ease, opacity 200ms ease, -webkit-transform 200ms ease;
   }
 
-  .focused & {
+  &.focused {
     background-color: $clr-white;
     color: $clr-black-l;
     box-shadow: none;

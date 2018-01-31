@@ -80,7 +80,9 @@ export default {
   },
   filters: {
     date(episode) {
-      return DateTime.fromMillis(episode.published).toFormat('yyyy年MM月dd日')
+      return DateTime.fromMillis(episode.published, { zone: 'Asia/Tokyo' }).toFormat(
+        'yyyy年MM月dd日'
+      )
     },
     desc(episode) {
       return EpisodeHelper.desc(episode)

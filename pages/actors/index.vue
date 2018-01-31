@@ -36,7 +36,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import ActorIcon from '~/components/ActorIcon.vue'
 
 export default {
@@ -171,25 +171,15 @@ export default {
   &-button {
     display: inline-block;
     position: absolute;
-    right: 10px;
-    bottom: 10px;
+    right: 0.7em;
+    bottom: 0.7em;
     border: none;
-    padding: 10px;
-    line-height: 15px;
-    font-size: 14px;
-    font-weight: 400;
+    font-size: 0.9rem;
     color: $clr-main-ll;
-    background: $clr-white-ll;
-
-    &:hover {
-      background: $clr-white-l;
-    }
+    background: transparent;
 
     @include mq() {
-      font-size: 12px;
-      padding: 8px;
-      right: 6px;
-      bottom: 6px;
+      font-size: 0.8rem;
     }
   }
 }

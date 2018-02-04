@@ -123,7 +123,7 @@ export default {
     time(val: number) {
       return [
         Math.floor(val / 3600),
-        ...[Math.floor((val % 3600) / 60), Math.round(val % 60)].map((v) =>
+        ...[Math.floor((val % 3600) / 60), Math.floor(val % 60)].map((v) =>
           v.toString().padStart(2, '0')
         )
       ].join(':')

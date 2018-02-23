@@ -147,6 +147,7 @@ export default {
   color: $clr-white;
   text-align: center;
   margin-top: 3rem;
+  font-family: $font-round;
 }
 .card {
   border-radius: 3px;

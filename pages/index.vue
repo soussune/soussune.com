@@ -125,6 +125,8 @@ $ep-bg-hover: $clr-white-ll;
     color: $clr-black-d;
     font-size: 1.6rem;
     margin-bottom: 0.2em;
+    font-family: $font-round;
+
     & a {
       text-decoration: none;
     }

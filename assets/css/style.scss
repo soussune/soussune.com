@@ -36,6 +36,11 @@
   src: local('Helvetica Neue Regular');
   font-weight: 200;
 }
+@font-face {
+  font-family: 'soussune-GenJyuuGothicX-Medium';
+  src: url(/font/soussune-GenJyuuGothicX-Medium.woff) format('woff');
+  font-display: swap;
+}
 
 html {
   font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', YuGothic, '游ゴシック Medium',

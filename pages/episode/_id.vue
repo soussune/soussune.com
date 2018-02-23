@@ -171,6 +171,7 @@ export default {
     font-size: 2.5rem;
     margin-bottom: 1rem;
     color: $clr-black-dd;
+    font-family: $font-round;
 
     @include mq() {
       font-size: 2rem;
@@ -219,7 +220,7 @@ export default {
 
   & h2 {
     font-size: 24px;
-    font-family: $font-serif;
+    font-family: $font-round;
     color: $clr-black-d;
   }
 

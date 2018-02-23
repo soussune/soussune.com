@@ -23,6 +23,7 @@
   color: $clr-white;
   text-align: center;
   margin-top: 3rem;
+  font-family: $font-round;
 
   a {
     $line-color: $clr-white-ll;

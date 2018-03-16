@@ -3,8 +3,8 @@
     version="1.1"
     xmlns="http://www.w3.org/2000/svg"
     :style="{
-      width: size,
-      height: size
+      width: size + 'px',
+      height: size + 'px'
     }"
   >
     <circle

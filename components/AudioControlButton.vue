@@ -1,8 +1,8 @@
 <template>
   <div class="audio-control-button"
     :style="{
-      width: buttonSize + 'px',
-      height: buttonSize + 'px'
+      width: buttonSize,
+      height: buttonSize
     }">
     <AudioPlayingIcon
       class="icon"

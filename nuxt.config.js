@@ -55,18 +55,6 @@ const conf = {
       // twitter
       { name: 'twitter:card', content: 'summary' },
       { name: 'twitter:site', content: '@soussunefm' },
-      {
-        name: 'twitter:title',
-        content: 'soussune - エンジニアわいわいポッドキャスト「そうっすね」',
-        hid: 'twTitle'
-      },
-      { name: 'twitter:url', content: 'https://.soussune.com', hid: 'twUrl' },
-      { name: 'twitter:image', content: 'https://soussune.com/ogp-artwork.jpg', hid: 'twImage' },
-      {
-        name: 'twitter:description',
-        content: 'テクノロジーと世の中についてエンジニア達が雑談するポッドキャストです。',
-        hid: 'twDesc'
-      },
 
       // Facebook
       // { property: 'fb:app_id', content: '' },

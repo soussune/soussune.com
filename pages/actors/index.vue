@@ -64,7 +64,14 @@ export default {
   },
   head() {
     return {
-      title: '出演者'
+      title: '出演者',
+      meta: [
+        {
+          property: 'og:title',
+          content: `soussune - 出演者`,
+          hid: 'ogTitle'
+        }
+      ]
     }
   }
 }

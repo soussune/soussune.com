@@ -95,7 +95,19 @@ export default {
   },
   head() {
     return {
-      title: this.actor.title
+      title: this.actor.title,
+      meta: [
+        {
+          property: 'og:title',
+          content: `soussune - ${this.actor.title}`,
+          hid: 'ogTitle'
+        },
+        {
+          property: 'og:description',
+          content: this.actor.description,
+          hid: 'ogDesc'
+        }
+      ]
     }
   }
 }

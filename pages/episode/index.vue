@@ -133,7 +133,14 @@ export default {
   },
   head() {
     return {
-      title: 'エピソード'
+      title: 'エピソード',
+      meta: [
+        {
+          property: 'og:title',
+          content: `soussune - エピソード`,
+          hid: 'ogTitle'
+        }
+      ]
     }
   }
 }

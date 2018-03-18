@@ -22,7 +22,7 @@
 
       <div class="desc">
         <h2>内容紹介</h2>
-        {{ episode | desc }}
+        {{ desc }}
       </div>
 
       <div class="actors">
@@ -83,9 +83,6 @@ export default {
       return DateTime.fromMillis(episode.published, { zone: 'Asia/Tokyo' }).toFormat(
         'yyyy年MM月dd日'
       )
-    },
-    desc(episode) {
-      return EpisodeHelper.desc(episode)
     }
   },
   async asyncData({ app, params }) {
@@ -94,6 +91,9 @@ export default {
     }
   },
   computed: {
+    desc() {
+      return EpisodeHelper.desc(this.episode)
+    },
     src(): string {
       return (
         'http://cdn.soussune.com.s3-ap-northeast-1.amazonaws.com/audio' + this.episode.audioFilePath
@@ -114,7 +114,19 @@ export default {
   },
   head() {
     return {
-      title: this.episode.title
+      title: this.episode.title,
+      meta: [
+        {
+          property: 'og:title',
+          content: `soussune - ${this.episode.title}`,
+          hid: 'ogTitle'
+        },
+        {
+          property: 'og:description',
+          content: this.desc,
+          hid: 'ogDesc'
+        }
+      ]
     }
   },
   mounted() {

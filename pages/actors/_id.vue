@@ -106,6 +106,11 @@ export default {
           property: 'og:description',
           content: this.actor.description,
           hid: 'ogDesc'
+        },
+        {
+          property: 'og:image',
+          content: this.actor.imageUrl,
+          hid: 'ogImage'
         }
       ]
     }

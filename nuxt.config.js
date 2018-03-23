@@ -17,6 +17,13 @@ const conf = {
       }
     }
   },
+  manifest: {
+    name: 'soussune - エンジニアわいわいポッドキャスト「そうっすね」',
+    short_name: 'soussune',
+    description: 'テクノロジーと世の中についてエンジニア達が雑談するポッドキャストです。',
+    lang: 'ja',
+    theme_color: '#1c2260'
+  },
   modules: [
     '@nuxtjs/pwa',
     '@nuxtjs/sentry',

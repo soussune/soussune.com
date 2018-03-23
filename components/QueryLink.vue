@@ -10,7 +10,7 @@
 export default {
   props: {
     path: { type: String, default: '' },
-    params: { type: Object, default: {} },
+    params: { type: Object, default: () => {} },
     target: { type: String, default: '_blank' }
   },
   computed: {

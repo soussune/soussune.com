@@ -125,9 +125,6 @@ export default {
     border-bottom-right-radius: 0;
   }
 
-  &-aside {
-  }
-
   &-title {
     margin: 0.4rem 0 0;
     font-size: 18px;

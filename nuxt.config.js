@@ -99,7 +99,6 @@ const conf = {
       { rel: 'icon', type: 'image/png', sizes: '96x96', href: '/favicon-96x96.png' },
       { rel: 'icon', type: 'image/png', sizes: '160x160', href: '/favicon-160x160.png' },
       { rel: 'icon', type: 'image/png', sizes: '196x196', href: '/favicon-196x196.png' },
-      { rel: 'manifest', href: '/manifest.json' },
       { rel: 'alternate', type: 'application/rss+xml', href: '/feed.xml' }
     ]
   },

@@ -1,17 +1,24 @@
 <template>
-  <a
-    ref="timeline"
-    :href="href"
-    :data-widget-id="widgetId"
-    class="twitter-timeline"
-    target="_blank"
-    rel="noopener"
-  >{{q}} に関するツイート</a>
+  <TwitterWidgets>
+    <a
+      ref="timeline"
+      :href="href"
+      :data-widget-id="widgetId"
+      class="twitter-timeline"
+      target="_blank"
+      rel="noopener"
+    >{{q}} に関するツイート</a>
+  </TwitterWidgets>
 </template>
 
 <script>
+import TwitterWidgets from '~/components/TwitterWidgets.vue'
 const twitterSearchBase = 'https://twitter.com/search?'
+
 export default {
+  components: {
+    TwitterWidgets
+  },
   props: {
     widgetId: { type: String, required: true },
     q: { type: String },
@@ -21,18 +28,6 @@ export default {
     href() {
       const q = this.q + (this.rt ? '' : ' -RT')
       return `${twitterSearchBase}q=${encodeURIComponent(q)}`
-    }
-  },
-  mounted() {
-    this.loadTwitterWidget()
-  },
-  updated() {
-    this.loadTwitterWidget()
-  },
-  methods: {
-    loadTwitterWidget() {
-      // Reload twitter widget for this episode when already loaded on root
-      if (window['twttr']) window['twttr'].widgets.load(this.$refs.timeline)
     }
   }
 }

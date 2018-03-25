@@ -1,8 +1,5 @@
 <template>
-  <main
-    class="page-container"
-    ref="content"
-  >
+  <main class="ep-item">
     <header class="header">
       <h1 class="title"> {{ episode.title }} </h1>
       <p class="date">{{episode | date }}</p>
@@ -64,7 +61,9 @@
       </nuxt-link>
     </nav>
 
-    <nuxtent-body :body="episode.body" class="marked" />
+    <twitter-widgets>
+      <nuxtent-body :body="episode.body" class="marked" />
+    </twitter-widgets>
 
   </main>
 </template>
@@ -129,12 +128,6 @@ export default {
       ]
     }
   },
-  mounted() {
-    this.loadTwitterWidget()
-  },
-  updated() {
-    this.loadTwitterWidget()
-  },
   methods: {
     commit(prop: string, payload: any): void {
       this.$store.commit(`audio/${prop}`, payload)
@@ -148,10 +141,6 @@ export default {
       this.commit('src', this.src)
       this.commit('title', this.episode.title)
       this.commit('pagePath', this.$route.path)
-    },
-    loadTwitterWidget(): void {
-      // Reload twitter widget for this episode when already loaded on root
-      if (window['twttr']) window['twttr'].widgets.load(this.$refs.content)
     }
   }
 }
@@ -161,7 +150,7 @@ export default {
 @import '~assets/css/mixin/_mediaquery.scss';
 @import '~assets/css/_vars.scss';
 
-.page-container {
+.ep-item {
   background: #fff;
   border-radius: 0.6rem;
   box-shadow: 0 1.2rem 3.6rem rgba(0, 0, 0, 0.2);

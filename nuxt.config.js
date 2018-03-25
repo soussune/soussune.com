@@ -32,7 +32,12 @@ const conf = {
     '~/modules/rss',
     '~/modules/typescript'
   ],
-  plugins: ['~/plugins/vue-awesome', '~/plugins/content-loader', '~/plugins/vue-lazyload'],
+  plugins: [
+    '~/plugins/vue-awesome',
+    '~/plugins/content-loader',
+    '~/plugins/vue-lazyload',
+    '~/plugins/twitter-widgets'
+  ],
   css: [
     '~/assets/css/reset.scss',
     '~/assets/css/style.scss',

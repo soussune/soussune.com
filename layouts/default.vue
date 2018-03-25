@@ -13,9 +13,6 @@
 
     <AudioControl/>
 
-    <span v-if="twitterWidget">
-      <script id="twitter-wjs" type="text/javascript" async defer src="//platform.twitter.com/widgets.js"></script>
-    </span>
   </div>
 </template>
 
@@ -36,17 +33,9 @@ export default {
     AudioPlayer,
     AudioControl
   },
-  data() {
-    return {
-      twitterWidget: false
-    }
-  },
   mounted() {
     this.$store.watch((state) => state.searchText, this.onChangeQuery)
     this.$store.commit('searchText', this.$route.query.q || '')
-
-    // https://github.com/nuxt/nuxt.js/issues/2000
-    this.twitterWidget = true
 
     // Load all content data on client init
     this.$store.app.$content('/episode').getAll()
@@ -68,4 +57,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 </style>

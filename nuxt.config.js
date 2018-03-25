@@ -27,11 +27,12 @@ const conf = {
   modules: [
     '@nuxtjs/pwa',
     '@nuxtjs/sentry',
-    '~/modules/rss',
-    '~/modules/typescript',
+    ['@nuxtjs/google-analytics', { id: 'UA-100444203-1' }],
     'nuxtent',
-    ['@nuxtjs/google-analytics', { id: 'UA-100444203-1' }]
+    '~/modules/rss',
+    '~/modules/typescript'
   ],
+  plugins: ['~/plugins/vue-awesome', '~/plugins/content-loader', '~/plugins/vue-lazyload'],
   css: [
     '~/assets/css/reset.scss',
     '~/assets/css/style.scss',
@@ -39,6 +40,13 @@ const conf = {
     '~/assets/css/pageTrans.scss'
   ],
   head: {
+    script: [
+      {
+        type: 'text/javascript',
+        src: '//platform.twitter.com/widgets.js',
+        async: true
+      }
+    ],
     title: 'エンジニアわいわいポッドキャスト「そうっすね」',
     titleTemplate: 'soussune - %s',
     htmlAttrs: {
@@ -197,8 +205,7 @@ const conf = {
     config: {
       shouldSendCallback: () => process.env.NODE_ENV === 'production'
     }
-  },
-  plugins: ['~plugins/vue-awesome.js', '~plugins/content-loader.js', '~plugins/vue-lazyload.js']
+  }
 }
 
 module.exports = conf

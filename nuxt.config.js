@@ -30,7 +30,8 @@ const conf = {
     ['@nuxtjs/google-analytics', { id: 'UA-100444203-1' }],
     'nuxtent',
     '~/modules/rss',
-    '~/modules/typescript'
+    '~/modules/typescript',
+    ['nuxt-sass-resources-loader', ['assets/css/_vars.scss', 'assets/css/mixin/_mediaquery.scss']]
   ],
   plugins: [
     '~/plugins/vue-awesome',

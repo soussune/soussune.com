@@ -54,8 +54,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~assets/css/_vars.scss';
-
 $sliderHeight: 30px;
 $trackHeight: 4px;
 

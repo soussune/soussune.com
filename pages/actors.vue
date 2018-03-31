@@ -12,8 +12,6 @@
 <script>
 </script>
 <style lang="scss" scoped>
-@import '~assets/css/_vars.scss';
-
 .page-container {
   text-align: center;
   width: 100%;

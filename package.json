@@ -26,6 +26,7 @@
     "markdown-it": "^8.4.1",
     "markdown-it-link-attributes": "^2.0.0",
     "nuxt": "^1.4.0",
+    "nuxt-sass-resources-loader": "^1.2.0",
     "nuxtent": "^1.4.1",
     "rss": "^1.2.2",
     "vue-awesome": "^2.3.5",

@@ -12,9 +12,6 @@ export default {}
 </script>
 
 <style lang="scss" scoped>
-@import '~assets/css/mixin/_mediaquery.scss';
-@import '~assets/css/_vars.scss';
-
 .body {
   background: $clr-white;
   display: grid;

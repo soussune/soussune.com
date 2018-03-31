@@ -119,8 +119,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~assets/css/_vars.scss';
-@import '~assets/css/mixin/_mediaquery.scss';
+
+
 
 .page-container {
   background: #fff;

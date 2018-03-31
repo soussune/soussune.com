@@ -127,9 +127,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~assets/css/mixin/_mediaquery.scss';
-@import '~assets/css/_vars.scss';
-
 .top-bar {
   position: fixed;
   z-index: 502;

@@ -67,9 +67,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~assets/css/mixin/_mediaquery.scss';
-@import '~assets/css/_vars.scss';
-
 .footer {
   padding: 1rem 1rem 5rem;
   color: $clr-white;

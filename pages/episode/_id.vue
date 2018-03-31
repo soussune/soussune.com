@@ -147,9 +147,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~assets/css/mixin/_mediaquery.scss';
-@import '~assets/css/_vars.scss';
-
 .ep-item {
   background: #fff;
   border-radius: 0.6rem;
@@ -320,8 +317,4 @@ export default {
     }
   }
 }
-</style>
-
-<style lang="scss">
-
 </style>

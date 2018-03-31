@@ -44,8 +44,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~assets/css/_vars.scss';
-
 $button-size: 100px;
 
 .audio-control-button {

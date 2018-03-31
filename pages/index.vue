@@ -77,9 +77,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~assets/css/mixin/_mediaquery.scss';
-@import '~assets/css/_vars.scss';
-
 $ep-trans: 0.2s ease-in;
 $ep-bg: $clr-white-ll;
 $ep-bg-hover: $clr-white-ll;

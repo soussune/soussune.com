@@ -51,9 +51,6 @@
 </template>
 
 <style lang="scss" scoped>
-@import '~assets/css/mixin/_mediaquery.scss';
-@import '~assets/css/_vars.scss';
-
 .jumbotron {
   position: relative;
   width: 100%;

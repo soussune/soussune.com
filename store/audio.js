@@ -1,4 +1,5 @@
 export const state = () => ({
+  audioElement: null,
   pagePath: '',
   buffered: 0,
   duration: 0,
@@ -7,7 +8,6 @@ export const state = () => ({
   volume: 1,
   volume_: 1,
   playbackRate: 1,
-  src: '',
   muted: false,
   paused: true,
   title: '',
@@ -26,11 +26,13 @@ export const getters = {
   muted: (state) => () => state.muted,
   paused: (state) => () => state.paused,
   playing: (state) => () => state.playing,
-  src: (state) => () => state.src,
   canplay: (state) => () => state.canplay
 }
 
 export const mutations = {
+  audioElement(state, payload) {
+    state.audioElement = payload
+  },
   pagePath(state, payload) {
     state.pagePath = payload
   },
@@ -52,11 +54,6 @@ export const mutations = {
   },
   playbackRate(state, payload) {
     state.playbackRate = payload
-  },
-  src(state, payload) {
-    state.src = payload
-    state.currentTime = 0
-    state.buffered = 0
   },
   muted(state, payload) {
     state.muted = payload

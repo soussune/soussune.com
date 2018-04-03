@@ -29,17 +29,26 @@ export const getters = {
   canplay: (state) => () => state.canplay
 }
 
+const initAudio = (state) => {
+  state.paused = true
+  state.canplay = false
+  state.buffered = 0
+  state.duration = 0
+  state.currentTime = 0
+  state.seekTo = 0
+}
 export const mutations = {
-  initAudio(state, { src, title, pagePath }) {
+  setAudio(state, { src, title, pagePath }) {
     state.src = src
     state.title = title
     state.pagePath = pagePath
-    state.paused = true
-    state.canplay = false
-    state.buffered = 0
-    state.duration = 0
-    state.currentTime = 0
-    state.seekTo = 0
+    initAudio(state)
+  },
+  clearAudio(state) {
+    state.src = ''
+    state.title = ''
+    state.pagePath = ''
+    initAudio(state)
   },
   audioElement(state, payload) {
     state.audioElement = payload

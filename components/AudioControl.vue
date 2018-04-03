@@ -48,14 +48,15 @@ export default {
     }
   },
   computed: {
-    ...mapState('audio', ['src']),
+    ...mapState('audio', ['audioElement', 'src']),
     isShown() {
       return this.src !== ''
     }
   },
   methods: {
     clearPlay() {
-      this.$store.commit('audio/src', '')
+      this.$store.commit('audio/clearAudio')
+      this.audioElement.src = ''
       this.isOptionsShown = false
     },
     closeOption() {

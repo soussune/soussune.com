@@ -43,7 +43,7 @@ export default {
         return
       }
 
-      this.commit('initAudio', {
+      this.commit('setAudio', {
         src: this.src,
         title: this.title,
         pagePath: this.$route.path

@@ -35,16 +35,15 @@ export default {
     }
   },
   computed: {
-    ...mapState('audio', ['canplay', 'paused', 'duration', 'buffered', 'title']),
+    ...mapState('audio', ['audioElement', 'duration']),
     ...mapGetters('audio', ['progress']),
     currentTime: {
       get() {
         return this.$store.state.audio.currentTime
       },
       set(val: number) {
-        // const p = val / this.duration
-        // this.progress = isNaN(p) ? 0 : p
-        this.commit('seekTo', val)
+        this.commit('canplay', false)
+        this.audioElement.currentTime = val
       }
     }
   }

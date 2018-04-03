@@ -140,24 +140,33 @@ export default {
       this.$store.commit(`audio/${prop}`, payload)
     },
     skip(val) {
-      this.commit('seekTo', this.currentTime + val)
+      this.currentTime += val
     },
     togglePlay() {
-      this.commit('paused', !this.paused)
+      this.paused ? this.audioElement.play() : this.audioElement.pause()
     }
   },
   computed: {
-    ...mapState('audio', ['canplay', 'paused', 'duration', 'buffered', 'title', 'pagePath']),
+    ...mapState('audio', [
+      'audioElement',
+      'src',
+      'paused',
+      'duration',
+      'buffered',
+      'title',
+      'pagePath'
+    ]),
     ...mapGetters('audio', ['progress']),
     isHidden() {
-      return this.$store.state.audio.src === ''
+      return this.src === ''
     },
     currentTime: {
       get() {
         return this.$store.state.audio.currentTime
       },
       set(val: number) {
-        this.commit('seekTo', val)
+        this.commit('canplay', false)
+        this.audioElement.currentTime = val
       }
     },
     volume: {

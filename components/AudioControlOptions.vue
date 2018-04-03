@@ -108,7 +108,7 @@
 </template>
 
 <script lang="ts">
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 import TouchRange from '@miyaoka/vue-touch-range'
 import VolumeRange from '~/components/VolumeRange.vue'
 import AudioSeekBar from '~/components/AudioSeekBar.vue'
@@ -148,12 +148,9 @@ export default {
   },
   computed: {
     ...mapState('audio', ['canplay', 'paused', 'duration', 'buffered', 'title', 'pagePath']),
+    ...mapGetters('audio', ['progress']),
     isHidden() {
       return this.$store.state.audio.src === ''
-    },
-    progress() {
-      const p = this.currentTime / this.duration
-      return isNaN(p) ? 0 : p
     },
     currentTime: {
       get() {

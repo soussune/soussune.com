@@ -17,6 +17,7 @@ export const state = () => ({
 })
 
 export const getters = {
+  progress: (state) => (state.duration === 0 ? 0 : state.currentTime / state.duration),
   buffered: (state) => () => state.buffered,
   duration: (state) => () => state.duration,
   currentTime: (state) => () => state.currentTime,

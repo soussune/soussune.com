@@ -19,7 +19,7 @@
 </template>
 
 <script lang="ts">
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 import TouchRange from '@miyaoka/vue-touch-range'
 
 export default {
@@ -36,6 +36,7 @@ export default {
   },
   computed: {
     ...mapState('audio', ['canplay', 'paused', 'duration', 'buffered', 'title']),
+    ...mapGetters('audio', ['progress']),
     currentTime: {
       get() {
         return this.$store.state.audio.currentTime
@@ -45,9 +46,6 @@ export default {
         // this.progress = isNaN(p) ? 0 : p
         this.commit('seekTo', val)
       }
-    },
-    progress() {
-      return this.currentTime / this.duration
     }
   }
 }

@@ -18,7 +18,7 @@
 </template>
 
 <script lang="ts">
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 import AudioPlayingIcon from '~/components/AudioPlayingIcon.vue'
 import ProgressCircle from '~/components/ProgressCircle.vue'
 
@@ -35,10 +35,8 @@ export default {
     }
   },
   computed: {
-    ...mapState('audio', ['paused', 'duration', 'currentTime']),
-    progress() {
-      return this.currentTime / this.duration
-    }
+    ...mapState('audio', ['paused']),
+    ...mapGetters('audio', ['progress'])
   }
 }
 </script>

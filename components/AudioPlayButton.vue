@@ -21,7 +21,14 @@ export default {
     title: { type: String }
   },
   computed: {
-    ...mapState('audio', ['audioElement', 'paused', 'pagePath', 'canplay', 'paused']),
+    ...mapState('audio', [
+      'audioElement',
+      'paused',
+      'pagePath',
+      'canplay',
+      'paused',
+      'playbackRate'
+    ]),
     ...mapState('audio', { selectedSrc: 'src' }),
     isSelected() {
       return this.selectedSrc === this.src
@@ -50,6 +57,7 @@ export default {
       })
 
       this.audioElement.src = this.src
+      this.audioElement.playbackRate = this.playbackRate
       this.audioElement.play()
     }
   }

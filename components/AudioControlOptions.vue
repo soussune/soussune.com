@@ -14,12 +14,12 @@
     <div class="volumes">
       <div class="volume">
         <button
-          @click.prevent="muted = !muted"
+          @click.prevent="toggleMute"
           class="mute"
           aria-label="mute"
         >
           <icon
-            name="volume-up"
+            :name="muted ? 'volume-off' : 'volume-up'"
           ></icon>
         </button>
 
@@ -144,6 +144,9 @@ export default {
     },
     togglePlay() {
       this.paused ? this.audioElement.play() : this.audioElement.pause()
+    },
+    toggleMute() {
+      this.muted = !this.muted
     }
   },
   computed: {
@@ -154,7 +157,8 @@ export default {
       'duration',
       'buffered',
       'title',
-      'pagePath'
+      'pagePath',
+      'muted'
     ]),
     ...mapGetters('audio', ['progress']),
     isHidden() {
@@ -174,7 +178,7 @@ export default {
         return this.$store.state.audio.volume
       },
       set(val: number) {
-        this.commit('volume', val)
+        this.audioElement.volume = val
       }
     },
     playbackRate: {
@@ -183,6 +187,7 @@ export default {
       },
       set(val: number) {
         this.commit('playbackRate', val)
+        this.audioElement.playbackRate = val
       }
     },
     muted: {
@@ -191,6 +196,7 @@ export default {
       },
       set(val: number) {
         this.commit('muted', val)
+        this.audioElement.muted = val
       }
     }
   }

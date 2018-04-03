@@ -5,16 +5,14 @@
 </template>
 
 <script lang="ts">
-let au
-
 export default {
   mounted() {
-    au = this.$refs.audio
+    const au = this.$refs.audio
     this.commit('audioElement', au)
 
     // bind audio value
     au.addEventListener('loadedmetadata', this.onLoadedmetadata)
-    au.addEventListener('volumechange', this.volumechange)
+    au.addEventListener('volumechange', this.onVolumeChange)
     au.addEventListener('progress', this.onProgress)
     au.addEventListener('timeupdate', this.onTimeupdate)
     au.addEventListener('pause', this.onPlayPauseChange)
@@ -23,8 +21,10 @@ export default {
     au.addEventListener('seeked', this.onCanplay)
   },
   beforeDestroy() {
+    const au = this.$refs.audio
+
     au.removeEventListener('loadedmetadata', this.onLoadedmetadata)
-    au.removeEventListener('volumechange', this.volumechange)
+    au.removeEventListener('volumechange', this.onVolumeChange)
     au.removeEventListener('progress', this.onProgress)
     au.removeEventListener('timeupdate', this.onTimeupdate)
     au.removeEventListener('pause', this.onPlayPauseChange)
@@ -36,27 +36,27 @@ export default {
     commit(prop, payload) {
       this.$store.commit(`audio/${prop}`, payload)
     },
-    onLoadedmetadata() {
-      this.commit('duration', au.duration)
+    onLoadedmetadata(e) {
+      this.commit('duration', e.target.duration)
     },
-    onVolumechange() {
-      this.commit('volume', au.volume)
+    onVolumeChange(e) {
+      this.commit('volume', e.target.volume)
     },
-    onProgress() {
-      this.updateProgress()
+    onProgress(e) {
+      this.updateProgress(e)
     },
-    onTimeupdate() {
-      this.commit('currentTime', au.currentTime)
-      this.updateProgress()
+    onTimeupdate(e) {
+      this.commit('currentTime', e.target.currentTime)
+      this.updateProgress(e)
     },
-    onPlayPauseChange() {
-      this.commit('paused', au.paused)
+    onPlayPauseChange(e) {
+      this.commit('paused', e.target.paused)
     },
     onCanplay() {
       this.commit('canplay', true)
     },
-    updateProgress() {
-      const b = au.buffered
+    updateProgress(e) {
+      const b = e.target.buffered
       if (b.length === 0) return
       this.commit('buffered', b.end(b.length - 1))
     }

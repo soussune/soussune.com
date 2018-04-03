@@ -17,16 +17,7 @@ export const state = () => ({
 })
 
 export const getters = {
-  progress: (state) => (state.duration === 0 ? 0 : state.currentTime / state.duration),
-  buffered: (state) => () => state.buffered,
-  duration: (state) => () => state.duration,
-  currentTime: (state) => () => state.currentTime,
-  seekTo: (state) => () => state.seekTo,
-  volume: (state) => () => state.volume,
-  playbackRate: (state) => () => state.playbackRate,
-  muted: (state) => () => state.muted,
-  paused: (state) => () => state.paused,
-  canplay: (state) => () => state.canplay
+  progress: (state) => (state.duration === 0 ? 0 : state.currentTime / state.duration)
 }
 
 const initAudio = (state) => {

@@ -9,7 +9,7 @@
 
     <AppFooter class="app_footer"/>
 
-    <AudioPlayer/>
+    <AudioElement/>
 
     <AudioControl/>
 
@@ -21,7 +21,7 @@ import AppHeader from '~/components/AppHeader.vue'
 import AppBody from '~/components/AppBody.vue'
 import AppFooter from '~/components/AppFooter.vue'
 import Jumbotron from '~/components/Jumbotron.vue'
-import AudioPlayer from '~/components/AudioPlayer.vue'
+import AudioElement from '~/components/AudioElement.vue'
 import AudioControl from '~/components/AudioControl.vue'
 
 export default {
@@ -30,7 +30,7 @@ export default {
     AppBody,
     AppFooter,
     Jumbotron,
-    AudioPlayer,
+    AudioElement,
     AudioControl
   },
   mounted() {
@@ -57,5 +57,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 </style>

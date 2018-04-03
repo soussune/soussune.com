@@ -14,12 +14,12 @@
     <div class="volumes">
       <div class="volume">
         <button
-          @click.prevent="muted = !muted"
+          @click.prevent="toggleMute"
           class="mute"
           aria-label="mute"
         >
           <icon
-            name="volume-up"
+            :name="muted ? 'volume-off' : 'volume-up'"
           ></icon>
         </button>
 
@@ -108,7 +108,7 @@
 </template>
 
 <script lang="ts">
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 import TouchRange from '@miyaoka/vue-touch-range'
 import VolumeRange from '~/components/VolumeRange.vue'
 import AudioSeekBar from '~/components/AudioSeekBar.vue'
@@ -140,27 +140,37 @@ export default {
       this.$store.commit(`audio/${prop}`, payload)
     },
     skip(val) {
-      this.commit('seekTo', this.currentTime + val)
+      this.currentTime += val
     },
     togglePlay() {
-      this.commit('paused', !this.paused)
+      this.paused ? this.audioElement.play() : this.audioElement.pause()
+    },
+    toggleMute() {
+      this.muted = !this.muted
     }
   },
   computed: {
-    ...mapState('audio', ['canplay', 'paused', 'duration', 'buffered', 'title', 'pagePath']),
+    ...mapState('audio', [
+      'audioElement',
+      'src',
+      'paused',
+      'duration',
+      'buffered',
+      'title',
+      'pagePath',
+      'muted'
+    ]),
+    ...mapGetters('audio', ['progress']),
     isHidden() {
-      return this.$store.state.audio.src === ''
-    },
-    progress() {
-      const p = this.currentTime / this.duration
-      return isNaN(p) ? 0 : p
+      return this.src === ''
     },
     currentTime: {
       get() {
         return this.$store.state.audio.currentTime
       },
       set(val: number) {
-        this.commit('seekTo', val)
+        this.commit('canplay', false)
+        this.audioElement.currentTime = val
       }
     },
     volume: {
@@ -168,7 +178,7 @@ export default {
         return this.$store.state.audio.volume
       },
       set(val: number) {
-        this.commit('volume', val)
+        this.audioElement.volume = val
       }
     },
     playbackRate: {
@@ -177,6 +187,7 @@ export default {
       },
       set(val: number) {
         this.commit('playbackRate', val)
+        this.audioElement.playbackRate = val
       }
     },
     muted: {
@@ -185,6 +196,7 @@ export default {
       },
       set(val: number) {
         this.commit('muted', val)
+        this.audioElement.muted = val
       }
     }
   }

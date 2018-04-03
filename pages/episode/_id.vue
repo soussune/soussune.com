@@ -8,13 +8,10 @@
     <section class="summary">
 
       <div class="play">
-        <button
-          @click="togglePlay"
-          :class="{playing: playing, loading: !canplay }"
-          aria-label="toggle play"
-        >
-          <icon scale="3" :name="playing ? (canplay ? 'pause' : 'spinner') : 'play'" :spin="playing && !canplay"></icon>
-        </button>
+        <audio-play-button
+          :src="src"
+          :title="episode.title"
+        />
       </div>
 
       <div class="desc">
@@ -72,10 +69,12 @@
 import { DateTime } from 'luxon'
 import * as EpisodeHelper from '~/helpers/EpisodeHelper.js'
 import ActorIcon from '~/components/ActorIcon.vue'
+import AudioPlayButton from '~/components/AudioPlayButton.vue'
 
 export default {
   components: {
-    ActorIcon
+    ActorIcon,
+    AudioPlayButton
   },
   filters: {
     date(episode) {
@@ -97,19 +96,19 @@ export default {
       return (
         'http://cdn.soussune.com.s3-ap-northeast-1.amazonaws.com/audio' + this.episode.audioFilePath
       )
-    },
-    playing(): boolean {
-      return this.selected && !this.paused
-    },
-    canplay(): boolean {
-      return this.$store.state.audio.canplay
-    },
-    selected(): boolean {
-      return this.$store.state.audio.src === this.src
-    },
-    paused(): boolean {
-      return this.$store.state.audio.paused
     }
+    // playing(): boolean {
+    //   return this.selected && !this.paused
+    // },
+    // canplay(): boolean {
+    //   return this.$store.state.audio.canplay
+    // },
+    // selected(): boolean {
+    //   return this.$store.state.audio.src === this.src
+    // },
+    // paused(): boolean {
+    //   return this.$store.state.audio.paused
+    // }
   },
   head() {
     return {
@@ -127,22 +126,22 @@ export default {
         }
       ]
     }
-  },
-  methods: {
-    commit(prop: string, payload: any): void {
-      this.$store.commit(`audio/${prop}`, payload)
-    },
-    togglePlay(): void {
-      if (this.selected) {
-        this.commit('paused', !this.paused)
-        return
-      }
-
-      this.commit('src', this.src)
-      this.commit('title', this.episode.title)
-      this.commit('pagePath', this.$route.path)
-    }
   }
+  // methods: {
+  //   commit(prop: string, payload: any): void {
+  //     this.$store.commit(`audio/${prop}`, payload)
+  //   },
+  //   togglePlay(): void {
+  //     if (this.selected) {
+  //       this.commit('paused', !this.paused)
+  //       return
+  //     }
+
+  //     this.commit('src', this.src)
+  //     this.commit('title', this.episode.title)
+  //     this.commit('pagePath', this.$route.path)
+  //   }
+  // }
 }
 </script>
 
@@ -229,49 +228,6 @@ export default {
     grid-area: play;
     position: relative;
     justify-self: center;
-
-    button {
-      transition: 0.4s ease-out;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      margin: auto;
-      background: $clr-main-ll;
-      color: $clr-white-ll;
-      font-size: 18px;
-      border: none;
-      border-radius: 20%;
-      width: 100px;
-      height: 100px;
-      outline: none;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-      & > * {
-        margin-left: 10px;
-      }
-
-      &.playing {
-        border-radius: 5%;
-        background: $clr-white-ll;
-        color: $clr-black-l;
-        border: $clr-white-dd 1px solid;
-        animation: blink 3s infinite;
-        & > * {
-          margin-left: 0px;
-        }
-
-        @keyframes blink {
-          50% {
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
-            opacity: 0.5;
-          }
-        }
-
-        &.loading {
-          border-radius: 15%;
-          transform: scale(0.9);
-        }
-      }
-    }
   }
 
   .desc {

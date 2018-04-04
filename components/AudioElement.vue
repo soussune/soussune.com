@@ -22,6 +22,7 @@ export default {
   },
   beforeDestroy() {
     const au = this.$refs.audio
+    this.commit('audioElement', null)
 
     au.removeEventListener('loadedmetadata', this.onLoadedmetadata)
     au.removeEventListener('volumechange', this.onVolumeChange)

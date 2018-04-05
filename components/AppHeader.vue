@@ -18,11 +18,9 @@
           placeholder="検索"
           autocomplete="off"
           class="search-input-field"
-          :value="$store.state.searchText"
-          @inputIME="updateInput"
           @focus="onFocus"
           @blur="onBlur"
-          v-ime-input
+          v-model="searchText"
           aria-label="search"
         >
       </label>
@@ -70,9 +68,6 @@ export default {
     toggleMenu() {
       this.isMenuOpen = !this.isMenuOpen
     },
-    updateInput(value) {
-      this.$store.commit('searchText', value)
-    },
     onBlur() {
       this.onEdit = false
     },
@@ -84,43 +79,27 @@ export default {
     return {
       scrollY: 0,
       isMenuOpen: false,
-      onEdit: false
+      onEdit: false,
+      searchText: ''
     }
   },
   computed: {
     focused() {
-      return this.onEdit || this.$store.state.searchText !== ''
+      return this.onEdit || this.searchText !== ''
     }
+  },
+  created() {
+    this.$store.watch(
+      (state) => state.searchText,
+      (val) => (this.searchText = this.$store.state.searchText)
+    )
   },
   mounted() {
     window.addEventListener('scroll', this.onScroll)
   },
-  directives: {
-    imeInput: {
-      bind(el, binding, vnode) {
-        // https://stackoverflow.com/questions/40655333/vue-js-emit-event-from-directive
-        const emit = (vnode, name, data) => {
-          const handlers =
-            (vnode.data && vnode.data.on) ||
-            (vnode.componentOptions && vnode.componentOptions.listeners)
-          if (handlers && handlers[name]) handlers[name].fns(data)
-        }
-        const update = (value) => {
-          emit(vnode, 'inputIME', value)
-        }
-        let onComposition = false
-        el.addEventListener('compositionstart', () => {
-          onComposition = true
-        })
-        el.addEventListener('compositionend', (e) => {
-          onComposition = false
-          update(e.target.value)
-        })
-        el.addEventListener('input', (e) => {
-          if (onComposition) return
-          update(e.target.value)
-        })
-      }
+  watch: {
+    searchText(val) {
+      this.$store.commit('searchText', val)
     }
   }
 }

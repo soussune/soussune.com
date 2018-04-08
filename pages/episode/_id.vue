@@ -94,7 +94,7 @@ export default {
     },
     src(): string {
       return (
-        'http://cdn.soussune.com.s3-ap-northeast-1.amazonaws.com/audio' + this.episode.audioFilePath
+        'https://s3-ap-northeast-1.amazonaws.com/cdn.soussune.com/audio' + this.episode.audioFilePath
       )
     }
     // playing(): boolean {

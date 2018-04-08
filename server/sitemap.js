@@ -7,7 +7,7 @@ const EpisodeHelper = require('../helpers/EpisodeHelper')
 const epContentDir = '../content/episode'
 const host = 'https://soussune.com'
 const epUrlDir = '/episode'
-const cdnPath = 'http://cdn.soussune.com.s3-ap-northeast-1.amazonaws.com/audio'
+const cdnPath = 'https://s3-ap-northeast-1.amazonaws.com/cdn.soussune.com/audio'
 const type = 'audio/mp3'
 const author = 'そうっすね制作委員会'
 

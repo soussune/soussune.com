@@ -124,7 +124,7 @@ const conf = {
     ]
   },
   build: {
-    vendor: ['luxon', '@miyaoka/vue-touch-range'],
+    vendor: ['luxon', '@miyaoka/vue-touch-range', 'raven-js'],
     extend(config, ctx) {
       if (ctx.isClient) {
         config.module.rules.push({

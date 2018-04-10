@@ -1,37 +1,25 @@
 <template>
   <img
-    :src="value.imageUrl"
-    :title="value.title"
-    @error="imgError"
+    :src="src"
+    :title="actor.title"
   >
 </template>
 
 <script>
-import Raven from 'raven-js'
-
-class ActorImageError extends Error {
-  constructor(message) {
-    super(message)
-    this.name = 'ActorImageError'
-  }
-}
 export default {
   props: {
-    value: { type: Object, required: true }
+    actor: { type: Object, required: true },
+    size: { type: Number, default: 200 }
   },
-  methods: {
-    imgError() {
-      Raven.captureException(
-        new ActorImageError(
-          `Image not found at ${this.value.imageUrl}. (actor: ${this.value.actorId})`
-        ),
-        { level: 'warning' }
-      )
-
-      this.$emit('input', {
-        ...this.value,
-        imageUrl: 'https://abs.twimg.com/sticky/default_profile_images/default_profile_200x200.png'
-      })
+  computed: {
+    src() {
+      const params = { w: this.size, h: this.size }
+      return [
+        this.actor.imageUrl,
+        Object.keys(params)
+          .map((key) => [key, params[key]].join('='))
+          .join('&')
+      ].join('?')
     }
   }
 }

@@ -1,7 +1,7 @@
 ---
 actorId: mishina
 title: mishina
-imageUrl: https://pbs.twimg.com/profile_images/2143656483/pigg_200x200.PNG
+imageUrl: //images.ctfassets.net/gvze4h7pavn2/1E01tFWCJSEKmeay8O8ucI/480312880bdfcbd7017234251a4d0218/actor-mishina.jpg
 accounts:
   twitter: koheimishina
 description: 渋谷でひっそりとエンジニアとして働いております！infra

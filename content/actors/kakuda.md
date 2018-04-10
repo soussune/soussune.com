@@ -1,7 +1,7 @@
 ---
 actorId: kakuda
 title: kakuda
-imageUrl: https://pbs.twimg.com/profile_images/632235176098066432/mxg3eyWn_200x200.jpg
+imageUrl: //images.ctfassets.net/gvze4h7pavn2/6toWUzXQbeQmWkiEkO6Ygs/bd3a2de414b9429abc2286c6c443730b/actor-kakuda.jpg
 accounts:
   twitter: tomoya_k31
   github: tomoya-k31

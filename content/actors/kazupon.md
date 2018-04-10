@@ -1,7 +1,7 @@
 ---
 actorId: kazupon
 title: Kazupon
-imageUrl: https://pbs.twimg.com/profile_images/495572844864999424/PcVaqUeq_200x200.png
+imageUrl: //images.ctfassets.net/gvze4h7pavn2/2UPpXZ3LLqAyqAIqyCs8o6/965574656a36aaf22b0eea0f15045e5d/actor-kazupon.jpg
 accounts:
   twitter: kazu_pon
   github: kazupon

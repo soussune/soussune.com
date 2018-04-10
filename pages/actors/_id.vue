@@ -4,7 +4,8 @@
   >
     <header class="actor">
       <ActorIcon
-        v-model="actor"
+        :actor="actor"
+        :size="200"
         class="actor-icon"
       />
       <h1 class="actor-title"> {{ actor.title }} </h1>
@@ -119,9 +120,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
-
-
 .page-container {
   background: #fff;
   border-radius: 0.6rem;

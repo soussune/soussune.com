@@ -171,7 +171,7 @@ $ep-hover-clr: $clr-black-dd;
   position: relative;
   padding: 0 $ep-side-margin;
   margin-top: -1px;
-  background-image: linear-gradient(left, $ep-hover-bg 50%, transparent 50%);
+  background-image: linear-gradient(to left, $ep-hover-bg 50%, transparent 50%);
   background-position: right;
   background-size: 200% auto;
 

@@ -9,7 +9,7 @@
 
       <div class="play">
         <audio-play-button
-          :src="src"
+          :src="episode.audioFilePath"
           :title="episode.title"
         />
       </div>
@@ -94,11 +94,6 @@ export default {
   computed: {
     desc() {
       return EpisodeHelper.desc(this.episode)
-    },
-    src() {
-      return (
-        'http://cdn.soussune.com.s3-ap-northeast-1.amazonaws.com/audio' + this.episode.audioFilePath
-      )
     }
   },
   head() {

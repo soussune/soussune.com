@@ -78,6 +78,10 @@
     lodash "^4.2.0"
     to-fast-properties "^2.0.0"
 
+"@miyaoka/nuxt-twitter-widgets-module@^0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@miyaoka/nuxt-twitter-widgets-module/-/nuxt-twitter-widgets-module-0.0.1.tgz#fdca759252e7496c783e69b926623551bf8a4a01"
+
 "@miyaoka/vue-touch-range@^1.0.1":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@miyaoka/vue-touch-range/-/vue-touch-range-1.0.1.tgz#f2c966eb02d826fed76eac4a48f94de75315435f"

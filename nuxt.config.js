@@ -27,17 +27,13 @@ const conf = {
   modules: [
     '@nuxtjs/pwa',
     '@nuxtjs/sentry',
+    '@miyaoka/nuxt-twitter-widgets-module',
     ['@nuxtjs/google-analytics', { id: 'UA-100444203-1' }],
     'nuxtent',
     '~/modules/rss',
     ['nuxt-sass-resources-loader', ['assets/css/_vars.scss', 'assets/css/mixin/_mediaquery.scss']]
   ],
-  plugins: [
-    '~/plugins/vue-awesome',
-    '~/plugins/content-loader',
-    '~/plugins/vue-lazyload',
-    '~/plugins/twitter-widgets'
-  ],
+  plugins: ['~/plugins/vue-awesome', '~/plugins/content-loader', '~/plugins/vue-lazyload'],
   css: [
     '~/assets/css/reset.scss',
     '~/assets/css/style.scss',
@@ -45,13 +41,6 @@ const conf = {
     '~/assets/css/pageTrans.scss'
   ],
   head: {
-    script: [
-      {
-        type: 'text/javascript',
-        src: '//platform.twitter.com/widgets.js',
-        async: true
-      }
-    ],
     title: 'エンジニアわいわいポッドキャスト「そうっすね」',
     titleTemplate: 'soussune - %s',
     htmlAttrs: {

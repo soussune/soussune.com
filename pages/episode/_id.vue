@@ -58,9 +58,11 @@
       </nuxt-link>
     </nav>
 
-    <twitter-widgets>
-      <nuxtent-body :body="episode.body" class="marked" />
-    </twitter-widgets>
+    <nuxtent-body
+      :body="episode.body"
+      class="marked"
+      v-twitter-widgets
+    />
 
   </main>
 </template>

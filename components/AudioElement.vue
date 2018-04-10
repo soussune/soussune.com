@@ -19,6 +19,7 @@ export default {
     au.addEventListener('play', this.onPlayPauseChange)
     au.addEventListener('canplay', this.onCanplay)
     au.addEventListener('seeked', this.onCanplay)
+    au.addEventListener('error', this.onError)
   },
   beforeDestroy() {
     const au = this.$refs.audio
@@ -32,10 +33,14 @@ export default {
     au.removeEventListener('play', this.onPlayPauseChange)
     au.removeEventListener('canplay', this.onCanplay)
     au.removeEventListener('seeked', this.onCanplay)
+    au.removeEventListener('error', this.onError)
   },
   methods: {
     commit(prop, payload) {
       this.$store.commit(`audio/${prop}`, payload)
+    },
+    onError(e) {
+      this.commit('clearAudio')
     },
     onLoadedmetadata(e) {
       this.commit('duration', e.target.duration)

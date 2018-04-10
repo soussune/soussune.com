@@ -2,13 +2,14 @@
   <div class="actors">
     <ul class="actors-list">
       <li
-        v-for="(actor, i) in sortedActors"
+        v-for="actor in sortedActors"
         :key="actor.title"
         class="actors-list-item"
       >
         <nuxt-link class="actor" :to="actor.permalink" :aria-label="actor.title">
           <ActorIcon
-            v-model="sortedActors[i]"
+            :actor="actor"
+            :size="100"
             class="actor-icon"
           />
           <div class="actor-aside">

@@ -23,9 +23,10 @@
           <div class="actor-list">
             <ActorIcon
               class="actor-list-item"
-              v-for="(actor, i) in episode.actors"
+              v-for="actor in episode.actors"
               :key="actor.actorId"
-              v-model="episode.actors[i]"
+              :actor="actor"
+              :size="60"
             />
           </div>
         </article>

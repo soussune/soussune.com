@@ -23,13 +23,14 @@
         <h2>出演者</h2>
         <ul class="actor-list">
           <li
-            v-for="(actor,i) in episode.actors"
+            v-for="actor in episode.actors"
             :key="actor.title"
             class="actor-list-item"
           >
             <nuxt-link :to="actor.permalink" :aria-label="actor.title">
               <ActorIcon
-                v-model="episode.actors[i]"
+                :actor="actor"
+                :size="80"
               />
               <p>{{ actor.title }}</p>
             </nuxt-link>

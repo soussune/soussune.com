@@ -1,7 +1,7 @@
 ---
 actorId: nakasuji
 title: 中筋 丈人
-imageUrl: https://pbs.twimg.com/profile_images/876425240720490497/mM-5qaYx_200x200.jpg
+imageUrl: //images.ctfassets.net/gvze4h7pavn2/1nxBc7LnjqcaskQgUyYWQO/d8f55c59f2c324278675caf4dc3fe4f2/actor-nakasuji.jpg
 accounts:
   twitter: takenakasuji
   github: takenakasuji

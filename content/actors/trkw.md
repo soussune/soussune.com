@@ -1,7 +1,7 @@
 ---
 actorId: trkw
 title: trkw
-imageUrl: https://www.gravatar.com/avatar/c45faba9d97c754d745886dd74a10ccf?s=200
+imageUrl: //images.ctfassets.net/gvze4h7pavn2/55XW80AaGc42cm8SsseAmC/d44f2d51e13bb90347008942d59e8f4c/actor-trkw.jpg
 accounts:
   twitter: trkw_
   github: trkw

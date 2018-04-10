@@ -1,7 +1,7 @@
 ---
 actorId: llminatoll
 title: 湊川あい
-imageUrl: https://pbs.twimg.com/profile_images/971527606565679104/rJTHsoVI_200x200.jpg
+imageUrl: //images.ctfassets.net/gvze4h7pavn2/746Chd0J7UE6C8YCKsEk4U/96d02cc5cb6adedf19d2d271f47185de/actor-llminatoll.jpg
 accounts:
   twitter: llminatoll
   github: llminatoll

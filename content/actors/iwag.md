@@ -1,7 +1,7 @@
 ---
 actorId: iwag
 title: iwag
-imageUrl: https://pbs.twimg.com/profile_images/877703532316471296/qAnnqVP__200x200.jpg
+imageUrl: //images.ctfassets.net/gvze4h7pavn2/4GDSZCMmY8iyqEyAisA6s/7ce7574e14bea85bedc6c198ed8610f5/actor-iwag.jpg
 accounts:
   twitter: iwag_org
   github: iwag

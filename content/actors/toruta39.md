@@ -1,7 +1,7 @@
 ---
 actorId: toruta39
 title: toruta39
-imageUrl: https://pbs.twimg.com/profile_images/875904457032126464/Xu2aKQc7_200x200.jpg
+imageUrl: //images.ctfassets.net/gvze4h7pavn2/3aH0iZoRsAwSEESE2ScQ4Y/78242c519105272149b2a1190dad74e4/actor-toruta39.jpg
 accounts:
   twitter: toruta39
   github: toruta39

@@ -1,7 +1,7 @@
 ---
 actorId: oligin020
 title: takanori sugawara
-imageUrl: https://pbs.twimg.com/profile_images/555260207823986688/vl5WDWvw_200x200.jpeg
+imageUrl: //images.ctfassets.net/gvze4h7pavn2/3huZZp3tOoWY2eAAUKe60O/e38f2704a87a2f1b997d89a3fb784364/actor-oligin020.jpg
 accounts:
   twitter: oligin020
   github: ts020

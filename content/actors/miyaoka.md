@@ -1,7 +1,7 @@
 ---
 actorId: miyaoka
 title: miyaoka
-imageUrl: https://pbs.twimg.com/profile_images/979035749264777216/PSgbh9Cq_200x200.jpg
+imageUrl: //images.ctfassets.net/gvze4h7pavn2/15dtnG0XJIWCQqCwcumYMK/23033d60017d92878bb05427eaf50700/actor-miyaoka.jpg
 accounts:
   twitter: miyaoka
   github: miyaoka

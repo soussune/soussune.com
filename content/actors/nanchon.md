@@ -1,7 +1,7 @@
 ---
 actorId: nanchon
 title: nanchon
-imageUrl: https://cdn-images-1.medium.com/fit/c/200/200/1*1zHT78-LgnHsW4b7Mp8zzw.jpeg
+imageUrl: //images.ctfassets.net/gvze4h7pavn2/4ChshN8kTCKOKWU0UEMKem/10af789b43db97f6c3753dc0354895c9/actor-nanchon.jpg
 accounts:
   medium: nanchoso-weblog
 description: 物欲にまみれた男です。生きていてすいません。

@@ -37,7 +37,7 @@ export default {
       return this.isSelected && !this.paused
     },
     loading() {
-      return this.isSelected && !this.canplay
+      return this.playing && !this.canplay
     }
   },
   methods: {

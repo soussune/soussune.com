@@ -22,11 +22,11 @@
     "@nuxtjs/pwa": "^2.0.8",
     "@nuxtjs/sentry": "^1.0.3",
     "front-matter": "^2.3.0",
-    "luxon": "^0.5.8",
+    "luxon": "^1.0.0",
     "markdown-it": "^8.4.1",
     "markdown-it-link-attributes": "^2.0.0",
-    "nuxt": "^1.4.0",
-    "nuxt-sass-resources-loader": "^1.2.0",
+    "nuxt": "npm:nuxt-edge",
+    "nuxt-sass-resources-loader": "^2.0.0",
     "nuxtent": "^1.4.1",
     "rss": "^1.2.2",
     "vue-awesome": "^2.3.5",
@@ -36,7 +36,6 @@
   "devDependencies": {
     "@nuxtjs/axios": "^4.5.2",
     "@nuxtjs/sitemap": "0.0.3",
-    "@types/luxon": "^0.5.0",
     "babel-eslint": "^8.2.2",
     "backpack-core": "^0.7.0",
     "eslint": "^4.19.1",
@@ -45,8 +44,6 @@
     "eslint-plugin-vue": "^4.3.0",
     "node-sass": "^4.8.3",
     "prettier": "^1.11.1",
-    "sass-loader": "^6.0.7",
-    "ts-loader": "^3.5.0",
-    "typescript": "^2.7.2"
+    "sass-loader": "^6.0.7"
   }
 }

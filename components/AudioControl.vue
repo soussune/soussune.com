@@ -32,7 +32,7 @@
   </transition>
 </template>
 
-<script lang="ts">
+<script>
 import { mapState } from 'vuex'
 import AudioControlButton from '~/components/AudioControlButton.vue'
 import AudioControlOptions from '~/components/AudioControlOptions.vue'

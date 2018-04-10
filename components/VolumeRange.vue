@@ -22,7 +22,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import TouchRange from '@miyaoka/vue-touch-range'
 
 export default {

@@ -12,7 +12,7 @@
   </button>
 </template>
 
-<script lang="ts">
+<script>
 import { mapState, mapGetters } from 'vuex'
 
 export default {
@@ -33,7 +33,7 @@ export default {
     isSelected() {
       return this.selectedSrc === this.src
     },
-    playing(): boolean {
+    playing() {
       return this.isSelected && !this.paused
     },
     loading() {
@@ -41,10 +41,10 @@ export default {
     }
   },
   methods: {
-    commit(prop: string, payload: any): void {
+    commit(prop, payload) {
       this.$store.commit(`audio/${prop}`, payload)
     },
-    togglePlay(): void {
+    togglePlay() {
       if (this.isSelected) {
         this.paused ? this.audioElement.play() : this.audioElement.pause()
         return

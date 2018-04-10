@@ -72,7 +72,7 @@
   </section>
 </template>
 
-<script lang="ts">
+<script>
 import { DateTime } from 'luxon'
 import { mapGetters } from 'vuex'
 import * as EpisodeHelper from '~/helpers/EpisodeHelper.js'
@@ -117,7 +117,7 @@ export default {
         'yyyy年MM月dd日'
       )
     },
-    desc(episode): string {
+    desc(episode) {
       return EpisodeHelper.desc(episode)
     }
   },
@@ -171,7 +171,7 @@ $ep-hover-clr: $clr-black-dd;
   position: relative;
   padding: 0 $ep-side-margin;
   margin-top: -1px;
-  background-image: linear-gradient(left, $ep-hover-bg 50%, transparent 50%);
+  background-image: linear-gradient(to left, $ep-hover-bg 50%, transparent 50%);
   background-position: right;
   background-size: 200% auto;
 

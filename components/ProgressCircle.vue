@@ -31,7 +31,7 @@
   </svg>
 </template>
 
-<script lang="ts">
+<script>
 export default {
   props: {
     strokeWidth: { type: Number, default: 10 },

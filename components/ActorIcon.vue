@@ -6,11 +6,11 @@
   >
 </template>
 
-<script lang="ts">
+<script>
 import Raven from 'raven-js'
 
 class ActorImageError extends Error {
-  constructor(message?: string) {
+  constructor(message) {
     super(message)
     this.name = 'ActorImageError'
   }

@@ -30,7 +30,6 @@ const conf = {
     ['@nuxtjs/google-analytics', { id: 'UA-100444203-1' }],
     'nuxtent',
     '~/modules/rss',
-    '~/modules/typescript',
     ['nuxt-sass-resources-loader', ['assets/css/_vars.scss', 'assets/css/mixin/_mediaquery.scss']]
   ],
   plugins: [
@@ -124,7 +123,6 @@ const conf = {
     ]
   },
   build: {
-    vendor: ['luxon', '@miyaoka/vue-touch-range', 'raven-js'],
     extend(config, ctx) {
       if (ctx.isClient) {
         config.module.rules.push({

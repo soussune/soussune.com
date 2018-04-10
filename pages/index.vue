@@ -40,7 +40,7 @@
   </section>
 </template>
 
-<script lang="ts">
+<script>
 import { DateTime } from 'luxon'
 import * as EpisodeHelper from '~/helpers/EpisodeHelper.js'
 import ActorIcon from '~/components/ActorIcon.vue'
@@ -69,7 +69,7 @@ export default {
         'yyyy年MM月dd日'
       )
     },
-    desc(episode): string {
+    desc(episode) {
       return EpisodeHelper.desc(episode)
     }
   }

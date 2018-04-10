@@ -33,7 +33,12 @@ const conf = {
     '~/modules/rss',
     ['nuxt-sass-resources-loader', ['assets/css/_vars.scss', 'assets/css/mixin/_mediaquery.scss']]
   ],
-  plugins: ['~/plugins/vue-awesome', '~/plugins/content-loader', '~/plugins/vue-lazyload'],
+  plugins: [
+    '~/plugins/vue-awesome',
+    '~/plugins/content-loader',
+    '~/plugins/vue-lazyload',
+    { src: '~/plugins/vue-notifications', ssr: false }
+  ],
   css: [
     '~/assets/css/reset.scss',
     '~/assets/css/style.scss',

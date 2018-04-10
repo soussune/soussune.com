@@ -55,8 +55,8 @@ export default {
   },
   methods: {
     clearPlay() {
+      this.audioElement.pause()
       this.$store.commit('audio/clearAudio')
-      this.audioElement.src = ''
       this.isOptionsShown = false
     },
     closeOption() {

@@ -19,6 +19,8 @@ export default {
     au.addEventListener('play', this.onPlayPauseChange)
     au.addEventListener('canplay', this.onCanplay)
     au.addEventListener('seeked', this.onCanplay)
+    au.addEventListener('error', this.onError)
+    au.addEventListener('ended', this.onEnded)
   },
   beforeDestroy() {
     const au = this.$refs.audio
@@ -32,10 +34,19 @@ export default {
     au.removeEventListener('play', this.onPlayPauseChange)
     au.removeEventListener('canplay', this.onCanplay)
     au.removeEventListener('seeked', this.onCanplay)
+    au.removeEventListener('error', this.onError)
+    au.removeEventListener('ended', this.onEnded)
   },
   methods: {
     commit(prop, payload) {
       this.$store.commit(`audio/${prop}`, payload)
+    },
+    onEnded(e) {
+      this.commit('clearAudio')
+    },
+    onError(e) {
+      this.showErrorMsg({ message: 'Error playing file' })
+      this.commit('clearAudio')
     },
     onLoadedmetadata(e) {
       this.commit('duration', e.target.duration)

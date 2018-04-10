@@ -72,7 +72,7 @@
   </section>
 </template>
 
-<script lang="ts">
+<script>
 import { DateTime } from 'luxon'
 import { mapGetters } from 'vuex'
 import * as EpisodeHelper from '~/helpers/EpisodeHelper.js'
@@ -117,7 +117,7 @@ export default {
         'yyyy年MM月dd日'
       )
     },
-    desc(episode): string {
+    desc(episode) {
       return EpisodeHelper.desc(episode)
     }
   },

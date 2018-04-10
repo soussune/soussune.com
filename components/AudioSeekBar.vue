@@ -18,7 +18,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import { mapState, mapGetters } from 'vuex'
 import TouchRange from '@miyaoka/vue-touch-range'
 
@@ -41,7 +41,7 @@ export default {
       get() {
         return this.$store.state.audio.currentTime
       },
-      set(val: number) {
+      set(val) {
         this.commit('canplay', false)
         this.audioElement.currentTime = val
       }

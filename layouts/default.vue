@@ -16,7 +16,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import AppHeader from '~/components/AppHeader.vue'
 import AppBody from '~/components/AppBody.vue'
 import AppFooter from '~/components/AppFooter.vue'

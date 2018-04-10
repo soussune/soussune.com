@@ -48,7 +48,7 @@
   </header>
 </template>
 
-<script lang="ts">
+<script>
 import AppLogo from '~/components/AppLogo.vue'
 
 export default {

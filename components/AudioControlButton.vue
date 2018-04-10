@@ -17,7 +17,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import { mapState, mapGetters } from 'vuex'
 import AudioPlayingIcon from '~/components/AudioPlayingIcon.vue'
 import ProgressCircle from '~/components/ProgressCircle.vue'

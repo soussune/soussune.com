@@ -65,7 +65,7 @@
   </main>
 </template>
 
-<script lang="ts">
+<script>
 import { DateTime } from 'luxon'
 import * as EpisodeHelper from '~/helpers/EpisodeHelper.js'
 import ActorIcon from '~/components/ActorIcon.vue'
@@ -92,23 +92,11 @@ export default {
     desc() {
       return EpisodeHelper.desc(this.episode)
     },
-    src(): string {
+    src() {
       return (
         'http://cdn.soussune.com.s3-ap-northeast-1.amazonaws.com/audio' + this.episode.audioFilePath
       )
     }
-    // playing(): boolean {
-    //   return this.selected && !this.paused
-    // },
-    // canplay(): boolean {
-    //   return this.$store.state.audio.canplay
-    // },
-    // selected(): boolean {
-    //   return this.$store.state.audio.src === this.src
-    // },
-    // paused(): boolean {
-    //   return this.$store.state.audio.paused
-    // }
   },
   head() {
     return {
@@ -127,21 +115,6 @@ export default {
       ]
     }
   }
-  // methods: {
-  //   commit(prop: string, payload: any): void {
-  //     this.$store.commit(`audio/${prop}`, payload)
-  //   },
-  //   togglePlay(): void {
-  //     if (this.selected) {
-  //       this.commit('paused', !this.paused)
-  //       return
-  //     }
-
-  //     this.commit('src', this.src)
-  //     this.commit('title', this.episode.title)
-  //     this.commit('pagePath', this.$route.path)
-  //   }
-  // }
 }
 </script>
 

@@ -107,7 +107,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import { mapState, mapGetters } from 'vuex'
 import TouchRange from '@miyaoka/vue-touch-range'
 import VolumeRange from '~/components/VolumeRange.vue'
@@ -120,7 +120,7 @@ export default {
     AudioSeekBar
   },
   filters: {
-    time(val: number) {
+    time(val) {
       return [
         Math.floor(val / 3600),
         ...[Math.floor((val % 3600) / 60), Math.floor(val % 60)].map((v) =>
@@ -168,7 +168,7 @@ export default {
       get() {
         return this.$store.state.audio.currentTime
       },
-      set(val: number) {
+      set(val) {
         this.commit('canplay', false)
         this.audioElement.currentTime = val
       }
@@ -177,7 +177,7 @@ export default {
       get() {
         return this.$store.state.audio.volume
       },
-      set(val: number) {
+      set(val) {
         this.audioElement.volume = val
       }
     },
@@ -185,7 +185,7 @@ export default {
       get() {
         return this.$store.state.audio.playbackRate
       },
-      set(val: number) {
+      set(val) {
         this.commit('playbackRate', val)
         this.audioElement.playbackRate = val
       }
@@ -194,7 +194,7 @@ export default {
       get() {
         return this.$store.state.audio.muted
       },
-      set(val: number) {
+      set(val) {
         this.commit('muted', val)
         this.audioElement.muted = val
       }

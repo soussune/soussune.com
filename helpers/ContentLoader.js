@@ -22,15 +22,13 @@ const excludeBody = (obj) => {
 }
 
 class ContentLoader {
-  app = null
-  episodes: any[] = []
-  actors: any[] = []
-  actorMap = {}
-  actorEpisodeMap = {}
-  isLoaded = false
-
   constructor(app) {
     this.app = app
+    this.episodes = []
+    this.actors = []
+    this.actorMap = {}
+    this.actorEpisodeMap = {}
+    this.isLoaded = false
   }
   async load() {
     if (this.isLoaded) return

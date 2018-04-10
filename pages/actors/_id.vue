@@ -58,7 +58,7 @@
   </main>
 </template>
 
-<script lang="ts">
+<script>
 import ActorIcon from '~/components/ActorIcon.vue'
 
 const serviceInfo = {

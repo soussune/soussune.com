@@ -1,8 +1,8 @@
 <template>
-  <img
-    :src="src"
-    :title="actor.title"
-  >
+  <picture>
+    <source type=image/webp :srcset="src + '&fm=webp'">
+    <img :src="src" :title="actor.title">
+  </picture>
 </template>
 
 <script>

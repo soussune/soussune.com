@@ -40,6 +40,7 @@ export default {
       this.$store.commit(`audio/${prop}`, payload)
     },
     onError(e) {
+      this.showErrorMsg({ message: 'Error playing file' })
       this.commit('clearAudio')
     },
     onLoadedmetadata(e) {

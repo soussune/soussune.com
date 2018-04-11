@@ -169,11 +169,11 @@ export default {
       }
       &-list {
         padding: 1rem;
-        background: $clr-main-d;
+        background: $clr-main-l;
       }
       &:after {
         content: '';
-        background: rgba(0, 0, 0, 0.5);
+        background: rgba(0, 0, 0, 0.8);
         height: 100vh;
         width: 100vw;
         display: block;

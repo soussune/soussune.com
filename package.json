@@ -14,7 +14,9 @@
     "prettier:check": "npm run prettier -- --list-different",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "deploy": "push-dir --dir=dist --branch=gh-pages --cleanup",
-    "precommit": "npm run lint"
+    "precommit": "npm run lint",
+    "build-storybook": "build-storybook -c config/storybook",
+    "storybook": "start-storybook -p 6006 -c config/storybook"
   },
   "dependencies": {
     "@miyaoka/nuxt-twitter-widgets-module": "^0.0.1",
@@ -39,6 +41,17 @@
   "devDependencies": {
     "@nuxtjs/axios": "^4.5.2",
     "@nuxtjs/sitemap": "0.0.3",
+    "@storybook/addon-actions": "4.0.0-alpha.2",
+    "@storybook/addon-centered": "4.0.0-alpha.2",
+    "@storybook/addon-knobs": "4.0.0-alpha.2",
+    "@storybook/addon-links": "4.0.0-alpha.2",
+    "@storybook/addon-notes": "4.0.0-alpha.2",
+    "@storybook/addon-options": "4.0.0-alpha.2",
+    "@storybook/addon-storyshots": "4.0.0-alpha.2",
+    "@storybook/addon-storysource": "4.0.0-alpha.2",
+    "@storybook/addon-viewport": "4.0.0-alpha.2",
+    "@storybook/addons": "4.0.0-alpha.2",
+    "@storybook/vue": "4.0.0-alpha.2",
     "babel-eslint": "^8.2.2",
     "backpack-core": "^0.7.0",
     "eslint": "^4.19.1",

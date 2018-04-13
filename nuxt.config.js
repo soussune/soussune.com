@@ -1,7 +1,8 @@
 const nodeExternals = require('webpack-node-externals')
-const episodes = require('./server/sitemap').episodes
+const episodes = require('./src/server/sitemap').episodes
 
 const conf = {
+  srcDir: 'src/',
   router: {
     // https://ja.nuxtjs.org/api/configuration-router#scrollBehavior
     scrollBehavior: (to, from, savedPosition) => {

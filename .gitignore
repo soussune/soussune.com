@@ -12,7 +12,7 @@ yarn-error.log
 dist
 
 # Generate rss feed
-static/feed.xml
+src/static/feed.xml
 
 # Pwa
 sw.*

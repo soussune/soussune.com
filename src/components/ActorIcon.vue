@@ -2,6 +2,7 @@
   <img
     :src="src"
     :title="actor.title"
+    class="img"
   >
 </template>
 

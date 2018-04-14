@@ -93,7 +93,7 @@ $trackHeight: 4px;
     $track-shadow-blur: 0;
     $track-border-width: 0;
 
-    @import '~assets/css/_inputrange.scss';
+    @import '../assets/css/_inputrange.scss';
 
     grid-area: stack;
     height: $sliderHeight;

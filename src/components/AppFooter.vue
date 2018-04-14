@@ -113,7 +113,7 @@ export default {
   }
 
   .button {
-    @import '~assets/css/_roundButton.scss';
+    @import '../assets/css/_roundButton.scss';
   }
 }
 </style>

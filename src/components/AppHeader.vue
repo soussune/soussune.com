@@ -200,7 +200,7 @@ export default {
         color: $clr-white-ll;
         text-decoration: none;
         $line-color: $clr-white-ll;
-        @import '~assets/css/_hoverline.scss';
+        @import '../assets/css/_hoverline.scss';
       }
     }
   }

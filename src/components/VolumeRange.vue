@@ -94,7 +94,7 @@ $trackHeight: 2px;
     $track-border-width: 0;
     $track-radius: 0;
 
-    @import '~assets/css/_inputrange.scss';
+    @import '../assets/css/_inputrange.scss';
 
     height: $sliderHeight;
     background: transparent;

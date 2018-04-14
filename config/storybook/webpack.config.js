@@ -8,6 +8,15 @@ module.exports = (storybookBaseConfig, configType, defaultConfig) => {
   const rootDir = resolve(nuxtConf.rootDir || '')
   const srcDir = resolve(nuxtConf.srcDir || '')
 
+  const sassResources = {
+    loader: 'sass-resources-loader',
+    options: {
+      resources: [
+        path.resolve(__dirname, '../../src/assets/css/_vars.scss'),
+        path.resolve(__dirname, '../../src/assets/css/mixin/_mediaquery.scss')
+      ]
+    }
+  }
   defaultConfig.resolve.alias = {
     ...defaultConfig.resolve.alias,
     ...{
@@ -30,7 +39,8 @@ module.exports = (storybookBaseConfig, configType, defaultConfig) => {
         'css-loader',
         {
           loader: 'sass-loader'
-        }
+        },
+        sassResources
       ]
     }
   )

@@ -16,3 +16,6 @@ src/static/feed.xml
 
 # Pwa
 sw.*
+
+# Storybook static
+storybook-static

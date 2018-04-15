@@ -5,6 +5,11 @@ import '~/plugins/vue-awesome'
 import '~/plugins/vue-lazyload'
 import '~/plugins/vue-notifications'
 
+import '~/assets/css/reset.scss'
+import '~/assets/css/style.scss'
+import '~/assets/css/marked.scss'
+import '~/assets/css/pageTrans.scss'
+
 Vue.component('RouterLink', {
   props: ['to'],
   methods: {
@@ -12,7 +17,6 @@ Vue.component('RouterLink', {
       action('link target')(this.to)
     }
   },
-  template: '<div @click="log()"><slot>RouterLink</slot></div>'
   template: '<a @click="log()"><slot>RouterLink</slot></a>'
 })
 
@@ -23,6 +27,5 @@ Vue.component('NuxtLink', {
       action('link target')(this.to)
     }
   },
-  template: '<div @click="log()"><slot>NuxtLink</slot></div>'
   template: '<a @click="log()"><slot>NuxtLink</slot></a>'
 })

@@ -1,7 +1,7 @@
 <template>
   <div class="app">
 
-    <AppHeader class="app_header"/>
+    <AppHeader class="app_header" fixed />
 
     <Jumbotron class="app_jumbotron" v-if="isHome"/>
 
@@ -57,4 +57,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 </style>

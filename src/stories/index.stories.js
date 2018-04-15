@@ -13,6 +13,7 @@ Vue.component('RouterLink', {
     }
   },
   template: '<div @click="log()"><slot>RouterLink</slot></div>'
+  template: '<a @click="log()"><slot>RouterLink</slot></a>'
 })
 
 Vue.component('NuxtLink', {
@@ -23,4 +24,5 @@ Vue.component('NuxtLink', {
     }
   },
   template: '<div @click="log()"><slot>NuxtLink</slot></div>'
+  template: '<a @click="log()"><slot>NuxtLink</slot></a>'
 })

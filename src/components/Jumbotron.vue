@@ -57,6 +57,7 @@
   color: $clr-white-ll;
   text-align: center;
   overflow: hidden;
+  background: $clr-bg;
 
   @include mq() {
     overflow: hidden;

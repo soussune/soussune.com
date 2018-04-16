@@ -2,7 +2,7 @@ const path = require('path')
 const { VueLoaderPlugin } = require('vue-loader')
 const nuxtConf = require('../../nuxt.config')
 
-const resolve = (p) => path.resolve(p)
+const resolve = (p) => path.resolve(__dirname, '../../', p)
 
 module.exports = (storybookBaseConfig, configType, defaultConfig) => {
   const rootDir = resolve(nuxtConf.rootDir || '')
@@ -12,8 +12,8 @@ module.exports = (storybookBaseConfig, configType, defaultConfig) => {
     loader: 'sass-resources-loader',
     options: {
       resources: [
-        path.resolve(__dirname, '../../src/assets/css/_vars.scss'),
-        path.resolve(__dirname, '../../src/assets/css/mixin/_mediaquery.scss')
+        resolve('src/assets/css/_vars.scss'),
+        resolve('src/assets/css/mixin/_mediaquery.scss')
       ]
     }
   }

@@ -1,5 +1,5 @@
 <template>
-  <header role="banner" class="top-bar" :class="{scrolled: scrollY > 0}">
+  <header role="banner" class="top-bar" :class="{ 'is-fixed': fixed, 'is-scroll': scrollY > 0 }">
     <nav class="top-bar__branding">
       <nuxt-link exact to="/" @click.native="scrollToTop" aria-label="home">
         <AppLogo />
@@ -75,6 +75,9 @@ export default {
       this.onEdit = true
     }
   },
+  props: {
+    fixed: { type: Boolean, default: false }
+  },
   data() {
     return {
       scrollY: 0,
@@ -107,11 +110,11 @@ export default {
 
 <style lang="scss" scoped>
 .top-bar {
-  position: fixed;
-  z-index: 502;
+  position: relative;
   top: 0;
   right: 0;
   left: 0;
+  z-index: 502;
   box-sizing: border-box;
   display: grid;
   background: $clr-bg;
@@ -130,9 +133,13 @@ export default {
     height: $header-height-sp;
   }
 
-  &.scrolled {
-    background: $clr-main-d;
-    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 10px 30px 0 rgba(0, 0, 0, 0.2);
+  &.is-fixed {
+    position: fixed;
+
+    &.is-scroll {
+      background: $clr-main-d;
+      box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 10px 30px 0 rgba(0, 0, 0, 0.2);
+    }
   }
 
   @include mq() {
@@ -200,7 +207,7 @@ export default {
         color: $clr-white-ll;
         text-decoration: none;
         $line-color: $clr-white-ll;
-        @import '~assets/css/_hoverline.scss';
+        @import '../assets/css/_hoverline.scss';
       }
     }
   }

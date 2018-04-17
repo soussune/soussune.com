@@ -19,7 +19,7 @@ const createRssFeed = (options, items) => {
 
 module.exports = function rssModule(moduleOptions) {
   const options = Object.assign({}, defaults, this.options.rss, moduleOptions)
-  const rssPath = path.resolve(path.join('static', options.path))
+  const rssPath = path.resolve(path.join('src', 'static', options.path))
   const feed = createRssFeed(options, this.options.rssItems)
 
   this.nuxt.hook('build:before', async (builder) => {

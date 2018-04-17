@@ -57,6 +57,7 @@
   color: $clr-white-ll;
   text-align: center;
   overflow: hidden;
+  background: $clr-bg;
 
   @include mq() {
     overflow: hidden;
@@ -119,6 +120,6 @@
 }
 
 .button {
-  @import '~assets/css/_roundButton.scss';
+  @import '../assets/css/_roundButton.scss';
 }
 </style>

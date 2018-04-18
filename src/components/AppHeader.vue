@@ -15,7 +15,7 @@
         <input
           type="search"
           name="search"
-          placeholder="検索"
+          placeholder="Search"
           autocomplete="off"
           class="search-input-field"
           @focus="onFocus"

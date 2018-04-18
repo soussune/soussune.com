@@ -8,23 +8,33 @@ const defaults = {
   routes: []
 }
 
-const createRssFeed = (options, items) => {
-  const feed = new RSS(options)
+const createRss = (options, items) => {
+  const rss = new RSS(options)
 
   items.reverse().map((item) => {
-    feed.item(item)
+    rss.item(item)
   })
-  return feed
+  return rss
 }
 
-module.exports = function rssModule(moduleOptions) {
+module.exports = function feedModule(moduleOptions) {
   const options = {
     ...defaults,
     ...this.options.rss,
     ...moduleOptions
   }
 
-  this.nuxt.hook('build:before', async (builder) => {
-    fs.writeFileSync(rssPath, feed.xml({ indent: true }))
+  const xml = createRss(options, this.options.rssItems).xml({ indent: true })
+
+  this.options.build.plugins.push({
+    apply(compiler) {
+      compiler.plugin('emit', (compilation, cb) => {
+        compilation.assets[options.path] = {
+          source: () => xml,
+          size: () => xml.length
+        }
+        cb()
+      })
+    }
   })
 }

@@ -11,9 +11,6 @@ yarn-error.log
 # Nuxt generate
 dist
 
-# Generate rss feed
-src/static/feed.xml
-
 # Pwa
 sw.*
 

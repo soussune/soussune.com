@@ -22,5 +22,5 @@ jobs:
       - run: yarn screenshot
 
       - store_artifacts:
-          path: __screenshot__/
+          path: __screenshots__/
           destination: screenshot

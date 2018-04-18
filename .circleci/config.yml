@@ -24,3 +24,6 @@ jobs:
       - store_artifacts:
           path: __screenshots__/
           destination: screenshot
+
+      #reg=suit storybook!!!
+      - run: yarn regression

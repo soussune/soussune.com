@@ -16,7 +16,8 @@
     "deploy": "push-dir --dir=dist --branch=gh-pages --cleanup",
     "precommit": "npm run lint",
     "build-storybook": "build-storybook -c config/storybook",
-    "storybook": "start-storybook -p 6006 -c config/storybook"
+    "storybook": "start-storybook -p 6006 -c config/storybook",
+    "screenshot": "storybook-chrome-screenshot -p 9001 -c config/storybook"
   },
   "dependencies": {
     "@miyaoka/nuxt-twitter-widgets-module": "^0.0.1",
@@ -62,6 +63,7 @@
     "prettier": "^1.11.1",
     "sass-loader": "^6.0.7",
     "storybook-addon-figma": "^0.1.0",
-    "storybook-addon-vue-info": "^0.2.0"
+    "storybook-addon-vue-info": "^0.2.0",
+    "storybook-chrome-screenshot": "^1.0.1"
   }
 }

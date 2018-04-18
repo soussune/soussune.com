@@ -1,12 +1,12 @@
 import { storiesOf } from '@storybook/vue'
-import VueInfoAddon from 'storybook-addon-vue-info'
 import { withKnobs, object, number } from '@storybook/addon-knobs'
 import { withNotes } from '@storybook/addon-notes'
+import { withScreenshot } from 'storybook-chrome-screenshot'
 import ActorIcon from '~/components/ActorIcon.vue'
 
 storiesOf('ActorIcon', module)
-  .addDecorator(VueInfoAddon)
   .addDecorator(withKnobs)
+  .addDecorator(withScreenshot())
   .add(
     'default',
     withNotes(`WIP`)(() => {

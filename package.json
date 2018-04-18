@@ -17,7 +17,8 @@
     "precommit": "npm run lint",
     "build-storybook": "build-storybook -c config/storybook",
     "storybook": "start-storybook -p 6006 -c config/storybook",
-    "screenshot": "storybook-chrome-screenshot -p 9001 -c config/storybook"
+    "screenshot": "storybook-chrome-screenshot -p 9001 -c config/storybook",
+    "regression": "reg-suit run"
   },
   "dependencies": {
     "@miyaoka/nuxt-twitter-widgets-module": "^0.0.1",
@@ -61,6 +62,10 @@
     "eslint-plugin-vue": "^4.3.0",
     "node-sass": "^4.8.3",
     "prettier": "^1.11.1",
+    "reg-keygen-git-hash-plugin": "^0.7.1",
+    "reg-notify-github-plugin": "^0.7.2",
+    "reg-publish-s3-plugin": "^0.7.2",
+    "reg-suit": "^0.7.2",
     "sass-loader": "^6.0.7",
     "storybook-addon-figma": "^0.1.0",
     "storybook-addon-vue-info": "^0.2.0",

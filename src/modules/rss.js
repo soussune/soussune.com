@@ -16,7 +16,6 @@ const createRss = (options, items) => {
   })
   return rss
 }
-
 module.exports = function feedModule(moduleOptions) {
   const options = {
     ...defaults,
@@ -36,5 +35,13 @@ module.exports = function feedModule(moduleOptions) {
         cb()
       })
     }
+  })
+
+  this.nuxt.hook('generate:done', async (generator) => {
+    await fs.move(
+      path.join(generator.distNuxtPath, defaults.path),
+      path.join(generator.distPath, defaults.path)
+    )
+    console.log('feed.xml moved')
   })
 }

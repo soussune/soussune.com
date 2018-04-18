@@ -19,3 +19,6 @@ sw.*
 
 # Storybook static
 storybook-static
+
+# Storybook screenshot
+__screenshots__

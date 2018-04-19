@@ -39,8 +39,8 @@ module.exports = function feedModule(moduleOptions) {
 
   this.nuxt.hook('generate:done', async (generator) => {
     await fs.move(
-      path.join(generator.distNuxtPath, defaults.path),
-      path.join(generator.distPath, defaults.path)
+      path.join(generator.distNuxtPath, options.path),
+      path.join(generator.distPath, options.path)
     )
     console.log('feed.xml moved')
   })

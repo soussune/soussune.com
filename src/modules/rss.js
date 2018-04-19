@@ -3,7 +3,7 @@ const path = require('path')
 const RSS = require('rss')
 
 const defaults = {
-  path: '/feed.xml',
+  path: 'feed.xml',
   description: null,
   routes: []
 }

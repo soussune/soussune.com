@@ -8,7 +8,7 @@
     "start": "nuxt start",
     "dev": "nuxt",
     "build": "nuxt build",
-    "generate": "NODE_ENV=production nuxt generate",
+    "generate": "nuxt generate",
     "prettier": "prettier **/*.{js,ts,vue,md,css,scss}",
     "prettier:write": "npm run prettier -- --write",
     "prettier:check": "npm run prettier -- --list-different",

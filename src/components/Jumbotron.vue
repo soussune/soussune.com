@@ -61,7 +61,6 @@
 
   @include mq() {
     overflow: hidden;
-    background-color: transparent;
     height: 100%;
   }
 }

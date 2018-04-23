@@ -42,6 +42,11 @@
             ブログ
           </a>
         </li>
+        <li>
+          <a href="https://www.youtube.com/channel/UCNrtgKYAjGYKDIjJM-_zsXA" target="_blank" rel="noopener" aria-label="blog">
+            動画
+          </a>
+        </li>
       </ul>
     </nav>
     <div class="top-bar__menu"><button @click="toggleMenu" aria-label="toggle menu"><icon name="bars" scale="1.5"></icon></button></div>
@@ -188,16 +193,13 @@ export default {
     }
 
     &-list {
-      display: grid;
-      grid-template-columns: auto auto auto;
-      grid-gap: 1rem;
-      justify-items: center;
+      display: flex;
+      justify-content: space-around;
 
       @include mq() {
-        grid-template-columns: 1fr;
-        justify-items: auto;
+        flex-direction: column;
         a {
-          // background: #999;
+          margin: 0.5rem 0;
           display: block;
           text-align: center;
         }

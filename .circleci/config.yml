@@ -9,21 +9,30 @@ jobs:
     steps:
       - checkout
 
-      - run: yarn install
+      - run:
+          name: install japanese fonts
+          command: apt-get install fonts-ipafont-gothic fonts-ipafont-mincho
 
-      #build storybook!!!
-      - run: yarn build-storybook
+      - run:
+          name: yarn install
+          command: yarn install
+
+      - run:
+          name: build storybook
+          command: yarn build-storybook
 
       - store_artifacts:
           path: storybook-static/
           destination: storybook
 
-      #SS storybook!!!
-      - run: yarn screenshot
+      - run:
+          name: screenshot storybook
+          command: yarn screenshot
 
       - store_artifacts:
           path: __screenshots__/
           destination: screenshot
 
-      #reg=suit storybook!!!
-      - run: yarn regression
+      - run:
+          name: reg-suit storybook
+          command: yarn regression

@@ -43,7 +43,7 @@
           </a>
         </li>
         <li>
-          <a href="https://www.youtube.com/channel/UCNrtgKYAjGYKDIjJM-_zsXA" target="_blank" rel="noopener" aria-label="blog">
+          <a href="https://www.youtube.com/channel/UCNrtgKYAjGYKDIjJM-_zsXA" target="_blank" rel="noopener" aria-label="youtube">
             動画
           </a>
         </li>

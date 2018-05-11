@@ -57,9 +57,7 @@
                 class="episode-topic-item"
                 v-for="topic in episode.topics"
                 :key="topic"
-              >
-                {{ topic }}
-              </span>
+              >{{ topic }}</span>
             </div>
 
           </article>

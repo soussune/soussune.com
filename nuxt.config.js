@@ -204,6 +204,14 @@ const conf = {
     config: {
       shouldSendCallback: () => process.env.NODE_ENV === 'production'
     }
+  },
+  workbox: {
+    runtimeCaching: [
+      {
+        handler: 'cacheFirst',
+        urlPattern: '/font/*'
+      }
+    ]
   }
 }
 

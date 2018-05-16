@@ -1,6 +1,7 @@
 ---
 actorId: trkw
 title: trkw
+realname: Naohiro Terakawa
 imageUrl: //images.ctfassets.net/gvze4h7pavn2/55XW80AaGc42cm8SsseAmC/d44f2d51e13bb90347008942d59e8f4c/actor-trkw.jpg
 accounts:
   twitter: trkw_

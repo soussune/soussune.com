@@ -8,7 +8,7 @@
         :size="200"
         class="actor-icon"
       />
-      <h1 class="actor-title">{{ actor.title }}<span v-if="actor.realname">&nbsp;({{ actor.realname }})</span></h1>
+      <h1 class="actor-title">{{ actorCombinedName }}</h1>
     </header>
 
     <section class="accounts" v-if="actor.accounts">
@@ -94,13 +94,18 @@ export default {
       return serviceInfo[service] && serviceInfo[service].label
     }
   },
+  computed: {
+    actorCombinedName() {
+      return this.actor.title + (this.actor.realname ? ` (${this.actor.realname})` : '')
+    }
+  },
   head() {
     return {
-      title: this.actor.title,
+      title: this.actorCombinedName,
       meta: [
         {
           property: 'og:title',
-          content: `soussune - ${this.actor.title}`,
+          content: `soussune - ${this.actorCombinedName}`,
           hid: 'ogTitle'
         },
         {

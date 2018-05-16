@@ -205,11 +205,11 @@ $ep-hover-clr: $clr-black-dd;
   article {
     display: grid;
     grid-template-areas: 'header actor' 'topic date';
-    grid-template-columns: 1fr 200px;
+    grid-template-columns: minmax(0, 1fr) 200px;
     box-sizing: content-box;
     padding: 0.5rem;
     @include mq() {
-      grid-template-columns: 1fr 100px;
+      grid-template-columns: minmax(0, 1fr) 100px;
     }
   }
   &-header {

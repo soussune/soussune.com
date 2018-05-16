@@ -8,7 +8,7 @@
         :size="200"
         class="actor-icon"
       />
-      <h1 class="actor-title"> {{ actor.title }} </h1>
+      <h1 class="actor-title">{{ actor.title }}<slot v-if="actor.realname">&nbsp;({{ actor.realname }})</slot></h1>
     </header>
 
     <section class="accounts" v-if="actor.accounts">

@@ -14,7 +14,7 @@
           />
           <div class="actor-aside">
             <h2 class="actor-title">
-              <span>{{ actor.title }}</span>
+              <span>{{ actor.title }}<slot v-if="actor.realname">&nbsp;({{ actor.realname }})</slot></span>
               <span class="actor-role" v-if="actor.role">
                 {{ actor.role }}
               </span>

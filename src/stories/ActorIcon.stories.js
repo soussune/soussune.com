@@ -15,7 +15,7 @@ storiesOf('ActorIcon', module)
       })(() => {
         const defaultActor = {
           imageUrl:
-            '//images.ctfassets.net/gvze4h7pavn2/55XW80AaGc42cm8SsseAmC/d44f2d51e13bb90347008942d59e8f4c/actor-trkw.jpg',
+            'https://images.ctfassets.net/gvze4h7pavn2/55XW80AaGc42cm8SsseAmC/d44f2d51e13bb90347008942d59e8f4c/actor-trkw.jpg',
           title: 'trkw'
         }
         const actor = object('actor', defaultActor)

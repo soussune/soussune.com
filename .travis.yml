@@ -1,7 +1,7 @@
 language: node_js
 node_js:
-  - "stable"
-install:
-  - npm install
-script:
-  - npm run generate
+  - 'lts/*'
+
+cache: yarn
+
+script: yarn run generate

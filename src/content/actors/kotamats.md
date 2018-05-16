@@ -1,7 +1,7 @@
 ---
 actorId: kotamats
 title: kotamat
-imageUrl: //images.ctfassets.net/gvze4h7pavn2/2yTiHktoJuQyi6yqga0aAU/05e917afd2282c1c3ce06080916a6e5f/actor-kotamats.jpg
+imageUrl: https://images.ctfassets.net/gvze4h7pavn2/2yTiHktoJuQyi6yqga0aAU/05e917afd2282c1c3ce06080916a6e5f/actor-kotamats.jpg
 accounts:
   twitter: kotamats
   github: kotamat

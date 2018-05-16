@@ -2,7 +2,7 @@
 actorId: miyaoka
 title: miyaoka
 realname: Masaya Kazama
-imageUrl: //images.ctfassets.net/gvze4h7pavn2/15dtnG0XJIWCQqCwcumYMK/23033d60017d92878bb05427eaf50700/actor-miyaoka.jpg
+imageUrl: https://images.ctfassets.net/gvze4h7pavn2/15dtnG0XJIWCQqCwcumYMK/23033d60017d92878bb05427eaf50700/actor-miyaoka.jpg
 accounts:
   twitter: miyaoka
   github: miyaoka

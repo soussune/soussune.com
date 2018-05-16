@@ -1,7 +1,7 @@
 ---
 actorId: yugo
 title: yugo
-imageUrl: //images.ctfassets.net/gvze4h7pavn2/3yRvtIpAWI6GmIESyYcwKG/c55b44e4dc38839e5dd57e965abcf83b/actor-yugo.jpg
+imageUrl: https://images.ctfassets.net/gvze4h7pavn2/3yRvtIpAWI6GmIESyYcwKG/c55b44e4dc38839e5dd57e965abcf83b/actor-yugo.jpg
 accounts:
   twitter: ymmmo1
   github: satsuki0221

@@ -5,3 +5,7 @@
 /_nuxt/content/actors/_all.json
   Access-Control-Allow-Credentials: true
   Access-Control-Allow-Origin: https://soussune.netlify.com
+
+/font/*
+  Cache-Control: public, max-age=31536000
+  Expires: 86400

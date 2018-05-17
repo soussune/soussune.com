@@ -9,5 +9,4 @@
 /font/*
   Cache-Control: public, max-age=31536000
   Expires: 86400
-  ETag: "768e41b20e1e385d06f9b2da6f7e0f08"
 

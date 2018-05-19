@@ -144,7 +144,6 @@ const conf = {
     image_url: 'https://soussune.com/artwork.jpg',
     webMaster: 'soussune.user@email.com (soussune)',
     managingEditor: 'soussune.user@email.com (soussune)',
-    copyright: '2017 soussune',
     language: 'ja',
     pubDate: 'Thu, 01 Jun 2017 04:00:00 GMT',
     ttl: '60',

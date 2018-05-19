@@ -18,7 +18,10 @@
     "build-storybook": "build-storybook -c config/storybook",
     "storybook": "start-storybook -p 6006 -c config/storybook",
     "screenshot": "storybook-chrome-screenshot -p 9001 -c config/storybook",
-    "regression": "reg-suit run"
+    "regression": "reg-suit run",
+    "textlint:strict": "textlint -c coverage.textlintrc src/content/episode",
+    "textlint:coverage": "textlint -c coverage.textlintrc src/content/episode",
+    "travis:coverage": "textlint -c coverage.textlintrc -f codecov src/content/episode | codecov"
   },
   "dependencies": {
     "@miyaoka/nuxt-twitter-widgets-module": "^0.0.1",
@@ -56,6 +59,7 @@
     "@storybook/vue": "4.0.0-alpha.2",
     "babel-eslint": "^8.2.2",
     "backpack-core": "^0.7.0",
+    "codecov.io": "^0.1.6",
     "eslint": "^4.19.1",
     "eslint-friendly-formatter": "^4.0.0",
     "eslint-loader": "^2.0.0",
@@ -69,6 +73,28 @@
     "sass-loader": "^6.0.7",
     "storybook-addon-figma": "^0.1.0",
     "storybook-addon-vue-info": "^0.2.0",
-    "storybook-chrome-screenshot": "^1.0.1"
+    "storybook-chrome-screenshot": "^1.0.1",
+    "textlint": "^10.2.1",
+    "textlint-filter-rule-comments": "^1.2.2",
+    "textlint-formatter-codecov": "^1.0.2",
+    "textlint-formatter-lcov": "^1.0.2",
+    "textlint-rule-ja-no-abusage": "^1.2.1",
+    "textlint-rule-ja-no-successive-word": "^1.0.2",
+    "textlint-rule-max-kanji-continuous-len": "^1.1.1",
+    "textlint-rule-max-ten": "^2.0.3",
+    "textlint-rule-no-double-negative-ja": "^1.0.5",
+    "textlint-rule-no-doubled-conjunction": "^1.0.2",
+    "textlint-rule-no-doubled-conjunctive-particle-ga": "^1.0.2",
+    "textlint-rule-no-doubled-joshi": "^3.5.1",
+    "textlint-rule-no-dropping-the-ra": "^1.1.2",
+    "textlint-rule-no-mix-dearu-desumasu": "^3.0.3",
+    "textlint-rule-no-nfd": "^1.0.1",
+    "textlint-rule-no-start-duplicated-conjunction": "^2.0.2",
+    "textlint-rule-preset-ja-technical-writing": "^2.0.0",
+    "textlint-rule-preset-jtf-style": "^2.3.1",
+    "textlint-rule-prh": "^5.0.1",
+    "textlint-rule-sentence-length": "^2.0.2",
+    "textlint-rule-spellcheck-tech-word": "^5.0.0",
+    "textlint-rule-unexpanded-acronym": "^1.2.1"
   }
 }

@@ -47,3 +47,8 @@ rules:
 
   - expected: しやすい
     patterns: し易い
+
+  - expected: お名前.com
+
+  - expected: コンテクスト
+    pattern: コンテキスト

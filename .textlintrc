@@ -1,6 +1,9 @@
 {
   "filters": {
-    "comments": true
+    "comments": true,
+    "node-types": {
+      "nodeTypes": ["BlockQuote", "Code", "CodeBlock", "Image", "Link"]
+    }
   },
   "rules": {
     "max-ten": {

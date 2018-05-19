@@ -10005,6 +10005,10 @@ textlint-filter-rule-comments@^1.2.2:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/textlint-filter-rule-comments/-/textlint-filter-rule-comments-1.2.2.tgz#3a72c494994e068e0e4aaad0f24ea7cfe338503a"
 
+textlint-filter-rule-node-types@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/textlint-filter-rule-node-types/-/textlint-filter-rule-node-types-1.0.1.tgz#d76e2c5f1729ba8e77bbf1387480f552dbcb6702"
+
 textlint-formatter-codecov@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/textlint-formatter-codecov/-/textlint-formatter-codecov-1.0.2.tgz#71d57e3b61ad6b9a20076c6edd471ec2aef97560"

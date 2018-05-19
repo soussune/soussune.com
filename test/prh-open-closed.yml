@@ -56,7 +56,7 @@ rules:
     pattern:  綺麗
     prh: 漢字で書かず、ひらがなで書くと読みやすくなります
   - expected: こと
-    pattern:  /(記|大|仕)?事(?!情|件|前|後|例|実|体|態|項)/
+    pattern:  /(記|大|仕|刑|議|食|綺麗)?事(?!情|件|前|後|例|実|体|態|項|録|業)/
     regexpMustEmpty: $1
     prh: 漢字で書かず、ひらがなで書くと読みやすくなります
     specs:
@@ -66,6 +66,16 @@ rules:
         to:   記事
       - from: 事件
         to:   事件
+      - from: 刑事
+        to:   刑事
+      - from: 議事録
+        to:   議事録
+      - from: 食事
+        to:   食事
+      - from: 事業
+        to:   事業
+      - from: 綺麗事
+        to:   綺麗事
   - expected: $1とき
     pattern:  /(の)時(?!点|代|々|間)/
     specs:

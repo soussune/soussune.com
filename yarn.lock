@@ -973,7 +973,7 @@ array-flatten@1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/array-flatten/-/array-flatten-1.1.1.tgz#9a5f699051b1e7073328f2a008968b64ea2955d2"
 
-array-includes@^3.0.1, array-includes@^3.0.3:
+array-includes@^3.0.3:
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/array-includes/-/array-includes-3.0.3.tgz#184b48f62d92d7452bb31b323165c7f8bd02266d"
   dependencies:
@@ -5378,10 +5378,6 @@ is-builtin-module@^1.0.0:
 is-callable@^1.1.1, is-callable@^1.1.3:
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/is-callable/-/is-callable-1.1.3.tgz#86eb75392805ddc33af71c92a0eedf74ee7604b2"
-
-is-capitalized@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/is-capitalized/-/is-capitalized-1.0.0.tgz#4c8464b4d91d3e4eeb44889dd2cd8f1b0ac4c136"
 
 is-ci@^1.0.10, is-ci@^1.1.0:
   version "1.1.0"
@@ -10249,13 +10245,6 @@ textlint-rule-spellcheck-tech-word@^5.0.0:
   dependencies:
     spellcheck-technical-word "^2.0.0"
     textlint-rule-helper "^1.1.2"
-
-textlint-rule-unexpanded-acronym@^1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/textlint-rule-unexpanded-acronym/-/textlint-rule-unexpanded-acronym-1.2.1.tgz#4e5c649898fea702c23683b60d46fe97fd903117"
-  dependencies:
-    array-includes "^3.0.1"
-    is-capitalized "^1.0.0"
 
 textlint-util-to-string@^1.1.0, textlint-util-to-string@^1.2.0:
   version "1.2.1"

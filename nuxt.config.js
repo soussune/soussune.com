@@ -78,7 +78,7 @@ const conf = {
         content: 'soussune - エンジニアわいわいポッドキャスト「そうっすね」',
         hid: 'ogTitle'
       },
-      { property: 'og:site_name', content: 'soususne' },
+      { property: 'og:site_name', content: 'soussune' },
       { property: 'og:type', content: 'article' },
       { property: 'og:url', content: 'https://soussune.com', hid: 'ogUrl' },
       { property: 'og:locale', content: 'ja_JP' },

@@ -1,4 +1,4 @@
-const externalLinks = require('markdown-it-link-attributes')
+import externalLinks from 'markdown-it-link-attributes'
 
 module.exports = {
   content: [

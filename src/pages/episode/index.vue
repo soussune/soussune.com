@@ -8,7 +8,7 @@
 
     <div v-if="queries.length > 0" class="search">
       <div>
-        <icon name="search" scale="1.2"></icon> 検索中:（{{`${filteredEpisodes.length} / ${episodes.length}  件`}}）
+        <v-icon name="search" scale="1.2"></v-icon> 検索中:（{{`${filteredEpisodes.length} / ${episodes.length}  件`}}）
       </div>
       <div class="queryList">
         <button
@@ -18,7 +18,7 @@
           @click="removeQuery(i)"
           :aria-label="`remove ${query}`"
         >
-          {{query}} <icon name="times" scale="1"></icon>
+          {{query}} <v-icon name="times" scale="1"></v-icon>
         </button>
       </div>
     </div>

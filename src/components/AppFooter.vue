@@ -10,11 +10,11 @@
         <FeedbackTweet
           :url="href"
           class="button"
-        ><icon name="twitter" scale="1.1"></icon> リンクをツイート</FeedbackTweet>
+        ><v-icon name="brands/twitter" scale="1.1"></v-icon> リンクをツイート</FeedbackTweet>
         <FeedbackForm
           :entryTitle="href"
           class="button"
-        ><icon name="pencil-square-o" scale="1.1"></icon>お便りを送る</FeedbackForm>
+        ><v-icon name="edit" scale="1.1"></v-icon>お便りを送る</FeedbackForm>
       </div>
       <div class="timeline">
         <lazy-component>

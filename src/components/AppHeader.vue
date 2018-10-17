@@ -10,7 +10,7 @@
         <span
           class="search-input__add-on search-input__add-on--before"
         >
-          <icon name="search" class="search-icon"></icon>
+          <v-icon name="search" class="search-icon"></v-icon>
         </span>
         <input
           type="search"
@@ -49,7 +49,7 @@
         </li>
       </ul>
     </nav>
-    <div class="top-bar__menu"><button @click="toggleMenu" aria-label="toggle menu"><icon name="bars" scale="1.5"></icon></button></div>
+    <div class="top-bar__menu"><button @click="toggleMenu" aria-label="toggle menu"><v-icon name="bars" scale="1.5"></v-icon></button></div>
   </header>
 </template>
 

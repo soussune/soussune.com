@@ -21,13 +21,13 @@
             </h2>
             <p class="actor-description">出演回数: {{ actor.episodes.length }}</p>
             <div class="actor-footer" v-if="actor.accounts">
-              <icon
+              <v-icon
                 v-for="(account, service) in actor.accounts"
                 :key="service"
-                :name="service"
+                :name="`brands/${service}`"
                 :class="service"
                 scale="1"
-              ></icon>
+              ></v-icon>
             </div>
             <div class="actor-button">もっと詳しく</div>
           </div>

@@ -1,5 +1,7 @@
 # soussune
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/soussune/soussune.com.svg)](https://greenkeeper.io/)
+
 > Nuxt.js Content Site
 
 ## Build Setup

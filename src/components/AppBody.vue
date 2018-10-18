@@ -25,7 +25,7 @@ export default {}
     content: '';
     height: $roundHeight;
     display: block;
-    background-image: url(~/assets/svg/round-edge.svg);
+    background-image: url(~assets/svg/round-edge.svg);
     background-color: $clr-bg;
     background-position: center bottom;
     background-repeat: no-repeat;

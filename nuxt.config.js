@@ -24,6 +24,43 @@ const conf = {
     lang: 'ja',
     theme_color: '#1c2260'
   },
+  workbox: {
+    _runtimeCaching: [
+      {
+        urlPattern: '/_nuxt/contents/.*',
+        handler: 'staleWhileRevalidate'
+      },
+      {
+        urlPattern: '/_nuxt/.*',
+        handler: 'cacheFirst'
+      }
+    ],
+    runtimeCaching: [
+      // Cache the Google Fonts stylesheets with a stale while revalidate strategy.
+      {
+        urlPattern: 'https://fonts.googleapis.com/.*',
+        handler: 'staleWhileRevalidate',
+        strategyOptions: {
+          cacheName: 'google-fonts-stylesheets'
+        }
+      },
+      // Cache the Google Fonts webfont files with a cache first strategy for 1 year.
+      {
+        urlPattern: 'https://fonts.gstatic.com/.*',
+        handler: 'cacheFirst',
+        strategyOptions: {
+          cacheName: 'google-fonts-webfonts',
+          cacheableResponse: {
+            statuses: [0, 200]
+          },
+          cacheExpiration: {
+            maxEntries: 100,
+            maxAgeSeconds: 60 * 60 * 24 * 365
+          }
+        }
+      }
+    ]
+  },
   modules: [
     '@nuxtjs/pwa',
     '@nuxtjs/sentry',

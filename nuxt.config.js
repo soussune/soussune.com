@@ -1,5 +1,4 @@
-const nodeExternals = require('webpack-node-externals')
-const episodes = require('./src/server/sitemap').episodes
+import { episodes } from './src/server/sitemap'
 
 const conf = {
   srcDir: 'src/',
@@ -31,20 +30,20 @@ const conf = {
     '@miyaoka/nuxt-twitter-widgets-module',
     ['@nuxtjs/google-analytics', { id: 'UA-100444203-1' }],
     'nuxtent',
-    '~/modules/rss',
+    '@/modules/rss',
     ['nuxt-sass-resources-loader', ['assets/css/_vars.scss', 'assets/css/mixin/_mediaquery.scss']]
   ],
   plugins: [
-    '~/plugins/vue-awesome',
-    '~/plugins/content-loader',
-    '~/plugins/vue-lazyload',
-    { src: '~/plugins/vue-notifications', ssr: false }
+    { src: '@/plugins/vue-awesome', ssr: false },
+    '@/plugins/content-loader',
+    '@/plugins/vue-lazyload',
+    { src: '@/plugins/vue-notifications', ssr: false }
   ],
   css: [
-    '~/assets/css/reset.scss',
-    '~/assets/css/style.scss',
-    '~/assets/css/marked.scss',
-    '~/assets/css/pageTrans.scss'
+    '@/assets/css/reset.scss',
+    '@/assets/css/style.scss',
+    '@/assets/css/marked.scss',
+    '@/assets/css/pageTrans.scss'
   ],
   head: {
     title: 'エンジニアわいわいポッドキャスト「そうっすね」',
@@ -126,13 +125,6 @@ const conf = {
           loader: 'eslint-loader',
           exclude: /(node_modules)/
         })
-      }
-      if (ctx.isServer) {
-        config.externals = [
-          nodeExternals({
-            whitelist: [/^vue-awesome/]
-          })
-        ]
       }
     }
   },

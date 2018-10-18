@@ -18,9 +18,9 @@
           class="mute"
           aria-label="mute"
         >
-          <icon
+          <v-icon
             :name="muted ? 'volume-off' : 'volume-up'"
-          ></icon>
+          ></v-icon>
         </button>
 
         <VolumeRange
@@ -36,10 +36,10 @@
       </div>
 
       <div class="rate">
-        <icon
-          name="tachometer"
+        <v-icon
+          name="tachometer-alt"
           scale="1.5"
-        ></icon>
+        ></v-icon>
 
         <VolumeRange
           class="rate-slider"
@@ -62,10 +62,10 @@
         aria-label="skip backward"
       >
         <span class="stack">
-          <icon
-            name="rotate-left"
+          <v-icon
+            name="undo"
             scale="3"
-          ></icon>
+          ></v-icon>
           <span class="skip-text">{{Math.abs(skipBack)}}</span>
         </span>
       </button>
@@ -74,10 +74,10 @@
         @click.prevent="togglePlay"
         aria-label="toggle play"
       >
-        <icon
+        <v-icon
           :name="paused ? 'play' : 'pause'"
           scale="3"
-        ></icon>
+        ></v-icon>
       </button>
       <button
         @click.prevent="skip(skipFwd)"
@@ -85,10 +85,10 @@
         aria-label="skip forward"
       >
         <span class="stack">
-          <icon
-            name="rotate-right"
+          <v-icon
+            name="redo"
             scale="3"
-          ></icon>
+          ></v-icon>
           <span class="skip-text">{{skipFwd}}</span>
         </span>
       </button>
@@ -288,6 +288,7 @@ $clr-ui: $player-seek-progress;
     .skip-text {
       pointer-events: none;
       font-size: 0.6rem;
+      margin-top: 8px;
     }
   }
   .seek {

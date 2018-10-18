@@ -47,7 +47,7 @@
         class="newer"
         aria-label="newer episode"
       >
-        <icon name="arrow-left" scale="3"></icon>
+        <v-icon name="arrow-left" scale="3"></v-icon>
       </nuxt-link>
       <nuxt-link
         v-if="episode.older"
@@ -55,7 +55,7 @@
         class="older"
         aria-label="oldre episode"
       >
-        <icon name="arrow-right" scale="3"></icon>
+        <v-icon name="arrow-right" scale="3"></v-icon>
       </nuxt-link>
     </nav>
 

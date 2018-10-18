@@ -4,11 +4,11 @@
     :class="{ playing, loading }"
     aria-label="toggle play"
   >
-    <icon
+    <v-icon
       scale="3"
       :name="playing ? (loading ? 'spinner' : 'pause') : 'play'"
       :spin="loading"
-    ></icon>
+    ></v-icon>
   </button>
 </template>
 

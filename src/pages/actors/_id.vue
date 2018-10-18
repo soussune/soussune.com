@@ -20,8 +20,8 @@
         target="_blank"
         rel="noopener"
       >
-        <icon
-          :name="service"
+        <v-icon
+          :name="`brands/${service}`"
           :class="service"
           scale="1.6"
         />

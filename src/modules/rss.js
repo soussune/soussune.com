@@ -1,6 +1,6 @@
-const fs = require('fs-extra')
-const path = require('path')
-const RSS = require('rss')
+import fs from 'fs-extra'
+import path from 'path'
+import RSS from 'rss'
 
 const defaults = {
   path: 'feed.xml',

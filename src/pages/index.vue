@@ -35,7 +35,7 @@
 
     <nav class="readmore" v-if="moreEpisode">
       <nuxt-link :to="{ path: '/episode', hash: 'ep' + moreEpisode.id }" class="readmore-link" aria-label="read more episodes">
-        Read more <icon name="chevron-right"></icon>
+        Read more <v-icon name="chevron-right"></v-icon>
       </nuxt-link>
     </nav>
   </section>

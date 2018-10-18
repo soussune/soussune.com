@@ -43,7 +43,6 @@
     "@nuxtjs/axios": "^4.5.2",
     "@nuxtjs/sitemap": "0.1.1",
     "babel-eslint": "^8.2.2",
-    "backpack-core": "^0.7.0",
     "codecov.io": "^0.1.6",
     "contentful": "^7.0.4",
     "dotenv": "^6.1.0",

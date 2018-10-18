@@ -27,7 +27,7 @@ const conf = {
   workbox: {
     _runtimeCaching: [
       {
-        urlPattern: '/_nuxt/contents/.*',
+        urlPattern: '/_nuxt/content/.*',
         handler: 'staleWhileRevalidate'
       },
       {

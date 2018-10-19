@@ -71,7 +71,7 @@ const conf = {
     ['nuxt-sass-resources-loader', ['assets/css/_vars.scss', 'assets/css/mixin/_mediaquery.scss']]
   ],
   plugins: [
-    { src: '@/plugins/vue-awesome', ssr: false },
+    '@/plugins/vue-awesome',
     '@/plugins/content-loader',
     '@/plugins/vue-lazyload',
     { src: '@/plugins/vue-notifications', ssr: false }
@@ -154,6 +154,7 @@ const conf = {
     ]
   },
   build: {
+    transpile: ['vue-awesome'],
     extend(config, ctx) {
       if (ctx.isClient) {
         config.module.rules.push({

@@ -1,56 +1,16 @@
-@font-face {
-  font-family: 'Yu Gothic';
-  src: local('Yu Gothic Medium');
-  font-weight: 100;
-}
-@font-face {
-  font-family: 'Yu Gothic';
-  src: local('Yu Gothic Medium');
-  font-weight: 200;
-}
-@font-face {
-  font-family: 'Yu Gothic';
-  src: local('Yu Gothic Medium');
-  font-weight: 300;
-}
-@font-face {
-  font-family: 'Yu Gothic';
-  src: local('Yu Gothic Medium');
-  font-weight: 400;
-}
-@font-face {
-  font-family: 'Yu Gothic';
-  src: local('Yu Gothic Bold');
-  font-weight: bold;
-}
-@font-face {
-  font-family: 'Helvetica Neue';
-  src: local('Helvetica Neue Regular');
-  font-weight: 100;
-}
-@font-face {
-  font-family: 'Helvetica Neue';
-  src: local('Helvetica Neue Regular');
-  font-weight: 200;
-}
-@font-face {
-  font-family: 'soussune-GenJyuuGothicX-Medium';
-  src: url(/font/soussune-GenJyuuGothicX-Medium.woff) format('woff');
-  font-display: swap;
-}
+@import url('https://fonts.googleapis.com/css?family=Kosugi+Maru|Noto+Sans+JP|Ubuntu');
 
 html {
-  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', YuGothic, '游ゴシック Medium',
-    YuGothicM, Verdana, Meiryo, sans-serif;
+  font-family: 'Ubuntu', 'Noto Sans JP', sans-serif;
 }
 @media all and (-ms-high-contrast: none) {
   html {
-    font-family: Verdana, Meiryo, sans-serif;
+    font-family: 'Ubuntu', 'Noto Sans JP', sans-serif;
   }
 }
 @media all and (-ms-high-contrast: active) {
   html {
-    font-family: Verdana, Meiryo, sans-serif;
+    font-family: 'Ubuntu', 'Noto Sans JP', sans-serif;
   }
 }
 

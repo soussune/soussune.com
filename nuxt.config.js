@@ -74,6 +74,7 @@ const conf = {
     '@/plugins/vue-awesome',
     '@/plugins/content-loader',
     '@/plugins/vue-lazyload',
+    { src: '@/plugins/webFontLoader.js', ssr: false },
     { src: '@/plugins/vue-notifications', ssr: false }
   ],
   css: [

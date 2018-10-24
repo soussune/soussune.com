@@ -149,6 +149,7 @@ export default {
   &-icon {
     width: 200px;
     height: 200px;
+    border-radius: 50%;
   }
   &-title {
     font-size: 2.5rem;

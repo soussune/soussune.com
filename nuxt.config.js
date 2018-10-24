@@ -133,6 +133,10 @@ const conf = {
       { name: 'msapplication-TileImage', content: '/mstile-144x144.png' }
     ],
     link: [
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css?family=Kosugi+Maru|Noto+Sans+JP|Ubuntu'
+      },
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'apple-touch-icon', sizes: '57x57', href: '/apple-touch-icon-57x57.png' },
       { rel: 'apple-touch-icon', sizes: '60x60', href: '/apple-touch-icon-60x60.png' },

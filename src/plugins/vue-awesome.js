@@ -20,5 +20,6 @@ import 'vue-awesome/icons/tachometer-alt'
 import 'vue-awesome/icons/times'
 import 'vue-awesome/icons/volume-off'
 import 'vue-awesome/icons/volume-up'
+import 'vue-awesome/icons/external-link-alt'
 
 Vue.component('v-icon', Icon)

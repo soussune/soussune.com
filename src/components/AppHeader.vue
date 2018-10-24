@@ -39,12 +39,12 @@
         </li>
         <li>
           <a href="https://medium.com/soussune" target="_blank" rel="noopener" aria-label="blog">
-            ブログ
+            ブログ<v-icon name="external-link-alt" scale="0.8"/>
           </a>
         </li>
         <li>
           <a href="https://www.youtube.com/channel/UCNrtgKYAjGYKDIjJM-_zsXA" target="_blank" rel="noopener" aria-label="youtube">
-            動画
+            動画<v-icon name="external-link-alt" scale="0.8"/>
           </a>
         </li>
       </ul>

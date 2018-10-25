@@ -14,7 +14,12 @@ export default {
   },
   computed: {
     src() {
-      const params = { w: this.size, h: this.size }
+      const params = {
+        w: this.size,
+        h: this.size,
+        fm: 'jpg',
+        fl: 'progressive'
+      }
       return [
         this.actor.imageUrl,
         Object.keys(params)

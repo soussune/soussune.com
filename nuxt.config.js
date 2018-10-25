@@ -28,7 +28,7 @@ const conf = {
     _runtimeCaching: [
       {
         urlPattern: '/_nuxt/content/.*',
-        handler: 'staleWhileRevalidate'
+        handler: 'networkFirst'
       },
       {
         urlPattern: '/_nuxt/.*',
